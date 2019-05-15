@@ -6,9 +6,16 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
+
+import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
+import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.network.CivicInfoListener;
+import com.example.grassroots.network.CivicInfoRetrofit;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static final String TAG = "findme";
     private DrawerLayout drawer;
 
     @Override
@@ -33,5 +40,12 @@ public class MainActivity extends AppCompatActivity {
         } else {
             super.onBackPressed();
         }
+    }
+
+    public void sendToRepresentativeDirectoryFragment(){
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_container, new RepresentativeDirectoryFragment())
+                .commit();
     }
 }
