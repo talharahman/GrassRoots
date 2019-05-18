@@ -1,12 +1,9 @@
 package com.example.grassroots.network;
 
-import android.content.Context;
 import android.util.Log;
 
 import com.example.grassroots.MainActivity;
-import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfoModel;
-import com.example.grassroots.utils.Constant;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,53 +11,45 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CivicInfoRetrofit {
+public class CivicInfoRepository {
 
     private static Retrofit retrofit;
-    private static CivicInfoRetrofit thisInstance;
-    private CivicInfoListener listener;
+    private static final String CIVIC_INFO_BASE_URL = "https://www.googleapis.com/";
 
-    private CivicInfoRetrofit() {}
-
-    static CivicInfoRetrofit getInstance() {
-        if (thisInstance == null) {
-            thisInstance = new CivicInfoRetrofit();
-        }
-        return thisInstance;
+    public CivicInfoRepository() {
     }
 
-    private CivicInfoService onConnect() {
+    static Retrofit getInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
-                    .baseUrl(Constant.KEYS.CIVIC_INFO_BASE_URL)
+                    .baseUrl(CIVIC_INFO_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-        return retrofit.create(CivicInfoService.class);
+
+        return retrofit;
     }
 
-    void onSuccess(String inputAddress, Context context) {
-        CivicInfoService civicInfoService = onConnect();
-        civicInfoService
-                .getCivicInfo(context.getString(R.string.Civic_Info_API_Key), inputAddress)
+
+    void fetchElectedRepresentatives(String streetAddress, String civicAPIKey, final CivicInfoListener civicInfoListener) {
+        getInstance().create(CivicInfoService.class)
+                .getCivicInfo(civicAPIKey, streetAddress)
                 .enqueue(new Callback<CivicInfoModel>() {
                     @Override
                     public void onResponse(Call<CivicInfoModel> call, Response<CivicInfoModel> response) {
                         CivicInfoModel civicInfoModel = response.body();
                         if (response.body() != null) {
                             Log.d(MainActivity.TAG, "onResponse: " + response.body().getElectedRepresentatives().get(0).getName());
-                            listener.onConnected(civicInfoModel);
+                            civicInfoListener.onSuccess(civicInfoModel);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<CivicInfoModel> call, Throwable t) {
                         Log.d(MainActivity.TAG, "onFailure: " + t.getMessage());
+                        civicInfoListener.onFailure();
                     }
                 });
     }
 
-    void setListener(CivicInfoListener listener) {
-        this.listener = listener;
-    }
 }
