@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.grassroots.model.ElectedPositions;
 import com.example.grassroots.model.ElectedRepresentatives;
 
 import java.util.List;
@@ -13,9 +14,12 @@ import java.util.List;
 public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> {
 
     private List<ElectedRepresentatives> electedRepresentatives;
+    private List<ElectedPositions> electedPositions;
 
-    public CivicInfoAdapter(List<ElectedRepresentatives> electedRepresentatives) {
+    public CivicInfoAdapter(List<ElectedRepresentatives> electedRepresentatives,
+                            List<ElectedPositions> electedPositions) {
         this.electedRepresentatives = electedRepresentatives;
+        this.electedPositions = electedPositions;
     }
 
     @NonNull
@@ -27,11 +31,11 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull CivicInfoViewHolder civicInfoViewHolder, int i) {
-        civicInfoViewHolder.onBind(electedRepresentatives.get(i));
+        civicInfoViewHolder.onBind(electedRepresentatives.get(i), electedPositions.get(i));
     }
 
     @Override
     public int getItemCount() {
-        return electedRepresentatives.size();
+        return 10;
     }
 }
