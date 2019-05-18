@@ -1,6 +1,5 @@
 package com.example.grassroots.fragment;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -16,7 +15,6 @@ import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfoModel;
 import com.example.grassroots.network.CivicInfoPresenter;
-
 
 public class RepresentativeDirectoryFragment extends Fragment {
 
@@ -49,13 +47,12 @@ public class RepresentativeDirectoryFragment extends Fragment {
     }
 
     private void initialize() {
-//        repDirectoryFragmentListener.setDirectoryListener(RepresentativeDirectoryFragment.this);
         presenter = new CivicInfoPresenter(new RepDirectoryFragmentListener() {
             @Override
             public void updateUI(CivicInfoModel civicInfoModel) {
                 Log.d(MainActivity.TAG, "updateUI: " + civicInfoModel.getElectedRepresentatives().get(0));
                 CivicInfoAdapter civicInfoAdapter = new CivicInfoAdapter();
-                civicInfoAdapter.setadapterList(civicInfoModel.getElectedRepresentatives());
+                civicInfoAdapter.setadapterList(civicInfoModel.getElectedRepresentatives(), civicInfoModel.getPositions());
                 recyclerView.setAdapter(civicInfoAdapter);
             }
         });
