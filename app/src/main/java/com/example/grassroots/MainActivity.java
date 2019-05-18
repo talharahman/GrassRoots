@@ -13,7 +13,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
+import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.network.CivicInfoListener;
+import com.example.grassroots.network.CivicInfoRetrofit;
+import com.example.grassroots.network.CongressListener;
+
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,7 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+sendToCongressFragment();
         initialize();
     }
 
@@ -38,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
-
+        
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
     }
@@ -83,4 +89,15 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .setCustomAnimations(R.anim.enter, R.anim.exit)
                 .commit();
     }
+
+    public void sendToCongressFragment(){
+        CongressFragment congressFragment = CongressFragment.newInstance();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_container, congressFragment)
+                .commit();
+    }
+
 }
+}
+
