@@ -8,10 +8,12 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 
+import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
 import com.example.grassroots.model.CivicInfoModel;
 import com.example.grassroots.network.CivicInfoListener;
 import com.example.grassroots.network.CivicInfoRetrofit;
+import com.example.grassroots.network.CongressListener;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,6 +33,9 @@ public class MainActivity extends AppCompatActivity {
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+        sendToCongressFragment();
+
     }
 
     @Override
@@ -48,4 +53,13 @@ public class MainActivity extends AppCompatActivity {
                 .add(R.id.frame_container, new RepresentativeDirectoryFragment())
                 .commit();
     }
+
+    public void sendToCongressFragment(){
+        CongressFragment congressFragment = CongressFragment.newInstance();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_container, congressFragment)
+                .commit();
+    }
+
 }
