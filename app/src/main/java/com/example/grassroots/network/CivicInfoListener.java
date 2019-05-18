@@ -3,5 +3,6 @@ package com.example.grassroots.network;
 import com.example.grassroots.model.CivicInfoModel;
 
 public interface CivicInfoListener {
-    void onConnected(CivicInfoModel civicInfoModel);
+    void onSuccess(CivicInfoModel civicInfoModel);
+    void onFailure();
 }

@@ -1,6 +1,5 @@
 package com.example.grassroots.fragment;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -17,39 +16,51 @@ import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfoModel;
 import com.example.grassroots.network.CivicInfoPresenter;
 
-
 public class RepresentativeDirectoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private View rootView;
     private CivicInfoPresenter presenter;
+    private RepDirectoryFragmentListener repDirectoryFragmentListener;
 
-    public RepresentativeDirectoryFragment() {}
+    public RepresentativeDirectoryFragment() {
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         rootView = inflater.inflate(R.layout.fragment_representative_directory, container, false);
-        createDirectory(getContext());
+        createDirectory(requireContext().getString(R.string.Civic_Info_API_Key));
         return rootView;
     }
 
-    private void createDirectory(Context context) {
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof RepDirectoryFragmentListener) {
+            repDirectoryFragmentListener = (RepDirectoryFragmentListener) context;
+        }
+    }
+
+    private void createDirectory(String string) {
         initialize();
-        makeNetworkCall(context);
+        makeNetworkCall(string);
     }
 
     private void initialize() {
-        presenter = new CivicInfoPresenter(this);
+        presenter = new CivicInfoPresenter(new RepDirectoryFragmentListener() {
+            @Override
+            public void updateUI(CivicInfoModel civicInfoModel) {
+                Log.d(MainActivity.TAG, "updateUI: " + civicInfoModel.getElectedRepresentatives().get(0));
+                CivicInfoAdapter civicInfoAdapter = new CivicInfoAdapter();
+                civicInfoAdapter.setadapterList(civicInfoModel.getElectedRepresentatives(), civicInfoModel.getPositions());
+                recyclerView.setAdapter(civicInfoAdapter);
+            }
+        });
         recyclerView = rootView.findViewById(R.id.representative_recyclerviewID);
-        recyclerView.setLayoutManager(new LinearLayoutManager(rootView.getContext()));
+        recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
-    private void makeNetworkCall(Context context) {
-        presenter.networkCall(context);
-    }
-
-    public void updateUI(CivicInfoModel civicInfoModel) {
-        Log.d(MainActivity.TAG, "updateUI: " + civicInfoModel.getElectedRepresentatives().get(0));
-        recyclerView.setAdapter(new CivicInfoAdapter(civicInfoModel.getElectedRepresentatives()));
+    private void makeNetworkCall(String string) {
+        presenter.networkCall(string);
     }
 }
