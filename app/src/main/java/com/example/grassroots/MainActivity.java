@@ -2,12 +2,8 @@ package com.example.grassroots;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
-import com.example.grassroots.model.CivicInfoModel;
-import com.example.grassroots.network.CivicInfoListener;
-import com.example.grassroots.network.CivicInfoRetrofit;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -19,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
-    public void sendToRepresentativeDirectoryFragment(){
+    public void sendToRepresentativeDirectoryFragment() {
         getSupportFragmentManager()
                 .beginTransaction()
                 .add(R.id.frame_container, new RepresentativeDirectoryFragment())

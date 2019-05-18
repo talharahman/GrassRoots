@@ -14,14 +14,18 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     private List<ElectedRepresentatives> electedRepresentatives;
 
-    public CivicInfoAdapter(List<ElectedRepresentatives> electedRepresentatives) {
+    public CivicInfoAdapter() {
+    }
+
+    public void setadapterList(List<ElectedRepresentatives> electedRepresentatives) {
         this.electedRepresentatives = electedRepresentatives;
+        notifyDataSetChanged();
     }
 
     @NonNull
     @Override
     public CivicInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rep_directory_item_view,viewGroup,false);
+        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.rep_directory_item_view, viewGroup, false);
         return new CivicInfoViewHolder(childView);
     }
 
