@@ -1,26 +1,36 @@
 package com.example.grassroots.network;
 
-import android.content.Context;
+import android.util.Log;
 
+import com.example.grassroots.CivicInfoAdapter;
+import com.example.grassroots.MainActivity;
+import com.example.grassroots.fragment.RepDirectoryFragmentListener;
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
 import com.example.grassroots.model.CivicInfoModel;
 
 public class CivicInfoPresenter {
 
     private RepresentativeDirectoryFragment representativeDirectoryFragment;
+    private RepDirectoryFragmentListener repDirectoryFragmentListener;
 
-    public CivicInfoPresenter(RepresentativeDirectoryFragment representativeDirectoryFragment) {
-        this.representativeDirectoryFragment = representativeDirectoryFragment;
+    public CivicInfoPresenter( RepDirectoryFragmentListener repDirectoryFragmentListener) {
+        this.repDirectoryFragmentListener = repDirectoryFragmentListener;
     }
 
-    public void networkCall(Context context){
-        CivicInfoRetrofit instance = CivicInfoRetrofit.getInstance();
-        instance.setListener(new CivicInfoListener() {
+    public void networkCall(String civicAPIKey){
+        CivicInfoRepository instance = new CivicInfoRepository();
+        instance.fetchElectedRepresentatives("11101", civicAPIKey, new CivicInfoListener() {
             @Override
-            public void onConnected(CivicInfoModel civicInfoModel) {
-                representativeDirectoryFragment.updateUI(civicInfoModel);
+            public void onSuccess(CivicInfoModel civicInfoModel) {
+                repDirectoryFragmentListener.updateUI(civicInfoModel);
+            }
+
+            @Override
+            public void onFailure() {
+                //insert callback method
             }
         });
-        instance.onSuccess("11101", context);
     }
+
+
 }
