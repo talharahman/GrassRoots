@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide;
 import com.example.grassroots.model.ElectedPositions;
 import com.example.grassroots.model.ElectedRepresentatives;
 
+
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;
@@ -31,21 +32,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repName.setText(electedRepresentatives.getName());
         repParty.setText(electedRepresentatives.getParty());
         repPosition.setText(electedPosition.getPositionName());
-
-        /*Picasso picasso = new Picasso
-                .Builder(itemView.getContext())
-                .loggingEnabled(true)
-                .listener(new Picasso.Listener() {
-                    @Override
-                    public void onImageLoadFailed(Picasso picasso, Uri uri, Exception exception) {
-                        exception.printStackTrace();
-                    }
-                }).build();
-
-         picasso.load(electedRepresentatives.getPhotoUrl())
-                .fit()
-                .centerCrop()
-                .into(repImage);*/
 
         Glide.with(itemView.getContext())
                 .load(electedRepresentatives.getPhotoUrl())
