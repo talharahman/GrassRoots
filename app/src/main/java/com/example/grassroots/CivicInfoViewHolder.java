@@ -7,8 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.grassroots.model.ElectedPositions;
-import com.example.grassroots.model.ElectedRepresentatives;
+import com.example.grassroots.model.CivicInfo.ElectedPositions;
+import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 
 
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
@@ -20,15 +20,10 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     public CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
-
-        repName = itemView.findViewById(R.id.rep_name);
-        repParty = itemView.findViewById(R.id.rep_party);
-        repPosition = itemView.findViewById(R.id.rep_position);
-        repImage = itemView.findViewById(R.id.Rep_image);
+        setRepresentativeReferences(itemView);
     }
 
     void onBind(ElectedRepresentatives electedRepresentatives, ElectedPositions electedPosition) {
-
         repName.setText(electedRepresentatives.getName());
         repParty.setText(electedRepresentatives.getParty());
         repPosition.setText(electedPosition.getPositionName());
@@ -38,6 +33,12 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 .centerCrop()
                 .placeholder(R.drawable.image_na)
                 .into(repImage);
+    }
 
+    void setRepresentativeReferences(View itemview){
+        repName = itemView.findViewById(R.id.rep_name);
+        repParty = itemView.findViewById(R.id.rep_party);
+        repPosition = itemView.findViewById(R.id.rep_position);
+        repImage = itemView.findViewById(R.id.Rep_image);
     }
 }

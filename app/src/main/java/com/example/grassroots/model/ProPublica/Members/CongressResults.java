@@ -1,4 +1,4 @@
-package com.example.grassroots.model;
+package com.example.grassroots.model.ProPublica.Members;
 
 import java.util.List;
 

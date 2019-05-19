@@ -5,7 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.grassroots.model.CongressMember;
+import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 public class CongressViewHolder extends RecyclerView.ViewHolder {
 

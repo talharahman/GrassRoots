@@ -1,4 +1,4 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.ProPublica.Members;
 
 public interface CongressListener {
 

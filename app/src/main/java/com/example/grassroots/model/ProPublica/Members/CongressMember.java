@@ -1,4 +1,4 @@
-package com.example.grassroots.model;
+package com.example.grassroots.model.ProPublica.Members;
 
 public class CongressMember implements Comparable<CongressMember>{
 

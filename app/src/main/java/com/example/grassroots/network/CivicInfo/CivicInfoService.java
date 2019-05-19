@@ -1,6 +1,6 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

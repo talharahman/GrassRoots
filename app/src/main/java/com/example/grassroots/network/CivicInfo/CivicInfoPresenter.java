@@ -1,16 +1,11 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
-import android.util.Log;
-
-import com.example.grassroots.CivicInfoAdapter;
-import com.example.grassroots.MainActivity;
 import com.example.grassroots.fragment.RepDirectoryFragmentListener;
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 public class CivicInfoPresenter {
 
-    private RepresentativeDirectoryFragment representativeDirectoryFragment;
     private RepDirectoryFragmentListener repDirectoryFragmentListener;
 
     public CivicInfoPresenter( RepDirectoryFragmentListener repDirectoryFragmentListener) {

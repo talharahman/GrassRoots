@@ -1,9 +1,9 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
 import android.util.Log;
 
 import com.example.grassroots.MainActivity;
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;

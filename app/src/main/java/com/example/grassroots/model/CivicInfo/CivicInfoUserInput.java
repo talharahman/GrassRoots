@@ -1,24 +1,14 @@
-package com.example.grassroots.model;
+package com.example.grassroots.model.CivicInfo;
 
-class ElectedRepAddress {
+class CivicInfoUserInput {
 
     private String line1;
-    private String line2;
-    private String line3;
     private String city;
     private String state;
     private String zip;
 
     public String getLine1() {
         return line1;
-    }
-
-    public String getLine2() {
-        return line2;
-    }
-
-    public String getLine3() {
-        return line3;
     }
 
     public String getCity() {

@@ -1,4 +1,4 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.ProPublica.Members;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

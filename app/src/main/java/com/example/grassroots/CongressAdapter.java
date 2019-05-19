@@ -6,8 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.grassroots.model.CongressMember;
-import com.example.grassroots.model.CongressResponse;
+import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 import java.util.List;
 

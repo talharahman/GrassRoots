@@ -13,18 +13,16 @@ import android.view.ViewGroup;
 import com.example.grassroots.CivicInfoAdapter;
 import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
-import com.example.grassroots.model.CivicInfoModel;
-import com.example.grassroots.network.CivicInfoPresenter;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
+import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
 
 public class RepresentativeDirectoryFragment extends Fragment {
 
     private RecyclerView recyclerView;
     private View rootView;
     private CivicInfoPresenter presenter;
-    private RepDirectoryFragmentListener repDirectoryFragmentListener;
 
-    public RepresentativeDirectoryFragment() {
-    }
+    public RepresentativeDirectoryFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,26 +31,17 @@ public class RepresentativeDirectoryFragment extends Fragment {
         return rootView;
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof RepDirectoryFragmentListener) {
-            repDirectoryFragmentListener = (RepDirectoryFragmentListener) context;
-        }
-    }
-
-    private void createDirectory(String string) {
+    private void createDirectory(String civicApiKey) {
         initialize();
-        makeNetworkCall(string);
+        makeNetworkCall(civicApiKey);
     }
 
     private void initialize() {
         presenter = new CivicInfoPresenter(new RepDirectoryFragmentListener() {
             @Override
             public void updateUI(CivicInfoModel civicInfoModel) {
-                Log.d(MainActivity.TAG, "updateUI: " + civicInfoModel.getElectedRepresentatives().get(0));
                 CivicInfoAdapter civicInfoAdapter = new CivicInfoAdapter();
-                civicInfoAdapter.setadapterList(civicInfoModel.getElectedRepresentatives(), civicInfoModel.getPositions());
+                civicInfoAdapter.setCivicInfoAdapterList(civicInfoModel.getElectedRepresentatives(), civicInfoModel.getPositions());
                 recyclerView.setAdapter(civicInfoAdapter);
             }
         });
@@ -60,7 +49,7 @@ public class RepresentativeDirectoryFragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
     }
 
-    private void makeNetworkCall(String string) {
-        presenter.networkCall(string);
+    private void makeNetworkCall(String civicApiKey) {
+        presenter.networkCall(civicApiKey);
     }
 }

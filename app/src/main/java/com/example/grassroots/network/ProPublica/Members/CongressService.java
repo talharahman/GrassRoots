@@ -1,6 +1,6 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.ProPublica.Members;
 
-import com.example.grassroots.model.CongressResponse;
+import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
