@@ -1,10 +1,19 @@
 package com.example.grassroots.model;
 
+
+import java.util.List;
+
 public class ElectedPositions {
 
     private String name;
 
-    public String getPositionName() {
+    private List<Integer> officialIndices;
+
+    public String getName() {
         return name;
+    }
+
+    public List<Integer> getOfficialIndices() {
+        return officialIndices;
     }
 }

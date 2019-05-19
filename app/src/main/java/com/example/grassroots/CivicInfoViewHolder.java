@@ -10,7 +10,6 @@ import com.bumptech.glide.Glide;
 import com.example.grassroots.model.ElectedPositions;
 import com.example.grassroots.model.ElectedRepresentatives;
 
-
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;
@@ -27,17 +26,16 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repImage = itemView.findViewById(R.id.Rep_image);
     }
 
-    void onBind(ElectedRepresentatives electedRepresentatives, ElectedPositions electedPosition) {
+    void onBind(ElectedRepresentatives electedRepresentatives, String position) {
 
         repName.setText(electedRepresentatives.getName());
         repParty.setText(electedRepresentatives.getParty());
-        repPosition.setText(electedPosition.getPositionName());
+        repPosition.setText(position);
 
         Glide.with(itemView.getContext())
                 .load(electedRepresentatives.getPhotoUrl())
                 .centerCrop()
                 .placeholder(R.drawable.image_na)
                 .into(repImage);
-
     }
 }

@@ -4,14 +4,9 @@ import java.util.List;
 
 public class CivicInfoModel {
 
-    private String kind;
     private CivicInfoUserInput normalizedInput;
     private List<ElectedPositions> offices;
-    private List<ElectedRepresentatives> officials = null;
-
-    public String getKind() {
-        return kind;
-    }
+    private List<ElectedRepresentatives> officials;
 
     public CivicInfoUserInput getNormalizedInput() {
         return normalizedInput;

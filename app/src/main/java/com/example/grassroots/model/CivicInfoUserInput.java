@@ -1,6 +1,6 @@
 package com.example.grassroots.model;
 
-class CivicInfoUserInput {
+public class CivicInfoUserInput {
 
     private String line1;
     private String city;

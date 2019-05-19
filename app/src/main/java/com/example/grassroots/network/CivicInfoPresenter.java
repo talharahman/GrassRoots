@@ -17,9 +17,9 @@ public class CivicInfoPresenter {
         this.repDirectoryFragmentListener = repDirectoryFragmentListener;
     }
 
-    public void networkCall(String civicAPIKey){
+    public void networkCall(String civicAPIKey, String zipCode){
         CivicInfoRepository instance = new CivicInfoRepository();
-        instance.fetchElectedRepresentatives("11101", civicAPIKey, new CivicInfoListener() {
+        instance.fetchElectedRepresentatives(zipCode, civicAPIKey, new CivicInfoListener() {
             @Override
             public void onSuccess(CivicInfoModel civicInfoModel) {
                 repDirectoryFragmentListener.updateUI(civicInfoModel);

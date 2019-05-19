@@ -32,7 +32,7 @@
             android:layout_marginTop="120dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Democrat"
+            android:text="Not Available"
             android:textSize="16sp"
             android:fontFamily="monospace"
             />
@@ -46,7 +46,7 @@
             android:layout_marginTop="64dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Court Jester"
+            android:text="Not Available"
             android:textSize="20sp"
             android:textStyle="italic"
             />
@@ -59,6 +59,5 @@
             android:layout_margin="8dp" />
 
     </android.support.v7.widget.CardView>
-
 
 </LinearLayout>

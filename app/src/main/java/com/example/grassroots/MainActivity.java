@@ -1,5 +1,6 @@
 package com.example.grassroots;
 
+import android.content.DialogInterface;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -7,11 +8,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.InputType;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
 
@@ -19,6 +26,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     public static final String TAG = "findme";
     private DrawerLayout drawer;
+
+    private String zipCode;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,7 +76,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //inflateFragment(createPetitionFragment)
                 return true;
             case R.id.nav_contact:
-                inflateFragment(new RepresentativeDirectoryFragment());
+                getLocaleDialog();
+               // inflateFragment(RepresentativeDirectoryFragment.newInstance("11355"));
                 return true;
             case R.id.nav_bills:
                 //inflateFragment(searchBillsFragment)
@@ -76,11 +86,37 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    private void inflateFragment(Fragment fragment) {
+    public void inflateFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_container, fragment)
                 .setCustomAnimations(R.anim.enter, R.anim.exit)
                 .commit();
     }
+
+    private void getLocaleDialog() {
+        final AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
+        final View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
+        final EditText localeText = dialogLayout.findViewById(R.id.localeText);
+        final Button submitButton = dialogLayout.findViewById(R.id.submit_button);
+        getLocale.setView(dialogLayout);
+
+        AlertDialog alertDialog = getLocale.create();
+
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                zipCode = localeText.getText().toString();
+                alertDialog.dismiss();
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .replace(R.id.frame_container, RepresentativeDirectoryFragment.newInstance(zipCode))
+                        .setCustomAnimations(R.anim.enter, R.anim.exit)
+                        .commit();
+            }
+        });
+        alertDialog.show();
+    }
+
 }
