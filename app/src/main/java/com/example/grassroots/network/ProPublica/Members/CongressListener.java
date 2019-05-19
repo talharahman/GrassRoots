@@ -1,6 +1,11 @@
 package com.example.grassroots.network.ProPublica.Members;
 
-public interface CongressListener {
 
- void sendToCongressDetail();
+import com.example.grassroots.model.ProPublica.Members.CongressResponse;
+
+public interface CongressListener {
+    void successfulCall(CongressResponse congressResponse);
+
+    void failedCall();
+
 }

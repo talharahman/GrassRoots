@@ -12,6 +12,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
 
+import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.BillsFragment;
 import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
 
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setReferences();
+        sendToCongressFragment();
         initialize();
     }
 
@@ -87,5 +89,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
+    public void sendToCongressFragment() {
+        CongressFragment congressFragment = CongressFragment.newInstance();
+        getSupportFragmentManager()
+                .beginTransaction()
+                .add(R.id.frame_container, congressFragment)
+                .commit();
+    }
+
 }
+
 
