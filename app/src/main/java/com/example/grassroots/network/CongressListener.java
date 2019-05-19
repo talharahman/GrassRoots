@@ -1,6 +1,10 @@
 package com.example.grassroots.network;
 
-public interface CongressListener {
+import com.example.grassroots.model.CongressResponse;
 
- void sendToCongressDetail();
+public interface CongressListener {
+    void successfulCall(CongressResponse congressResponse);
+
+    void failedCall();
+
 }

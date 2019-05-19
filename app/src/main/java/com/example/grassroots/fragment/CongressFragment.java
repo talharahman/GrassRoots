@@ -18,28 +18,22 @@ import com.example.grassroots.CongressAdapter;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CongressMember;
 import com.example.grassroots.model.CongressResponse;
-import com.example.grassroots.model.CongressResults;
-import com.example.grassroots.network.CongressListener;
-import com.example.grassroots.network.CongressRetrofit;
-import com.example.grassroots.network.CongressService;
+import com.example.grassroots.network.CongressPresenter;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class CongressFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     public static final String TAG = "HERE";
 
     private CongressAdapter congressAdapter;
-
     private List<CongressMember> congressMembersList = new ArrayList<>();
+    private CongressFragmentListener congressFragmentListener;
+    private CongressPresenter congressPresenter;
 
-    private CongressListener congressListener;
+    private RecyclerView recyclerView;
 
     public CongressFragment() {}
 
@@ -47,15 +41,13 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
         return new CongressFragment();
     }
 
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if(context instanceof CongressListener){
-//            congressListener = (CongressListener) context;
-//        } else {
-//            throw new RuntimeException(context.toString() + "must implement OnFragmentInteractionListener");
-//        }
-//    }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if(context instanceof CongressFragmentListener){
+            congressFragmentListener = (CongressFragmentListener) context;
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -66,60 +58,29 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        recyclerView = view.findViewById(R.id.rv_congress);
 
-        SearchView searchView = view.findViewById(R.id.sv_congress);
-        RecyclerView recyclerView = view.findViewById(R.id.rv_congress);
+        congressPresenter = new CongressPresenter(new CongressFragmentListener() {
+            @Override
+            public void updateCongressDirectoryUI(CongressResponse congressResponse) {
+                congressAdapter = new CongressAdapter(congressMembersList);
+                congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
+                Log.d(TAG, "updateCongressDirectoryUI: "+ congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                Collections.sort(congressMembersList);
 
-        congressAdapter = new CongressAdapter(congressMembersList);
+                recyclerView.setAdapter(congressAdapter);
+                congressAdapter.notifyDataSetChanged();
+            }
+        });
+
+        congressPresenter.networkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key));
 
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
-
-        recyclerView.setAdapter(congressAdapter);
         recyclerView.setLayoutManager(linearLayoutManager);
 
+        SearchView searchView = view.findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
 
-        CongressRetrofit.getInstance()
-                .create(CongressService.class)
-                .getCongress(requireContext().getString(R.string.ProPublica_Congress_API_Key), "116", "Senate")
-                .enqueue(new Callback<CongressResponse>() {
-                    @Override
-                    public void onResponse(Call<CongressResponse> call, Response<CongressResponse> response) {
-                        congressMembersList.addAll(response.body().getResults().get(0).getMembers());
-                        Collections.sort(congressMembersList);
-                        congressAdapter.notifyDataSetChanged();
-                        Log.d(TAG, "onResponse: " + response.body().getStatus());
-                        Log.d(TAG, "onResponse: " + response.body().getResults().get(0).getMembers().get(0).getFirst_name());
-                        Log.d(TAG, "onResponse: " + response.raw());
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<CongressResponse> call, Throwable t) {
-                        Log.d(TAG, "onFailure " + t.toString());
-                    }
-                });
-
-        CongressRetrofit.getInstance()
-                .create(CongressService.class)
-                .getCongress(requireContext().getString(R.string.ProPublica_Congress_API_Key), "116", "House")
-                .enqueue(new Callback<CongressResponse>() {
-                    @Override
-                    public void onResponse(Call<CongressResponse> call, Response<CongressResponse> response) {
-                        congressMembersList.addAll(response.body().getResults().get(0).getMembers());
-                        Collections.sort(congressMembersList);
-                        congressAdapter.notifyDataSetChanged();
-                        Log.d(TAG, "onResponse: " + response.body().getStatus());
-                        Log.d(TAG, "onResponse: " + response.body().getResults().get(0).getMembers().get(0).getFirst_name());
-                        Log.d(TAG, "onResponse: " + response.raw());
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<CongressResponse> call, Throwable t) {
-                        Log.d(TAG, "onFailure " + t.toString());
-                    }
-                });
     }
 
     @Override
@@ -139,9 +100,9 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
         return false;
     }
 
-//    @Override
-//    public void onDetach() {
-//        super.onDetach();
-//        congressListener = null;
-//    }
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        congressFragmentListener = null;
+    }
 }

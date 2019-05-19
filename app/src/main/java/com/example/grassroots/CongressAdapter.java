@@ -7,7 +7,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.model.CongressMember;
-import com.example.grassroots.model.CongressResponse;
 
 import java.util.List;
 
