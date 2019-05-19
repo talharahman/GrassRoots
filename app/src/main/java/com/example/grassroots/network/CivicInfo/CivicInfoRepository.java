@@ -1,37 +1,28 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
 import android.util.Log;
 
-import com.example.grassroots.MainActivity;
-import com.example.grassroots.model.CivicInfoModel;
-import com.example.grassroots.model.ElectedPositions;
-import com.example.grassroots.model.ElectedRepresentatives;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
-import java.util.HashMap;
-import java.util.List;
-
-import io.reactivex.Scheduler;
-import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-class CivicInfoRepository {
+public class CivicInfoRepository {
 
     private static Retrofit retrofit;
     private static final String CIVIC_INFO_BASE_URL = "https://www.googleapis.com/";
 
-    CivicInfoRepository() {}
+    public CivicInfoRepository() {
+    }
 
     static Retrofit getInstance() {
         if (retrofit == null) {
             retrofit = new Retrofit.Builder()
                     .baseUrl(CIVIC_INFO_BASE_URL)
                     .addConverterFactory(GsonConverterFactory.create())
-                    .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                     .build();
         }
 
@@ -58,6 +49,5 @@ class CivicInfoRepository {
                     }
                 });
     }
-
 
 }

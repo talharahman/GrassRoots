@@ -1,6 +1,6 @@
 package com.example.grassroots.fragment;
 
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 public interface LocalRepsFragmentListener {
 

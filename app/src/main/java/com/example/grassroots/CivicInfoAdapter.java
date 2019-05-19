@@ -3,10 +3,11 @@ package com.example.grassroots;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.grassroots.model.ElectedPositions;
-import com.example.grassroots.model.ElectedRepresentatives;
+import com.example.grassroots.model.CivicInfo.ElectedPositions;
+import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 
 import java.util.ArrayList;
 import java.util.HashMap;

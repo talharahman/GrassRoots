@@ -1,12 +1,12 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
 import com.example.grassroots.fragment.LocalRepsFragmentListener;
 import com.example.grassroots.fragment.LocalRepsFragment;
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
+import com.example.grassroots.network.CivicInfo.CivicInfoRepository;
 
 public class CivicInfoPresenter {
 
-    private LocalRepsFragment localRepsFragment;
     private LocalRepsFragmentListener localRepsFragmentListener;
 
     public CivicInfoPresenter( LocalRepsFragmentListener localRepsFragmentListener) {

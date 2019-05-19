@@ -1,6 +1,6 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
-import com.example.grassroots.model.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 public interface CivicInfoListener {
     void onSuccess(CivicInfoModel civicInfoModel);

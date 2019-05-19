@@ -1,4 +1,4 @@
-package com.example.grassroots.model;
+package com.example.grassroots.model.CivicInfo;
 
 class ElectedRepAddress {
 

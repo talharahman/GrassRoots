@@ -1,10 +1,7 @@
-package com.example.grassroots.network;
+package com.example.grassroots.network.CivicInfo;
 
-import android.text.method.SingleLineTransformationMethod;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
-import com.example.grassroots.model.CivicInfoModel;
-
-import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Query;
