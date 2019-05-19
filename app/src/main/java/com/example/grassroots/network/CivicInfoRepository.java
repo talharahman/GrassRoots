@@ -19,13 +19,12 @@ import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CivicInfoRepository {
+class CivicInfoRepository {
 
     private static Retrofit retrofit;
     private static final String CIVIC_INFO_BASE_URL = "https://www.googleapis.com/";
 
-    public CivicInfoRepository() {
-    }
+    CivicInfoRepository() {}
 
     static Retrofit getInstance() {
         if (retrofit == null) {
@@ -47,14 +46,14 @@ public class CivicInfoRepository {
                     public void onResponse(Call<CivicInfoModel> call, Response<CivicInfoModel> response) {
                         CivicInfoModel civicInfoModel = response.body();
                         if (response.body() != null) {
-                            Log.d(MainActivity.TAG, "onResponse: " + response.body().getElectedRepresentatives().get(0).getName());
+                            Log.d("README", "onResponse: " + response.body().getElectedRepresentatives().get(0).getName());
                             civicInfoListener.onSuccess(civicInfoModel);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<CivicInfoModel> call, Throwable t) {
-                        Log.d(MainActivity.TAG, "onFailure: " + t.getMessage());
+                        Log.d("README", "onFailure: " + t.getMessage());
                         civicInfoListener.onFailure();
                     }
                 });

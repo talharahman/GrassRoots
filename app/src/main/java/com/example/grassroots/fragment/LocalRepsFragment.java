@@ -5,19 +5,17 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.grassroots.CivicInfoAdapter;
-import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfoModel;
 import com.example.grassroots.network.CivicInfoPresenter;
 
-public class RepresentativeDirectoryFragment extends Fragment {
+public class LocalRepsFragment extends Fragment {
 
     private TextView userLocation;
     private RecyclerView recyclerView;
@@ -28,8 +26,8 @@ public class RepresentativeDirectoryFragment extends Fragment {
     private String zipCode;
     public static final String PARAM_KEY = "ZIP";
 
-    public static RepresentativeDirectoryFragment newInstance(String zipCode) {
-        RepresentativeDirectoryFragment repFragment = new RepresentativeDirectoryFragment();
+    public static LocalRepsFragment newInstance(String zipCode) {
+        LocalRepsFragment repFragment = new LocalRepsFragment();
         Bundle args = new Bundle();
         args.putString(PARAM_KEY, zipCode);
         repFragment.setArguments(args);
@@ -44,7 +42,7 @@ public class RepresentativeDirectoryFragment extends Fragment {
         }
     }
 
-    public RepresentativeDirectoryFragment() {}
+    public LocalRepsFragment() {}
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -63,13 +61,11 @@ public class RepresentativeDirectoryFragment extends Fragment {
         recyclerView = rootView.findViewById(R.id.representative_recyclerviewID);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         civicInfoAdapter = new CivicInfoAdapter();
-        presenter = new CivicInfoPresenter(new RepDirectoryFragmentListener() {
+        presenter = new CivicInfoPresenter(new LocalRepsFragmentListener() {
             @Override
             public void updateUI(CivicInfoModel civicInfoModel) {
-                Log.d(MainActivity.TAG, "updateUI: " + civicInfoModel.getElectedRepresentatives().get(0).getPhotoUrl());
                 civicInfoAdapter.setadapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
                 recyclerView.setAdapter(civicInfoAdapter);
-
                 userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
             }
         });

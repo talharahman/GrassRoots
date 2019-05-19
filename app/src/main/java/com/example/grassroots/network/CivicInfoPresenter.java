@@ -1,20 +1,16 @@
 package com.example.grassroots.network;
 
-import android.util.Log;
-
-import com.example.grassroots.CivicInfoAdapter;
-import com.example.grassroots.MainActivity;
-import com.example.grassroots.fragment.RepDirectoryFragmentListener;
-import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
+import com.example.grassroots.fragment.LocalRepsFragmentListener;
+import com.example.grassroots.fragment.LocalRepsFragment;
 import com.example.grassroots.model.CivicInfoModel;
 
 public class CivicInfoPresenter {
 
-    private RepresentativeDirectoryFragment representativeDirectoryFragment;
-    private RepDirectoryFragmentListener repDirectoryFragmentListener;
+    private LocalRepsFragment localRepsFragment;
+    private LocalRepsFragmentListener localRepsFragmentListener;
 
-    public CivicInfoPresenter( RepDirectoryFragmentListener repDirectoryFragmentListener) {
-        this.repDirectoryFragmentListener = repDirectoryFragmentListener;
+    public CivicInfoPresenter( LocalRepsFragmentListener localRepsFragmentListener) {
+        this.localRepsFragmentListener = localRepsFragmentListener;
     }
 
     public void networkCall(String civicAPIKey, String zipCode){
@@ -22,7 +18,7 @@ public class CivicInfoPresenter {
         instance.fetchElectedRepresentatives(zipCode, civicAPIKey, new CivicInfoListener() {
             @Override
             public void onSuccess(CivicInfoModel civicInfoModel) {
-                repDirectoryFragmentListener.updateUI(civicInfoModel);
+                localRepsFragmentListener.updateUI(civicInfoModel);
             }
 
             @Override
