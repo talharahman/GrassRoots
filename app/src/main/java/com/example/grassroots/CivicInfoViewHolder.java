@@ -86,48 +86,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repFacebookInfo.setText(NA);
         repTwitterInfo.setText(NA);
 
-      /*  try {
-            myRep = new JSONObject("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBH4lRR2xsMbHcQ6OhSz6Y-T9Qyrx0JBOk&address=11214");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-        if (myRep.has("urls")) {
-            repUrlInfo.setText(electedRepresentatives.getUrls().get(0));
-        } else {
-            repUrlInfo.setText(NA);
-        }
-
-        if (myRep.has("phones")) {
-            repPhoneInfo.setText(electedRepresentatives.getPhones().get(0));
-        } else {
-            repPhoneInfo.setText(NA);
-        }
-
-        if (myRep.has("emails")) {
-            repEmailInfo.setText(electedRepresentatives.getEmails().get(0));
-        } else {
-            repEmailInfo.setText(NA);
-        }
-
-        if (myRep.has("channels")) {
-            if (electedRepresentatives.getChannels().get(0).getType().equals("Facebook")) {
-                repFacebookInfo.setText(electedRepresentatives.getChannels().get(0).getId());
-            } else if (electedRepresentatives.getChannels().get(1).getType().equals("Facebook")) {
-                repFacebookInfo.setText(electedRepresentatives.getChannels().get(1).getId());
-            } else {
-                repFacebookInfo.setText(NA);
-            }
-
-            if (electedRepresentatives.getChannels().get(1).getType().equals("Twitter")) {
-                repTwitterInfo.setText(electedRepresentatives.getChannels().get(1).getId());
-            } else if (electedRepresentatives.getChannels().get(2).getType().equals("Twitter")) {
-                repTwitterInfo.setText(electedRepresentatives.getChannels().get(2).getId());
-            } else {
-                repTwitterInfo.setText(NA);
-            }
-        }*/
-
         boolean expanded = electedRepresentatives.isExpanded();
         childLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
     }
