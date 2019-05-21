@@ -80,13 +80,13 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repTwitterIcon.setImageResource(R.drawable.twitter);
 
         String NA = "Not Available";
-     /*   repUrlInfo.setText(NA);
+        repUrlInfo.setText(NA);
         repPhoneInfo.setText(NA);
         repEmailInfo.setText(NA);
         repFacebookInfo.setText(NA);
-        repTwitterInfo.setText(NA);*/
+        repTwitterInfo.setText(NA);
 
-        try {
+      /*  try {
             myRep = new JSONObject("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBH4lRR2xsMbHcQ6OhSz6Y-T9Qyrx0JBOk&address=11214");
         } catch (JSONException e) {
             e.printStackTrace();
@@ -126,11 +126,9 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             } else {
                 repTwitterInfo.setText(NA);
             }
-        }
+        }*/
 
         boolean expanded = electedRepresentatives.isExpanded();
-
         childLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
-
     }
 }
