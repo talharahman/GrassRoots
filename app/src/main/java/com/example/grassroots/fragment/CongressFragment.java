@@ -31,15 +31,10 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
     private CongressAdapter congressAdapter;
     private List<CongressMember> congressMembersList = new ArrayList<>();
     private CongressFragmentListener congressFragmentListener;
-    private CongressPresenter congressPresenter;
 
     private RecyclerView recyclerView;
 
     public CongressFragment() {}
-
-    public static CongressFragment newInstance(){
-        return new CongressFragment();
-    }
 
     @Override
     public void onAttach(Context context) {
@@ -60,12 +55,12 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rv_congress);
 
-        congressPresenter = new CongressPresenter(new CongressFragmentListener() {
+        CongressPresenter congressPresenter = new CongressPresenter(new CongressFragmentListener() {
             @Override
             public void updateCongressDirectoryUI(CongressResponse congressResponse) {
                 congressAdapter = new CongressAdapter(congressMembersList);
                 congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-                Log.d(TAG, "updateCongressDirectoryUI: "+ congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                Log.d(TAG, "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
                 Collections.sort(congressMembersList);
 
                 recyclerView.setAdapter(congressAdapter);
@@ -80,7 +75,6 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
 
         SearchView searchView = view.findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
-
     }
 
     @Override

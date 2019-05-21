@@ -1,12 +1,10 @@
 package com.example.grassroots.fragment;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,7 +46,7 @@ public class LocalRepsFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        rootView = inflater.inflate(R.layout.fragment_representative_directory, container, false);
+        rootView = inflater.inflate(R.layout.local_reps_fragment, container, false);
         createDirectory(requireContext().getString(R.string.Civic_Info_API_Key));
         return rootView;
     }

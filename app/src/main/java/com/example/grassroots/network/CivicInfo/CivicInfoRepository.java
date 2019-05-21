@@ -10,13 +10,12 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class CivicInfoRepository {
+class CivicInfoRepository {
 
     private static Retrofit retrofit;
     private static final String CIVIC_INFO_BASE_URL = "https://www.googleapis.com/";
 
-    public CivicInfoRepository() {
-    }
+    CivicInfoRepository() {}
 
     static Retrofit getInstance() {
         if (retrofit == null) {
@@ -25,7 +24,6 @@ public class CivicInfoRepository {
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
-
         return retrofit;
     }
 

@@ -33,7 +33,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
     public CivicInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new CivicInfoViewHolder(LayoutInflater
                 .from(viewGroup.getContext())
-                .inflate(R.layout.local_rep_itemview, viewGroup, false));
+                .inflate(R.layout.expanded_local_rep_itemview, viewGroup, false));
     }
 
     @Override
@@ -45,6 +45,18 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
             }
         }
         civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(i));
+
+        civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get the current state of the item
+                boolean expanded = electedRepresentatives.get(i).isExpanded();
+                // Change the state
+                electedRepresentatives.get(i).setExpanded(!expanded);
+                //notify the adapter that item has changed
+                notifyItemChanged(i);
+            }
+        });
     }
 
     @Override

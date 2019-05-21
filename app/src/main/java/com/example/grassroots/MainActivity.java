@@ -16,6 +16,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.grassroots.fragment.BillsFragment;
+import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.LocalRepsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -68,7 +70,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 getLocaleDialog();
                 return true;
             case R.id.nav_bills:
-                //inflateFragment(searchBillsFragment)
+                inflateFragment(new BillsFragment());
+                return true;
+            case R.id.nav_search:
+                inflateFragment(new CongressFragment());
                 return true;
         }
         return true;
@@ -90,21 +95,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     }
 
-
     private void getLocaleDialog() {
-        final AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
-        final View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
-        final EditText localeText = dialogLayout.findViewById(R.id.localeText);
-        final Button submitButton = dialogLayout.findViewById(R.id.submit_button);
+        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
+        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
+        EditText localeText = dialogLayout.findViewById(R.id.localeText);
+        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
 
         getLocale.setView(dialogLayout);
         final AlertDialog alertDialog = getLocale.create();
-        submitButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                alertDialog.dismiss();
-                inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
-            }
+        submitButton.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
         });
         alertDialog.show();
     }

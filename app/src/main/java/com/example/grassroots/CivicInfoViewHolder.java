@@ -1,15 +1,17 @@
 package com.example.grassroots;
 
 import android.support.annotation.NonNull;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
-import com.example.grassroots.model.CivicInfo.ElectedPositions;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
@@ -17,14 +19,47 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private TextView repParty;
     private TextView repPosition;
     private ImageView repImage;
-    private LinearLayout childLayout;
 
-    public CivicInfoViewHolder(@NonNull View itemView) {
+    private ImageView repUrlIcon;
+    private ImageView repPhoneIcon;
+    private ImageView repEmailIcon;
+    private ImageView repFacebookIcon;
+    private ImageView repTwitterIcon;
+
+    private TextView repUrlInfo;
+    private TextView repPhoneInfo;
+    private TextView repEmailInfo;
+    private TextView repFacebookInfo;
+    private TextView repTwitterInfo;
+
+    private JSONObject myRep;
+    private ConstraintLayout childLayout;
+
+    CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
         setRepresentativeReferences(itemView);
 
+    }
+
+    void setRepresentativeReferences(View itemview) {
+        repName = itemView.findViewById(R.id.rep_name);
+        repParty = itemView.findViewById(R.id.rep_party);
+        repPosition = itemView.findViewById(R.id.rep_position);
+        repImage = itemView.findViewById(R.id.Rep_image);
+
+        repUrlIcon = itemview.findViewById(R.id.rep_url_icon);
+        repPhoneIcon = itemview.findViewById(R.id.rep_phone_icon);
+        repEmailIcon = itemview.findViewById(R.id.rep_email_icon);
+        repFacebookIcon = itemview.findViewById(R.id.rep_facebook_icon);
+        repTwitterIcon = itemview.findViewById(R.id.rep_twitter_icon);
+
+        repUrlInfo = itemview.findViewById(R.id.rep_url_info);
+        repPhoneInfo = itemview.findViewById(R.id.rep_phone_info);
+        repEmailInfo = itemview.findViewById(R.id.rep_email_info);
+        repFacebookInfo = itemview.findViewById(R.id.rep_facebook_info);
+        repTwitterInfo = itemview.findViewById(R.id.rep_twitter_info);
+
         childLayout = itemView.findViewById(R.id.rep_contact_details);
-        childLayout.setVisibility(View.GONE);
     }
 
     void onBind(ElectedRepresentatives electedRepresentatives, String position) {
@@ -38,20 +73,64 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.image_na)
                 .into(repImage);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (v.getId() == R.id.local_rep_card_view) {
+        repUrlIcon.setImageResource(R.drawable.url);
+        repPhoneIcon.setImageResource(R.drawable.phone);
+        repEmailIcon.setImageResource(R.drawable.email);
+        repFacebookIcon.setImageResource(R.drawable.facebook);
+        repTwitterIcon.setImageResource(R.drawable.twitter);
 
-                }
+        String NA = "Not Available";
+     /*   repUrlInfo.setText(NA);
+        repPhoneInfo.setText(NA);
+        repEmailInfo.setText(NA);
+        repFacebookInfo.setText(NA);
+        repTwitterInfo.setText(NA);*/
+
+        try {
+            myRep = new JSONObject("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBH4lRR2xsMbHcQ6OhSz6Y-T9Qyrx0JBOk&address=11214");
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        if (myRep.has("urls")) {
+            repUrlInfo.setText(electedRepresentatives.getUrls().get(0));
+        } else {
+            repUrlInfo.setText(NA);
+        }
+
+        if (myRep.has("phones")) {
+            repPhoneInfo.setText(electedRepresentatives.getPhones().get(0));
+        } else {
+            repPhoneInfo.setText(NA);
+        }
+
+        if (myRep.has("emails")) {
+            repEmailInfo.setText(electedRepresentatives.getEmails().get(0));
+        } else {
+            repEmailInfo.setText(NA);
+        }
+
+        if (myRep.has("channels")) {
+            if (electedRepresentatives.getChannels().get(0).getType().equals("Facebook")) {
+                repFacebookInfo.setText(electedRepresentatives.getChannels().get(0).getId());
+            } else if (electedRepresentatives.getChannels().get(1).getType().equals("Facebook")) {
+                repFacebookInfo.setText(electedRepresentatives.getChannels().get(1).getId());
+            } else {
+                repFacebookInfo.setText(NA);
             }
-        });
-    }
 
-    void setRepresentativeReferences(View itemview){
-        repName = itemView.findViewById(R.id.rep_name);
-        repParty = itemView.findViewById(R.id.rep_party);
-        repPosition = itemView.findViewById(R.id.rep_position);
-        repImage = itemView.findViewById(R.id.Rep_image);
+            if (electedRepresentatives.getChannels().get(1).getType().equals("Twitter")) {
+                repTwitterInfo.setText(electedRepresentatives.getChannels().get(1).getId());
+            } else if (electedRepresentatives.getChannels().get(2).getType().equals("Twitter")) {
+                repTwitterInfo.setText(electedRepresentatives.getChannels().get(2).getId());
+            } else {
+                repTwitterInfo.setText(NA);
+            }
+        }
+
+        boolean expanded = electedRepresentatives.isExpanded();
+
+        childLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
+
     }
 }

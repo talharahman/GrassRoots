@@ -13,6 +13,9 @@
         <item android:id="@+id/nav_bills"
             android:icon="@drawable/ic_bills"
             android:title="Bills"/>
+        <item android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search"
+            android:title="Search"/>
     </group>
 
 </menu>
