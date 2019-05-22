@@ -1,19 +1,21 @@
-package com.example.grassroots;
+package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
+import com.example.grassroots.model.CivicInfo.SocialChannels;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
-class CivicInfoViewHolder extends RecyclerView.ViewHolder {
+public class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;
     private TextView repParty;
@@ -32,16 +34,14 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private TextView repFacebookInfo;
     private TextView repTwitterInfo;
 
-    private JSONObject myRep;
-    private ConstraintLayout childLayout;
+    private LinearLayout childLayout;
 
-    CivicInfoViewHolder(@NonNull View itemView) {
+    public CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
         setRepresentativeReferences(itemView);
-
     }
 
-    void setRepresentativeReferences(View itemview) {
+    public void setRepresentativeReferences(View itemview) {
         repName = itemView.findViewById(R.id.rep_name);
         repParty = itemView.findViewById(R.id.rep_party);
         repPosition = itemView.findViewById(R.id.rep_position);
@@ -80,13 +80,51 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repTwitterIcon.setImageResource(R.drawable.twitter);
 
         String NA = "Not Available";
-        repUrlInfo.setText(NA);
-        repPhoneInfo.setText(NA);
-        repEmailInfo.setText(NA);
-        repFacebookInfo.setText(NA);
-        repTwitterInfo.setText(NA);
+
+        setText(electedRepresentatives);
+
+        if (electedRepresentatives.getChannels() == null) {
+
+        } else {
+            setChannels(electedRepresentatives.getChannels());
+        }
+
 
         boolean expanded = electedRepresentatives.isExpanded();
+
         childLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
+    }
+
+    void setText(ElectedRepresentatives electedRepresentatives) {
+
+        if (electedRepresentatives.getUrls() == null) {
+            repUrlInfo.setText("Not Available");
+        } else {
+            repUrlInfo.setText(electedRepresentatives.getUrls().get(0));
+        }
+
+        if (electedRepresentatives.getChannels() == null) {
+            repEmailInfo.setText("Not Available");
+        } else {
+            repEmailInfo.setText(electedRepresentatives.getChannels().get(0).getId());
+        }
+
+        if (electedRepresentatives.getPhones() == null) {
+            repPhoneInfo.setText("Not Available");
+        } else {
+            repPhoneInfo.setText(electedRepresentatives.getPhones().get(0));
+        }
+
+    }
+
+    void setChannels(List<SocialChannels> socialChannels) {
+        for (int i = 0; i < socialChannels.size(); i++) {
+            if (socialChannels.get(i).getType().equals("Facebook")) {
+                repFacebookInfo.setText(socialChannels.get(i).getId());
+            }
+            if (socialChannels.get(i).getType().equals("Twitter")) {
+                repTwitterInfo.setText(socialChannels.get(i).getId());
+            }
+        }
     }
 }

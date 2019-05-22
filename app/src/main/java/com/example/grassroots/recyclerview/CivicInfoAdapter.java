@@ -1,15 +1,18 @@
-package com.example.grassroots;
+package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedPositions;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -22,10 +25,19 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     public void setadapterList(List<ElectedPositions> electedPositions,
                                List<ElectedRepresentatives> electedRepresentatives) {
+
+        reverseList(electedPositions);
+        reverseList(electedRepresentatives);
         this.electedRepresentatives = electedRepresentatives;
         this.electedPositions = electedPositions;
+        Log.d("findme", "setadapterList: " + electedPositions.get(0).getName());
 
         notifyDataSetChanged();
+    }
+
+    private <E> void reverseList(List<E> list) {
+        Collections.reverse(list);
+
     }
 
     @NonNull
@@ -49,11 +61,8 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the current state of the item
                 boolean expanded = electedRepresentatives.get(i).isExpanded();
-                // Change the state
                 electedRepresentatives.get(i).setExpanded(!expanded);
-                //notify the adapter that item has changed
                 notifyItemChanged(i);
             }
         });

@@ -11,7 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.grassroots.CivicInfoAdapter;
+import com.example.grassroots.recyclerview.CivicInfoAdapter;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;

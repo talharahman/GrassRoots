@@ -1,4 +1,4 @@
-package com.example.grassroots;
+package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Bills.BillDetailModel;
 
 import java.util.List;
