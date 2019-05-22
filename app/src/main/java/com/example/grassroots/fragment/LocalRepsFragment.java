@@ -64,7 +64,7 @@ public class LocalRepsFragment extends Fragment {
         presenter = new CivicInfoPresenter(new LocalRepsFragmentListener() {
             @Override
             public void updateUI(CivicInfoModel civicInfoModel) {
-                civicInfoAdapter.setadapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
+                civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
                 recyclerView.setAdapter(civicInfoAdapter);
                 userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
             }

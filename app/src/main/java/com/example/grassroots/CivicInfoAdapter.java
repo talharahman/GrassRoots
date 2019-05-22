@@ -20,11 +20,10 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     public CivicInfoAdapter() {}
 
-    public void setadapterList(List<ElectedPositions> electedPositions,
+    public void setAdapterList(List<ElectedPositions> electedPositions,
                                List<ElectedRepresentatives> electedRepresentatives) {
         this.electedRepresentatives = electedRepresentatives;
         this.electedPositions = electedPositions;
-
         notifyDataSetChanged();
     }
 
@@ -37,7 +36,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
     }
 
     @Override
-    public void onBindViewHolder(@NonNull CivicInfoViewHolder civicInfoViewHolder, int i) {
+    public void onBindViewHolder(@NonNull CivicInfoViewHolder civicInfoViewHolder, final int i) {
         HashMap<Integer, String> positionsMap = new HashMap<>();
         for (int j = 0; j < electedPositions.size(); j++) {
             for (int k = 0; k < electedPositions.get(j).getOfficialIndices().size(); k++) {
@@ -49,11 +48,8 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Get the current state of the item
                 boolean expanded = electedRepresentatives.get(i).isExpanded();
-                // Change the state
                 electedRepresentatives.get(i).setExpanded(!expanded);
-                //notify the adapter that item has changed
                 notifyItemChanged(i);
             }
         });

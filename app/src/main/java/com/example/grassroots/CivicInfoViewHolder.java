@@ -9,9 +9,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
+import com.example.grassroots.model.CivicInfo.SocialChannels;
 
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.List;
 
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
@@ -32,16 +32,14 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private TextView repFacebookInfo;
     private TextView repTwitterInfo;
 
-    private JSONObject myRep;
     private ConstraintLayout childLayout;
 
     CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
         setRepresentativeReferences(itemView);
-
     }
 
-    void setRepresentativeReferences(View itemview) {
+    private void setRepresentativeReferences(View itemview) {
         repName = itemView.findViewById(R.id.rep_name);
         repParty = itemView.findViewById(R.id.rep_party);
         repPosition = itemView.findViewById(R.id.rep_position);
@@ -80,57 +78,48 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repTwitterIcon.setImageResource(R.drawable.twitter);
 
         String NA = "Not Available";
-     /*   repUrlInfo.setText(NA);
-        repPhoneInfo.setText(NA);
-        repEmailInfo.setText(NA);
-        repFacebookInfo.setText(NA);
-        repTwitterInfo.setText(NA);*/
 
-        try {
-            myRep = new JSONObject("https://www.googleapis.com/civicinfo/v2/representatives?key=AIzaSyBH4lRR2xsMbHcQ6OhSz6Y-T9Qyrx0JBOk&address=11214");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        setText(electedRepresentatives);
 
-        if (myRep.has("urls")) {
-            repUrlInfo.setText(electedRepresentatives.getUrls().get(0));
+        if (electedRepresentatives.getChannels() == null) {
         } else {
-            repUrlInfo.setText(NA);
-        }
-
-        if (myRep.has("phones")) {
-            repPhoneInfo.setText(electedRepresentatives.getPhones().get(0));
-        } else {
-            repPhoneInfo.setText(NA);
-        }
-
-        if (myRep.has("emails")) {
-            repEmailInfo.setText(electedRepresentatives.getEmails().get(0));
-        } else {
-            repEmailInfo.setText(NA);
-        }
-
-        if (myRep.has("channels")) {
-            if (electedRepresentatives.getChannels().get(0).getType().equals("Facebook")) {
-                repFacebookInfo.setText(electedRepresentatives.getChannels().get(0).getId());
-            } else if (electedRepresentatives.getChannels().get(1).getType().equals("Facebook")) {
-                repFacebookInfo.setText(electedRepresentatives.getChannels().get(1).getId());
-            } else {
-                repFacebookInfo.setText(NA);
-            }
-
-            if (electedRepresentatives.getChannels().get(1).getType().equals("Twitter")) {
-                repTwitterInfo.setText(electedRepresentatives.getChannels().get(1).getId());
-            } else if (electedRepresentatives.getChannels().get(2).getType().equals("Twitter")) {
-                repTwitterInfo.setText(electedRepresentatives.getChannels().get(2).getId());
-            } else {
-                repTwitterInfo.setText(NA);
-            }
+            setChannels(electedRepresentatives.getChannels());
         }
 
         boolean expanded = electedRepresentatives.isExpanded();
-
         childLayout.setVisibility(expanded ? View.VISIBLE : View.GONE);
+    }
 
+    private void setText(ElectedRepresentatives electedRepresentatives) {
+
+        if (electedRepresentatives.getUrls() == null) {
+            repUrlInfo.setText("Not Available");
+        } else {
+            repUrlInfo.setText(electedRepresentatives.getUrls().get(0));
+        }
+
+        if (electedRepresentatives.getChannels() == null) {
+            repEmailInfo.setText("Not Available");
+        } else {
+            repEmailInfo.setText(electedRepresentatives.getChannels().get(0).getId());
+        }
+
+        if (electedRepresentatives.getPhones() == null) {
+            repPhoneInfo.setText("Not Available");
+        } else {
+            repPhoneInfo.setText(electedRepresentatives.getPhones().get(0));
+        }
+
+    }
+
+    private void setChannels(List<SocialChannels> socialChannels) {
+        for (int i = 0; i < socialChannels.size(); i++) {
+            if (socialChannels.get(i).getType().equals("Facebook")) {
+                repFacebookInfo.setText(socialChannels.get(i).getId());
+            }
+            if (socialChannels.get(i).getType().equals("Twitter")) {
+                repTwitterInfo.setText(socialChannels.get(i).getId());
+            }
+        }
     }
 }
