@@ -1,15 +1,18 @@
-package com.example.grassroots;
+package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedPositions;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
@@ -25,6 +28,11 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         this.electedRepresentatives = electedRepresentatives;
         this.electedPositions = electedPositions;
         notifyDataSetChanged();
+    }
+
+    private <E> void reverseList(List<E> list) {
+        Collections.reverse(list);
+
     }
 
     @NonNull

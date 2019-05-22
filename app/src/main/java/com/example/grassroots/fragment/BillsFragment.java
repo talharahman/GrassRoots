@@ -1,23 +1,17 @@
 package com.example.grassroots.fragment;
 
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.grassroots.BillsAdapter;
-import com.example.grassroots.CivicInfoAdapter;
-import com.example.grassroots.MainActivity;
+import com.example.grassroots.recyclerview.BillsAdapter;
 import com.example.grassroots.R;
-import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
-import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
 import com.example.grassroots.network.ProPublica.Bills.BillPresenter;
 
 

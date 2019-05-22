@@ -1,19 +1,21 @@
-package com.example.grassroots;
+package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 import com.example.grassroots.model.CivicInfo.SocialChannels;
 
 import java.util.List;
 
-class CivicInfoViewHolder extends RecyclerView.ViewHolder {
+public class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;
     private TextView repParty;
@@ -32,14 +34,14 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private TextView repFacebookInfo;
     private TextView repTwitterInfo;
 
-    private ConstraintLayout childLayout;
+    private LinearLayout childLayout;
 
-    CivicInfoViewHolder(@NonNull View itemView) {
+    public CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
         setRepresentativeReferences(itemView);
     }
 
-    private void setRepresentativeReferences(View itemview) {
+    public void setRepresentativeReferences(View itemview) {
         repName = itemView.findViewById(R.id.rep_name);
         repParty = itemView.findViewById(R.id.rep_party);
         repPosition = itemView.findViewById(R.id.rep_position);
