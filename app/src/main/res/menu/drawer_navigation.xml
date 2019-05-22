@@ -9,10 +9,13 @@
             android:title="Action"/>
         <item android:id="@+id/nav_contact"
             android:icon="@drawable/ic_contact"
-            android:title="Contact"/>
+            android:title="Local Reps"/>
         <item android:id="@+id/nav_bills"
             android:icon="@drawable/ic_bills"
             android:title="Bills"/>
+        <item android:id="@+id/nav_search"
+            android:icon="@drawable/ic_search"
+            android:title="Directory"/>
     </group>
 
 </menu>

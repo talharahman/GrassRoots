@@ -7,15 +7,18 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 
-import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.BillsFragment;
-import com.example.grassroots.fragment.RepresentativeDirectoryFragment;
-
+import com.example.grassroots.fragment.CongressFragment;
+import com.example.grassroots.fragment.LocalRepsFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -30,8 +33,14 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setReferences();
-        sendToCongressFragment();
         initialize();
+    }
+
+    private void initialize() {
+        setSupportActionBar(toolbar);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        navigationView.setNavigationItemSelectedListener(this);
     }
 
     @Override
@@ -55,16 +64,28 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_action:
-//                inflateFragment(new CongressFragment());
+                //inflateFragment(createPetitionFragment)
                 return true;
             case R.id.nav_contact:
-                inflateFragment(new RepresentativeDirectoryFragment());
+                getLocaleDialog();
                 return true;
             case R.id.nav_bills:
                 inflateFragment(new BillsFragment());
                 return true;
+            case R.id.nav_search:
+                inflateFragment(new CongressFragment());
+                return true;
         }
         return true;
+    }
+
+    public void inflateFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .addToBackStack(null)
+                .commit();
     }
 
     private void setReferences(){
@@ -74,29 +95,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
     }
 
-    private void initialize() {
-        setSupportActionBar(toolbar);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        navigationView.setNavigationItemSelectedListener(this);
-    }
+    private void getLocaleDialog() {
+        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
+        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
+        EditText localeText = dialogLayout.findViewById(R.id.localeText);
+        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
 
-    private void inflateFragment(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.frame_container, fragment)
-                .setCustomAnimations(R.anim.enter, R.anim.exit)
-                .commit();
+        getLocale.setView(dialogLayout);
+        final AlertDialog alertDialog = getLocale.create();
+        submitButton.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
+        });
+        alertDialog.show();
     }
-
-    public void sendToCongressFragment() {
-        CongressFragment congressFragment = CongressFragment.newInstance();
-        getSupportFragmentManager()
-                .beginTransaction()
-                .add(R.id.frame_container, congressFragment)
-                .commit();
-    }
-
 }
-
-

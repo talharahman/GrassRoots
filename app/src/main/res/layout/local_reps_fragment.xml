@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/purple_drop"
-    tools:context=".fragment.RepresentativeDirectoryFragment">
+    tools:context=".fragment.LocalRepsFragment">
 
     <android.support.v7.widget.CardView
         android:id="@+id/rep_directory_cardview"
@@ -26,26 +26,30 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:id="@+id/user_district"
-                android:text="Congressional District 18"
-                android:textSize="30sp"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+            android:orientation="vertical"
+            android:background="@color/blue_leaf">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Your representatives" />
+                android:text="Your representatives"
+                android:textSize="16sp"
+                android:layout_marginBottom="8dp"/>
+
+            <TextView
+                android:id="@+id/user_district"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="My District"
+                android:textSize="32sp"
+                android:textStyle="bold"
+                android:layout_marginBottom="8dp"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/representative_recyclerviewID"
                 android:layout_width="360dp"
-                android:layout_height="500dp"
-                android:layout_marginBottom="8dp">
+                android:layout_height="500dp">
 
             </android.support.v7.widget.RecyclerView>
 

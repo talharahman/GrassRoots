@@ -5,20 +5,25 @@ import java.util.List;
 public class ElectedRepresentatives {
 
     private String name;
-    private List<ElectedRepAddress> address = null;
     private String party;
-    private List<String> phones = null;
-    private List<String> urls = null;
+    private List<String> phones;
+    private List<String> urls;
     private String photoUrl;
-    private List<SocialChannels> channels = null;
-    private List<String> emails = null;
+    private List<SocialChannels> channels;
+    private List<String> emails;
+
+    private boolean isExpanded;
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
+    }
 
     public String getName() {
         return name;
-    }
-
-    public List<ElectedRepAddress> getAddress() {
-        return address;
     }
 
     public String getParty() {

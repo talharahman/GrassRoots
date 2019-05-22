@@ -1,6 +1,6 @@
 package com.example.grassroots.model.CivicInfo;
 
-class SocialChannels {
+public class SocialChannels {
 
     private String type;
     private String id;
