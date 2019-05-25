@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@android:color/white"
+tools:context=".fragment.petition.PetitionFirstFragment">
+
+<TextView
+    android:id="@+id/textView5"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="105dp"
+    android:layout_marginBottom="19dp"
+    android:text="Write your petition title"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView6"
+    app:layout_constraintEnd_toEndOf="@+id/textView6"
+    app:layout_constraintStart_toStartOf="@+id/textView6"
+    app:layout_constraintTop_toTopOf="parent" />
+
+<TextView
+    android:id="@+id/textView6"
+    android:layout_width="0dp"
+    android:layout_height="0dp"
+    android:layout_marginStart="32dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="17dp"
+    android:text="This is the first thing people will see about your petition. Get their attention with a short title that focuses on the change you’d like them to support."
+    app:layout_constraintBottom_toTopOf="@+id/edit_text_petition_name"
+    app:layout_constraintEnd_toEndOf="@+id/textView7"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+<EditText
+    android:id="@+id/edit_text_petition_name"
+    android:layout_width="323dp"
+    android:layout_height="49dp"
+    android:layout_marginBottom="63dp"
+    android:hint="Enter petition name"
+    app:layout_constraintBottom_toTopOf="@+id/textView7"
+    app:layout_constraintStart_toStartOf="@+id/textView6"
+    app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+<TextView
+    android:id="@+id/textView7"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="18dp"
+    android:text="Who has the power to make this change?"
+    android:textStyle="bold"
+    app:layout_constraintBottom_toTopOf="@+id/textView8"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edit_text_petition_name" />
+
+<TextView
+    android:id="@+id/textView8"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="20dp"
+    android:text="Choose the recipient(s) of your petition. These are people or organizations with the power to solve your problem or take the action you’re demanding."
+    app:layout_constraintBottom_toTopOf="@+id/edit_text_supporter_name"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+<EditText
+    android:id="@+id/edit_text_supporter_name"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_marginStart="32dp"
+    android:layout_marginLeft="32dp"
+    android:layout_marginEnd="32dp"
+    android:layout_marginRight="32dp"
+    android:layout_marginBottom="46dp"
+    android:hint="Petition target (e.g., Toyota or your mayor)"
+    app:layout_constraintBottom_toTopOf="@+id/save_button1"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+<Button
+    android:id="@+id/save_button1"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="29dp"
+    android:layout_marginRight="29dp"
+    android:layout_marginBottom="115dp"
+    android:text="Save and Continue"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/edit_text_supporter_name" />
+
+
+</android.support.constraint.ConstraintLayout>

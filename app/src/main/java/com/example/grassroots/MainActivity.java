@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,8 +21,10 @@ import android.widget.EditText;
 import com.example.grassroots.fragment.BillsFragment;
 import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.LocalRepsFragment;
+import com.example.grassroots.fragment.petition.PetitionFirstFragment;
+import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, PetitionFragmentsListener {
 
     public static final String TAG = "findme";
     private DrawerLayout drawer;
@@ -64,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_action:
+                moveToPetitionFirstPart(new PetitionFirstFragment());
                 //inflateFragment(createPetitionFragment)
                 return true;
             case R.id.nav_contact:
@@ -108,5 +113,61 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
         });
         alertDialog.show();
+    }
+
+    @Override
+    public void moveToPetitionFirstPart(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToPetitionSecondPart(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToPetitionThirdPart(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToPetitionPreview(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToSharePetition(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
     }
 }
