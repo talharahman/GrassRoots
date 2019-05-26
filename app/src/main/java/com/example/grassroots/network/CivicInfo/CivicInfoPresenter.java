@@ -1,9 +1,7 @@
 package com.example.grassroots.network.CivicInfo;
 
 import com.example.grassroots.fragment.LocalRepsFragmentListener;
-import com.example.grassroots.fragment.LocalRepsFragment;
 import com.example.grassroots.model.CivicInfo.CivicInfoModel;
-import com.example.grassroots.network.CivicInfo.CivicInfoRepository;
 
 public class CivicInfoPresenter {
 

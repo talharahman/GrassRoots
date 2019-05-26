@@ -1,10 +1,12 @@
 package com.example.grassroots.recyclerview;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.grassroots.CongressTabActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
@@ -22,5 +24,14 @@ public class CongressViewHolder extends RecyclerView.ViewHolder {
     public void onBind(CongressMember congressMember) {
         txtv_name.setText(String.format("%s %s", congressMember.getFirst_name(), congressMember.getLast_name()));
         txtv_party_title.setText(congressMember.getParty() + ", " + congressMember.getTitle());
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tabIntent = new Intent(v.getContext(), CongressTabActivity.class);
+                v.getContext().startActivity(tabIntent);
+            }
+        });
+
     }
 }

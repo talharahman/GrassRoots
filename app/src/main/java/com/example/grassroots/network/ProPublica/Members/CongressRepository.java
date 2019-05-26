@@ -3,12 +3,7 @@ package com.example.grassroots.network.ProPublica.Members;
 import android.util.Log;
 
 import com.example.grassroots.MainActivity;
-import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
-import com.example.grassroots.network.ProPublica.Members.CongressListener;
-import com.example.grassroots.network.ProPublica.Members.CongressService;
-
-import java.util.Collections;
 
 import retrofit2.Call;
 import retrofit2.Callback;

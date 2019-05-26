@@ -1,7 +1,5 @@
 package com.example.grassroots.network.ProPublica.Bills;
 
-import android.util.Log;
-
 import com.example.grassroots.fragment.BillsFragmentListener;
 import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
 

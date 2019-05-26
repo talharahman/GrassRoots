@@ -1,6 +1,11 @@
 package com.example.grassroots.model.ProPublica.Members;
 
-public class CongressMember implements Comparable<CongressMember>{
+import android.os.Parcel;
+import android.os.Parcelable;
+
+import java.io.Serializable;
+
+public class CongressMember implements Comparable<CongressMember>, Parcelable {
 
     private String first_name;
     private String last_name;
@@ -8,6 +13,7 @@ public class CongressMember implements Comparable<CongressMember>{
     private String date_of_birth;
 
     private String title;
+    private String short_title;
     private String state;
     private String party;
     private String id;
@@ -24,6 +30,42 @@ public class CongressMember implements Comparable<CongressMember>{
     private String contact_form;
     private String office;
     private String phone;
+
+    public CongressMember(){}
+
+    protected CongressMember(Parcel in) {
+        first_name = in.readString();
+        last_name = in.readString();
+        gender = in.readString();
+        date_of_birth = in.readString();
+        title = in.readString();
+        short_title = in.readString();
+        state = in.readString();
+        party = in.readString();
+        id = in.readString();
+        fec_candidate_id = in.readString();
+        next_election = in.readString();
+        total_votes = in.readString();
+        missed_votes = in.readString();
+        twitter_account = in.readString();
+        facebook_account = in.readString();
+        youtube_account = in.readString();
+        contact_form = in.readString();
+        office = in.readString();
+        phone = in.readString();
+    }
+
+    public static final Creator<CongressMember> CREATOR = new Creator<CongressMember>() {
+        @Override
+        public CongressMember createFromParcel(Parcel in) {
+            return new CongressMember(in);
+        }
+
+        @Override
+        public CongressMember[] newArray(int size) {
+            return new CongressMember[size];
+        }
+    };
 
     public String getLast_name() {
         return last_name;
@@ -101,5 +143,37 @@ public class CongressMember implements Comparable<CongressMember>{
     public int compareTo(CongressMember o) {
         final int congressMember = this.getFirst_name().toLowerCase().compareTo(o.getFirst_name().toLowerCase());
         return congressMember;
+    }
+
+    public String getShort_title() {
+        return short_title;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(first_name);
+        dest.writeString(last_name);
+        dest.writeString(gender);
+        dest.writeString(date_of_birth);
+        dest.writeString(title);
+        dest.writeString(short_title);
+        dest.writeString(state);
+        dest.writeString(party);
+        dest.writeString(id);
+        dest.writeString(fec_candidate_id);
+        dest.writeString(next_election);
+        dest.writeString(total_votes);
+        dest.writeString(missed_votes);
+        dest.writeString(twitter_account);
+        dest.writeString(facebook_account);
+        dest.writeString(youtube_account);
+        dest.writeString(contact_form);
+        dest.writeString(office);
+        dest.writeString(phone);
     }
 }
