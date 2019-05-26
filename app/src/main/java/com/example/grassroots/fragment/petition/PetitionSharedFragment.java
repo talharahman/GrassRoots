@@ -46,7 +46,7 @@ public class PetitionSharedFragment extends Fragment {
     private static final int REQUEST_VIDEO_CODE = 100;
     private PetitionFragmentsListener mListener;
     private PetitionViewModel petitionViewModel;
-    private Button sharedVideoButton,sharedPhotoButton,shareLinkButton,shareInstagramButton,shareTwiterButton;
+    private Button sharedVideoButton,sharedPhotoButton,shareLinkButton,shareInstagramButton,shareTwiterButton,shareEmailButton;
     private CallbackManager callbackManager;
     private ShareDialog shareDialog;
     private StorageReference mStorageRef;
@@ -91,6 +91,7 @@ public class PetitionSharedFragment extends Fragment {
         shareLinkButton=view.findViewById(R.id.share_link_button);
         shareInstagramButton=view.findViewById(R.id.share_Instagram_button);
         shareTwiterButton=view.findViewById(R.id.share_twitter_button);
+        shareEmailButton=view.findViewById(R.id.share_email_button);
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
     }
@@ -126,7 +127,18 @@ public class PetitionSharedFragment extends Fragment {
         super.onActivityCreated(savedInstanceState);
 
         callbackManager= CallbackManager.Factory.create();
-        shareDialog=new ShareDialog((Activity) requireContext());
+        shareDialog=new ShareDialog(requireActivity());
+        shareEmailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.putExtra(Intent.EXTRA_SUBJECT,"Join us in this petition" );
+                intent.putExtra(Intent.EXTRA_TEXT, petitionViewModel.getmPetitionName()+" \n "+petitionViewModel.getmPetitionDescription());
+                intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
+                intent.setType("message/rfc822");
+                startActivity(Intent.createChooser(intent, "Choose an email client"));
+            }
+        });
 
         shareLinkButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,8 +183,7 @@ public class PetitionSharedFragment extends Fragment {
                     shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                     shareIntent.setType("image/*");
                     shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
-                    shareIntent.putExtra(Intent.EXTRA_TITLE, "I am ben");
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us in this petition at \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
                     shareIntent.setPackage("com.twitter.android");
                     startActivity(shareIntent);
                 }
@@ -186,20 +197,6 @@ public class PetitionSharedFragment extends Fragment {
                     startActivity(shareIntent);
                 }
 
-
-
-//
-//                Uri uri = Uri
-//                        .parse("android.resource://com.code2care.example.sharetextandimagetwitter/drawable/mona");
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_SEND);
-//                intent.putExtra(Intent.EXTRA_TEXT, "mohamed ");
-//                intent.setType("text/plain");
-//                intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-//                intent.setType("image/jpeg");
-//                intent.setPackage("com.twitter.android");
-//                startActivity(intent);
-
             }
         });
 
@@ -212,8 +209,8 @@ public class PetitionSharedFragment extends Fragment {
                     shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                     shareIntent.setType("image/*");
                     shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-                    shareIntent.putExtra(Intent.EXTRA_TEXT,"mohamed");
-                    shareIntent.putExtra(Intent.EXTRA_TITLE, "I am ben");
+                    shareIntent.putExtra(Intent.EXTRA_HTML_TEXT, petitionViewModel.getmPetitionDescription());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
                     shareIntent.setPackage("com.instagram.android");
                     startActivity(shareIntent);
                 }
@@ -227,35 +224,8 @@ public class PetitionSharedFragment extends Fragment {
                     startActivity(shareIntent);
                 }
 
-
-
-
-//                Bitmap image=BitmapFactory.decodeResource(getResources(),R.drawable.der);
-//                Intent intent =requireContext().getPackageManager().getLaunchIntentForPackage("com.instagram.android");
-//                if (intent != null)
-//                {
-//                    Intent shareIntent = new Intent();
-//                    shareIntent.setAction(Intent.ACTION_SEND);
-//                    shareIntent.setPackage("com.instagram.android");
-//                    shareIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(MediaStore.Images.Media.insertImage(requireContext().getContentResolver(),image, "I am Happy", "Share happy !")));
-//                    shareIntent.setType("image/jpeg");
-//                    startActivity(shareIntent);
-//                }
-//                else
-//                {
-//                    // bring user to the market to download the app.
-//                    // or let them choose an app?
-//                    intent = new Intent(Intent.ACTION_VIEW);
-//                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-//                    intent.setData(Uri.parse("market://details?id="+"com.instagram.android"));
-//                    startActivity(intent);
-//                }
-
             }
         });
-
-
-
 
         sharedPhotoButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -264,56 +234,38 @@ public class PetitionSharedFragment extends Fragment {
                 Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.ic_grassroots_color);
                 SharePhoto photo = new SharePhoto.Builder()
                         .setBitmap(image)
-                        .setCaption("fhfhf")
-
+                        .setCaption(petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global")
+                        .setCaption("")
                         .build();
+
                 SharePhotoContent content = new SharePhotoContent.Builder()
                         .addPhoto(photo)
-                        .setPageId("hkjhkjhkjhkjhkjhkjh")
-                        .setPlaceId("bkjhkjhkjhkjhkj")
-                        .setRef("dddddd")
-                        //.setQuote("Connect on a global scale.")
 
                         .build();
 
-//                if (!requireActivity().isFinishing()) {
-//                    Toast.makeText(getContext(),"hi",Toast.LENGTH_LONG).show();
                 shareDialog.show(content);
-                //                } else {
-//                    return;
-//                }
 
-                ////
+                // we will fetch photo from link and convert to bitmap
+                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
+                    @Override
+                    public void onSuccess(Sharer.Result result) {
+                        Toast.makeText(requireContext(), "shared successful!", Toast.LENGTH_LONG).show();
+                    }
 
-//                // we will fetch photo from link and convert to bitmap
-//                shareDialog.registerCallback(callbackManager, new FacebookCallback<Sharer.Result>() {
-//                    @Override
-//                    public void onSuccess(Sharer.Result result) {
-//                        Toast.makeText(requireContext(),"shared successful!",Toast.LENGTH_LONG).show();
-//                    }
-//
-//                    @Override
-//                    public void onCancel() {
-//                        Toast.makeText(requireContext(),"shared cancel!",Toast.LENGTH_LONG).show();
-//
-//                    }
-//
-//                    @Override
-//                    public void onError(FacebookException error) {
-//                        Toast.makeText(requireContext(),error.toString(),Toast.LENGTH_LONG).show();
-//
-//                    }
-//                });
-//                //Picasso picasso = new Picasso.Builder(getContext()).loggingEnabled(true).build();
-//                Picasso.get().load("https://www.miniscollector.com/sites/default/files/WZK71815-Dragon.jpg")
-//                        .into(target);
-//
+                    @Override
+                    public void onCancel() {
+                        Toast.makeText(requireContext(), "shared cancel!", Toast.LENGTH_LONG).show();
 
+                    }
+
+                    @Override
+                    public void onError(FacebookException error) {
+                        Toast.makeText(requireContext(), error.toString(), Toast.LENGTH_LONG).show();
+
+                    }
+                });
             }
         });
-
-
-
 
 
         sharedVideoButton.setOnClickListener(new View.OnClickListener() {

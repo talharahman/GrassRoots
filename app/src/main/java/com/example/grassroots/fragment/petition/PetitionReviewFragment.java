@@ -150,6 +150,8 @@ public class PetitionReviewFragment extends Fragment {
         mListener = null;
     }
 
+
+
     private void uploadFile() {
         printKeyHash();
         if (petitionViewModel.getmPetitionImage() != null) {
@@ -169,15 +171,26 @@ public class PetitionReviewFragment extends Fragment {
                             }, 500);
 
                             //Upload upload = new Upload("string");
+                           // fileReference.get
 
-                            Petition upload = new Petition(petitionViewModel.getmPetitionName(),
-                                    petitionViewModel.getmPetitionSupporter(),
-                                    petitionViewModel.getmPetitionDescription(),
-                                    taskSnapshot.getUploadSessionUri().toString());
+                            fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
+                                        petitionViewModel.getmPetitionSupporter(),
+                                        petitionViewModel.getmPetitionDescription(),
+                                        petitionViewModel.getmPetitionImage().toString());//taskSnapshot.getUploadSessionUri().toString()
+
+                                String petitionId = mDatabaseRef.push().getKey();
+                                mDatabaseRef.child(petitionId).setValue(petition);
 
 
-                            String uploadId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(uploadId).setValue(upload);
+//
+//                            Petition petition = new Petition(petitionViewModel.getmPetitionName(),
+//                                    petitionViewModel.getmPetitionSupporter(),
+//                                    petitionViewModel.getmPetitionDescription(),
+//                                    taskSnapshot.getUploadSessionUri().toString());
+
+                            });
+
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

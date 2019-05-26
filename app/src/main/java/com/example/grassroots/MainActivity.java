@@ -23,6 +23,7 @@ import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.LocalRepsFragment;
 import com.example.grassroots.fragment.petition.PetitionFirstFragment;
 import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
+import com.example.grassroots.fragment.petition.PetitionsListFragment;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, PetitionFragmentsListener {
 
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         setReferences();
         initialize();
+        moveToListOfPetitions(new PetitionsListFragment());
     }
 
     private void initialize() {
@@ -162,6 +164,16 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
     @Override
     public void moveToSharePetition(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+    @Override
+    public void moveToListOfPetitions(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_container, fragment)

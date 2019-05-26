@@ -9,5 +9,6 @@ public interface PetitionFragmentsListener {
     void moveToPetitionThirdPart(Fragment fragment);
     void moveToPetitionPreview(Fragment fragment);
     void moveToSharePetition(Fragment fragment);
+    void moveToListOfPetitions(Fragment fragment);
 
 }

@@ -6,7 +6,7 @@ public class Petition {
     private String mPetitionName;
     private String mPetitionSupporter;
     private String mPetitionDescription;
-    private Uri mPetitionImage;
+    private Uri mPetitionImageUri;
     private String mPetitionImageURL;
 
     public Petition() {
@@ -44,12 +44,12 @@ public class Petition {
         this.mPetitionDescription = mPetitionDescription;
     }
 
-    public Uri getmPetitionImage() {
-        return mPetitionImage;
+    public Uri getmPetitionImageUri() {
+        return mPetitionImageUri;
     }
 
-    public void setmPetitionImage(Uri mPetitionImage) {
-        this.mPetitionImage = mPetitionImage;
+    public void setmPetitionImageUri(Uri mPetitionImageUri) {
+        this.mPetitionImageUri = mPetitionImageUri;
     }
 
     public String getmPetitionImageURL() {
