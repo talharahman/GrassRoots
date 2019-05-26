@@ -6,7 +6,8 @@
     <string name="frag_vote_positions">Vote Positions</string>
     <string name="frag_office_expense">Office Expenses by Quarter</string>
 
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="ov_next_election"><u>Next Election</u></string>
+    <string name="ov_voting_snapshot"><u>Voting Snapshot</u></string>
+    <string name="ov_contact_info"><u>Contact Info</u></string>
+    <string name="ov_fec_id_number"><u>FEC ID Number</u></string>
 </resources>

@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import java.io.Serializable;
 
-public class CongressMember implements Comparable<CongressMember> {
+public class CongressMember implements Comparable<CongressMember>, Serializable {
 
     private String first_name;
     private String last_name;
@@ -118,6 +118,91 @@ public class CongressMember implements Comparable<CongressMember> {
 
     public String getVotes_with_party_pct() {
         return votes_with_party_pct;
+    }
+
+
+    public void setFirst_name(String first_name) {
+        this.first_name = first_name;
+    }
+
+    public void setLast_name(String last_name) {
+        this.last_name = last_name;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public void setDate_of_birth(String date_of_birth) {
+        this.date_of_birth = date_of_birth;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setShort_title(String short_title) {
+        this.short_title = short_title;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
+
+    public void setParty(String party) {
+        this.party = party;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public void setFec_candidate_id(String fec_candidate_id) {
+        this.fec_candidate_id = fec_candidate_id;
+    }
+
+    public void setNext_election(String next_election) {
+        this.next_election = next_election;
+    }
+
+    public void setTotal_votes(String total_votes) {
+        this.total_votes = total_votes;
+    }
+
+    public void setMissed_votes(String missed_votes) {
+        this.missed_votes = missed_votes;
+    }
+
+    public void setTwitter_account(String twitter_account) {
+        this.twitter_account = twitter_account;
+    }
+
+    public void setFacebook_account(String facebook_account) {
+        this.facebook_account = facebook_account;
+    }
+
+    public void setYoutube_account(String youtube_account) {
+        this.youtube_account = youtube_account;
+    }
+
+    public void setContact_form(String contact_form) {
+        this.contact_form = contact_form;
+    }
+
+    public void setOffice(String office) {
+        this.office = office;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public void setMissed_votes_pct(String missed_votes_pct) {
+        this.missed_votes_pct = missed_votes_pct;
+    }
+
+    public void setVotes_with_party_pct(String votes_with_party_pct) {
+        this.votes_with_party_pct = votes_with_party_pct;
     }
 
     @Override
