@@ -12,173 +12,184 @@
         android:layout_width="match_parent"
         android:layout_height="0dp">
 
-    <TextView
-        android:id="@+id/ov_first_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Title, Name, Gender"
-        android:textColor="#000"
-        android:textSize="36sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/ov_first_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="Title, Name, Gender"
+            android:textColor="#000"
+            android:textSize="36sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/ov_second_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Party, State"
-        android:textColor="#000"
-        android:textSize="16sp"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_first_congressmember" />
+        <TextView
+            android:id="@+id/ov_second_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Party, State"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_first_congressmember" />
 
-    <TextView
-        android:id="@+id/ov_contact_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Contact Info"
-        android:textColor="#000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_second_congressmember" />
+        <TextView
+            android:id="@+id/ov_third_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="FEC ID NUMBER"
+            android:textColor="#000"
+            android:textSize="16sp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_second_congressmember" />
 
-    <ImageView
-        android:id="@+id/acct_twitter"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/twitter"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
+        <TextView
+            android:id="@+id/ov_contact_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="Contact Info"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_second_congressmember" />
 
-    <ImageView
-        android:id="@+id/acct_facebook"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/facebook"
-        app:layout_constraintLeft_toRightOf="@+id/acct_twitter"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
+        <ImageView
+            android:id="@+id/acct_twitter"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/twitter"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <ImageView
-        android:id="@+id/acct_youtube"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintLeft_toRightOf="@id/acct_facebook"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
+        <ImageView
+            android:id="@+id/acct_facebook"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/facebook"
+            app:layout_constraintLeft_toRightOf="@+id/acct_twitter"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <ImageView
-        android:id="@+id/acct_gmail"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/email"
-        app:layout_constraintLeft_toRightOf="@id/acct_youtube"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
+        <ImageView
+            android:id="@+id/acct_youtube"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintLeft_toRightOf="@id/acct_facebook"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <ImageView
-        android:id="@+id/phone"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/phone"
-        app:layout_constraintLeft_toRightOf="@id/acct_gmail"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
+        <ImageView
+            android:id="@+id/acct_gmail"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/email"
+            app:layout_constraintLeft_toRightOf="@id/acct_youtube"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <ImageView
-        android:id="@+id/website"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginLeft="24dp"
-        android:src="@drawable/ic_launcher_foreground"
-        app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember"
-        app:layout_constraintLeft_toRightOf="@id/phone" />
+        <ImageView
+            android:id="@+id/phone"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/phone"
+            app:layout_constraintLeft_toRightOf="@id/acct_gmail"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <TextView
-        android:id="@+id/ov_votingSnapshot_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Voting Snapshot"
-        android:textColor="#000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/website" />
+        <ImageView
+            android:id="@+id/website"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/ic_launcher_foreground"
+            app:layout_constraintLeft_toRightOf="@id/phone"
+            app:layout_constraintTop_toBottomOf="@+id/ov_contact_congressmember" />
 
-    <TextView
-        android:id="@+id/ov_txtv_vs_votesRatio"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="missed votes / total votes"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_votingSnapshot_congressmember"/>
+        <TextView
+            android:id="@+id/ov_votingSnapshot_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="Voting Snapshot"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/website" />
 
-    <TextView
-        android:id="@+id/ov_txtv_vs_pct_missed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="missed votes pct"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_votesRatio"/>
+        <TextView
+            android:id="@+id/ov_txtv_vs_votesRatio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="missed votes / total votes"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_votingSnapshot_congressmember" />
 
-    <TextView
-        android:id="@+id/ov_txtv_vs_pct_party"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="votes with party pct"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_missed"/>
+        <TextView
+            android:id="@+id/ov_txtv_vs_pct_missed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="missed votes pct"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_votesRatio" />
 
-    <TextView
-        android:id="@+id/ov_nextElection_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
-        android:text="Next Election"
-        android:textColor="#000"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_party" />
+        <TextView
+            android:id="@+id/ov_txtv_vs_pct_party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="votes with party pct"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_missed" />
 
-    <TextView
-        android:id="@+id/ov_txtv_nextElection_congressmember"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="72dp"
-        android:text="YEAR"
-        android:textColor="#000"
-        android:textSize="72sp"
-        android:textStyle="bold"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/ov_nextElection_congressmember"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        <TextView
+            android:id="@+id/ov_nextElection_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="72dp"
+            android:text="Next Election"
+            android:textColor="#000"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_party" />
+
+        <TextView
+            android:id="@+id/ov_txtv_nextElection_congressmember"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:layout_marginBottom="72dp"
+            android:text="YEAR"
+            android:textColor="#000"
+            android:textSize="72sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/ov_nextElection_congressmember" />
 
     </android.support.constraint.ConstraintLayout>
 

@@ -21,18 +21,14 @@ public class OverviewFragment extends Fragment {
     public OverviewFragment() {
     }
 
-    public static OverviewFragment newInstance(CongressMember congressMember) {
+    public static OverviewFragment newInstance() {
         OverviewFragment overviewFragment = new OverviewFragment();
-        Bundle congressArgs = new Bundle();
-        congressArgs.putParcelable("CongressMember", congressMember);
-        overviewFragment.setArguments(congressArgs);
         return overviewFragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        congressMember = (CongressMember) getArguments().getParcelable("CongressMember");
 
     }
 
