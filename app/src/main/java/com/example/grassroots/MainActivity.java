@@ -67,7 +67,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //inflateFragment(createPetitionFragment)
                 return true;
             case R.id.nav_contact:
-                getLocaleDialog();
+              //  getLocaleDialog();
+                inflateFragment(LocalRepsFragment.newInstance("11355"));
                 return true;
             case R.id.nav_bills:
                 inflateFragment(new BillsFragment());
@@ -88,7 +89,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
-    private void setReferences(){
+    private void setReferences() {
         toolbar = findViewById(R.id.toolbar);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);

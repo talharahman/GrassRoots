@@ -9,7 +9,7 @@
     android:layout_marginBottom="8dp"
     app:cardCornerRadius="16dp"
     app:cardMaxElevation="16dp"
-    android:background="@color/grey_sun">
+    android:background="@color/grey_scale">
 
     <TextView
         android:id="@+id/congress_member_name_iv"

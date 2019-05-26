@@ -12,7 +12,7 @@
         android:id="@+id/sv_congress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/grey_sun"
+        android:background="@color/grey_scale"
         android:iconifiedByDefault="false"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
