@@ -5,7 +5,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainDashboard">
+    android:background="@color/purple_drop"
+    tools:context=".ui.MainDashboard">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout"
@@ -19,7 +20,7 @@
             android:id="@+id/main_toolbar"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/purple_drop"
+            android:background="@color/grey_scale"
             app:popupTheme="@style/AppTheme.PopupOverlay" />
 
     </android.support.design.widget.AppBarLayout>

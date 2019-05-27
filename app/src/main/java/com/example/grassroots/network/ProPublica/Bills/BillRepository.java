@@ -1,8 +1,5 @@
 package com.example.grassroots.network.ProPublica.Bills;
 
-import android.util.Log;
-
-import com.example.grassroots.MainActivity;
 import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
 
 import retrofit2.Call;

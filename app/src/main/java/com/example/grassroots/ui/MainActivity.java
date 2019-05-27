@@ -1,4 +1,4 @@
-package com.example.grassroots;
+package com.example.grassroots.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.grassroots.R;
 import com.example.grassroots.fragment.BillsFragment;
 import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.LocalRepsFragment;

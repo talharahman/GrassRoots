@@ -6,13 +6,15 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.SearchView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.Toolbar;
 
 import com.example.grassroots.recyclerview.CongressAdapter;
 import com.example.grassroots.R;
@@ -55,23 +57,18 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rv_congress);
 
-        CongressPresenter congressPresenter = new CongressPresenter(new CongressFragmentListener() {
-            @Override
-            public void updateCongressDirectoryUI(CongressResponse congressResponse) {
-                congressAdapter = new CongressAdapter(congressMembersList);
-                congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-                Log.d(TAG, "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
-                Collections.sort(congressMembersList);
+        CongressPresenter congressPresenter = new CongressPresenter(congressResponse -> {
+            congressAdapter = new CongressAdapter(congressMembersList);
+            congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
+            Log.d(TAG, "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+            Collections.sort(congressMembersList);
 
-                recyclerView.setAdapter(congressAdapter);
-                congressAdapter.notifyDataSetChanged();
-            }
+            recyclerView.setAdapter(congressAdapter);
+            congressAdapter.notifyDataSetChanged();
         });
 
         congressPresenter.networkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key));
-
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(requireContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
+        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         SearchView searchView = view.findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
