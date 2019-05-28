@@ -56,9 +56,7 @@ public class LocalRepsFragment extends Fragment {
     }
 
     private void initialize() {
-      //  userLocation = rootView.findViewById(R.id.user_district2);
         userLocation = rootView.findViewById(R.id.user_district2);
-     // recyclerView = rootView.findViewById(R.id.representative_recyclerviewID);
         recyclerView = rootView.findViewById(R.id.local_reps_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
         civicInfoAdapter = new CivicInfoAdapter();

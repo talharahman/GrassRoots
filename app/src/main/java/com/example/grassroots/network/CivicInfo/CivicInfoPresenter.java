@@ -1,16 +1,14 @@
 package com.example.grassroots.network.CivicInfo;
 
-import com.example.grassroots.fragment.LocalRepsFragmentListener;
-import com.example.grassroots.fragment.LocalRepsFragment;
+import com.example.grassroots.fragment.LocalRepsUIListener;
 import com.example.grassroots.model.CivicInfo.CivicInfoModel;
-import com.example.grassroots.network.CivicInfo.CivicInfoRepository;
 
 public class CivicInfoPresenter {
 
-    private LocalRepsFragmentListener localRepsFragmentListener;
+    private LocalRepsUIListener localRepsUIListener;
 
-    public CivicInfoPresenter( LocalRepsFragmentListener localRepsFragmentListener) {
-        this.localRepsFragmentListener = localRepsFragmentListener;
+    public CivicInfoPresenter( LocalRepsUIListener localRepsUIListener) {
+        this.localRepsUIListener = localRepsUIListener;
     }
 
     public void networkCall(String civicAPIKey, String zipCode){
@@ -18,7 +16,7 @@ public class CivicInfoPresenter {
         instance.fetchElectedRepresentatives(zipCode, civicAPIKey, new CivicInfoListener() {
             @Override
             public void onSuccess(CivicInfoModel civicInfoModel) {
-                localRepsFragmentListener.updateUI(civicInfoModel);
+                localRepsUIListener.updateUI(civicInfoModel);
             }
 
             @Override

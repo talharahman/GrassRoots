@@ -12,7 +12,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".ui.CongressActivity">
+        <activity
+            android:name=".ui.LocalRepsActivity"
+            android:parentActivityName=".ui.MainDashboard">
+        </activity>
+        <activity android:name=".ui.CongressActivity"
+            android:parentActivityName=".ui.MainDashboard">
         </activity>
         <activity
             android:name=".ui.MainDashboard"

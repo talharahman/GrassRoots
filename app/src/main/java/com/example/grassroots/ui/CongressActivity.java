@@ -1,5 +1,6 @@
 package com.example.grassroots.ui;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v7.app.ActionBar;
@@ -42,6 +43,9 @@ public class CongressActivity extends AppCompatActivity
     private void initialize() {
         Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
         setSupportActionBar(toolbar);
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_search);
+        bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeAsUpIndicator(R.drawable.ic_info_black_24dp);
@@ -92,14 +96,13 @@ public class CongressActivity extends AppCompatActivity
             case R.id.bot_nav_action:
                 //inflateFragment(createPetitionFragment)
                 return true;
+            case R.id.bot_nav_event:
+                // TODO provision for Events UI
+                return true;
             case R.id.bot_nav_contact:
-                //inflateFragment(LocalRepsFragment.newInstance("11355"));
-                return true;
-            case R.id.bot_nav_bills:
-                //inflateFragment(new BillsFragment());
-                return true;
-            case R.id.bot_nav_search:
-                //inflateFragment(new CongressFragment());
+                Intent contactIntent = new Intent(this, LocalRepsActivity.class);
+                contactIntent.putExtra("ZIP", "11355");
+                startActivity(contactIntent);
                 return true;
         }
         return true;

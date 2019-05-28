@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     }
 
     private void setReferences() {
-        toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar_local_reps);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

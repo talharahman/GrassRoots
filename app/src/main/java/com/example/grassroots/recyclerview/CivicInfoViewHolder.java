@@ -102,7 +102,8 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         // TODO fix email button not showing up issue
         repEmailIcon.setImageResource(R.drawable.email);
         if (representative.getEmails() == null) {
-            repEmailIcon.setVisibility(View.GONE);
+          //  repEmailIcon.setVisibility(View.GONE);
+            repEmailIcon.setImageResource(R.drawable.email);
         } else {
             repEmailIcon.setOnClickListener(v -> {
                 Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));

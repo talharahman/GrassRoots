@@ -2,14 +2,14 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item android:id="@+id/bot_nav_action"
-        android:title="Action"
+        android:title="Petitions"
         android:icon="@drawable/ic_action"/>
+    <item android:id="@+id/bot_nav_event"
+        android:icon="@drawable/ic_event"
+        android:title="Events"/>
     <item android:id="@+id/bot_nav_contact"
         android:icon="@drawable/ic_contact"
-        android:title="Local Reps"/>
-    <item android:id="@+id/bot_nav_bills"
-        android:icon="@drawable/ic_bills"
-        android:title="Bills"/>
+        android:title="Contact" />
     <item android:id="@+id/bot_nav_search"
         android:icon="@drawable/ic_search"
         android:title="Directory"/>

@@ -4,59 +4,60 @@
     android:id="@+id/linearLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
     android:layout_margin="8dp"
-    android:background="@color/grey_scale">
+    android:background="@color/grey_scale"
+    android:orientation="vertical">
 
     <android.support.v7.widget.CardView
         android:id="@+id/local_rep_card_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardMaxElevation="16dp"
         android:layout_gravity="center"
-        >
+        app:cardMaxElevation="16dp">
 
-    <TextView
-        android:id="@+id/rep_name"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_margin="8dp"
-        android:text="Donald Trump"
-        android:textAlignment="textEnd"
-        android:textSize="24sp"
-        android:textStyle="bold" />
+        <TextView
+            android:id="@+id/rep_name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:text="Donald Trump"
+            android:textAlignment="textEnd"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/concert_one" />
 
-    <TextView
-        android:id="@+id/rep_party"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:fontFamily="monospace"
-        android:text="Not Available"
-        android:textSize="16sp" />
+        <TextView
+            android:id="@+id/rep_position"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Not Available"
+            android:textAlignment="textEnd"
+            android:textSize="16sp"
+            android:textStyle="italic"
+            app:fontFamily="@font/montserrat" />
 
-    <TextView
-        android:id="@+id/rep_position"
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="end"
-        android:layout_marginTop="64dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Not Available"
-        android:textAlignment="textEnd"
-        android:textSize="16sp"
-        android:textStyle="italic" />
+        <TextView
+            android:id="@+id/rep_party"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="108dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Not Available"
+            android:textSize="16sp"
+            app:fontFamily="@font/montserrat" />
 
-    <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/Rep_image"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_margin="8dp" />
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Rep_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp" />
 
     </android.support.v7.widget.CardView>
 
@@ -64,8 +65,8 @@
         android:id="@+id/local_rep_socials"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:cardMaxElevation="16dp"
-        android:padding="10dp">
+        android:padding="10dp"
+        app:cardMaxElevation="16dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -76,42 +77,41 @@
                 android:id="@+id/rep_url_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/url"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                />
+                android:src="@drawable/url" />
 
             <ImageView
                 android:id="@+id/rep_phone_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/phone"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp" />
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/phone" />
 
             <ImageView
                 android:id="@+id/rep_email_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/email"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"/>
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/email" />
 
             <ImageView
                 android:id="@+id/rep_facebook_icon"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:src="@drawable/facebook"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"/>
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/facebook" />
 
             <ImageView
                 android:id="@+id/rep_twitter_icon"
                 android:layout_width="42dp"
                 android:layout_height="42dp"
-                android:src="@drawable/twitter"
                 android:layout_marginStart="32dp"
-                android:layout_marginLeft="32dp"/>
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/twitter" />
 
         </LinearLayout>
 
