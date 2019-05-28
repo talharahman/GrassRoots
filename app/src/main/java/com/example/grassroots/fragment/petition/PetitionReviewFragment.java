@@ -31,8 +31,10 @@ import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -159,7 +161,7 @@ public class PetitionReviewFragment extends Fragment {
                     + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
 
             mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
-                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Handler handler = new Handler();
@@ -170,24 +172,26 @@ public class PetitionReviewFragment extends Fragment {
                                 }
                             }, 500);
 
-                            //Upload upload = new Upload("string");
-                           // fileReference.get
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("testtoday", "onSuccess: uri= "+ uri.toString());
+                                }
+                            });
+                            petitionViewModel.setmPetitionSignature(1);
 
                             fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
                                 Petition petition = new Petition(petitionViewModel.getmPetitionName(),
                                         petitionViewModel.getmPetitionSupporter(),
                                         petitionViewModel.getmPetitionDescription(),
-                                        petitionViewModel.getmPetitionImage().toString());//taskSnapshot.getUploadSessionUri().toString()
+                                        uri.toString(),
+                                        petitionViewModel.getmPetitionSignatureGoal(),
+                                        petitionViewModel.getmPetitionSignature()
+
+                                );
 
                                 String petitionId = mDatabaseRef.push().getKey();
                                 mDatabaseRef.child(petitionId).setValue(petition);
-
-
-//
-//                            Petition petition = new Petition(petitionViewModel.getmPetitionName(),
-//                                    petitionViewModel.getmPetitionSupporter(),
-//                                    petitionViewModel.getmPetitionDescription(),
-//                                    taskSnapshot.getUploadSessionUri().toString());
 
                             });
 
@@ -209,9 +213,13 @@ public class PetitionReviewFragment extends Fragment {
         } else {
             Toast.makeText(requireContext(), "No file selected", Toast.LENGTH_SHORT).show();
         }
-
-
     }
+
+
+
+
+
+
     private String getFileExtension(Uri uri) {
         Context applicationContext = requireActivity().getApplicationContext();
 

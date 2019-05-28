@@ -3,6 +3,8 @@ package com.example.grassroots.fragment.petition;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
+import com.example.grassroots.model.petition.Petition;
+
 public interface PetitionFragmentsListener {
     void moveToPetitionFirstPart(Fragment fragment);
     void moveToPetitionSecondPart(Fragment fragment);
@@ -10,5 +12,6 @@ public interface PetitionFragmentsListener {
     void moveToPetitionPreview(Fragment fragment);
     void moveToSharePetition(Fragment fragment);
     void moveToListOfPetitions(Fragment fragment);
+    void moveToDetailsPetition(Fragment fragment);
 
 }

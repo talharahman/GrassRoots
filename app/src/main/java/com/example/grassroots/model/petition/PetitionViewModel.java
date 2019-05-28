@@ -8,6 +8,23 @@ public class PetitionViewModel extends ViewModel {
     private String mPetitionSupporter;
     private String mPetitionDescription;
     private Uri mPetitionImage;
+    private int mPetitionSignature;
+    private int mPetitionSignatureGoal;
+
+    public int getmPetitionSignatureGoal() {
+        return mPetitionSignatureGoal;
+    }
+
+    public void setmPetitionSignatureGoal(int mPetitionSignatureGoal) {
+        this.mPetitionSignatureGoal = mPetitionSignatureGoal;
+    }
+
+    public void setmPetitionSignature(int mPetitionSignature ){
+        this.mPetitionSignature=mPetitionSignature;
+    }
+    public int getmPetitionSignature(){
+        return mPetitionSignature;
+    }
 
     public String getmPetitionName() {
         return mPetitionName;

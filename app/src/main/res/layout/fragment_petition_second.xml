@@ -1,69 +1,69 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:background="@android:color/white"
-tools:context=".fragment.petition.PetitionSecondFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/white"
+    tools:context=".fragment.petition.PetitionSecondFragment">
 
 
-<TextView
-    android:id="@+id/textview"
-    android:layout_width="305dp"
-    android:layout_height="37dp"
-    android:layout_marginStart="41dp"
-    android:layout_marginLeft="41dp"
-    android:layout_marginTop="68dp"
-    android:layout_marginEnd="46dp"
-    android:layout_marginRight="46dp"
-    android:layout_marginBottom="23dp"
-    android:text="Explain the problem you want to solve"
-    app:layout_constraintBottom_toTopOf="@+id/textView3"
-    app:layout_constraintEnd_toEndOf="@+id/textView3"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent" />
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="317dp"
+        android:layout_height="43dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginBottom="18dp"
+        android:text="Explain the problem you want to solve"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="@+id/problem_edit_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<TextView
-    android:id="@+id/textView3"
-    android:layout_width="361dp"
-    android:layout_height="62dp"
-    android:layout_marginStart="25dp"
-    android:layout_marginLeft="25dp"
-    android:layout_marginEnd="25dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginBottom="21dp"
-    android:text="People are more likely to support your petition if it’s clear why you care. Explain how this change will impact you, your family, or your community."
-    app:layout_constraintBottom_toTopOf="@+id/problem_edit_text"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textview" />
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="364dp"
+        android:layout_height="94dp"
+        android:layout_marginStart="21dp"
+        android:layout_marginLeft="21dp"
+        android:layout_marginEnd="21dp"
+        android:layout_marginRight="21dp"
+        android:layout_marginBottom="8dp"
+        android:text="People are more likely to support your petition if it’s clear why you care. Explain how this change will impact you, your family, or your community."
+        app:layout_constraintBottom_toTopOf="@+id/problem_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview" />
 
-<EditText
-    android:id="@+id/problem_edit_text"
-    android:layout_width="0dp"
-    android:layout_height="0dp"
-    android:layout_marginStart="25dp"
-    android:layout_marginLeft="25dp"
-    android:layout_marginEnd="25dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginBottom="43dp"
-    android:text=""
-    app:layout_constraintBottom_toTopOf="@+id/save_button2"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/textView3" />
+    <EditText
+        android:id="@+id/problem_edit_text"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="42dp"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/save_button2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-<Button
-    android:id="@+id/save_button2"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginEnd="25dp"
-    android:layout_marginRight="25dp"
-    android:layout_marginBottom="62dp"
-    android:text="Save and Continue"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintTop_toBottomOf="@+id/problem_edit_text" />
+    <Button
+        android:id="@+id/save_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="82dp"
+        android:text="Save and Continue"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/problem_edit_text" />
 
 </android.support.constraint.ConstraintLayout>

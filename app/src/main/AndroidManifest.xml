@@ -3,6 +3,7 @@
     package="com.example.grassroots">
 
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
     <application
         android:allowBackup="true"
@@ -27,7 +28,7 @@
         </activity>
 
         <provider
-            android:authorities="com.facebook.app.FacebookContentProvider314403266119527"
+            android:authorities="@string/facebook_provider_id"
             android:name="com.facebook.FacebookContentProvider"
             android:exported="true"/>
     </application>

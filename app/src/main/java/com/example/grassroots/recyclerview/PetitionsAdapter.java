@@ -9,10 +9,8 @@ import android.view.ViewGroup;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
 import com.example.grassroots.model.petition.Petition;
-import com.google.firebase.storage.FirebaseStorage;
-import com.google.firebase.storage.StorageReference;
-import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -20,13 +18,16 @@ import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
     private List<Petition>petitionList;
+    private PetitionFragmentsListener mListener;
     public static final String TAG = "PetitionsAdapter";
 
-    public PetitionsAdapter(){
+    public PetitionsAdapter(PetitionFragmentsListener mListener){
+        this.mListener=mListener;
 
     }
     public void setAdapterList(List<Petition> petitionList){
         this.petitionList=petitionList;
+
     }
 
     @NonNull
@@ -42,21 +43,8 @@ public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull PetitionViewHolder petitionViewHolder, int i) {
         Petition currentPetition=petitionList.get(i);
-        petitionViewHolder.petitionNameTextView.setText(currentPetition.getmPetitionName());
-        Log.d(TAG, "onBindViewHolder: " + currentPetition.getmPetitionImageURL());
-//        Picasso.get()
-//                .load("https://firebasestorage.googleapis.com/v0/b/grassroots-93865.appspot.com/o?name=uploads%2F1558803233495.jpg")
-//                .fit()
-//                .centerCrop()
-//                .into(petitionViewHolder.petitionImageImageView);
+        petitionViewHolder.onBind(currentPetition,mListener);
 
-        StorageReference storageReference = FirebaseStorage.getInstance().getReference().child("uploads");
-
-
-
-        Glide.with(getApplicationContext())
-                .load(storageReference)
-                .into(petitionViewHolder.petitionImageImageView);
     }
 
     @Override

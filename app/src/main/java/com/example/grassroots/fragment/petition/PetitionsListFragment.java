@@ -1,6 +1,7 @@
 package com.example.grassroots.fragment.petition;
 
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -34,8 +35,9 @@ import java.util.List;
 public class PetitionsListFragment extends Fragment {
 
     private RecyclerView petitionRecyclerView;
-    private PetitionsAdapter petitionsAdapter=new PetitionsAdapter();
+    private PetitionsAdapter petitionsAdapter;
     private DatabaseReference databaseReference;
+    private PetitionFragmentsListener mListener;
     private List<Petition>petitionList=new ArrayList<>();
 
     private static final String ARG_PARAM1 = "param1";
@@ -82,13 +84,7 @@ public class PetitionsListFragment extends Fragment {
 
         petitionRecyclerView=view.findViewById(R.id.petitions_recycler_view);
         petitionRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-        try {
-            File localFile = File.createTempFile("images", "jpg");
-        } catch (IOException e) {
-            e.printStackTrace();
 
-
-        }
 
         databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -98,6 +94,7 @@ public class PetitionsListFragment extends Fragment {
                     Petition petition=postSnapShot.getValue(Petition.class);
                     petitionList.add(petition);
                 }
+                petitionsAdapter=new PetitionsAdapter(mListener);
                 petitionsAdapter.setAdapterList(petitionList);
                 petitionRecyclerView.setAdapter(petitionsAdapter);
             }
@@ -109,4 +106,22 @@ public class PetitionsListFragment extends Fragment {
         });
 
     }
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof PetitionFragmentsListener) {
+            mListener = (PetitionFragmentsListener) context;
+        } else {
+            throw new RuntimeException(context.toString()
+                    + " must implement OnFragmentInteractionListener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        mListener = null;
+    }
+
+
 }

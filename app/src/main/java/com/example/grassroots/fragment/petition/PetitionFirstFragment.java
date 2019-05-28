@@ -3,6 +3,7 @@ package com.example.grassroots.fragment.petition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,6 +25,8 @@ public class PetitionFirstFragment extends Fragment {
     private Button saveAndContinueButton;
     private EditText editTextPetitionName;
     private EditText editTextPetitionSupporter;
+    private EditText editTextPetitionSignatures;
+
     private PetitionViewModel petitionViewModel;
     private PetitionFragmentsListener mListener;
 
@@ -71,6 +74,7 @@ public class PetitionFirstFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         editTextPetitionName=view.findViewById(R.id.edit_text_petition_name);
         editTextPetitionSupporter=view.findViewById(R.id.edit_text_supporter_name);
+        editTextPetitionSignatures=view.findViewById(R.id.petition_signature_goal);
         saveAndContinueButton=view.findViewById(R.id.save_button1);
         petitionViewModel= ViewModelProviders.of(Objects.requireNonNull(getActivity())).get(PetitionViewModel.class);
         saveAndContinueButton.setOnClickListener(new View.OnClickListener() {
@@ -79,6 +83,7 @@ public class PetitionFirstFragment extends Fragment {
                 mListener.moveToPetitionSecondPart(new PetitionSecondFragment());
                 petitionViewModel.setmPetitionName(editTextPetitionName.getText().toString().trim());
                 petitionViewModel.setmPetitionSupporter(editTextPetitionSupporter.getText().toString().trim());
+                petitionViewModel.setmPetitionSignatureGoal(Integer.valueOf(editTextPetitionSignatures.getText().toString()));
             }
         });
     }
