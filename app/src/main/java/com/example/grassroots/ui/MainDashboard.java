@@ -21,9 +21,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     }
 
     private void initialize() {
-       /* Toolbar toolbar = findViewById(R.id.main_toolbar);
-        setSupportActionBar(toolbar);*/
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
     }
@@ -32,7 +29,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_nav_action:
-                //inflateFragment(createPetitionFragment)
+                // TODO start host activity for Petitions
                 return true;
             case R.id.bot_nav_event:
                 // TODO provision for Events UI
