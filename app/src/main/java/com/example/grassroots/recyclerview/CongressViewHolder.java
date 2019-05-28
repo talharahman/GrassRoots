@@ -32,9 +32,10 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
 
         if (congressMember.getParty().equals("D")) {
             congress_cardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
-        }
-        if (congressMember.getParty().equals("R")) {
+        } else if (congressMember.getParty().equals("R")) {
             congress_cardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
+        } else {
+            congress_cardview.setCardBackgroundColor(Color.WHITE);
         }
     }
 }

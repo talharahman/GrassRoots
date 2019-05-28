@@ -5,7 +5,7 @@
     android:id="@+id/coordinator_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_scale"
+    android:background="#fff"
     android:fitsSystemWindows="true">
 
     <android.support.design.bottomappbar.BottomAppBar
@@ -14,20 +14,20 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:clickable="false"
-        app:fabCradleRoundedCornerRadius="32dp"
         app:fabAlignmentMode="center" />
 
     <FrameLayout
+        android:id="@+id/frameLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom">
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/bottom_nav_view_main"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:clickable="false"
             style="@style/BottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
             app:menu="@menu/menu_bottom_nav" />
 
     </FrameLayout>
@@ -35,8 +35,9 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="120dp"
         android:src="@drawable/ic_home"
-        app:layout_anchor="@id/bottom_bar" />
+        app:layout_anchor="@+id/frameLayout"
+        app:layout_anchorGravity="top|center" />
 
 </android.support.design.widget.CoordinatorLayout>
