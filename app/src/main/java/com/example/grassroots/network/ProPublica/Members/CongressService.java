@@ -15,4 +15,10 @@ public interface CongressService {
             @Path("congress") String congress,
             @Path("chamber") String chamber
     );
+
+    @GET("members/{member-id}/votes.json")
+    Call<CongressResponse> getVotePositions(
+            @Header("X-API-Key") String ApiKey,
+            @Path("member_id") String memberId
+    );
 }
