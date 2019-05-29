@@ -17,8 +17,15 @@
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
-
-        <activity android:name=".MainActivity"
+        <activity
+            android:name=".ui.LocalRepsActivity"
+            android:parentActivityName=".ui.MainDashboard">
+        </activity>
+        <activity android:name=".ui.CongressActivity"
+            android:parentActivityName=".ui.MainActivity">
+        </activity>
+        <activity
+            android:name=".ui.MainDashboard"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

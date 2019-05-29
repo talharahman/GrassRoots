@@ -36,7 +36,7 @@ public class BillsFragment extends Fragment {
     }
 
     private void initialize() {
-        presenter = new BillPresenter(new BillsFragmentListener() {
+        presenter = new BillPresenter(new BillsUIListener() {
             @Override
             public void updateUI(BillSearchModel billSearchModel) {
                 BillsAdapter billsAdapter = new BillsAdapter();

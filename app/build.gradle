@@ -44,6 +44,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-storage:16.0.4'
     implementation 'com.google.firebase:firebase-auth:16.0.5'
     implementation 'com.google.firebase:firebase-database:16.0.4'
+    implementation 'de.hdodenhof:circleimageview:3.0.0'
 
     implementation 'com.facebook.android:facebook-share:5.0.1'
 

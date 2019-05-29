@@ -1,16 +1,14 @@
 package com.example.grassroots.network.ProPublica.Bills;
 
-import android.util.Log;
-
-import com.example.grassroots.fragment.BillsFragmentListener;
+import com.example.grassroots.fragment.BillsUIListener;
 import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
 
 public class BillPresenter {
 
-    private BillsFragmentListener billsFragmentListener;
+    private BillsUIListener billsUIListener;
 
-    public BillPresenter(BillsFragmentListener billsFragmentListener) {
-        this.billsFragmentListener = billsFragmentListener;
+    public BillPresenter(BillsUIListener billsUIListener) {
+        this.billsUIListener = billsUIListener;
     }
 
     public void networkCall(String proPublicaAPIKey) {
@@ -18,7 +16,7 @@ public class BillPresenter {
         instance.fetchBills("megahertz", proPublicaAPIKey, new BillInfoListener() {
             @Override
             public void onSuccess(BillSearchModel billSearchModel) {
-                billsFragmentListener.updateUI(billSearchModel);
+                billsUIListener.updateUI(billSearchModel);
             }
 
             @Override

@@ -1,4 +1,4 @@
-package com.example.grassroots;
+package com.example.grassroots.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +18,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
+import com.example.grassroots.R;
 import com.example.grassroots.fragment.BillsFragment;
 import com.example.grassroots.fragment.CongressFragment;
 import com.example.grassroots.fragment.LocalRepsFragment;
@@ -74,7 +75,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 //inflateFragment(createPetitionFragment)
                 return true;
             case R.id.nav_contact:
-                getLocaleDialog();
+              //  getLocaleDialog();
+                inflateFragment(LocalRepsFragment.newInstance("11355"));
                 return true;
             case R.id.nav_bills:
                 inflateFragment(new BillsFragment());
@@ -95,8 +97,8 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
-    private void setReferences(){
-        toolbar = findViewById(R.id.toolbar);
+    private void setReferences() {
+        toolbar = findViewById(R.id.toolbar_local_reps);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
         toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);

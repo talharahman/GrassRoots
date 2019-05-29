@@ -32,7 +32,6 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     private <E> void reverseList(List<E> list) {
         Collections.reverse(list);
-
     }
 
     @NonNull
@@ -40,7 +39,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
     public CivicInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new CivicInfoViewHolder(LayoutInflater
                 .from(viewGroup.getContext())
-                .inflate(R.layout.expanded_local_rep_itemview, viewGroup, false));
+                .inflate(R.layout.exp_local_rep_itemview_v2, viewGroup, false));
     }
 
     @Override
@@ -53,13 +52,10 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         }
         civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(i));
 
-        civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean expanded = electedRepresentatives.get(i).isExpanded();
-                electedRepresentatives.get(i).setExpanded(!expanded);
-                notifyItemChanged(i);
-            }
+        civicInfoViewHolder.itemView.setOnClickListener(v -> {
+            boolean expanded = electedRepresentatives.get(i).isExpanded();
+            electedRepresentatives.get(i).setExpanded(!expanded);
+            notifyItemChanged(i);
         });
     }
 
