@@ -41,8 +41,8 @@ public class CongressActivity extends AppCompatActivity
     }
 
     private void initialize() {
-        Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
-        setSupportActionBar(toolbar);
+//        Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
+//        setSupportActionBar(toolbar);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_search);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

@@ -71,6 +71,8 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
 
         SearchView searchView = view.findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
+
+
     }
 
     @Override

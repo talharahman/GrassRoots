@@ -1,5 +1,6 @@
 package com.example.grassroots.recyclerview;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
@@ -7,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.grassroots.CongressTabActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
@@ -16,7 +18,7 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
     private TextView txtv_party_title;
     private TextView txtv_state;
     private CardView congress_cardview;
-    
+
     CongressViewHolder(@NonNull View itemView) {
         super(itemView);
         txtv_name = itemView.findViewById(R.id.congress_member_name_iv);
@@ -37,5 +39,14 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
         } else {
             congress_cardview.setCardBackgroundColor(Color.WHITE);
         }
+
+        itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent tabIntent = new Intent(v.getContext(), CongressTabActivity.class);
+                tabIntent.putExtra("CONGRESSMEMBER", congressMember);
+                v.getContext().startActivity(tabIntent);
+            }
+        });
     }
 }

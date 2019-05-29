@@ -2,7 +2,6 @@ package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -25,7 +24,10 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     public void setAdapterList(List<ElectedPositions> electedPositions,
                                List<ElectedRepresentatives> electedRepresentatives) {
+        reverseList(electedRepresentatives);
+
         this.electedRepresentatives = electedRepresentatives;
+        reverseList(electedPositions);
         this.electedPositions = electedPositions;
         notifyDataSetChanged();
     }
@@ -50,7 +52,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
                 positionsMap.put(electedPositions.get(j).getOfficialIndices().get(k), electedPositions.get(j).getName());
             }
         }
-        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(i));
+        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1));
 
         civicInfoViewHolder.itemView.setOnClickListener(v -> {
             boolean expanded = electedRepresentatives.get(i).isExpanded();

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.example.grassroots.ui.MainActivity;
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
+import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpenseListener;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -69,6 +71,31 @@ class CongressRepository {
                     public void onFailure(Call<CongressResponse> call, Throwable t) {
                         Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
                         congressListener.failedCall();
+                        //TO DO
+
+                    }
+                });
+    }
+
+    void fetchOfficeExpenses(String apiKey, String member_id, String year, String quarter, final OfficeExpenseListener officeExpenseListener){
+        getInstance()
+                .create(CongressService.class)
+                .getOfficeExpenses(apiKey, member_id, year, quarter)
+                .enqueue(new Callback<OfficeExpenseResponse>() {
+                    @Override
+                    public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> officeResponse) {
+                        OfficeExpenseResponse officeExpenseResponse = officeResponse.body();
+                        if(officeExpenseResponse != null){
+                            Log.d(MainActivity.TAG, "onResponse: " + officeExpenseResponse.getStatus());
+                            officeExpenseListener.successfulCall(officeExpenseResponse);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<OfficeExpenseResponse> call, Throwable t) {
+                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
+                        officeExpenseListener.failedCall();
+                        //TO DO
 
                     }
                 });
