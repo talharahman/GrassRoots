@@ -26,7 +26,7 @@ public class DetailsPetitonFragment extends Fragment {
     private TextView petitionNameTextView;
     private TextView petitionDescrptionTextView;
     private TextView petitionSupporterTextView;
-    private TextView petitionSignature;
+    private TextView petitionSignatureTextView;
     private ImageView petitionImageImageView;
     private ProgressBar petitionProgressBar;
     private Petition mParam1;
@@ -66,7 +66,12 @@ public class DetailsPetitonFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         petitionNameTextView=view.findViewById(R.id.petition_name_text_view);
         petitionDescrptionTextView=view.findViewById(R.id.petition_description_text_view);
+        petitionSupporterTextView=view.findViewById(R.id.petition_supporter_text_view);
+        petitionSignatureTextView=view.findViewById(R.id.petition_Signatures_text_view);
         petitionImageImageView=view.findViewById(R.id.petition_image_image_view);
+        petitionProgressBar=view.findViewById(R.id.progress_bar_signatures);
+
+
 
     }
 }
