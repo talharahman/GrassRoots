@@ -8,7 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.grassroots.fragment.OfficeExpFragment;
+import com.example.grassroots.fragment.OfficeExpFragmentListener;
 import com.example.grassroots.fragment.OverviewFragment;
+import com.example.grassroots.fragment.SpinnerOEFragment;
 import com.example.grassroots.fragment.VotePositionFragment;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
@@ -34,7 +36,9 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 tabFragment = new VotePositionFragment();
                 break;
             case 2:
+//                tabFragment = new SpinnerOEFragment();
                 tabFragment = new OfficeExpFragment();
+
                 break;
         }
         return tabFragment;
@@ -50,4 +54,5 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
     public int getCount() {
         return 3;
     }
+
 }

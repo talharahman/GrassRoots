@@ -1,6 +1,8 @@
 package com.example.grassroots.network.ProPublica.Members;
 
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
+import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 
 import retrofit2.Call;
 import retrofit2.http.GET;
@@ -17,8 +19,17 @@ public interface CongressService {
     );
 
     @GET("members/{member-id}/votes.json")
-    Call<CongressResponse> getVotePositions(
+    Call<VotePositionResponse> getVotePositions(
             @Header("X-API-Key") String ApiKey,
             @Path("member_id") String memberId
     );
+
+    @GET("{member-id}/office_expenses/{year}/{quarter}.json")
+    Call<OfficeExpenseResponse> getOfficeExpenses(
+            @Header("X-API-Key") String ApiKey,
+            @Path("member_id") String memberID,
+            @Path("year") String year,
+            @Path("quarter") String quarter
+    );
+
 }

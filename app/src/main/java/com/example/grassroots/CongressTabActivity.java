@@ -10,30 +10,42 @@ import android.os.Bundle;
 import android.util.Log;
 
 import com.example.grassroots.fragment.OfficeExpFragment;
+import com.example.grassroots.fragment.OfficeExpFragmentListener;
 import com.example.grassroots.fragment.OverviewFragment;
+import com.example.grassroots.fragment.SpinnerOEFragment;
 import com.example.grassroots.fragment.VotePositionFragment;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
-public class CongressTabActivity extends AppCompatActivity {
+public class CongressTabActivity extends AppCompatActivity  {
 
     private CongressOverviewVM congressOverviewVM;
 
 
-     @Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
-         super.onCreate(savedInstanceState);
-         setContentView(R.layout.activity_congress_tab);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_congress_tab);
 
-         SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
-         ViewPager viewPager = findViewById(R.id.view_pager);
-         viewPager.setAdapter(sectionsPagerAdapter);
+        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        ViewPager viewPager = findViewById(R.id.view_pager);
+        viewPager.setAdapter(sectionsPagerAdapter);
 
-         TabLayout tabs = findViewById(R.id.tabs);
-         tabs.setupWithViewPager(viewPager);
+        TabLayout tabs = findViewById(R.id.tabs);
+        tabs.setupWithViewPager(viewPager);
 
         congressOverviewVM = ViewModelProviders.of(this).get(CongressOverviewVM.class);
-        CongressMember congressMember = (CongressMember)getIntent().getSerializableExtra("CONGRESSMEMBER");
+        CongressMember congressMember = (CongressMember) getIntent().getSerializableExtra("CONGRESSMEMBER");
         congressOverviewVM.setCongressMember(congressMember);
-         Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
-     }
+        Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
+    }
+
+//    @Override
+//    public void toOfficeExpenseRecords(String member_id) {
+//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance();
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id., officeExpFragment)
+//                .addToBackStack(null)
+//                .commit();
+//    }
 }

@@ -31,4 +31,44 @@
         <item>3rd Quarter</item>
         <item>4th Quarter</item>
     </string-array>
+
+    <string-array name="category">
+        <item>Agriculture and Food</item>
+        <item>Animals</item>
+        <item>Armed Forces and National Security</item>
+        <item>Arts, Culture, Religion</item>
+        <item>Civil Rights and Liberties, Minority Issues</item>
+        <item>Commerce</item>
+        <item>Congress</item>
+        <item>Crime and Law Enforcement</item>
+        <item>Economics and Public Finance</item>
+        <item>Education</item>
+        <item>Emergency Management</item>
+        <item>Energy</item>
+        <item>Environmental Protection</item>
+        <item>Families</item>
+        <item>Finance and Financial Sector</item>
+        <item>Foreign Trade and International Finance</item>
+        <item>Government Operations and Politics</item>
+        <item>Health</item>
+        <item>Housing and Community Development </item>
+        <item>Immigration</item>
+        <item>International Affairs</item>
+        <item>Labor and Employment</item>
+        <item>Law</item>
+        <item>Native Americans</item>
+        <item>Public Lands and Natural Resources</item>
+        <item>Science, Technology, Communications</item>
+        <item>Social Sciences and History</item>
+        <item>Social Welfare</item>
+        <item>Sports and Recreation</item>
+        <item>Taxation </item>
+        <item>Transportation and Public Works</item>
+        <item>Water Resources Development</item>
+
+    </string-array>
+
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
