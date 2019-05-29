@@ -4,7 +4,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="frag_overview">Overview</string>
     <string name="frag_vote_positions">Vote Positions</string>
-    <string name="frag_office_expense">Office Expenses by Quarter</string>
+    <string name="frag_office_expense">Office Expenses</string>
 
     <string name="ov_next_election"><u>Next Election</u></string>
     <string name="ov_voting_snapshot"><u>Voting Snapshot</u></string>
