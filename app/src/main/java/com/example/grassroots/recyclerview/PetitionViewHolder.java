@@ -11,8 +11,9 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.utils.PetitionsFeedInterface;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -21,7 +22,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     private TextView petitionNameTextView;
     private TextView pettitonDescrptionTextView;
     private TextView petitionSignatureTextView;
-    private  ImageView petitionImageImageView;
+    private ImageView petitionImageImageView;
     private ProgressBar petitionProgressBarSignatures;
 
     public PetitionViewHolder(@NonNull View itemView) {
@@ -35,7 +36,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onBind(Petition currentPetition,PetitionFragmentsListener mListener) {
+    public void onBind(Petition currentPetition, PetitionsFeedInterface listener) {
         petitionNameTextView.setText(currentPetition.getmPetitionName());
         pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
         petitionSignatureTextView.setText(currentPetition.getmPetitionSignature()+" singed of "+currentPetition.getmPetitionSignatureGoal()+" goal");
@@ -52,7 +53,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition));
+                listener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition));
             }
         });
     }

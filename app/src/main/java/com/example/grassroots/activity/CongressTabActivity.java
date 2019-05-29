@@ -1,20 +1,16 @@
-package com.example.grassroots;
+package com.example.grassroots.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 
-import com.example.grassroots.fragment.OfficeExpFragment;
-import com.example.grassroots.fragment.OfficeExpFragmentListener;
-import com.example.grassroots.fragment.OverviewFragment;
-import com.example.grassroots.fragment.SpinnerOEFragment;
-import com.example.grassroots.fragment.VotePositionFragment;
+import com.example.grassroots.R;
+import com.example.grassroots.utils.SectionsPagerAdapter;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.utils.CongressOverviewVM;
 
 public class CongressTabActivity extends AppCompatActivity  {
 

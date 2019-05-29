@@ -3,7 +3,6 @@ package com.example.grassroots.fragment.petition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -16,6 +15,7 @@ import android.widget.EditText;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 
 import java.util.Objects;
 
@@ -30,11 +30,7 @@ public class PetitionFirstFragment extends Fragment {
     private PetitionViewModel petitionViewModel;
     private PetitionFragmentsListener mListener;
 
-
-
-    public PetitionFirstFragment() {
-        // Required empty public constructor
-    }
+    public PetitionFirstFragment() {}
 
     public static PetitionFirstFragment newInstance() {
         PetitionFirstFragment fragment = new PetitionFirstFragment();
@@ -43,14 +39,6 @@ public class PetitionFirstFragment extends Fragment {
         return fragment;
     }
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -65,7 +53,6 @@ public class PetitionFirstFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petition_first, container, false);
     }
 

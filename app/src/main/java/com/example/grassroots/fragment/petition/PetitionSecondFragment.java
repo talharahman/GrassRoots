@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 
 
 public class PetitionSecondFragment extends Fragment {

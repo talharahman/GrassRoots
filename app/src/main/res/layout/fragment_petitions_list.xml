@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/white"
-    tools:context=".fragment.petition.PetitionsListFragment">
+    tools:context=".fragment.petition.MainFeed">
 
     <TextView
         android:layout_width="match_parent"

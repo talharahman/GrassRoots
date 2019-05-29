@@ -8,7 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.grassroots.CongressTabActivity;
+import com.example.grassroots.activity.CongressTabActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 

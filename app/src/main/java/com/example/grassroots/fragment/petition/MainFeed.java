@@ -1,6 +1,5 @@
 package com.example.grassroots.fragment.petition;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -12,69 +11,38 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
+import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.recyclerview.PetitionsAdapter;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PetitionsListFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
-public class PetitionsListFragment extends Fragment {
+public class MainFeed extends Fragment {
 
     private RecyclerView petitionRecyclerView;
     private PetitionsAdapter petitionsAdapter;
     private DatabaseReference databaseReference;
-    private PetitionFragmentsListener mListener;
-    private List<Petition>petitionList=new ArrayList<>();
+    private PetitionsFeedInterface listener;
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private List<Petition>petitionList = new ArrayList<>();
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public MainFeed() { }
 
-
-    public PetitionsListFragment() {
-        // Required empty public constructor
-    }
-
-
-    public static PetitionsListFragment newInstance(String param1, String param2) {
-        PetitionsListFragment fragment = new PetitionsListFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static MainFeed newInstance() {
+        return new MainFeed();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petitions_list, container, false);
     }
 
@@ -85,7 +53,6 @@ public class PetitionsListFragment extends Fragment {
         petitionRecyclerView=view.findViewById(R.id.petitions_recycler_view);
         petitionRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
-
         databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
@@ -94,7 +61,7 @@ public class PetitionsListFragment extends Fragment {
                     Petition petition=postSnapShot.getValue(Petition.class);
                     petitionList.add(petition);
                 }
-                petitionsAdapter=new PetitionsAdapter(mListener);
+                petitionsAdapter = new PetitionsAdapter(listener);
                 petitionsAdapter.setAdapterList(petitionList);
                 petitionRecyclerView.setAdapter(petitionsAdapter);
             }
@@ -109,8 +76,8 @@ public class PetitionsListFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof PetitionFragmentsListener) {
-            mListener = (PetitionFragmentsListener) context;
+        if (context instanceof PetitionsFeedInterface) {
+            listener = (PetitionsFeedInterface) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -120,8 +87,6 @@ public class PetitionsListFragment extends Fragment {
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        listener = null;
     }
-
-
 }

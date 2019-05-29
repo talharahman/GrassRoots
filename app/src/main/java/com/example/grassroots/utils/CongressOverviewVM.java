@@ -1,4 +1,4 @@
-package com.example.grassroots;
+package com.example.grassroots.utils;
 
 import android.arch.lifecycle.ViewModel;
 

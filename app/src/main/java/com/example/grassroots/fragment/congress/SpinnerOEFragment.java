@@ -1,4 +1,4 @@
-package com.example.grassroots.fragment;
+package com.example.grassroots.fragment.congress;
 
 
 import android.arch.lifecycle.ViewModelProviders;
@@ -16,10 +16,10 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
-import com.example.grassroots.CongressOverviewVM;
+import com.example.grassroots.utils.CongressOverviewVM;
 import com.example.grassroots.R;
+import com.example.grassroots.utils.OfficeExpFragmentListener;
 
 public class SpinnerOEFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 

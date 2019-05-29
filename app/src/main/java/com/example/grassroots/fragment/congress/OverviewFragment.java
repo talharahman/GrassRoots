@@ -1,7 +1,6 @@
-package com.example.grassroots.fragment;
+package com.example.grassroots.fragment.congress;
 
 
-import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,10 +12,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.grassroots.CongressOverviewVM;
+import com.example.grassroots.utils.CongressOverviewVM;
 import com.example.grassroots.R;
-import com.example.grassroots.model.ProPublica.Members.CongressMember;
-import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 
 public class OverviewFragment extends Fragment {
 

@@ -1,14 +1,17 @@
-package com.example.grassroots.ui;
+package com.example.grassroots.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
@@ -74,5 +77,20 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                 return true;
         }
         return true;
+    }
+
+    private void getLocaleDialog() {
+        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
+        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
+        EditText localeText = dialogLayout.findViewById(R.id.localeText);
+        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
+
+        getLocale.setView(dialogLayout);
+        final AlertDialog alertDialog = getLocale.create();
+        submitButton.setOnClickListener(v -> {
+            alertDialog.dismiss();
+            // TODO do networkCall again
+        });
+        alertDialog.show();
     }
 }

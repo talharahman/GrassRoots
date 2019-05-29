@@ -1,4 +1,4 @@
-package com.example.grassroots.fragment;
+package com.example.grassroots.fragment.congress;
 
 
 import android.os.Bundle;

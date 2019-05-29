@@ -1,6 +1,5 @@
 package com.example.grassroots.fragment.petition;
 
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,8 +14,8 @@ import android.widget.TextView;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 
-
 public class DetailsPetitonFragment extends Fragment {
+
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM_PETITION = "param1";
@@ -32,9 +31,7 @@ public class DetailsPetitonFragment extends Fragment {
     private Petition mParam1;
 
 
-    public DetailsPetitonFragment() {
-        // Required empty public constructor
-    }
+    public DetailsPetitonFragment() {}
 
 
     public static DetailsPetitonFragment newInstance(Petition petition) {

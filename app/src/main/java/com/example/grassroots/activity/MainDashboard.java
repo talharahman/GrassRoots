@@ -1,4 +1,4 @@
-package com.example.grassroots.ui;
+package com.example.grassroots.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,8 +9,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
+import com.example.grassroots.fragment.petition.MainFeed;
+import com.example.grassroots.utils.PetitionsFeedInterface;
 
-public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,6 +21,12 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         setContentView(R.layout.activity_main_dashboard);
 
         initialize();
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, new MainFeed())
+                .addToBackStack(null)
+                .commit();
     }
 
     private void initialize() {
@@ -29,30 +38,18 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_nav_action:
-                // TODO start host activity for Petitions
+                Intent petitionIntent = new Intent(this, PetitionHostActivity.class);
+                startActivity(petitionIntent);
                 return true;
             case R.id.bot_nav_event:
                 // TODO provision for Events UI
                 return true;
             case R.id.bot_nav_contact:
-                /*
-                  inflateFragment(new BillsFragment());
-                  Bills Fragment now deprecated, refer to tab contained in Congress Fragment
-
-                  inflateFragment(LocalRepsFragment.newInstance("11355"));
-                */
                 Intent contactIntent = new Intent(this, LocalRepsActivity.class);
                 contactIntent.putExtra("ZIP", "11101");
                 startActivity(contactIntent);
                 return true;
             case R.id.bot_nav_search:
-                /*
-                  need to fix searchbox disappearing for fragment input,
-                  otherwise keep as Activity
-
-                  toolbar.setVisibility(View.GONE);
-                  inflateFragment(new CongressFragment());
-                 */
                 Intent searchIntent = new Intent(this, CongressActivity.class);
                 startActivity(searchIntent);
                 return true;
@@ -60,11 +57,11 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         return true;
     }
 
-    public void inflateFragment(Fragment fragment) {
+    @Override
+    public void moveToDetailsPetition(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_container, fragment)
-                .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                .replace(R.id.feed_container, new DetailsPetitonFragment())
                 .addToBackStack(null)
                 .commit();
     }

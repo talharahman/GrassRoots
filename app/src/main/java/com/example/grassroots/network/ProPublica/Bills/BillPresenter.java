@@ -1,6 +1,6 @@
 package com.example.grassroots.network.ProPublica.Bills;
 
-import com.example.grassroots.fragment.BillsUIListener;
+import com.example.grassroots.utils.BillsUIListener;
 import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
 
 public class BillPresenter {

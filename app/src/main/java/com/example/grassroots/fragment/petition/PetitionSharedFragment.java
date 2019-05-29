@@ -1,7 +1,6 @@
 package com.example.grassroots.fragment.petition;
 
 
-import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -21,6 +20,7 @@ import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;

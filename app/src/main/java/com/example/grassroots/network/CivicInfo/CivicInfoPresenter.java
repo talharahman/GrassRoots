@@ -1,6 +1,6 @@
 package com.example.grassroots.network.CivicInfo;
 
-import com.example.grassroots.fragment.LocalRepsUIListener;
+import com.example.grassroots.utils.LocalRepsUIListener;
 import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 
 public class CivicInfoPresenter {
