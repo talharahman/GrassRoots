@@ -16,3 +16,4 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
     public void onBind(ArrayList arrayList) {
     }
 }
+
