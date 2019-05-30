@@ -39,6 +39,7 @@ public class CongressTabActivity extends AppCompatActivity  {
         Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
     }
 
+
 //    @Override
 //    public void toOfficeExpenseRecords(String member_id) {
 //        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance();
