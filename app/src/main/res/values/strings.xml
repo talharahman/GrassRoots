@@ -6,10 +6,10 @@
     <string name="frag_vote_positions">Vote Positions</string>
     <string name="frag_office_expense">Office Expenses</string>
 
-    <string name="ov_next_election"><u>Next Election</u></string>
-    <string name="ov_voting_snapshot"><u>Voting Snapshot</u></string>
-    <string name="ov_contact_info"><u>Contact Info</u></string>
-    <string name="ov_fec_id_number"><u>FEC ID Number</u></string>
+    <string name="ov_next_election">Next Election</string>
+    <string name="ov_voting_snapshot">Voting Snapshot</string>
+    <string name="ov_contact_info">Contact Info</string>
+    <string name="ov_fec_id_number">FEC ID Number</string>
 
     <string-array name="years">
         <item>2009</item>

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@color/grey_scale"
     tools:context=".fragment.congress.OverviewFragment">
 
     <android.support.constraint.ConstraintLayout
@@ -21,6 +22,7 @@
             android:textColor="#000"
             android:textSize="30sp"
             android:textStyle="bold"
+            android:fontFamily="@font/quicksand"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -33,6 +35,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="italic"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_first_congressmember" />
@@ -46,6 +49,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/quicksand"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_second_congressmember" />
@@ -58,6 +62,7 @@
             android:textColor="#000"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_third_congressmember" />
@@ -71,6 +76,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/quicksand"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_txtv_third_congressmember" />
@@ -144,6 +150,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/quicksand"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/website" />
@@ -156,6 +163,7 @@
             android:textColor="#000"
             android:text="missed votes / total votes"
             android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_votingSnapshot_congressmember" />
@@ -168,6 +176,7 @@
             android:textColor="#000"
             android:text="missed votes pct"
             android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_votesRatio" />
@@ -180,6 +189,7 @@
             android:text="votes with party pct"
             android:textColor="#000"
             android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_missed" />
@@ -193,6 +203,7 @@
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold"
+            android:fontFamily="@font/quicksand"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_party" />
@@ -207,6 +218,7 @@
             android:textColor="@color/red_leaf"
             android:textSize="72sp"
             android:textStyle="bold"
+            android:fontFamily="@font/open_sans"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"

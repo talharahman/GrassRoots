@@ -43,7 +43,7 @@ public class CongressActivity extends AppCompatActivity
 //        Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
 //        setSupportActionBar(toolbar);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_search);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         ActionBar actionBar = getSupportActionBar();
@@ -93,15 +93,20 @@ public class CongressActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_nav_action:
-                //inflateFragment(createPetitionFragment)
+                Intent petitionIntent = new Intent(this, PetitionHostActivity.class);
+                startActivity(petitionIntent);
                 return true;
             case R.id.bot_nav_event:
                 // TODO provision for Events UI
                 return true;
             case R.id.bot_nav_contact:
                 Intent contactIntent = new Intent(this, LocalRepsActivity.class);
-                contactIntent.putExtra("ZIP", "11355");
+                contactIntent.putExtra("ZIP", "11101");
                 startActivity(contactIntent);
+                return true;
+            case R.id.bot_nav_search:
+                Intent searchIntent = new Intent(this, CongressActivity.class);
+                startActivity(searchIntent);
                 return true;
         }
         return true;

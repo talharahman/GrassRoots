@@ -13,7 +13,7 @@
 
     <TextView
         android:id="@+id/congress_member_name_iv"
-        android:layout_width="wrap_content"
+        android:layout_width="180dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginBottom="36dp"
@@ -22,7 +22,7 @@
         android:textSize="24sp"
         android:textStyle="bold"
         android:textAlignment="center"
-        app:fontFamily="@font/concert_one"/>
+        app:fontFamily="@font/quicksand"/>
 
     <TextView
         android:id="@+id/congress_state_iv"
@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:text="NY"
-        app:fontFamily="@font/concert_one"
+        app:fontFamily="@font/open_sans"
         android:textSize="20sp"
         android:layout_marginTop="16dp"/>
 
@@ -41,6 +41,7 @@
         android:layout_gravity="center"
         android:text="P, Title"
         android:textStyle="italic"
+        android:fontFamily="@font/open_sans"
         android:textColor="@color/purple_drop"
         android:layout_marginTop="48dp"
         android:textSize="16sp"/>

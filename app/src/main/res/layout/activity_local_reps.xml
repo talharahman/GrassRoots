@@ -50,15 +50,38 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.widget.BottomNavigationView
-        android:id="@+id/bottom_nav_view_contact"
-        style="@style/BottomNavigation"
+    <android.support.design.bottomappbar.BottomAppBar
+        android:id="@+id/bottom_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:visibility="visible"
-        app:menu="@menu/menu_bottom_nav"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
-    </android.support.design.widget.BottomNavigationView>
+        android:clickable="false"
+        app:fabAlignmentMode="center" />
+
+    <FrameLayout
+        android:id="@+id/frameLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom">
+
+        <android.support.design.widget.BottomNavigationView
+            android:id="@+id/bottom_nav_view_main"
+            style="@style/BottomNavigation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:clickable="false"
+            app:menu="@menu/menu_bottom_nav"
+            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+            />
+
+    </FrameLayout>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:src="@drawable/ic_home"
+        app:layout_anchor="@+id/frameLayout"
+        app:layout_anchorGravity="bottom|center" />
 
 </android.support.design.widget.CoordinatorLayout>

@@ -44,7 +44,7 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
 //        setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_contact);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
         userLocation = findViewById(R.id.user_district2);
@@ -66,10 +66,16 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_nav_action:
-                //inflateFragment(createPetitionFragment)
+                Intent petitionIntent = new Intent(this, PetitionHostActivity.class);
+                startActivity(petitionIntent);
                 return true;
             case R.id.bot_nav_event:
                 // TODO provision for Events UI
+                return true;
+            case R.id.bot_nav_contact:
+                Intent contactIntent = new Intent(this, LocalRepsActivity.class);
+                contactIntent.putExtra("ZIP", "11101");
+                startActivity(contactIntent);
                 return true;
             case R.id.bot_nav_search:
                 Intent searchIntent = new Intent(this, CongressActivity.class);

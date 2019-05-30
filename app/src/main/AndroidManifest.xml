@@ -13,8 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.PetitionHostActivity"></activity>
-
+        <activity android:name=".activity.PetitionHostActivity"
+            android:parentActivityName=".activity.MainDashboard"></activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
