@@ -7,15 +7,17 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
+import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResults;
+import com.example.grassroots.model.ProPublica.VotePositions.Votes;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHolder> {
 
-    private List<ArrayList> vp_category_list;
+    private List<VotePositionResults> vp_category_list;
 
-    public VotePositionAdapter(List<ArrayList> vp_category_list){
+    public VotePositionAdapter(List<VotePositionResults> vp_category_list){
         this.vp_category_list = vp_category_list;
     }
 

@@ -22,9 +22,7 @@ import java.util.Collections;
 import java.util.List;
 
 
-public class CongressActivity extends AppCompatActivity
-        implements BottomNavigationView.OnNavigationItemSelectedListener,
-        SearchView.OnQueryTextListener {
+public class CongressActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     private CongressAdapter congressAdapter;
     private List<CongressMember> congressMembersList = new ArrayList<>();
