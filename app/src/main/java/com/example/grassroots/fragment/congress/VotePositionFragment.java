@@ -1,36 +1,22 @@
 package com.example.grassroots.fragment.congress;
 
 
-import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
-import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 
-import com.example.grassroots.CongressOverviewVM;
 import com.example.grassroots.R;
-import com.example.grassroots.model.ProPublica.Members.CongressMember;
-import com.example.grassroots.model.ProPublica.Members.CongressResponse;
+import com.example.grassroots.fragment.VotePositionUIListener;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
-import com.example.grassroots.network.ProPublica.Members.CongressPresenter;
 import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPresenter;
-import com.example.grassroots.recyclerview.CongressAdapter;
 import com.example.grassroots.recyclerview.VotePositionAdapter;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 public class VotePositionFragment extends Fragment {
 

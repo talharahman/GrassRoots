@@ -2,14 +2,8 @@ package com.example.grassroots.network.ProPublica.VotePositions;
 
 import android.util.Log;
 
-import com.example.grassroots.model.ProPublica.Bills.BillSearchModel;
-import com.example.grassroots.model.ProPublica.Members.CongressResponse;
-import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
-import com.example.grassroots.network.ProPublica.Members.CongressListener;
 import com.example.grassroots.network.ProPublica.Members.CongressService;
-import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpenseListener;
-import com.example.grassroots.ui.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;
