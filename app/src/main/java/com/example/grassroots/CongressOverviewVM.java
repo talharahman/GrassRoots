@@ -24,10 +24,6 @@ public class CongressOverviewVM extends ViewModel {
     private String total_votes;
     private String missed_votes;
 
-    public CongressMember getCongressMember() {
-        return congressMember;
-    }
-
     private String twitter_account;
     private String facebook_account;
     private String youtube_account;
@@ -37,6 +33,10 @@ public class CongressOverviewVM extends ViewModel {
 
     private String missed_votes_pct;
     private String votes_with_party_pct;
+
+    public CongressMember getCongressMember() {
+        return congressMember;
+    }
 
     public void setCongressMember(CongressMember congressMember) {
         this.congressMember = congressMember;

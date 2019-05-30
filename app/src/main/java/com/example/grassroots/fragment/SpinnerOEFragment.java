@@ -16,15 +16,16 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.TextView;
 
+import com.example.grassroots.CongressExpenseVM;
 import com.example.grassroots.CongressOverviewVM;
 import com.example.grassroots.R;
 
 public class SpinnerOEFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private CongressOverviewVM congressOverviewVM;
-    private OfficeExpFragmentListener officeExpFragmentListener;
+//    private CongressExpenseVM congressExpenseVM;
+    private OfficeExpUIListener officeExpUIListener;
     private String member_id;
 
     public SpinnerOEFragment() {
@@ -33,8 +34,8 @@ public class SpinnerOEFragment extends Fragment implements AdapterView.OnItemSel
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if(context instanceof OfficeExpFragmentListener){
-            officeExpFragmentListener = (OfficeExpFragmentListener) context;
+        if(context instanceof OfficeExpUIListener){
+            officeExpUIListener = (OfficeExpUIListener) context;
         }
     }
 
@@ -75,16 +76,16 @@ public class SpinnerOEFragment extends Fragment implements AdapterView.OnItemSel
         super.onViewCreated(view, savedInstanceState);
 
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
+//        congressExpenseVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressExpenseVM.class);
 
         member_id = congressOverviewVM.getCongressMember().getId();
 
         Button btn_exp_submit = view.findViewById(R.id.btn_exp_submit);
 
-
         btn_exp_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                officeExpFragmentListener.toOfficeExpenseRecords(member_id);
+                officeExpUIListener.updateOfficeExpenseRecords(member_id);
                 Log.d("FINDFINDFIND", "onClick: " + member_id);
             }
         });

@@ -96,7 +96,6 @@ class CongressRepository {
                         Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
                         officeExpenseListener.failedCall();
                         //TO DO
-
                     }
                 });
     }
