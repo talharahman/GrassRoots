@@ -21,13 +21,13 @@ public interface CongressService {
     @GET("members/{member-id}/votes.json")
     Call<VotePositionResponse> getVotePositions(
             @Header("X-API-Key") String ApiKey,
-            @Path("member_id") String memberId
+            @Path("member-id") String memberId
     );
 
     @GET("{member-id}/office_expenses/{year}/{quarter}.json")
     Call<OfficeExpenseResponse> getOfficeExpenses(
             @Header("X-API-Key") String ApiKey,
-            @Path("member_id") String memberID,
+            @Path("member-id") String memberId,
             @Path("year") String year,
             @Path("quarter") String quarter
     );

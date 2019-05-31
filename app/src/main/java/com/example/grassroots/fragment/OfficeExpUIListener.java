@@ -2,6 +2,6 @@ package com.example.grassroots.fragment;
 
 public interface OfficeExpUIListener {
 
-    void updateOfficeExpenseRecords(String member_id);
+    void toOfficeExpenseFragment(String member_id, String year, String quarter);
 
 }

@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.grassroots.fragment.OfficeExpFragment;
 import com.example.grassroots.fragment.OverviewFragment;
 import com.example.grassroots.fragment.SpinnerOEFragment;
 import com.example.grassroots.fragment.VotePositionFragment;
@@ -33,7 +34,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 tabFragment = new VotePositionFragment();
                 break;
             case 2:
-                tabFragment = new SpinnerOEFragment();
+                tabFragment = new OfficeExpFragment();
                 break;
         }
         return tabFragment;
