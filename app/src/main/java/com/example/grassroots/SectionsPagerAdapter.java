@@ -1,5 +1,6 @@
 package com.example.grassroots;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -11,6 +12,7 @@ import com.example.grassroots.fragment.OfficeExpFragment;
 import com.example.grassroots.fragment.OverviewFragment;
 import com.example.grassroots.fragment.SpinnerOEFragment;
 import com.example.grassroots.fragment.VotePositionFragment;
+import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -25,6 +27,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
+
         Fragment tabFragment = null;
         switch (position) {
             case 0:

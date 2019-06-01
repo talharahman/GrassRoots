@@ -61,7 +61,6 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
             congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
             Log.d(TAG, "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
             Collections.sort(congressMembersList);
-
             recyclerView.setAdapter(congressAdapter);
             congressAdapter.notifyDataSetChanged();
         });

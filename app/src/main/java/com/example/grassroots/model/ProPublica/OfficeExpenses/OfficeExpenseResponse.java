@@ -5,42 +5,42 @@ import java.util.List;
 public class OfficeExpenseResponse {
 
     private String status;
-    private String memberId;
+    private String member_id;
     private String name;
-    private Integer year;
-    private Integer quarter;
-    private Integer numResults;
-    private List<OfficeExpResult> off_results;
+    private int year;
+    private int quarter;
+    private int num_results;
+    private List<OfficeExpResult> results;
 
-    public OfficeExpenseResponse(List<OfficeExpResult> off_results){
-        this.off_results = off_results;
-    }
+//    public OfficeExpenseResponse(List<OfficeExpResult> results){
+//        this.results = results;
+//    }
 
     public String getStatus() {
         return status;
     }
 
-    public String getMemberId() {
-        return memberId;
+    public String getMember_id() {
+        return member_id;
     }
 
     public String getName() {
         return name;
     }
 
-    public Integer getYear() {
+    public int getYear() {
         return year;
     }
 
-    public Integer getQuarter() {
+    public int getQuarter() {
         return quarter;
     }
 
-    public Integer getNumResults() {
-        return numResults;
+    public int getNum_results() {
+        return num_results;
     }
 
-    public List<OfficeExpResult> getOff_results() {
-        return off_results;
+    public List<OfficeExpResult> getResults() {
+        return results;
     }
 }

@@ -12,10 +12,12 @@ import android.util.Log;
 import com.example.grassroots.fragment.OfficeExpFragment;
 import com.example.grassroots.fragment.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 
 public class CongressTabActivity extends AppCompatActivity  {
 
     private CongressOverviewVM congressOverviewVM;
+    private CongressExpenseVM congressExpenseVM;
 
 
     @Override
@@ -34,6 +36,13 @@ public class CongressTabActivity extends AppCompatActivity  {
         CongressMember congressMember = (CongressMember) getIntent().getSerializableExtra("CONGRESSMEMBER");
         congressOverviewVM.setCongressMember(congressMember);
         Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
+
+//        congressExpenseVM = ViewModelProviders.of(this).get(CongressExpenseVM.class);
+//        OfficeExpResult expResult = (OfficeExpResult) getIntent().getSerializableExtra("OFFICERESULT");
+//        congressExpenseVM.setOfficeExpResult(expResult);
+//        Log.d("SECONDVMPASSINGTHROUGH", "onCreate: " + expResult.getCategory());
+
+
     }
 
 //    @Override

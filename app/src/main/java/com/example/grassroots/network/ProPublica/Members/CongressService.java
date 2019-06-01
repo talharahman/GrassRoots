@@ -24,12 +24,12 @@ public interface CongressService {
             @Path("member-id") String memberId
     );
 
-    @GET("{member-id}/office_expenses/{year}/{quarter}.json")
+    @GET("members/{member-id}/office_expenses/{year}/{quarter}.json")
     Call<OfficeExpenseResponse> getOfficeExpenses(
-            @Header("X-API-Key") String ApiKey,
-            @Path("member-id") String memberId,
-            @Path("year") String year,
-            @Path("quarter") String quarter
+            @Header("X-Api-Key") String apiKey,
+            @Path("member-id") String member_id,
+            @Path("year") int year,
+            @Path("quarter") int quarter
     );
 
 }

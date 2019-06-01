@@ -128,9 +128,9 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                WORKING BUT SEE TWO LAYOUTS
-                Log.d("FINDFINDFIND", "onClick: before inserting frag");
-                insertOENestedFragment();
-                Log.d("FINDFINDFIND", "onClick: frag inserted");
+//                Log.d("FINDFINDFIND", "onClick: before inserting frag");
+//                insertOENestedFragment();
+//                Log.d("FINDFINDFIND", "onClick: frag inserted");
 
                 //PROBLEMATIC:"java.lang.NullPointerException: Attempt to invoke virtual method 'void com.example.grassroots.recyclerview.CongressAdapter.setData(java.util.List)' on a null object reference
                 //        at com.example.grassroots.ui.CongressActivity.onQueryTextChange(CongressActivity.java:89)"
@@ -145,10 +145,10 @@ public class SpinnerOEFragment extends Fragment {
         });
     }
 
-    private void insertOENestedFragment() {
-        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
+//    private void insertOENestedFragment() {
+//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
+//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+//        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
 
         //hide but hides both
 //        transaction.hide(this).replace(R.id.container_spinner, officeExpFragment).commit();
@@ -167,7 +167,6 @@ public class SpinnerOEFragment extends Fragment {
 //        officeExpUIListener = null;
 //    }
     }
-}
 
 //        ExpenseRepository.getInstance()
 //                .create(CongressService.class)
@@ -175,7 +174,7 @@ public class SpinnerOEFragment extends Fragment {
 //                .enqueue(new Callback<OfficeExpenseResponse>() {
 //                    @Override
 //                    public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> response) {
-//                        Log.d("FINDFINDFIND", "onResponse: " + response.body().getOff_results().get(0).getAmount());
+//                        Log.d("FINDFINDFIND", "onResponse: " + response.body().getResults().get(0).getAmount());
 //                    }
 //
 //                    @Override

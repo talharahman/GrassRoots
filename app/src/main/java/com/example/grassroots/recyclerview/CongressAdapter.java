@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.grassroots.CongressOverviewVM;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 
 import java.util.List;
 

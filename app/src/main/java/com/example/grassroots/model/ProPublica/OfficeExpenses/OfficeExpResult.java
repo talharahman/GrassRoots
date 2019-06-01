@@ -1,17 +1,20 @@
 package com.example.grassroots.model.ProPublica.OfficeExpenses;
 
-public class OfficeExpResult {
+import java.io.Serializable;
+
+public class OfficeExpResult implements Serializable {
 
     private String category;
     private double amount;
-    private double yearToDate;
-    private double changeFromPreviousQuarter;
+    private double year_to_date;
+    private double change_from_previous_quarter;
 
 
-    public OfficeExpResult(double amount, double yearToDate, double changeFromPreviousQuarter){
+    public OfficeExpResult(String category, double amount, double year_to_date, double change_from_previous_quarter){
+        this.category = category;
         this.amount = amount;
-        this.yearToDate = yearToDate;
-        this.changeFromPreviousQuarter = changeFromPreviousQuarter;
+        this.year_to_date = year_to_date;
+        this.change_from_previous_quarter = change_from_previous_quarter;
     }
 
     public String getCategory() {
@@ -22,27 +25,27 @@ public class OfficeExpResult {
         this.category = category;
     }
 
-    public Double getAmount() {
+    public double getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(double amount) {
         this.amount = amount;
     }
 
-    public Double getYearToDate() {
-        return yearToDate;
+    public double getYear_to_date() {
+        return year_to_date;
     }
 
-    public void setYearToDate(Double yearToDate) {
-        this.yearToDate = yearToDate;
+    public void setYear_to_date(double year_to_date) {
+        this.year_to_date = year_to_date;
     }
 
-    public double getChangeFromPreviousQuarter() {
-        return changeFromPreviousQuarter;
+    public double getChange_from_previous_quarter() {
+        return change_from_previous_quarter;
     }
 
-    public void setChangeFromPreviousQuarter(double changeFromPreviousQuarter) {
-        this.changeFromPreviousQuarter = changeFromPreviousQuarter;
+    public void setChange_from_previous_quarter(double change_from_previous_quarter) {
+        this.change_from_previous_quarter = change_from_previous_quarter;
     }
 }

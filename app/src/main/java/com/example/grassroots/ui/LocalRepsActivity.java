@@ -12,6 +12,8 @@ import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.LocalRepsUIListener;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
 import com.example.grassroots.recyclerview.CivicInfoAdapter;
 
@@ -37,10 +39,6 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void initialize() {
-//        Toolbar toolbar = findViewById(R.id.toolbar_local_reps);
-//        setSupportActionBar(toolbar);
-//        getSupportActionBar().setDisplayShowTitleEnabled(false);
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_contact);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -48,10 +46,13 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
         recyclerView = findViewById(R.id.local_reps_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         civicInfoAdapter = new CivicInfoAdapter();
-        presenter = new CivicInfoPresenter(civicInfoModel -> {
-            civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
-            recyclerView.setAdapter(civicInfoAdapter);
-            userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+        presenter = new CivicInfoPresenter(new LocalRepsUIListener() {
+            @Override
+            public void updateUI(CivicInfoModel civicInfoModel) {
+                civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
+                recyclerView.setAdapter(civicInfoAdapter);
+                userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+            }
         });
     }
 

@@ -1,7 +1,9 @@
 package com.example.grassroots.fragment;
 
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
+
 public interface OfficeExpUIListener {
 
-    void toOfficeExpenseFragment(String member_id, String year, String quarter);
+    void updateOfficeExpUI(OfficeExpenseResponse officeExpenseResponse);
 
 }

@@ -1,5 +1,6 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
+import android.content.Intent;
 import android.util.Log;
 
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
@@ -28,26 +29,33 @@ public class ExpenseRepository {
         return instance;
     }
 
-//    public void fetchOfficeExpenses(String apiKey, String member_id, String year, String quarter, final OfficeExpenseListener officeExpenseListener){
-//        getInstance()
-//                .create(CongressService.class)
-//                .getOfficeExpenses(apiKey, member_id, year, quarter)
-//                .enqueue(new Callback<OfficeExpenseResponse>() {
-//                    @Override
-//                    public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> officeResponse) {
-//                        OfficeExpenseResponse officeExpenseResponse = officeResponse.body();
-//                        if(officeExpenseResponse != null){
-//                            Log.d(MainActivity.TAG, "onResponse: " + officeExpenseResponse.getStatus());
-//                            officeExpenseListener.successfulCall(officeExpenseResponse);
-//                        }
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<OfficeExpenseResponse> call, Throwable t) {
-//                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
+    public void fetchOfficeExpenses(String apiKey, final String member_id, int year, int quarter, final OfficeExpenseListener officeExpenseListener){
+        getInstance()
+                .create(CongressService.class)
+                .getOfficeExpenses(apiKey, member_id, year, quarter)
+                .enqueue(new Callback<OfficeExpenseResponse>() {
+                    @Override
+                    public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> response) {
+                        OfficeExpenseResponse officeExpenseResponse = response.body();
+
+                        Log.d("findme", "onResponse: " +response.raw());
+                        Log.d("findme", "onResponse: " +response.message());
+                        Log.d("findme", "onResponse: " +response.errorBody());
+                        Log.d("findme", "onResponse: " +response.headers());
+                        Log.d("findme", "onResponse: " +response.isSuccessful());
+                        if(officeExpenseResponse != null){
+                         //   Log.d(MainActivity.TAG, "onResponse: " + officeExpenseResponse.getResults().get(0).getAmount());
+                            Log.d(MainActivity.TAG, "onResponse " + response.raw());
+                            officeExpenseListener.successfulCall(officeExpenseResponse);
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(Call<OfficeExpenseResponse> call, Throwable t) {
+                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
 //                        officeExpenseListener.failedCall();
-//                        //TO DO
-//                    }
-//                });
-//    }
+                        //TO DO
+                    }
+                });
+    }
 }

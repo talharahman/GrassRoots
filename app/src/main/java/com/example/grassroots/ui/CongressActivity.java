@@ -41,8 +41,6 @@ public class CongressActivity extends AppCompatActivity
     }
 
     private void initialize() {
-//        Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
-//        setSupportActionBar(toolbar);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_search);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -53,8 +51,8 @@ public class CongressActivity extends AppCompatActivity
         recyclerView = findViewById(R.id.rv_congress);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-        android.support.v7.widget.SearchView searchView = findViewById(R.id.sv_congress);
-        searchView.setOnQueryTextListener(this);
+        SearchView searchView = findViewById(R.id.sv_congress);
+//        searchView.setOnQueryTextListener(this);
 
         networkCall();
     }
@@ -63,7 +61,7 @@ public class CongressActivity extends AppCompatActivity
         CongressPresenter congressPresenter = new CongressPresenter(congressResponse -> {
             congressAdapter = new CongressAdapter(congressMembersList);
             congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-            Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+          //  Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
             Collections.sort(congressMembersList);
 
             recyclerView.setAdapter(congressAdapter);

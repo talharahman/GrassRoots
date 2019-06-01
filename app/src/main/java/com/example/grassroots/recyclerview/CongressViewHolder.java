@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.grassroots.CongressTabActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 
 class CongressViewHolder extends RecyclerView.ViewHolder {
 
@@ -28,6 +29,8 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
     }
 
     void onBind(CongressMember congressMember) {
+
+//        , OfficeExpResult officeExpResult
         txtv_name.setText(String.format("%s %s", congressMember.getFirst_name(), congressMember.getLast_name()));
         txtv_state.setText(congressMember.getState());
         txtv_party_title.setText(congressMember.getTitle());
@@ -45,6 +48,7 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
             public void onClick(View v) {
                 Intent tabIntent = new Intent(v.getContext(), CongressTabActivity.class);
                 tabIntent.putExtra("CONGRESSMEMBER", congressMember);
+//                tabIntent.putExtra("OFFICERESULT", officeExpResult);
                 v.getContext().startActivity(tabIntent);
             }
         });
