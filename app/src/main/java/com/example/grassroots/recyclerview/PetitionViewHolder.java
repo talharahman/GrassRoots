@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 
@@ -37,14 +36,14 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBind(Petition currentPetition, PetitionsFeedInterface listener) {
-        petitionNameTextView.setText(currentPetition.getmPetitionName());
-        pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
-        petitionSignatureTextView.setText(currentPetition.getmPetitionSignature() + " signed of " + currentPetition.getmPetitionSignatureGoal()+" goal");
-        petitionProgressBarSignatures.setMax(currentPetition.getmPetitionSignatureGoal());
-        petitionProgressBarSignatures.setProgress(currentPetition.getmPetitionSignature(),true);
+        petitionNameTextView.setText(currentPetition.getPetitionName());
+        pettitonDescrptionTextView.setText(currentPetition.getPetitionDescription());
+        petitionSignatureTextView.setText(currentPetition.getPetitionSignature() + " signed of " + currentPetition.getPetitionSignatureGoal()+" goal");
+        petitionProgressBarSignatures.setMax(currentPetition.getPetitionSignatureGoal());
+        petitionProgressBarSignatures.setProgress(currentPetition.getPetitionSignature(),true);
 
         Glide.with(getApplicationContext())
-                .load(currentPetition.getmPetitionImageURL())
+                .load(currentPetition.getPetitionImageURL())
                 .fitCenter()
                 .centerCrop()
                 .placeholder(R.drawable.petition_placeholder)

@@ -16,7 +16,7 @@
             android:layout_weight="1"
             app:contentScrim="@color/grey_scale"
             app:expandedTitleGravity="top"
-            android:background="@color/colorPrimary"
+            android:background="@drawable/nyc"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
             <android.support.v7.widget.Toolbar
@@ -45,6 +45,7 @@
                 android:text="My District"
                 android:textSize="32sp"
                 android:textStyle="bold"
+                android:textColor="@color/neutral_white"
                 app:fontFamily="@font/montserrat" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -67,6 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 

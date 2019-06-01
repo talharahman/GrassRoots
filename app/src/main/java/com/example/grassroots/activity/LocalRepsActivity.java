@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 import android.widget.TextView;
@@ -99,6 +100,7 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                         "Invalid location", Toast.LENGTH_SHORT).show();
             }
             Address searchAddress = searchAddresses.get(0);
+
             String newZipCode = searchAddress.getPostalCode();
             makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), newZipCode);
 

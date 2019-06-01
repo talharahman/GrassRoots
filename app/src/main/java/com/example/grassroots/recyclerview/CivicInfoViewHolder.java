@@ -1,5 +1,6 @@
 package com.example.grassroots.recyclerview;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.graphics.Color;
 import android.net.Uri;
@@ -53,7 +54,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     void onBind(ElectedRepresentatives electedRepresentatives, String position) {
         repName.setText(electedRepresentatives.getName());
-    //    showText.setText(electedRepresentatives.getParty());
         repPosition.setText(position);
 
         Glide.with(itemView.getContext())
@@ -62,15 +62,17 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.image_na)
                 .into(repImage);
 
-        if (electedRepresentatives.getParty().startsWith("D")) {
-            repCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
-            socialsCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
-        } else if (electedRepresentatives.getParty().startsWith("R")) {
-            repCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
-            socialsCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
-        } else {
-            repCardview.setCardBackgroundColor(Color.WHITE);
-            socialsCardview.setCardBackgroundColor(Color.WHITE);
+        if (electedRepresentatives.getParty() != null) {
+            if (electedRepresentatives.getParty().startsWith("D")) {
+                repCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
+                socialsCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
+            } else if (electedRepresentatives.getParty().startsWith("R")) {
+                repCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
+                socialsCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
+            } else {
+                repCardview.setCardBackgroundColor(Color.WHITE);
+                socialsCardview.setCardBackgroundColor(Color.WHITE);
+            }
         }
 
         urlView(electedRepresentatives);
@@ -87,9 +89,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             socialsCardview.setVisibility(View.GONE);
             showText.setText("show");
         }
-
-      //  if (expanded) socialsCardview.setVisibility(View.VISIBLE);
-      //  else socialsCardview.setVisibility(View.GONE);
     }
 
     private void urlView(ElectedRepresentatives representative) {
@@ -117,17 +116,21 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void emailView(ElectedRepresentatives representative) {
-        // TODO fix email button not showing up issue
         repEmailIcon.setImageResource(R.drawable.email);
-        if (representative.getEmails() == null) {
-          //  repEmailIcon.setVisibility(View.GONE);
-            repEmailIcon.setImageResource(R.drawable.email);
-        } else {
-            repEmailIcon.setOnClickListener(v -> {
-                Intent emailIntent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
-                v.getContext().startActivity(emailIntent);
-            });
-        }
+        repEmailIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                alertDialog.setTitle(representative.getName());
+                alertDialog.setIcon(R.drawable.email);
+                if (representative.getEmails() == null) {
+                    alertDialog.setMessage("No e-mail available for this representative");
+                } else {
+                    alertDialog.setMessage(representative.getEmails().get(0));
+                }
+                alertDialog.show();
+            }
+        });
     }
 
     private void facebookView(ElectedRepresentatives representative) {

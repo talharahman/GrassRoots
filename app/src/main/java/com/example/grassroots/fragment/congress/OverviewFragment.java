@@ -12,7 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.grassroots.utils.CongressOverviewVM;
+import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.R;
 
 public class OverviewFragment extends Fragment {

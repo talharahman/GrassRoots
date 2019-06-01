@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
+import com.example.grassroots.utils.UserPagerAdapter;
 
 public class UserViewActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -33,7 +34,7 @@ public class UserViewActivity extends AppCompatActivity implements BottomNavigat
         });
 
         ViewPager viewPager = findViewById(R.id.user_activity_container);
-
+        viewPager.setAdapter(new UserPagerAdapter(getSupportFragmentManager()));
         TabLayout tabLayout = findViewById(R.id.tabs_user);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));

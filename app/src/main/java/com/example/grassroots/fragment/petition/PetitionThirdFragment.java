@@ -83,7 +83,7 @@ public class PetitionThirdFragment extends Fragment {
         saveReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                petitionViewModel.setmPetitionImage(mImageUri);
+                petitionViewModel.setPetitionImage(mImageUri);
                 mListener.moveToPetitionPreview(new PetitionReviewFragment());
             }
         });

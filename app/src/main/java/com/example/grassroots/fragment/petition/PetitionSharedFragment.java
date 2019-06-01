@@ -133,8 +133,8 @@ public class PetitionSharedFragment extends Fragment {
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_SEND);
                 intent.putExtra(Intent.EXTRA_SUBJECT,"Join us in this petition" );
-                intent.putExtra(Intent.EXTRA_TEXT, petitionViewModel.getmPetitionName()+" \n "+petitionViewModel.getmPetitionDescription());
-                intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
+                intent.putExtra(Intent.EXTRA_TEXT, petitionViewModel.getPetitionName()+" \n "+petitionViewModel.getPetitionDescription());
+                intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getPetitionImage());
                 intent.setType("message/rfc822");
                 startActivity(Intent.createChooser(intent, "Choose an email client"));
             }
@@ -182,8 +182,8 @@ public class PetitionSharedFragment extends Fragment {
                 if (shareIntent != null) {
                     shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                     shareIntent.setType("image/*");
-                    shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us in this petition at \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getPetitionImage());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getPetitionName()+". \n "+petitionViewModel.getPetitionDescription()+"\n join us in this petition at \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
                     shareIntent.setPackage("com.twitter.android");
                     startActivity(shareIntent);
                 }
@@ -208,9 +208,9 @@ public class PetitionSharedFragment extends Fragment {
                 if (shareIntent != null) {
                     shareIntent = new Intent(android.content.Intent.ACTION_SEND);
                     shareIntent.setType("image/*");
-                    shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-                    shareIntent.putExtra(Intent.EXTRA_HTML_TEXT, petitionViewModel.getmPetitionDescription());
-                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getPetitionImage());
+                    shareIntent.putExtra(Intent.EXTRA_HTML_TEXT, petitionViewModel.getPetitionDescription());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT,petitionViewModel.getPetitionName()+". \n "+petitionViewModel.getPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global");
                     shareIntent.setPackage("com.instagram.android");
                     startActivity(shareIntent);
                 }
@@ -234,7 +234,7 @@ public class PetitionSharedFragment extends Fragment {
                 Bitmap image= BitmapFactory.decodeResource(getResources(),R.drawable.ic_grassroots_color);
                 SharePhoto photo = new SharePhoto.Builder()
                         .setBitmap(image)
-                        .setCaption(petitionViewModel.getmPetitionName()+". \n "+petitionViewModel.getmPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global")
+                        .setCaption(petitionViewModel.getPetitionName()+". \n "+petitionViewModel.getPetitionDescription()+"\n join us \n https://play.google.com/store/apps/details?id=com.nexon.durango.global")
                         .setCaption("")
                         .build();
 

@@ -1,4 +1,4 @@
-package com.example.grassroots.fragment.petition;
+package com.example.grassroots.fragment.user;
 
 import android.content.Context;
 import android.os.Bundle;

@@ -10,7 +10,7 @@ import android.view.MenuItem;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.fragment.petition.MainFeed;
+import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 
 public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {

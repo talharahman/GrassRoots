@@ -71,7 +71,7 @@ public class PetitionSecondFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mListener.moveToPetitionThirdPart(new PetitionThirdFragment());
-                petitionViewModel.setmPetitionDescription(editTextPetitionProblem.getText().toString().trim());
+                petitionViewModel.setPetitionDescription(editTextPetitionProblem.getText().toString().trim());
             }
         });
     }

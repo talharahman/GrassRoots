@@ -1,4 +1,4 @@
-package com.example.grassroots.utils;
+package com.example.grassroots.model.ProPublica.Members;
 
 import android.arch.lifecycle.ViewModel;
 

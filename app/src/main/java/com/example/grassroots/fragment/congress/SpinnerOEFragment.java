@@ -17,7 +17,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.grassroots.utils.CongressOverviewVM;
+import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.R;
 import com.example.grassroots.utils.OfficeExpFragmentListener;
 

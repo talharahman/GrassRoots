@@ -34,13 +34,13 @@
             android:background="@color/blue_tint">
 
             <android.support.design.widget.TabItem
-                android:id="@+id/my_saved"
+                android:id="@+id/user_actions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Saved" />
 
             <android.support.design.widget.TabItem
-                android:id="@+id/my_activity"
+                android:id="@+id/user_feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Activity" />
@@ -62,6 +62,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
+        app:labelVisibilityMode="selected"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 

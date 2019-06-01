@@ -14,7 +14,7 @@
         android:id="@+id/bot_home"
         android:title=""
         android:checkable="false"
-        android:checked="false"
+        android:checked="true"
         android:enabled="false"
         app:showAsAction="always" />
 

@@ -12,13 +12,13 @@ import com.example.grassroots.fragment.congress.OfficeExpFragment;
 import com.example.grassroots.fragment.congress.OverviewFragment;
 import com.example.grassroots.fragment.congress.VotePositionFragment;
 
-public class SectionsPagerAdapter extends FragmentPagerAdapter {
+public class CongressPagerAdapter extends FragmentPagerAdapter {
 
     @StringRes
     private static final int[] TAB_TITLES = new int[]{R.string.frag_overview, R.string.frag_vote_positions, R.string.frag_office_expense};
     private final Context mContext;
 
-    public SectionsPagerAdapter(Context context, FragmentManager fm) {
+    public CongressPagerAdapter(Context context, FragmentManager fm) {
         super(fm);
         mContext = context;
     }

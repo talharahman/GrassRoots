@@ -14,9 +14,9 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.grassroots.R;
-import com.example.grassroots.utils.SectionsPagerAdapter;
+import com.example.grassroots.utils.CongressPagerAdapter;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
-import com.example.grassroots.utils.CongressOverviewVM;
+import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 
 public class CongressTabActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -30,9 +30,9 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
     }
 
     private void initialize() {
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        CongressPagerAdapter congressPagerAdapter = new CongressPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
-        viewPager.setAdapter(sectionsPagerAdapter);
+        viewPager.setAdapter(congressPagerAdapter);
 
         TabLayout tabs = findViewById(R.id.tabs);
         tabs.setupWithViewPager(viewPager);
