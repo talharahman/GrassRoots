@@ -22,6 +22,7 @@ import com.example.grassroots.R;
 
 public class SpinnerOEFragment extends Fragment {
 
+    private SpinnerOEFragment spinnerOEFragment;
 
     private CongressOverviewVM congressOverviewVM;
     public static final String MEMBER_KEY = "Member Id";
@@ -128,26 +129,23 @@ public class SpinnerOEFragment extends Fragment {
         btn_exp_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                WORKING BUT SEE TWO LAYOUTS
                 Log.d("FINDFINDFIND", "onClick: before inserting frag");
-//                if (spinnerUIListener != null) {
-//                    spinnerUIListener.toOfficeExpFragment(member_id, year, quarter);
-//                }
-                if(short_title.equals("Rep.")){
+
+                if(btn_exp_submit.isPressed() && short_title.equals("Rep.")){
                     insertOENestedFragment();
-                } else {
+                    btn_exp_submit.setVisibility(View.INVISIBLE);
+                } else if(btn_exp_submit.isPressed() && short_title.equals("Sen.")){
                     insertCalltoActionFragment();
+                    btn_exp_submit.setVisibility(View.INVISIBLE);
                 }
+
+//                if(short_title.equals("Rep.")){
+//                    insertOENestedFragment();
+//                } else {
+//                    insertCalltoActionFragment();
+//                }
 //                Log.d("FINDFINDFIND", "onClick: frag inserted");
 
-                //PROBLEMATIC:"java.lang.NullPointerException: Attempt to invoke virtual method 'void com.example.grassroots.recyclerview.CongressAdapter.setData(java.util.List)' on a null object reference
-                //        at com.example.grassroots.ui.CongressActivity.onQueryTextChange(CongressActivity.java:89)"
-//                if (officeExpUIListener != null) {
-//                    officeExpUIListener.toOfficeExpenseFragment(member_id, year, quarter);
-//                    Log.d("FINDFINDFIND", "onClick: CLICKED");
-//                }
-                //NOTWORKING
-//                officeExpUIListener.toOfficeExpenseFragment(member_id, year, quarter);
                 Log.d("FINDFINDFIND", "onClick: " + member_id + " " + year + " " + quarter);
             }
         });
@@ -156,29 +154,14 @@ public class SpinnerOEFragment extends Fragment {
     private void insertCalltoActionFragment() {
         TransparencyFragment transparencyFragment = new TransparencyFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_spinner, transparencyFragment).commit();
+        transaction.replace(R.id.container_spinner, transparencyFragment).addToBackStack(null).commit();
     }
 
     private void insertOENestedFragment() {
         OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
+        transaction.replace(R.id.container_spinner, officeExpFragment).addToBackStack(null).commit();
 
-        //hide but hides both
-//        transaction.hide(this).replace(R.id.container_spinner, officeExpFragment).commit();
-//    }
 
-//    @Override
-//    public void toOfficeExpFragment(String member_id, String year, String quarter) {
-//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
-//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//        transaction.replace(R.id.sp, officeExpFragment).commit();
-//    }
-
-//    @Override
-//    public void onDestroy() {
-//        super.onDestroy();
-//        spinnerUIListener = null;
-//    }
     }
 }
