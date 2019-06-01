@@ -44,8 +44,6 @@ public class ExpenseRepository {
                         Log.d("findme", "onResponse: " +response.headers());
                         Log.d("findme", "onResponse: " +response.isSuccessful());
                         if(officeExpenseResponse != null){
-                         //   Log.d(MainActivity.TAG, "onResponse: " + officeExpenseResponse.getResults().get(0).getAmount());
-                            Log.d(MainActivity.TAG, "onResponse " + response.raw());
                             officeExpenseListener.successfulCall(officeExpenseResponse);
                         }
                     }

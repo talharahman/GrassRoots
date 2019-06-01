@@ -2,7 +2,6 @@ package com.example.grassroots.fragment;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -18,20 +17,11 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.grassroots.CongressExpenseVM;
 import com.example.grassroots.CongressOverviewVM;
 import com.example.grassroots.R;
-import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
-import com.example.grassroots.network.ProPublica.Members.CongressService;
-import com.example.grassroots.network.ProPublica.OfficeExpense.ExpenseRepository;
-
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 
 public class SpinnerOEFragment extends Fragment {
 
-    // implements OfficeExpUIListener
 
     private CongressOverviewVM congressOverviewVM;
     public static final String MEMBER_KEY = "Member Id";
@@ -42,28 +32,39 @@ public class SpinnerOEFragment extends Fragment {
     private String year;
     private String quarter;
 
-    private OfficeExpUIListener officeExpUIListener;
+    private String short_title;
+
+//    private SpinnerUIListener spinnerUIListener;
 
     private Spinner yr_spinner;
     private Spinner qt_spinner;
 
     public SpinnerOEFragment() {
     }
+//
+//    public static SpinnerOEFragment newInstance(String member_id, String year, String quarter){
+//        SpinnerOEFragment spinnerOEFragment = new SpinnerOEFragment();
+//        Bundle spinnerArgs = new Bundle();
+//        spinnerArgs.putString(MEMBER_KEY, member_id);
+//        spinnerArgs.putString(YEAR_KEY, year);
+//        spinnerArgs.putString(QUARTER_KEY, quarter);
+//        spinnerOEFragment.setArguments(spinnerArgs);
+//        return spinnerOEFragment;
+//    }
 
-
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-
-    }
 
 //    @Override
 //    public void onAttach(Context context) {
 //        super.onAttach(context);
-//        if (context instanceof OfficeExpUIListener) {
-//            officeExpUIListener = (OfficeExpUIListener) context;
+//        if (context instanceof SpinnerUIListener) {
+//            spinnerUIListener = (SpinnerUIListener) context;
 //        }
 //    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -120,7 +121,7 @@ public class SpinnerOEFragment extends Fragment {
 
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
-
+        short_title = congressOverviewVM.getCongressMember().getShort_title();
 
         Button btn_exp_submit = view.findViewById(R.id.btn_exp_submit);
 
@@ -128,8 +129,15 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onClick(View v) {
 //                WORKING BUT SEE TWO LAYOUTS
-//                Log.d("FINDFINDFIND", "onClick: before inserting frag");
-//                insertOENestedFragment();
+                Log.d("FINDFINDFIND", "onClick: before inserting frag");
+//                if (spinnerUIListener != null) {
+//                    spinnerUIListener.toOfficeExpFragment(member_id, year, quarter);
+//                }
+                if(short_title.equals("Rep.")){
+                    insertOENestedFragment();
+                } else {
+                    insertCalltoActionFragment();
+                }
 //                Log.d("FINDFINDFIND", "onClick: frag inserted");
 
                 //PROBLEMATIC:"java.lang.NullPointerException: Attempt to invoke virtual method 'void com.example.grassroots.recyclerview.CongressAdapter.setData(java.util.List)' on a null object reference
@@ -140,45 +148,37 @@ public class SpinnerOEFragment extends Fragment {
 //                }
                 //NOTWORKING
 //                officeExpUIListener.toOfficeExpenseFragment(member_id, year, quarter);
-//                Log.d("FINDFINDFIND", "onClick: " + member_id + " " + year + " " + quarter);
+                Log.d("FINDFINDFIND", "onClick: " + member_id + " " + year + " " + quarter);
             }
         });
     }
 
-//    private void insertOENestedFragment() {
-//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
-//        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
+    private void insertCalltoActionFragment() {
+        TransparencyFragment transparencyFragment = new TransparencyFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_spinner, transparencyFragment).commit();
+    }
+
+    private void insertOENestedFragment() {
+        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
 
         //hide but hides both
 //        transaction.hide(this).replace(R.id.container_spinner, officeExpFragment).commit();
 //    }
 
 //    @Override
-//    public void toOfficeExpenseFragment(String member_id, String year, String quarter) {
-//        OfficeExpFragment officeExpFragment = new OfficeExpFragment();
+//    public void toOfficeExpFragment(String member_id, String year, String quarter) {
+//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
 //        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-//        transaction.replace(R.id.container_spinner, officeExpFragment).commit();
+//        transaction.replace(R.id.sp, officeExpFragment).commit();
 //    }
-//
+
 //    @Override
 //    public void onDestroy() {
 //        super.onDestroy();
-//        officeExpUIListener = null;
+//        spinnerUIListener = null;
 //    }
     }
-
-//        ExpenseRepository.getInstance()
-//                .create(CongressService.class)
-//                .getOfficeExpenses(requireContext().getString(R.string.ProPublica_Congress_API_Key), MEMBER_KEY, YEAR_KEY, QUARTER_KEY)
-//                .enqueue(new Callback<OfficeExpenseResponse>() {
-//                    @Override
-//                    public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> response) {
-//                        Log.d("FINDFINDFIND", "onResponse: " + response.body().getResults().get(0).getAmount());
-//                    }
-//
-//                    @Override
-//                    public void onFailure(Call<OfficeExpenseResponse> call, Throwable t) {
-//
-//                    }
-//                });
+}

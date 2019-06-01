@@ -36,31 +36,11 @@ public class CongressTabActivity extends AppCompatActivity  {
         CongressMember congressMember = (CongressMember) getIntent().getSerializableExtra("CONGRESSMEMBER");
         congressOverviewVM.setCongressMember(congressMember);
         Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
-
+//
 //        congressExpenseVM = ViewModelProviders.of(this).get(CongressExpenseVM.class);
 //        OfficeExpResult expResult = (OfficeExpResult) getIntent().getSerializableExtra("OFFICERESULT");
 //        congressExpenseVM.setOfficeExpResult(expResult);
 //        Log.d("SECONDVMPASSINGTHROUGH", "onCreate: " + expResult.getCategory());
 
-
     }
-
-//    @Override
-//    public void toOfficeExpenseFragment(String member_id, String year, String quarter) {
-//        OfficeExpFragment officeExpFragment = new OfficeExpFragment()
-//                .getParentFragment()
-//                .replace(R.id.container_oe, officeExpFragment)
-//                .addToBackStack(null)
-//                .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_FADE)
-//                .commit();
-//    }
-
-//    @Override
-//    public void updateOfficeExpenseRecords(String member_id, String year, String quarter) {
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id.container_oe, officeExpFragment)
-//                .addToBackStack(null)
-//                .commit();
-//    }
 }

@@ -28,42 +28,42 @@ public class OfficeExpFragment extends Fragment {
 
     private CongressOverviewVM congressOverviewVM;
 
-//    private OfficeExpUIListener officeExpUIListener;
-
     private static final String KEY_MEMBER_ID = "Member ID" ;
     private static final String KEY_YEAR = "Year" ;
     private static final String KEY_QUARTER = "Quarter" ;
 
     private String member_id;
     private String year;
-    private String quarter;
+    private String int_quarter;
 
     public static final String TAG = "HERE";
 
     private ExpenseAdapter expenseAdapter;
     private RecyclerView recyclerView;
 
-//    private List<OfficeExpResult> category_list = new ArrayList<>();
-
     public OfficeExpFragment() {
     }
 
-    public static OfficeExpFragment newInstance(String member_id){
-//        return new OfficeExpFragment();
+    public static OfficeExpFragment newInstance(String member_id, String year, String quarter){
         OfficeExpFragment officeExpFragment = new OfficeExpFragment();
         Bundle officeArgs = new Bundle();
         officeArgs.putString(KEY_MEMBER_ID, member_id);
-//        officeArgs.putString(KEY_YEAR, year);
-//        officeArgs.putString(KEY_QUARTER, quarter);
+        officeArgs.putString(KEY_YEAR, year);
+        officeArgs.putString(KEY_QUARTER, quarter);
         officeExpFragment.setArguments(officeArgs);
         return officeExpFragment;
     }
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        if(getArguments() != null){
+            member_id = getArguments().getString(KEY_MEMBER_ID);
+            year = getArguments().getString(KEY_YEAR);
+            int_quarter = (getArguments().getString(KEY_QUARTER)).substring(0,1);
 
-//    @Override
-//    public void onCreate(@Nullable Bundle savedInstanceState) {
-//        super.onCreate(savedInstanceState);
-//    }
+        }
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -78,14 +78,8 @@ public class OfficeExpFragment extends Fragment {
         recyclerView = view.findViewById(R.id.rv_oe);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
-
-        congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
-        member_id = congressOverviewVM.getCongressMember().getId();
-
-
-//        final Bundle videoArgs = getArguments();
-//        congressExpenseVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressExpenseVM.class);
-
+//        congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
+//        member_id = congressOverviewVM.getCongressMember().getId();
 
         OfficeExpensePresenter expensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
             @Override
@@ -95,8 +89,11 @@ public class OfficeExpFragment extends Fragment {
                 expenseAdapter.notifyDataSetChanged();
             }
         });
-        expensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key), member_id);
-
+        expensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
+                member_id,
+                Integer.parseInt(year),
+                Integer.parseInt(int_quarter));
+        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + year + " " + int_quarter);
 
     }
 }

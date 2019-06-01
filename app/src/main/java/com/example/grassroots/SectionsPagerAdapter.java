@@ -37,7 +37,7 @@ public class SectionsPagerAdapter extends FragmentPagerAdapter {
                 tabFragment = new VotePositionFragment();
                 break;
             case 2:
-                tabFragment = new OfficeExpFragment();
+                tabFragment = new SpinnerOEFragment();
                 break;
         }
         return tabFragment;

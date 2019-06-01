@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.grassroots.CongressOverviewVM;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.Members.CongressResults;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 
 import java.util.List;
@@ -19,11 +20,13 @@ import java.util.List;
 public class CongressAdapter extends RecyclerView.Adapter<CongressViewHolder> {
 
     private List<CongressMember> members;
+
     private Context mContext;
 
 
     public CongressAdapter(List<CongressMember> members){
         this.members = members;
+
     }
 
     @NonNull

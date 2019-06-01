@@ -10,6 +10,8 @@ public class OfficeExpResult implements Serializable {
     private double change_from_previous_quarter;
 
 
+    public OfficeExpResult(){}
+
     public OfficeExpResult(String category, double amount, double year_to_date, double change_from_previous_quarter){
         this.category = category;
         this.amount = amount;

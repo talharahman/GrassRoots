@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 import com.example.grassroots.recyclerview.CongressAdapter;
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
@@ -53,8 +54,6 @@ public class CongressFragment extends Fragment implements SearchView.OnQueryText
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         recyclerView = view.findViewById(R.id.rv_congress);
-        //Toolbar toolbar = view.findViewById(R.id.congress_directory_toolbar);
-        //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
 
         CongressPresenter congressPresenter = new CongressPresenter(congressResponse -> {
             congressAdapter = new CongressAdapter(congressMembersList);

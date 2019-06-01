@@ -30,7 +30,6 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
 
     void onBind(CongressMember congressMember) {
 
-//        , OfficeExpResult officeExpResult
         txtv_name.setText(String.format("%s %s", congressMember.getFirst_name(), congressMember.getLast_name()));
         txtv_state.setText(congressMember.getState());
         txtv_party_title.setText(congressMember.getTitle());
@@ -42,6 +41,8 @@ class CongressViewHolder extends RecyclerView.ViewHolder {
         } else {
             congress_cardview.setCardBackgroundColor(Color.WHITE);
         }
+
+//        OfficeExpResult officeExpResult = new OfficeExpResult();
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
