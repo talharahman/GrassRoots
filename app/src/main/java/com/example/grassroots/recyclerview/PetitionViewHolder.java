@@ -39,7 +39,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     public void onBind(Petition currentPetition, PetitionsFeedInterface listener) {
         petitionNameTextView.setText(currentPetition.getmPetitionName());
         pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
-        petitionSignatureTextView.setText(currentPetition.getmPetitionSignature()+" singed of "+currentPetition.getmPetitionSignatureGoal()+" goal");
+        petitionSignatureTextView.setText(currentPetition.getmPetitionSignature() + " signed of " + currentPetition.getmPetitionSignatureGoal()+" goal");
         petitionProgressBarSignatures.setMax(currentPetition.getmPetitionSignatureGoal());
         petitionProgressBarSignatures.setProgress(currentPetition.getmPetitionSignature(),true);
 
@@ -50,11 +50,6 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.petition_placeholder)
                 .into(petitionImageImageView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition));
-            }
-        });
+        itemView.setOnClickListener(v -> listener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition)));
     }
 }

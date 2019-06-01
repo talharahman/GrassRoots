@@ -8,7 +8,6 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.PetitionFirstFragment;
@@ -45,10 +44,11 @@ public class PetitionHostActivity extends AppCompatActivity implements PetitionF
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
+                Intent view = new Intent(this, UserViewActivity.class);
+                startActivity(view);
                 return true;
             case R.id.bot_nav_contact:
                 Intent contact = new Intent(this, LocalRepsActivity.class);
-                contact.putExtra("ZIP", "11101");
                 startActivity(contact);
                 return true;
             case R.id.bot_nav_search:

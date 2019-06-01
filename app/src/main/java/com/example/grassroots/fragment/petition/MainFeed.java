@@ -28,12 +28,11 @@ public class MainFeed extends Fragment {
 
     private RecyclerView petitionRecyclerView;
     private PetitionsAdapter petitionsAdapter;
-    private DatabaseReference databaseReference;
     private PetitionsFeedInterface listener;
 
     private List<Petition>petitionList = new ArrayList<>();
 
-    public MainFeed() { }
+    public MainFeed () { }
 
     public static MainFeed newInstance() {
         return new MainFeed();
@@ -49,10 +48,10 @@ public class MainFeed extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        petitionRecyclerView=view.findViewById(R.id.petitions_recycler_view);
+        petitionRecyclerView = view.findViewById(R.id.petitions_recycler_view);
         petitionRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
-        databaseReference= FirebaseDatabase.getInstance().getReference("uploads");
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("uploads");
         databaseReference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
@@ -70,8 +69,8 @@ public class MainFeed extends Fragment {
                 Toast.makeText(requireActivity(),""+databaseError.getMessage(),Toast.LENGTH_LONG).show();
             }
         });
-
     }
+
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);

@@ -7,23 +7,17 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.support.v7.widget.SearchView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
-import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
 import com.example.grassroots.recyclerview.CivicInfoAdapter;
-import com.example.grassroots.utils.LocalRepsUIListener;
 
 import java.io.IOException;
 import java.util.List;
@@ -33,7 +27,6 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
 
     private TextView userLocation;
     private RecyclerView recyclerView;
-    private CivicInfoPresenter presenter;
     private CivicInfoAdapter civicInfoAdapter;
 
     @Override
@@ -45,9 +38,6 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void initialize() {
-        Intent intent = getIntent();
-        String zipCode = intent.getStringExtra("ZIP");
-
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_contact);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -65,11 +55,11 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         civicInfoAdapter = new CivicInfoAdapter();
 
-        makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), zipCode);
+        makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), "11101");
     }
 
     private void makeNetworkCall(String key, String zipCode) {
-        presenter = new CivicInfoPresenter(civicInfoModel -> {
+        CivicInfoPresenter presenter = new CivicInfoPresenter(civicInfoModel -> {
             civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
             recyclerView.setAdapter(civicInfoAdapter);
             userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
@@ -86,6 +76,8 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
+                Intent view = new Intent(this, UserViewActivity.class);
+                startActivity(view);
                 return true;
             case R.id.bot_nav_search:
                 Intent search = new Intent(this, CongressActivity.class);

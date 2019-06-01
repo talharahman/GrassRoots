@@ -1,37 +1,43 @@
 package com.example.grassroots.activity;
 
 import android.content.Intent;
-import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v4.app.Fragment;
+import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.fragment.petition.MainFeed;
-import com.example.grassroots.utils.PetitionsFeedInterface;
 
-public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {
+public class UserViewActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main_dashboard);
+        setContentView(R.layout.activity_user_view);
 
         initialize();
-
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.feed_container, new MainFeed())
-                .addToBackStack(null)
-                .commit();
     }
 
     private void initialize() {
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_user);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab_user_view_home);
+        floatingActionButton.setOnClickListener(v -> {
+            Intent home = new Intent(getApplicationContext(), MainDashboard.class);
+            startActivity(home);
+        });
+
+        ViewPager viewPager = findViewById(R.id.user_activity_container);
+
+        TabLayout tabLayout = findViewById(R.id.tabs_user);
+
+        viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+        tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
     }
 
     @Override
@@ -40,10 +46,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
             case R.id.bot_add_action:
                 Intent action = new Intent(this, PetitionHostActivity.class);
                 startActivity(action);
-                return true;
-            case R.id.bot_view_activity:
-                Intent view = new Intent(this, UserViewActivity.class);
-                startActivity(view);
                 return true;
             case R.id.bot_nav_contact:
                 Intent contact = new Intent(this, LocalRepsActivity.class);
@@ -55,14 +57,5 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
                 return true;
         }
         return true;
-    }
-
-    @Override
-    public void moveToDetailsPetition(Fragment fragment) {
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.feed_container, new DetailsPetitonFragment())
-                .addToBackStack(null)
-                .commit();
     }
 }
