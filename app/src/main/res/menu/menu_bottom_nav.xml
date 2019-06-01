@@ -2,22 +2,26 @@
 <menu xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:id="@+id/bot_nav_action"
-        android:title="Petitions"
-        android:icon="@drawable/ic_action"/>
-    <item android:id="@+id/bot_nav_event"
-        android:icon="@drawable/ic_event"
-        android:title="Events"/>
+    <item android:id="@+id/bot_add_action"
+        android:title="Create"
+        android:icon="@drawable/ic_add_circle"/>
+
+    <item android:id="@+id/bot_view_activity"
+        android:icon="@drawable/ic_view"
+        android:title="View"/>
+
     <item
-        android:id="@+id/action_empty"
+        android:id="@+id/bot_home"
         android:title=""
         android:checkable="false"
         android:checked="false"
         android:enabled="false"
         app:showAsAction="always" />
+
     <item android:id="@+id/bot_nav_contact"
         android:icon="@drawable/ic_contact"
         android:title="Contact" />
+
     <item android:id="@+id/bot_nav_search"
         android:icon="@drawable/ic_search"
         android:title="Directory"/>

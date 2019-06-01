@@ -26,4 +26,22 @@
         android:layout_height="match_parent"
         app:layout_behavior="android.support.design.widget.AppBarLayout$ScrollingViewBehavior" />
 
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_nav_view_tab"
+        style="@style/BottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="visible"
+        app:menu="@menu/menu_bottom_nav"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_tab_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_gravity="top|center" />
+    </android.support.design.widget.BottomNavigationView>
+
 </android.support.design.widget.CoordinatorLayout>

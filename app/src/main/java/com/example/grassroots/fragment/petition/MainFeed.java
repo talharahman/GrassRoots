@@ -15,7 +15,6 @@ import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.recyclerview.PetitionsAdapter;
-import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -43,7 +42,7 @@ public class MainFeed extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_petitions_list, container, false);
+        return inflater.inflate(R.layout.main_feed, container, false);
     }
 
     @Override

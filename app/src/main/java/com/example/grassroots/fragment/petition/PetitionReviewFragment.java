@@ -58,38 +58,19 @@ public class PetitionReviewFragment extends Fragment {
     private PetitionFragmentsListener mListener;
     public static Context contextOfApplication;
 
-
-
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
-    public PetitionReviewFragment() {
-        // Required empty public constructor
-    }
+    public PetitionReviewFragment() {}
 
 
-    public static PetitionReviewFragment newInstance(String param1, String param2) {
-        PetitionReviewFragment fragment = new PetitionReviewFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static PetitionReviewFragment newInstance() {
+        return new PetitionReviewFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petition_review, container, false);
     }
 

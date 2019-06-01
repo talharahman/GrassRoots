@@ -131,7 +131,7 @@
             android:layout_height="50dp"
             android:layout_marginRight="8dp"
 
-            android:background="@drawable/instagram_logo" />
+            android:background="@drawable/instagram" />
 
         <Button
             android:id="@+id/twitter_share_button"

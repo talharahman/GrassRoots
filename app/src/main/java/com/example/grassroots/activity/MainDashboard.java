@@ -37,21 +37,20 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.bot_nav_action:
-                Intent petitionIntent = new Intent(this, PetitionHostActivity.class);
-                startActivity(petitionIntent);
+            case R.id.bot_add_action:
+                Intent action = new Intent(this, PetitionHostActivity.class);
+                startActivity(action);
                 return true;
-            case R.id.bot_nav_event:
-                // TODO provision for Events UI
+            case R.id.bot_view_activity:
                 return true;
             case R.id.bot_nav_contact:
-                Intent contactIntent = new Intent(this, LocalRepsActivity.class);
-                contactIntent.putExtra("ZIP", "11101");
-                startActivity(contactIntent);
+                Intent contact = new Intent(this, LocalRepsActivity.class);
+                contact.putExtra("ZIP", "11101");
+                startActivity(contact);
                 return true;
             case R.id.bot_nav_search:
-                Intent searchIntent = new Intent(this, CongressActivity.class);
-                startActivity(searchIntent);
+                Intent search = new Intent(this, CongressActivity.class);
+                startActivity(search);
                 return true;
         }
         return true;

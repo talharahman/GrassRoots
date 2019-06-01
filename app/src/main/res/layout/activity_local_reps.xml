@@ -14,9 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:background="@color/blue_tint"
             app:contentScrim="@color/grey_scale"
             app:expandedTitleGravity="top"
+            android:background="@color/colorPrimary"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
             <android.support.v7.widget.Toolbar
@@ -25,6 +25,16 @@
                 android:layout_height="?attr/actionBarSize"
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+            <android.support.v7.widget.SearchView
+                android:id="@+id/sv_local_reps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:iconifiedByDefault="false"
+                app:queryHint="search reps by address or zip code">
+
+                <requestFocus />
+            </android.support.v7.widget.SearchView>
 
             <TextView
                 android:id="@+id/user_district2"
@@ -50,38 +60,22 @@
 
     </android.support.v7.widget.RecyclerView>
 
-    <android.support.design.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_bar"
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_nav_view_contact"
+        style="@style/BottomNavigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
-        android:clickable="false"
-        app:fabAlignmentMode="center" />
+        android:visibility="visible"
+        app:menu="@menu/menu_bottom_nav"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom">
-
-        <android.support.design.widget.BottomNavigationView
-            android:id="@+id/bottom_nav_view_main"
-            style="@style/BottomNavigation"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:clickable="false"
-            app:menu="@menu/menu_bottom_nav"
-            app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
-            />
-
-    </FrameLayout>
-
-    <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="200dp"
-        android:src="@drawable/ic_home"
-        app:layout_anchor="@+id/frameLayout"
-        app:layout_anchorGravity="bottom|center" />
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_contact_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:layout_gravity="top|center" />
+    </android.support.design.widget.BottomNavigationView>
 
 </android.support.design.widget.CoordinatorLayout>

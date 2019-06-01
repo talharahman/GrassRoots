@@ -13,7 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.VotePositionUIListener;
+import com.example.grassroots.utils.VotePositionUIListener;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPresenter;
 import com.example.grassroots.recyclerview.VotePositionAdapter;

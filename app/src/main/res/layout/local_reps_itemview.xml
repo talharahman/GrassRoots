@@ -22,7 +22,7 @@
             android:layout_gravity="end"
             android:layout_margin="8dp"
             android:text="Donald Trump"
-            android:textAlignment="textEnd"
+            android:textAlignment="center"
             android:textSize="24sp"
             android:textStyle="bold"
             app:fontFamily="@font/concert_one" />
@@ -36,22 +36,22 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:text="Not Available"
-            android:textAlignment="textEnd"
-            android:textSize="16sp"
+            android:textAlignment="center"
+            android:textSize="20sp"
             android:textStyle="italic"
             app:fontFamily="@font/montserrat" />
 
         <TextView
-            android:id="@+id/rep_party"
+            android:id="@+id/contact_show"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="end"
-            android:layout_marginTop="108dp"
+            android:layout_marginTop="120dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="Not Available"
-            android:textSize="16sp"
-            app:fontFamily="@font/montserrat" />
+            android:textSize="12sp"
+            android:text="show"/>
+
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/Rep_image"
@@ -79,7 +79,7 @@
                 android:layout_height="40dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:src="@drawable/url" />
+                android:src="@drawable/web" />
 
             <ImageView
                 android:id="@+id/rep_phone_icon"

@@ -14,17 +14,17 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity android:name=".activity.PetitionHostActivity"
-            android:parentActivityName=".activity.MainDashboard"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <meta-data
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id" />
 
         <activity
             android:name=".activity.LocalRepsActivity"
-            android:parentActivityName=".activity.MainDashboard"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.CongressActivity"
-            android:parentActivityName=".activity.MainActivity"></activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
             android:name=".activity.MainDashboard"
             android:theme="@style/AppTheme.NoActionBar">
@@ -34,7 +34,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".activity.CongressTabActivity"></activity>
+        <activity android:name=".activity.CongressTabActivity"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
 
         <provider
             android:name="com.facebook.FacebookContentProvider"

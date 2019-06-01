@@ -3,7 +3,7 @@ package com.example.grassroots.activity;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
-import android.support.v7.app.ActionBar;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
@@ -21,13 +21,11 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-
 public class CongressActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, SearchView.OnQueryTextListener {
 
     private CongressAdapter congressAdapter;
     private List<CongressMember> congressMembersList = new ArrayList<>();
     private RecyclerView recyclerView;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,19 +36,19 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     }
 
     private void initialize() {
-//        Toolbar toolbar = findViewById(R.id.congress_directory_toolbar);
-//        setSupportActionBar(toolbar);
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_search);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.setHomeAsUpIndicator(R.drawable.ic_info_black_24dp);
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab_search_home);
+        floatingActionButton.setOnClickListener(v -> {
+            Intent home = new Intent(getApplicationContext(), MainDashboard.class);
+            startActivity(home);
+        });
 
         recyclerView = findViewById(R.id.rv_congress);
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
-        android.support.v7.widget.SearchView searchView = findViewById(R.id.sv_congress);
+        SearchView searchView = findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
 
         networkCall();
@@ -66,7 +64,6 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
             recyclerView.setAdapter(congressAdapter);
             congressAdapter.notifyDataSetChanged();
         });
-
         congressPresenter.networkCall(getApplicationContext().getString(R.string.ProPublica_Congress_API_Key));
     }
 
@@ -90,24 +87,18 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
-            case R.id.bot_nav_action:
-                Intent petitionIntent = new Intent(this, PetitionHostActivity.class);
-                startActivity(petitionIntent);
+            case R.id.bot_add_action:
+                Intent action = new Intent(this, PetitionHostActivity.class);
+                startActivity(action);
                 return true;
-            case R.id.bot_nav_event:
-                // TODO provision for Events UI
+            case R.id.bot_view_activity:
                 return true;
             case R.id.bot_nav_contact:
-                Intent contactIntent = new Intent(this, LocalRepsActivity.class);
-                contactIntent.putExtra("ZIP", "11101");
-                startActivity(contactIntent);
-                return true;
-            case R.id.bot_nav_search:
-                Intent searchIntent = new Intent(this, CongressActivity.class);
-                startActivity(searchIntent);
+                Intent contact = new Intent(this, LocalRepsActivity.class);
+                contact.putExtra("ZIP", "11101");
+                startActivity(contact);
                 return true;
         }
         return true;
     }
 }
-

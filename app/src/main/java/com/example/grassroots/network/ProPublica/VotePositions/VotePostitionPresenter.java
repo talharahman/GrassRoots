@@ -1,6 +1,6 @@
 package com.example.grassroots.network.ProPublica.VotePositions;
 
-import com.example.grassroots.fragment.VotePositionUIListener;
+import com.example.grassroots.utils.VotePositionUIListener;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 
 public class VotePostitionPresenter {

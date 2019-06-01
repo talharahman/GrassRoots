@@ -22,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
     private Toolbar toolbar;
     private NavigationView navigationView;
-    private ActionBarDrawerToggle toggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private void initialize() {
         setSupportActionBar(toolbar);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
     }
 
     @Override
@@ -60,22 +57,6 @@ public class MainActivity extends AppCompatActivity {
         toolbar = findViewById(R.id.toolbar_local_reps);
         drawer = findViewById(R.id.drawer_layout);
         navigationView = findViewById(R.id.nav_view);
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-    }
-
-    private void getLocaleDialog() {
-        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
-        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
-        EditText localeText = dialogLayout.findViewById(R.id.localeText);
-        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
-
-        getLocale.setView(dialogLayout);
-        final AlertDialog alertDialog = getLocale.create();
-        submitButton.setOnClickListener(v -> {
-            alertDialog.dismiss();
-            // TODO do networkCall again
-        });
-        alertDialog.show();
     }
 
 }

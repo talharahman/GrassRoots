@@ -1,27 +1,23 @@
 package com.example.grassroots.recyclerview;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
-import android.support.constraint.ConstraintLayout;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
-import com.example.grassroots.model.CivicInfo.SocialChannels;
-
-import java.util.List;
 
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;
-    private TextView repParty;
+    private TextView showText;
     private TextView repPosition;
     private ImageView repImage;
 
@@ -31,7 +27,8 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private ImageView repFacebookIcon;
     private ImageView repTwitterIcon;
 
-    private CardView cardView;
+    private CardView repCardview;
+    private CardView socialsCardview;
 
     CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -40,7 +37,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private void setRepresentativeReferences(View itemview) {
         repName = itemView.findViewById(R.id.rep_name);
-        repParty = itemView.findViewById(R.id.rep_party);
+        showText = itemView.findViewById(R.id.contact_show);
         repPosition = itemView.findViewById(R.id.rep_position);
         repImage = itemView.findViewById(R.id.Rep_image);
 
@@ -50,12 +47,13 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repFacebookIcon = itemview.findViewById(R.id.rep_facebook_icon);
         repTwitterIcon = itemview.findViewById(R.id.rep_twitter_icon);
 
-        cardView = itemview.findViewById(R.id.local_rep_socials);
+        repCardview = itemView.findViewById(R.id.local_rep_card_view);
+        socialsCardview = itemview.findViewById(R.id.local_rep_socials);
     }
 
     void onBind(ElectedRepresentatives electedRepresentatives, String position) {
         repName.setText(electedRepresentatives.getName());
-        repParty.setText(electedRepresentatives.getParty());
+    //    showText.setText(electedRepresentatives.getParty());
         repPosition.setText(position);
 
         Glide.with(itemView.getContext())
@@ -64,6 +62,17 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.image_na)
                 .into(repImage);
 
+        if (electedRepresentatives.getParty().startsWith("D")) {
+            repCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
+            socialsCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
+        } else if (electedRepresentatives.getParty().startsWith("R")) {
+            repCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
+            socialsCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
+        } else {
+            repCardview.setCardBackgroundColor(Color.WHITE);
+            socialsCardview.setCardBackgroundColor(Color.WHITE);
+        }
+
         urlView(electedRepresentatives);
         phoneView(electedRepresentatives);
         emailView(electedRepresentatives);
@@ -71,11 +80,20 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         twitterView(electedRepresentatives);
 
         boolean expanded = electedRepresentatives.isExpanded();
-        cardView.setVisibility(expanded ? View.VISIBLE : View.GONE);
+        if (expanded) {
+            socialsCardview.setVisibility(View.VISIBLE);
+            showText.setText("hide");
+        } else {
+            socialsCardview.setVisibility(View.GONE);
+            showText.setText("show");
+        }
+
+      //  if (expanded) socialsCardview.setVisibility(View.VISIBLE);
+      //  else socialsCardview.setVisibility(View.GONE);
     }
 
     private void urlView(ElectedRepresentatives representative) {
-        repUrlIcon.setImageResource(R.drawable.url);
+        repUrlIcon.setImageResource(R.drawable.web);
         if (representative.getUrls() == null) {
             repUrlIcon.setVisibility(View.GONE);
         } else {
