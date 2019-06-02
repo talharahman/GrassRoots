@@ -9,6 +9,7 @@ android {
         targetSdkVersion 28
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     compileOptions {
@@ -54,7 +55,6 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:17.0.0'
     implementation 'com.google.firebase:firebase-firestore:19.0.1'
     implementation 'com.android.support:multidex:1.0.3'
-
 
 
     implementation 'com.facebook.android:facebook-share:5.0.1'
