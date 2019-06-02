@@ -15,9 +15,9 @@ import java.util.List;
 
 public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHolder> {
 
-    private List<VotePositionResults> vp_category_list;
+    private List<Votes> vp_category_list;
 
-    public VotePositionAdapter(List<VotePositionResults> vp_category_list){
+    public VotePositionAdapter(List<Votes> vp_category_list){
         this.vp_category_list = vp_category_list;
     }
 
