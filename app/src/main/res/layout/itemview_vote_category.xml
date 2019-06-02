@@ -39,7 +39,7 @@
             android:id="@+id/bill_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="TITLE: "
+            android:text="PURPOSE: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -75,7 +75,7 @@
             android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="SUMMARY: "
+            android:text="STATUS: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
