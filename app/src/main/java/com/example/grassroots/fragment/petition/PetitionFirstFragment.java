@@ -73,7 +73,7 @@ public class PetitionFirstFragment extends Fragment {
             public void onClick(View v) {
                 AlertDialog alertDialog = new AlertDialog.Builder(PetitionFirstFragment.this.requireContext()).create();
                 alertDialog.setTitle("Petition Title");
-                alertDialog.setIcon(R.drawable.ic_help);
+                alertDialog.setIcon(R.drawable.ic_info);
                 alertDialog.setMessage(PetitionFirstFragment.this.getResources().getString(R.string.petition_title_info));
                 alertDialog.show();
             }
@@ -86,7 +86,7 @@ public class PetitionFirstFragment extends Fragment {
         targetDialog.setOnClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(requireContext()).create();
             alertDialog.setTitle("Petition Target");
-            alertDialog.setIcon(R.drawable.ic_help);
+            alertDialog.setIcon(R.drawable.ic_info);
             alertDialog.setMessage(getResources().getString(R.string.petition_target_info));
             alertDialog.show();
         });
