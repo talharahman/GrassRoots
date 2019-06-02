@@ -5,45 +5,33 @@ import android.os.Parcel;
 import android.os.Parcelable;
 
 public class Petition implements Parcelable {
+    private String mPetitionName;
+    private String mPetitionSupporter;
+    private String mPetitionDescription;
+    private Uri mPetitionImageUri;
+    private String mPetitionImageURL;
+    private int mPetitionSignature;
+    private int mPetitionSignatureGoal;
 
-    private String petitionName;
-    private String petitionTarget;
-    private String petitionTargetContact;
-    private String petitionDescription;
-    private Uri petitionImageUri;
-    private String petitionImageURL;
-    private int petitionSignature;
-    private int petitionSignatureGoal;
+    public Petition() { }
 
-    public Petition() {}
-
-    public Petition(String petitionName,
-                    String petitionTarget,
-                    String petitionTargetContact,
-                    String petitionDescription,
-                    Uri petitionImageUri,
-                    String petitionImageURL,
-                    int petitionSignature,
-                    int petitionSignatureGoal) {
-        this.petitionName = petitionName;
-        this.petitionTarget = petitionTarget;
-        this.petitionTargetContact = petitionTargetContact;
-        this.petitionDescription = petitionDescription;
-        this.petitionImageUri = petitionImageUri;
-        this.petitionImageURL = petitionImageURL;
-        this.petitionSignature = petitionSignature;
-        this.petitionSignatureGoal = petitionSignatureGoal;
+    public Petition( String petitionName, String petitionSupporter, String petitionDescription, String petitionImage,int petitionSignatureGoal,int petitionSignature) {
+        mPetitionName =petitionName;
+        mPetitionSupporter =petitionSupporter;
+        mPetitionDescription =petitionDescription;
+        mPetitionImageURL=petitionImage;
+        mPetitionSignatureGoal=petitionSignatureGoal;
+        mPetitionSignature=petitionSignature;
     }
 
     protected Petition(Parcel in) {
-        petitionName = in.readString();
-        petitionTarget = in.readString();
-        petitionTargetContact = in.readString();
-        petitionDescription = in.readString();
-        petitionImageUri = in.readParcelable(Uri.class.getClassLoader());
-        petitionImageURL = in.readString();
-        petitionSignature = in.readInt();
-        petitionSignatureGoal = in.readInt();
+        mPetitionName = in.readString();
+        mPetitionSupporter = in.readString();
+        mPetitionDescription = in.readString();
+        mPetitionImageUri = in.readParcelable(Uri.class.getClassLoader());
+        mPetitionImageURL = in.readString();
+        mPetitionSignature = in.readInt();
+        mPetitionSignatureGoal = in.readInt();
     }
 
     public static final Creator<Petition> CREATOR = new Creator<Petition>() {
@@ -58,36 +46,58 @@ public class Petition implements Parcelable {
         }
     };
 
-    public String getPetitionName() {
-        return petitionName;
+    public int getmPetitionSignatureGoal() {
+        return mPetitionSignatureGoal;
     }
 
-    public String getPetitionTarget() {
-        return petitionTarget;
+    public void setmPetitionSignatureGoal(int mPetitionSignatureGoal) {
+        this.mPetitionSignatureGoal = mPetitionSignatureGoal;
     }
 
-    public String getPetitionTargetContact() {
-        return petitionTargetContact;
+    public void setmPetitionSignature(int mPetitionSignature ){
+        this.mPetitionSignature=mPetitionSignature;
+    }
+    public int getmPetitionSignature(){
+        return mPetitionSignature;
+    }
+    public String getmPetitionName() {
+        return mPetitionName;
     }
 
-    public String getPetitionDescription() {
-        return petitionDescription;
+    public void setmPetitionName(String mPetitionName) {
+        this.mPetitionName = mPetitionName;
     }
 
-    public Uri getPetitionImageUri() {
-        return petitionImageUri;
+    public String getmPetitionSupporter() {
+        return mPetitionSupporter;
     }
 
-    public String getPetitionImageURL() {
-        return petitionImageURL;
+    public void setmPetitionSupporter(String mPetitionSupporter) {
+        this.mPetitionSupporter = mPetitionSupporter;
     }
 
-    public int getPetitionSignature() {
-        return petitionSignature;
+    public String getmPetitionDescription() {
+        return mPetitionDescription;
     }
 
-    public int getPetitionSignatureGoal() {
-        return petitionSignatureGoal;
+    public void setmPetitionDescription(String mPetitionDescription) {
+        this.mPetitionDescription = mPetitionDescription;
+    }
+
+    public Uri getmPetitionImageUri() {
+        return mPetitionImageUri;
+    }
+
+    public void setmPetitionImageUri(Uri mPetitionImageUri) {
+        this.mPetitionImageUri = mPetitionImageUri;
+    }
+
+    public String getmPetitionImageURL() {
+        return mPetitionImageURL;
+    }
+
+    public void setmPetitionImageURL(String mPetitionImageURL) {
+        this.mPetitionImageURL = mPetitionImageURL;
     }
 
     @Override
@@ -97,12 +107,13 @@ public class Petition implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(petitionName);
-        dest.writeString(petitionTarget);
-        dest.writeString(petitionDescription);
-        dest.writeParcelable(petitionImageUri, flags);
-        dest.writeString(petitionImageURL);
-        dest.writeInt(petitionSignature);
-        dest.writeInt(petitionSignatureGoal);
+        dest.writeString(mPetitionName);
+        dest.writeString(mPetitionSupporter);
+        dest.writeString(mPetitionDescription);
+        dest.writeParcelable(mPetitionImageUri, flags);
+        dest.writeString(mPetitionImageURL);
+        dest.writeInt(mPetitionSignature);
+        dest.writeInt(mPetitionSignatureGoal);
     }
 }
+

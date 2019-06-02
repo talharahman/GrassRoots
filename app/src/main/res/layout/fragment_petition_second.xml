@@ -9,18 +9,21 @@
 
 
     <TextView
-        android:id="@+id/textview"
-        android:layout_width="317dp"
-        android:layout_height="43dp"
+        android:id="@+id/problem_statement"
+        android:layout_width="268dp"
+        android:layout_height="35dp"
         android:layout_marginStart="38dp"
         android:layout_marginLeft="38dp"
         android:layout_marginTop="88dp"
         android:layout_marginEnd="37dp"
         android:layout_marginRight="37dp"
         android:layout_marginBottom="18dp"
-        android:text="Explain the problem you want to solve"
+        android:text="@string/petition_problem_text"
+        android:textStyle="bold"
+        app:fontFamily="@font/quicksand"
         app:layout_constraintBottom_toTopOf="@+id/textView3"
         app:layout_constraintEnd_toEndOf="@+id/problem_edit_text"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,21 +36,23 @@
         android:layout_marginEnd="21dp"
         android:layout_marginRight="21dp"
         android:layout_marginBottom="8dp"
-        android:text="People are more likely to support your petition if it’s clear why you care. Explain how this change will impact you, your family, or your community."
+        android:text="@string/petition_problem_info"
         app:layout_constraintBottom_toTopOf="@+id/problem_edit_text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview" />
+        app:layout_constraintTop_toBottomOf="@+id/problem_statement" />
 
     <EditText
         android:id="@+id/problem_edit_text"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="357dp"
+        android:layout_height="162dp"
         android:layout_marginStart="28dp"
         android:layout_marginLeft="28dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:layout_marginBottom="42dp"
+        android:background="@color/neutral_white"
         android:text=""
         app:layout_constraintBottom_toTopOf="@+id/save_button2"
         app:layout_constraintEnd_toEndOf="parent"
@@ -58,10 +63,11 @@
         android:id="@+id/save_button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="25dp"
-        android:layout_marginRight="25dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="82dp"
-        android:text="Save and Continue"
+        android:background="@color/colorPrimary"
+        android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/problem_edit_text" />

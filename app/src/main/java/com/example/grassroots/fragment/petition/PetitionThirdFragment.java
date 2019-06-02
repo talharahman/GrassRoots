@@ -30,60 +30,37 @@ public class PetitionThirdFragment extends Fragment {
     private PetitionViewModel petitionViewModel;
     private PetitionFragmentsListener mListener;
 
-
     private Uri mImageUri;
     private Button buttonChooseImage;
     private ImageView mImageView;
     private Button saveReviewButton;
 
-
-
-
-    public PetitionThirdFragment() {
-        // Required empty public constructor
-    }
-
+    public PetitionThirdFragment() {}
 
     public static PetitionThirdFragment newInstance(String param1, String param2) {
-        PetitionThirdFragment fragment = new PetitionThirdFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
+       return new PetitionThirdFragment();
     }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
-    }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petition_third, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        buttonChooseImage=view.findViewById(R.id.button_choose_image);
-        mImageView=view.findViewById(R.id.image_view);
-        saveReviewButton=view.findViewById(R.id.save_button3);
+        buttonChooseImage = view.findViewById(R.id.button_choose_image);
+        mImageView = view.findViewById(R.id.image_view);
+        saveReviewButton = view.findViewById(R.id.save_button3);
 
-        petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
+        petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
 
         saveReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                petitionViewModel.setPetitionImage(mImageUri);
+                petitionViewModel.setmPetitionImage(mImageUri);
                 mListener.moveToPetitionPreview(new PetitionReviewFragment());
             }
         });
@@ -98,6 +75,7 @@ public class PetitionThirdFragment extends Fragment {
 
 
     }
+
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -105,12 +83,12 @@ public class PetitionThirdFragment extends Fragment {
         if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
                 && data != null && data.getData() != null) {
             mImageUri = data.getData();
-           // Picasso.get().load(mImageUri).into(mImageView);
+            // Picasso.get().load(mImageUri).into(mImageView);
             Glide.with(requireContext())
                     .load(mImageUri)
-                    .into(mImageView);        }
+                    .into(mImageView);
+        }
     }
-
 
 
     @Override
