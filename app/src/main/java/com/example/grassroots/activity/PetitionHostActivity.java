@@ -89,7 +89,7 @@ public class PetitionHostActivity extends AppCompatActivity implements PetitionF
                 .commit();
     }
 
-    @Override
+  /*  @Override
     public void moveToSharePetition(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
@@ -97,6 +97,6 @@ public class PetitionHostActivity extends AppCompatActivity implements PetitionF
                 .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
                 .addToBackStack(null)
                 .commit();
-    }
+    }*/
 
 }

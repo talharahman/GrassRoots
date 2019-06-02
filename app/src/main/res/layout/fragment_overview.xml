@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,9 +12,12 @@
         android:layout_height="150dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="36dp"
         app:cardCornerRadius="16dp"
         app:cardMaxElevation="16dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:cardBackgroundColor="@color/purple_drop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -28,7 +30,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:text="Title, Name, Gender"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/quicksand" />
@@ -41,7 +43,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="40dp"
             android:text="Party, State"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="16sp"
             android:textStyle="italic"
             app:fontFamily="@font/open_sans" />
@@ -54,7 +56,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="80dp"
             android:text="@string/ov_fec_id_number"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/quicksand"
@@ -70,7 +72,7 @@
             android:layout_marginTop="112dp"
             android:fontFamily="@font/open_sans"
             android:text="FEC ID NUMBER"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
@@ -86,6 +88,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         app:cardCornerRadius="16dp"
+        app:cardBackgroundColor="@color/purple_drop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/overview_first_cardview">
 
@@ -97,7 +100,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="@string/ov_voting_snapshot"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/quicksand" />
@@ -108,9 +111,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="48dp"
             android:text="missed votes / total votes"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textStyle="bold"
             app:fontFamily="@font/open_sans" />
 
@@ -120,9 +123,9 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="80dp"
+            android:layout_marginTop="88dp"
             android:text="missed votes pct"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textStyle="bold"
             app:fontFamily="@font/open_sans" />
 
@@ -132,24 +135,25 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginLeft="16dp"
-            android:layout_marginTop="104dp"
-            android:fontFamily="@font/open_sans"
+            android:layout_marginTop="112dp"
+            app:fontFamily="@font/open_sans"
             android:text="votes with party pct"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
 
     <android.support.v7.widget.CardView
         android:id="@+id/overview_third_cardview"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
+        android:layout_width="253dp"
+        android:layout_height="128dp"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_marginTop="28dp"
         android:layout_marginBottom="8dp"
         app:cardCornerRadius="16dp"
         app:cardMaxElevation="16dp"
+        app:cardBackgroundColor="@color/purple_drop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/overview_second_cardview"
@@ -163,7 +167,7 @@
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:text="@string/ov_next_election"
-            android:textColor="#000"
+            android:textColor="@color/grey_scale"
             android:textSize="20sp"
             android:textStyle="bold"
             app:fontFamily="@font/quicksand" />
@@ -176,10 +180,10 @@
             android:layout_marginLeft="12dp"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="8dp"
-            android:fontFamily="@font/open_sans"
+            app:fontFamily="@font/open_sans"
             android:text="YEAR"
             android:textColor="@color/red_leaf"
-            android:textSize="60sp"
+            android:textSize="56sp"
             android:textStyle="bold" />
 
     </android.support.v7.widget.CardView>
@@ -246,7 +250,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="356dp"
+        android:layout_marginTop="336dp"
         android:layout_marginEnd="16dp"
         android:layout_marginRight="16dp"
         android:padding="8dp"
@@ -257,7 +261,7 @@
         app:layout_constraintHorizontal_bias="0.963"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:maxImageSize="66dp"
+        app:maxImageSize="68dp"
         app:pressedTranslationZ="12dp" />
 
     <android.support.design.widget.FloatingActionButton
@@ -266,7 +270,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="12dp"
         android:layout_marginEnd="28dp"
         android:layout_marginRight="28dp"
         android:padding="8dp"
@@ -277,7 +281,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fab_facebook"
-        app:maxImageSize="66dp"
+        app:maxImageSize="68dp"
         app:pressedTranslationZ="12dp" />
 
     <android.support.design.widget.FloatingActionButton
@@ -294,8 +298,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/fab_twitter"
-        app:layout_constraintVertical_bias="0.089"
-        app:maxImageSize="66dp"
+        app:layout_constraintVertical_bias="0.066"
+        app:maxImageSize="68dp"
         app:pressedTranslationZ="12dp" />
 
 </android.support.constraint.ConstraintLayout>

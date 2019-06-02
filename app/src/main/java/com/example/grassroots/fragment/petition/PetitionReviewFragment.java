@@ -30,6 +30,7 @@ import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionViewModel;
 import com.example.grassroots.utils.PetitionFragmentsListener;
+import com.facebook.share.widget.ShareButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DatabaseReference;
@@ -46,12 +47,7 @@ import java.security.NoSuchAlgorithmException;
 public class PetitionReviewFragment extends Fragment {
 
     private PetitionViewModel petitionViewModel;
-    private TextView petitionNameTextView;
-    private TextView petitionSupporterTextView;
-    private TextView petitionDescriptionTextView;
-    private ImageView petitionImageView;
-    private Button publishButton, shareButton;
-    private StorageTask mUploadTask;
+    private Button shareButton;
     private ProgressBar mProgressBar;
     private PetitionFragmentsListener mListener;
     public static Context contextOfApplication;
@@ -78,11 +74,11 @@ public class PetitionReviewFragment extends Fragment {
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-        petitionNameTextView = view.findViewById(R.id.text_view_petition_name);
-        petitionSupporterTextView = view.findViewById(R.id.text_view_petition_supporter);
-        petitionDescriptionTextView = view.findViewById(R.id.text_view_petition_description);
-        petitionImageView = view.findViewById(R.id.image_view_petition);
-        publishButton = view.findViewById(R.id.publish_button);
+        TextView petitionNameTextView = view.findViewById(R.id.text_view_petition_name);
+        TextView petitionSupporterTextView = view.findViewById(R.id.text_view_petition_supporter);
+        TextView petitionDescriptionTextView = view.findViewById(R.id.text_view_petition_description);
+        ImageView petitionImageView = view.findViewById(R.id.image_view_petition);
+        Button publishButton = view.findViewById(R.id.publish_button);
         mProgressBar = view.findViewById(R.id.progress_bar);
         shareButton = view.findViewById(R.id.share_button);
 
@@ -91,22 +87,22 @@ public class PetitionReviewFragment extends Fragment {
         petitionSupporterTextView.setText(petitionViewModel.getmPetitionSupporter());
         petitionDescriptionTextView.setText(petitionViewModel.getmPetitionDescription());
 
-
         Glide.with((FragmentActivity) requireContext())
                 .load(petitionViewModel.getmPetitionImage())
                 .centerCrop()
                 .into(petitionImageView);
 
+      //  shareButton.setOnClickListener(v -> mListener.moveToSharePetition(new PetitionSharedFragment()));
+        publishButton.setOnClickListener(v -> uploadFile());
+
+        setShareSocials();
+    }
+
+    private void setShareSocials() {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToSharePetition(new PetitionSharedFragment());
-            }
-        });
-        publishButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                uploadFile();
+
             }
         });
     }
@@ -128,14 +124,13 @@ public class PetitionReviewFragment extends Fragment {
         mListener = null;
     }
 
-
     private void uploadFile() {
         printKeyHash();
         if (petitionViewModel.getmPetitionImage() != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
                     + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
 
-            mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
+            StorageTask mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
                     .addOnSuccessListener(taskSnapshot -> {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
@@ -182,7 +177,6 @@ public class PetitionReviewFragment extends Fragment {
         }
     }
 
-
     private String getFileExtension(Uri uri) {
         Context applicationContext = requireActivity().getApplicationContext();
 
@@ -207,11 +201,10 @@ public class PetitionReviewFragment extends Fragment {
                 Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
 
-        } catch (PackageManager.NameNotFoundException e) {
+        } catch (PackageManager.NameNotFoundException ignored) {
 
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
-
     }
 }
