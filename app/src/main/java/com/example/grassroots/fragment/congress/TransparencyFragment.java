@@ -1,4 +1,4 @@
-package com.example.grassroots.fragment;
+package com.example.grassroots.fragment.congress;
 
 
 import android.os.Bundle;
@@ -12,10 +12,10 @@ import com.example.grassroots.R;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class InfoNotAvailableFragment extends Fragment {
+public class TransparencyFragment extends Fragment {
 
 
-    public InfoNotAvailableFragment() {
+    public TransparencyFragment() {
         // Required empty public constructor
     }
 
@@ -24,7 +24,7 @@ public class InfoNotAvailableFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_info_not_available, container, false);
+        return inflater.inflate(R.layout.fragment_transparency, container, false);
     }
 
 }

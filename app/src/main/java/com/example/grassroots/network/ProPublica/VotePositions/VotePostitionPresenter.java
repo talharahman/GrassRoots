@@ -10,9 +10,9 @@ public class VotePostitionPresenter {
         this.positionUIListener = votePositionUIListener;
     }
 
-    public void networkCall(String congressApiKey){
+    public void networkCall(String congressApiKey, String member_id){
         VotePositionRepository instance = new VotePositionRepository();
-        instance.fetchVotePositions(congressApiKey, "K000388", new VotePositionListener() {
+        instance.fetchVotePositions(congressApiKey, member_id, new VotePositionListener() {
             @Override
             public void onSuccess(VotePositionResponse votePositionResponse) {
                 positionUIListener.updateUI(votePositionResponse);
