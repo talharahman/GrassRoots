@@ -51,7 +51,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         SearchView searchView = findViewById(R.id.sv_congress);
-//        searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextListener(this);
 
         networkCall();
     }
@@ -78,7 +78,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     public boolean onQueryTextChange(String newText) {
         final List<CongressMember> newMemberList = new ArrayList<>();
         for (CongressMember congressMember : congressMembersList) {
-            if (congressMember.getFirst_name().toLowerCase().startsWith(newText.toLowerCase())) {
+            if (congressMember.getFirst_name().toLowerCase().contains(newText.toLowerCase())) {
                 newMemberList.add(congressMember);
             }
         }
