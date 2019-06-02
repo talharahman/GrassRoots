@@ -14,7 +14,6 @@ import android.support.v7.widget.SearchView;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
-import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 import com.example.grassroots.network.ProPublica.Members.CongressPresenter;
 import com.example.grassroots.recyclerview.CongressAdapter;
 
@@ -94,7 +93,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
-                Intent view = new Intent(this, UserViewActivity.class);
+                Intent view = new Intent(this, UserActionActivity.class);
                 startActivity(view);
                 return true;
             case R.id.bot_nav_contact:

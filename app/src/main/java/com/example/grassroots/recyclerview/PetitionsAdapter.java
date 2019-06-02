@@ -15,9 +15,9 @@ import java.util.List;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
+
     private List<Petition>petitionList;
     private PetitionsFeedInterface listener;
-    public static final String TAG = "PetitionsAdapter";
 
     public PetitionsAdapter(PetitionsFeedInterface listener) {
         this.listener = listener;

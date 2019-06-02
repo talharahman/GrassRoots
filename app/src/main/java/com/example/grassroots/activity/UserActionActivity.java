@@ -1,5 +1,6 @@
 package com.example.grassroots.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
@@ -11,9 +12,22 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
+import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.UserPagerAdapter;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
-public class UserViewActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+import java.util.ArrayList;
+import java.util.List;
+
+public class UserActionActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+
+    private FirebaseFirestore db = FirebaseFirestore.getInstance();
+    private CollectionReference petitionRef = db.collection("Petitioncol");
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +53,26 @@ public class UserViewActivity extends AppCompatActivity implements BottomNavigat
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
+
+        getData();
+    }
+
+    private void getData() {
+        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+        // with this context, create a viewmodel of this type
+
+        petitionRef.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<Petition> petitions = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            Petition petition = documentSnapshot.toObject(Petition.class);
+                            petitions.add(petition);
+                        }
+                        userActionViewModel.setPetitions(petitions);
+                    }
+                });
     }
 
     @Override

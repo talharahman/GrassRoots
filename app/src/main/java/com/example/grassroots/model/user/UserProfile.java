@@ -6,15 +6,16 @@ import java.util.List;
 
 public class UserProfile {
 
-    private int userId;
+    private long userId;
+    // ownerId = userId
     private List<Petition> myPetitions;
     private List<Petition> signedPetitions;
 
-    public int getUserId() {
+    public long getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(long userId) {
         this.userId = userId;
     }
 
@@ -22,15 +23,4 @@ public class UserProfile {
         return myPetitions;
     }
 
-    public void setMyPetitions(List<Petition> myPetitions) {
-        this.myPetitions = myPetitions;
-    }
-
-    public List<Petition> getSignedPetitions() {
-        return signedPetitions;
-    }
-
-    public void setSignedPetitions(List<Petition> signedPetitions) {
-        this.signedPetitions = signedPetitions;
-    }
 }

@@ -30,7 +30,7 @@ public class MainFeed extends Fragment {
     private PetitionsAdapter petitionsAdapter;
     private PetitionsFeedInterface listener;
 
-    private List<Petition>petitionList = new ArrayList<>();
+    private List<Petition> petitionList = new ArrayList<>();
 
     public MainFeed () { }
 

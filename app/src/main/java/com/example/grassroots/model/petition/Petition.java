@@ -13,6 +13,9 @@ public class Petition implements Parcelable {
     private int mPetitionSignature;
     private int mPetitionSignatureGoal;
 
+    // TODO private String ownerId;
+    // TODO private List<String> signers;
+
     public Petition() { }
 
     public Petition( String petitionName, String petitionSupporter, String petitionDescription, String petitionImage,int petitionSignatureGoal,int petitionSignature) {

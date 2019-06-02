@@ -10,7 +10,6 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 import android.widget.TextView;
@@ -77,7 +76,7 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
-                Intent view = new Intent(this, UserViewActivity.class);
+                Intent view = new Intent(this, UserActionActivity.class);
                 startActivity(view);
                 return true;
             case R.id.bot_nav_search:
