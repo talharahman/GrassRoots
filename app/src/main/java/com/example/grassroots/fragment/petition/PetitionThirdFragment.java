@@ -19,7 +19,7 @@ import android.widget.ImageView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
-import com.example.grassroots.utils.PetitionFragmentsListener;
+import com.example.grassroots.utils.NewPetitionFragmentsListener;
 
 import static android.app.Activity.RESULT_OK;
 
@@ -28,7 +28,7 @@ public class PetitionThirdFragment extends Fragment {
     private static final int PICK_IMAGE_REQUEST = 1;
 
     private PetitionViewModel petitionViewModel;
-    private PetitionFragmentsListener mListener;
+    private NewPetitionFragmentsListener mListener;
 
     private Uri mImageUri;
     private Button buttonChooseImage;
@@ -94,8 +94,8 @@ public class PetitionThirdFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof PetitionFragmentsListener) {
-            mListener = (PetitionFragmentsListener) context;
+        if (context instanceof NewPetitionFragmentsListener) {
+            mListener = (NewPetitionFragmentsListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

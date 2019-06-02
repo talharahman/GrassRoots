@@ -15,12 +15,12 @@ import android.widget.EditText;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
-import com.example.grassroots.utils.PetitionFragmentsListener;
+import com.example.grassroots.utils.NewPetitionFragmentsListener;
 
 public class PetitionSecondFragment extends Fragment {
 
     private EditText editTextPetitionProblem;
-    private PetitionFragmentsListener listener;
+    private NewPetitionFragmentsListener listener;
     private PetitionViewModel petitionViewModel;
 
     public PetitionSecondFragment() {}
@@ -52,8 +52,8 @@ public class PetitionSecondFragment extends Fragment {
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof PetitionFragmentsListener) {
-            listener = (PetitionFragmentsListener) context;
+        if (context instanceof NewPetitionFragmentsListener) {
+            listener = (NewPetitionFragmentsListener) context;
         } else {
             throw new RuntimeException(context.toString()
                     + " must implement OnFragmentInteractionListener");

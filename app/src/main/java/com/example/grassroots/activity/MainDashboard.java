@@ -38,7 +38,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_add_action:
-                Intent action = new Intent(this, PetitionHostActivity.class);
+                Intent action = new Intent(this, NewPetitionHostActivity.class);
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:

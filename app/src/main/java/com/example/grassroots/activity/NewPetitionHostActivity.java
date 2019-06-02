@@ -11,9 +11,9 @@ import android.view.MenuItem;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.PetitionFirstFragment;
-import com.example.grassroots.utils.PetitionFragmentsListener;
+import com.example.grassroots.utils.NewPetitionFragmentsListener;
 
-public class PetitionHostActivity extends AppCompatActivity implements PetitionFragmentsListener, BottomNavigationView.OnNavigationItemSelectedListener {
+public class NewPetitionHostActivity extends AppCompatActivity implements NewPetitionFragmentsListener, BottomNavigationView.OnNavigationItemSelectedListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +40,7 @@ public class PetitionHostActivity extends AppCompatActivity implements PetitionF
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.bot_add_action:
-                Intent action = new Intent(this, PetitionHostActivity.class);
+                Intent action = new Intent(this, NewPetitionHostActivity.class);
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
@@ -89,6 +89,27 @@ public class PetitionHostActivity extends AppCompatActivity implements PetitionF
                 .commit();
     }
 
+    @Override
+    public void moveToPetitionUpdatesFirstFrgament(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToPetitionUpdatesSecondFragment(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
   /*  @Override
     public void moveToSharePetition(Fragment fragment) {
         getSupportFragmentManager()

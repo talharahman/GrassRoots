@@ -20,7 +20,7 @@ import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
-import com.example.grassroots.utils.PetitionFragmentsListener;
+import com.example.grassroots.utils.NewPetitionFragmentsListener;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -39,7 +39,7 @@ import static android.app.Activity.RESULT_OK;
 public class PetitionSharedFragment extends Fragment {
 
     private static final int REQUEST_VIDEO_CODE = 100;
-    private PetitionFragmentsListener mListener;
+    private NewPetitionFragmentsListener mListener;
     private PetitionViewModel petitionViewModel;
     private Button sharedVideoButton, sharedPhotoButton, shareLinkButton, shareInstagramButton, shareTwiterButton, shareEmailButton;
     private CallbackManager callbackManager;

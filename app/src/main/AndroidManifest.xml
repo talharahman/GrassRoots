@@ -16,7 +16,7 @@
         <activity android:name=".activity.UserViewActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
-            android:name=".activity.PetitionHostActivity"
+            android:name=".activity.NewPetitionHostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
