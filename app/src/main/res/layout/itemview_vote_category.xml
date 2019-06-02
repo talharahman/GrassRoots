@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <android.support.v7.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:elevation="4dp"
+        app:cardCornerRadius="8dp">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -14,11 +17,11 @@
         android:background="@color/grey_scale"
         android:orientation="vertical">
 
-        <EditText
+        <TextView
             android:id="@+id/bill_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Bill Id"
+            android:text="BILL ID: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -26,17 +29,17 @@
             android:id="@+id/txt_bill_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/bill_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Title"
+            android:text="TITLE: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -44,17 +47,17 @@
             android:id="@+id/txt_bill_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/bill_latest_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Latest Action"
+            android:text="LATEST ACTION: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -62,17 +65,17 @@
             android:id="@+id/txt_bill_latest_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Summary"
+            android:text="SUMMARY: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -80,17 +83,17 @@
             android:id="@+id/txt_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Description"
+            android:text="DESCRIPTION: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -98,17 +101,17 @@
             android:id="@+id/txt_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
-        <EditText
+        <TextView
             android:id="@+id/position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Position"
+            android:text="POSITION: "
             android:textSize="14sp"
             android:textStyle="bold" />
 
@@ -116,7 +119,8 @@
             android:id="@+id/txt_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="8dp"
             android:gravity="center_horizontal"
             android:textSize="20sp"
             android:textStyle="bold"

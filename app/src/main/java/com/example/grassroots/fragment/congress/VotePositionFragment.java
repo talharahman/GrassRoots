@@ -54,7 +54,7 @@ public class VotePositionFragment extends Fragment {
             @Override
             public void updateUI(VotePositionResponse votePositionResponse) {
                 Log.d(TAG, "updateUI: " + votePositionResponse.getStatus().toString());
-                votePositionAdapter = new VotePositionAdapter(votePositionResponse.getResults());
+                votePositionAdapter = new VotePositionAdapter(votePositionResponse.getResults().get(0).getVotes());
                 recyclerView.setAdapter(votePositionAdapter);
                 votePositionAdapter.notifyDataSetChanged();
             }
