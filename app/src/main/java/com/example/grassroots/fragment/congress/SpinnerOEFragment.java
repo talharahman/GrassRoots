@@ -17,19 +17,14 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 
-import com.example.grassroots.fragment.TransparencyFragment;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.R;
-import com.example.grassroots.utils.OfficeExpFragmentListener;
 
 public class SpinnerOEFragment extends Fragment {
 
     private SpinnerOEFragment spinnerOEFragment;
 
     private CongressOverviewVM congressOverviewVM;
-    public static final String MEMBER_KEY = "Member Id";
-    public static final String YEAR_KEY = "Year";
-    public static final String QUARTER_KEY = "Quarter";
 
     private String member_id;
     private String year;
@@ -39,6 +34,7 @@ public class SpinnerOEFragment extends Fragment {
 
     private Spinner yr_spinner;
     private Spinner qt_spinner;
+
 
     public SpinnerOEFragment() {
     }
@@ -105,28 +101,32 @@ public class SpinnerOEFragment extends Fragment {
         member_id = congressOverviewVM.getCongressMember().getId();
         short_title = congressOverviewVM.getCongressMember().getShort_title();
 
+
         Button btn_exp_submit = view.findViewById(R.id.btn_exp_submit);
 
         btn_exp_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("SPINNEROEFRAG", "onClick: before inserting frag");
-
                 if(btn_exp_submit.isPressed() && short_title.equals("Rep.")){
                     insertOENestedFragment();
                     btn_exp_submit.setVisibility(v.GONE);
-                } else if(btn_exp_submit.isPressed() && short_title.equals("Sen.")){
+                } else if(btn_exp_submit.isPressed() && short_title.equals("Sen.")) {
                     insertCalltoActionFragment();
                     btn_exp_submit.setVisibility(v.INVISIBLE);
                 }
-
-                Log.d("SPINNEROEFRAG", "onClick: " + member_id + " " + year + " " + quarter);
             }
         });
     }
 
+    private void insertInfoNotAvailableFragment() {
+        InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_spinner, infoNotAvailableFragment).addToBackStack(null).commit();
+        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
+    }
+
     private void insertOENestedFragment() {
-        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(year, quarter);
+        OfficeExpFragment officeExpFragment = new OfficeExpFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_spinner, officeExpFragment).addToBackStack(null).commit();
         Log.d("SPINNEROEFRAG", "insertOENestedFragment: inflate OE FRAG");

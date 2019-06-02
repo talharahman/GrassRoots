@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="252dp"
         android:gravity="center_horizontal"
-        android:text="Information is not available at this time. Contact your representative for more information."
+        android:text="Information is not available \n at this time. Contact your representative for more \n information."
         android:textColor="#000"
         android:textSize="24sp"
         android:textStyle="bold"

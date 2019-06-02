@@ -51,7 +51,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         SearchView searchView = findViewById(R.id.sv_congress);
-        searchView.setOnQueryTextListener(this);
+//        searchView.setOnQueryTextListener(this);
 
         networkCall();
     }
