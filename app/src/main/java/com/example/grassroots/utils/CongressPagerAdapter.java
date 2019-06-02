@@ -1,5 +1,6 @@
 package com.example.grassroots.utils;
 
+import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -10,7 +11,9 @@ import android.support.v4.app.FragmentPagerAdapter;
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.congress.OfficeExpFragment;
 import com.example.grassroots.fragment.congress.OverviewFragment;
+import com.example.grassroots.fragment.congress.SpinnerOEFragment;
 import com.example.grassroots.fragment.congress.VotePositionFragment;
+import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 public class CongressPagerAdapter extends FragmentPagerAdapter {
 
@@ -34,9 +37,7 @@ public class CongressPagerAdapter extends FragmentPagerAdapter {
                 tabFragment = new VotePositionFragment();
                 break;
             case 2:
-//                tabFragment = new SpinnerOEFragment();
-                tabFragment = new OfficeExpFragment();
-
+                tabFragment = new SpinnerOEFragment();
                 break;
         }
         return tabFragment;
