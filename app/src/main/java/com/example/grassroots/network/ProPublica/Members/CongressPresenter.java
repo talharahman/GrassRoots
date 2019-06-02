@@ -1,6 +1,6 @@
 package com.example.grassroots.network.ProPublica.Members;
 
-import com.example.grassroots.fragment.CongressUIListener;
+import com.example.grassroots.utils.CongressUIListener;
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 
 public class CongressPresenter {

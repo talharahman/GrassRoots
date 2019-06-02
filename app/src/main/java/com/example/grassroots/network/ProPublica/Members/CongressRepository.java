@@ -2,7 +2,7 @@ package com.example.grassroots.network.ProPublica.Members;
 
 import android.util.Log;
 
-import com.example.grassroots.ui.MainActivity;
+import com.example.grassroots.activity.MainActivity;
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpenseListener;

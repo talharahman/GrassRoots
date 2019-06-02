@@ -3,9 +3,9 @@ package com.example.grassroots.network.ProPublica.OfficeExpense;
 import android.content.Intent;
 import android.util.Log;
 
+import com.example.grassroots.activity.MainActivity;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.network.ProPublica.Members.CongressService;
-import com.example.grassroots.ui.MainActivity;
 
 import retrofit2.Call;
 import retrofit2.Callback;

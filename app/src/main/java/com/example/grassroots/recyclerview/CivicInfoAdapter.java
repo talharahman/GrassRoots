@@ -3,7 +3,6 @@ package com.example.grassroots.recyclerview;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
@@ -41,7 +40,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
     public CivicInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new CivicInfoViewHolder(LayoutInflater
                 .from(viewGroup.getContext())
-                .inflate(R.layout.exp_local_rep_itemview_v2, viewGroup, false));
+                .inflate(R.layout.local_reps_itemview, viewGroup, false));
     }
 
     @Override

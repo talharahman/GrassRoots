@@ -5,8 +5,14 @@
     android:id="@+id/coordinator_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@color/grey_scale"
     android:fitsSystemWindows="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="670dp"
+        android:id="@+id/feed_container">
+    </FrameLayout>
 
     <android.support.design.bottomappbar.BottomAppBar
         android:id="@+id/bottom_bar"
@@ -27,6 +33,7 @@
             style="@style/BottomNavigation"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            app:labelVisibilityMode="selected"
             android:clickable="false"
             app:menu="@menu/menu_bottom_nav" />
 
@@ -35,9 +42,9 @@
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab"
         android:layout_width="wrap_content"
-        android:layout_height="120dp"
+        android:layout_height="200dp"
         android:src="@drawable/ic_home"
         app:layout_anchor="@+id/frameLayout"
-        app:layout_anchorGravity="top|center" />
+        app:layout_anchorGravity="bottom|center" />
 
 </android.support.design.widget.CoordinatorLayout>

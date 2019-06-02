@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 
 
 public class PetitionSecondFragment extends Fragment {
@@ -70,7 +71,7 @@ public class PetitionSecondFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mListener.moveToPetitionThirdPart(new PetitionThirdFragment());
-                petitionViewModel.setmPetitionDescription(editTextPetitionProblem.getText().toString().trim());
+                petitionViewModel.setPetitionDescription(editTextPetitionProblem.getText().toString().trim());
             }
         });
     }

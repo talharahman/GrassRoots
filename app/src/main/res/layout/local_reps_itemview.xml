@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/linearLayout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    android:background="@color/grey_scale"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/local_rep_card_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        app:cardMaxElevation="16dp">
+
+        <TextView
+            android:id="@+id/rep_name"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_gravity="end"
+            android:layout_margin="8dp"
+            android:text="Donald Trump"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:fontFamily="@font/concert_one" />
+
+        <TextView
+            android:id="@+id/rep_position"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="64dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="Not Available"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="italic"
+            app:fontFamily="@font/montserrat" />
+
+        <TextView
+            android:id="@+id/contact_show"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:layout_marginTop="120dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:textSize="12sp"
+            android:text="show"/>
+
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/Rep_image"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_margin="8dp" />
+
+    </android.support.v7.widget.CardView>
+
+    <android.support.v7.widget.CardView
+        android:id="@+id/local_rep_socials"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        app:cardMaxElevation="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/rep_url_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/web" />
+
+            <ImageView
+                android:id="@+id/rep_phone_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/phone" />
+
+            <ImageView
+                android:id="@+id/rep_email_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/email" />
+
+            <ImageView
+                android:id="@+id/rep_facebook_icon"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/facebook" />
+
+            <ImageView
+                android:id="@+id/rep_twitter_icon"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginLeft="32dp"
+                android:src="@drawable/twitter" />
+
+        </LinearLayout>
+
+    </android.support.v7.widget.CardView>
+
+</LinearLayout>

@@ -4,58 +4,68 @@ import android.arch.lifecycle.ViewModel;
 import android.net.Uri;
 
 public class PetitionViewModel extends ViewModel {
-    private String mPetitionName;
-    private String mPetitionSupporter;
-    private String mPetitionDescription;
-    private Uri mPetitionImage;
-    private int mPetitionSignature;
-    private int mPetitionSignatureGoal;
+    private String petitionName;
+    private String petitionTarget;
+    private String petitionTargetContact;
 
-    public int getmPetitionSignatureGoal() {
-        return mPetitionSignatureGoal;
+    private String petitionDescription;
+    private Uri petitionImage;
+    private int petitionSignature;
+    private int petitionSignatureGoal;
+
+    public String getPetitionTargetContact() {
+        return petitionTargetContact;
     }
 
-    public void setmPetitionSignatureGoal(int mPetitionSignatureGoal) {
-        this.mPetitionSignatureGoal = mPetitionSignatureGoal;
+    public void setPetitionTargetContact(String petitionTargetContact) {
+        this.petitionTargetContact = petitionTargetContact;
     }
 
-    public void setmPetitionSignature(int mPetitionSignature ){
-        this.mPetitionSignature=mPetitionSignature;
-    }
-    public int getmPetitionSignature(){
-        return mPetitionSignature;
+    public int getPetitionSignatureGoal() {
+        return petitionSignatureGoal;
     }
 
-    public String getmPetitionName() {
-        return mPetitionName;
+    public void setPetitionSignatureGoal(int petitionSignatureGoal) {
+        this.petitionSignatureGoal = petitionSignatureGoal;
     }
 
-    public void setmPetitionName(String mPetitionName) {
-        this.mPetitionName = mPetitionName;
+    public void setPetitionSignature(int petitionSignature){
+        this.petitionSignature = petitionSignature;
+    }
+    public int getPetitionSignature(){
+        return petitionSignature;
     }
 
-    public String getmPetitionSupporter() {
-        return mPetitionSupporter;
+    public String getPetitionName() {
+        return petitionName;
     }
 
-    public void setmPetitionSupporter(String mPetitionSupporter) {
-        this.mPetitionSupporter = mPetitionSupporter;
+    public void setPetitionName(String petitionName) {
+        this.petitionName = petitionName;
     }
 
-    public String getmPetitionDescription() {
-        return mPetitionDescription;
+    public String getPetitionTarget() {
+        return petitionTarget;
     }
 
-    public void setmPetitionDescription(String mPetitionDescription) {
-        this.mPetitionDescription = mPetitionDescription;
+    public void setPetitionTarget(String petitionTarget) {
+        this.petitionTarget = petitionTarget;
     }
 
-    public Uri getmPetitionImage() {
-        return mPetitionImage;
+    public String getPetitionDescription() {
+        return petitionDescription;
     }
 
-    public void setmPetitionImage(Uri mPetitionImage) {
-        this.mPetitionImage = mPetitionImage;
+    public void setPetitionDescription(String petitionDescription) {
+        this.petitionDescription = petitionDescription;
+    }
+
+    public Uri getPetitionImage() {
+        return petitionImage;
+    }
+
+    public void setPetitionImage(Uri petitionImage) {
+        this.petitionImage = petitionImage;
     }
 }
 

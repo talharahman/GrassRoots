@@ -8,11 +8,11 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-
-import com.example.grassroots.fragment.OfficeExpFragment;
 import com.example.grassroots.fragment.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
+import com.example.grassroots.utils.CongressPagerAdapter;
 
 public class CongressTabActivity extends AppCompatActivity  {
 
@@ -25,7 +25,7 @@ public class CongressTabActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_congress_tab);
 
-        SectionsPagerAdapter sectionsPagerAdapter = new SectionsPagerAdapter(this, getSupportFragmentManager());
+        CongressPagerAdapter sectionsPagerAdapter = new CongressPagerAdapter(this, getSupportFragmentManager());
         ViewPager viewPager = findViewById(R.id.view_pager);
         viewPager.setAdapter(sectionsPagerAdapter);
 

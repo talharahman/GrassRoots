@@ -30,10 +30,9 @@ import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
+import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.storage.FirebaseStorage;
@@ -59,38 +58,18 @@ public class PetitionReviewFragment extends Fragment {
     private PetitionFragmentsListener mListener;
     public static Context contextOfApplication;
 
-
-
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
-    public PetitionReviewFragment() {
-        // Required empty public constructor
-    }
+    public PetitionReviewFragment() {}
 
-
-    public static PetitionReviewFragment newInstance(String param1, String param2) {
-        PetitionReviewFragment fragment = new PetitionReviewFragment();
-        Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static PetitionReviewFragment newInstance() {
+        return new PetitionReviewFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petition_review, container, false);
     }
 
@@ -110,14 +89,12 @@ public class PetitionReviewFragment extends Fragment {
         shareButton=view.findViewById(R.id.share_button);
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
-        petitionNameTextView.setText(petitionViewModel.getmPetitionName());
-        petitionSupporterTextView.setText(petitionViewModel.getmPetitionSupporter());
-        petitionDescriptionTextView.setText(petitionViewModel.getmPetitionDescription());
-
-
+        petitionNameTextView.setText(petitionViewModel.getPetitionName());
+        petitionSupporterTextView.setText(petitionViewModel.getPetitionTarget());
+        petitionDescriptionTextView.setText(petitionViewModel.getPetitionDescription());
 
         Glide.with((FragmentActivity) requireContext())
-                .load(petitionViewModel.getmPetitionImage())
+                .load(petitionViewModel.getPetitionImage())
                 .centerCrop()
                 .into(petitionImageView);
 
@@ -155,11 +132,11 @@ public class PetitionReviewFragment extends Fragment {
 
     private void uploadFile() {
         printKeyHash();
-        if (petitionViewModel.getmPetitionImage() != null) {
+        if (petitionViewModel.getPetitionImage() != null) {
             StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
+                    + "." + getFileExtension(petitionViewModel.getPetitionImage()));
 
-            mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
+            mUploadTask = fileReference.putFile(petitionViewModel.getPetitionImage())
             .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -177,21 +154,26 @@ public class PetitionReviewFragment extends Fragment {
                                     Log.d("testtoday", "onSuccess: uri= "+ uri.toString());
                                 }
                             });
-                            petitionViewModel.setmPetitionSignature(1);
+                            petitionViewModel.setPetitionSignature(1);
 
-                            fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
-                                        petitionViewModel.getmPetitionSupporter(),
-                                        petitionViewModel.getmPetitionDescription(),
-                                        uri.toString(),
-                                        petitionViewModel.getmPetitionSignatureGoal(),
-                                        petitionViewModel.getmPetitionSignature()
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Petition petition =
+                                            new Petition(petitionViewModel.getPetitionName(),
+                                                    petitionViewModel.getPetitionTarget(),
+                                                    petitionViewModel.getPetitionTargetContact(),
+                                                    petitionViewModel.getPetitionDescription(),
+                                                    petitionViewModel.getPetitionImage(),
+                                                    uri.toString(),
+                                                    petitionViewModel.getPetitionSignatureGoal(),
+                                                    petitionViewModel.getPetitionSignature()
+                                            );
 
-                                );
+                                    String petitionId = mDatabaseRef.push().getKey();
+                                    mDatabaseRef.child(petitionId).setValue(petition);
 
-                                String petitionId = mDatabaseRef.push().getKey();
-                                mDatabaseRef.child(petitionId).setValue(petition);
-
+                                }
                             });
 
                         }

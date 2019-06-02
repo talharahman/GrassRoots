@@ -11,8 +11,8 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
 import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.utils.PetitionsFeedInterface;
 
 import static com.facebook.FacebookSdk.getApplicationContext;
 
@@ -21,7 +21,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     private TextView petitionNameTextView;
     private TextView pettitonDescrptionTextView;
     private TextView petitionSignatureTextView;
-    private  ImageView petitionImageImageView;
+    private ImageView petitionImageImageView;
     private ProgressBar petitionProgressBarSignatures;
 
     public PetitionViewHolder(@NonNull View itemView) {
@@ -35,25 +35,20 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onBind(Petition currentPetition,PetitionFragmentsListener mListener) {
-        petitionNameTextView.setText(currentPetition.getmPetitionName());
-        pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
-        petitionSignatureTextView.setText(currentPetition.getmPetitionSignature()+" singed of "+currentPetition.getmPetitionSignatureGoal()+" goal");
-        petitionProgressBarSignatures.setMax(currentPetition.getmPetitionSignatureGoal());
-        petitionProgressBarSignatures.setProgress(currentPetition.getmPetitionSignature(),true);
+    public void onBind(Petition currentPetition, PetitionsFeedInterface listener) {
+        petitionNameTextView.setText(currentPetition.getPetitionName());
+        pettitonDescrptionTextView.setText(currentPetition.getPetitionDescription());
+        petitionSignatureTextView.setText(currentPetition.getPetitionSignature() + " signed of " + currentPetition.getPetitionSignatureGoal()+" goal");
+        petitionProgressBarSignatures.setMax(currentPetition.getPetitionSignatureGoal());
+        petitionProgressBarSignatures.setProgress(currentPetition.getPetitionSignature(),true);
 
         Glide.with(getApplicationContext())
-                .load(currentPetition.getmPetitionImageURL())
+                .load(currentPetition.getPetitionImageURL())
                 .fitCenter()
                 .centerCrop()
                 .placeholder(R.drawable.petition_placeholder)
                 .into(petitionImageImageView);
 
-        itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition));
-            }
-        });
+        itemView.setOnClickListener(v -> listener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition)));
     }
 }

@@ -1,15 +1,17 @@
 <resources>
+
+    <!-- App General Strings -->
     <string name="app_name">GrassRoots</string>
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <!-- Congress Tab Strings -->
     <string name="frag_overview">Overview</string>
     <string name="frag_vote_positions">Vote Positions</string>
     <string name="frag_office_expense">Office Expenses</string>
 
-    <string name="ov_next_election"><u>Next Election</u></string>
-    <string name="ov_voting_snapshot"><u>Voting Snapshot</u></string>
-    <string name="ov_contact_info"><u>Contact Info</u></string>
-    <string name="ov_fec_id_number"><u>FEC ID Number</u></string>
+    <string name="ov_next_election">Next Election</string>
+    <string name="ov_voting_snapshot">Voting Snapshot</string>
+    <string name="ov_contact_info">Contact Info</string>
+    <string name="ov_fec_id_number">FEC ID Number</string>
 
     <string-array name="years">
         <item>2009</item>
@@ -67,8 +69,21 @@
     </string-array>
 
 
+    <!-- Petiton Strings -->
+    <string name="petition_title_text">What is your petition called ?</string>
+    <string name="petition_title_hint">Enter petition name</string>
+    <string name="petition_title_help">"This is the first thing people will see about your petition. Get their attention with a short title that focuses on the change you’d like them to support."</string>
+
+    <string name="petition_target_text">Who has the power to make this change?</string>
+    <string name="petition_target_hint">Enter petition target</string>
+    <string name="petition_target_help">Choose the recipient(s) of your petition. These are people or organizations with the power to solve your problem or take the action you’re demanding.</string>
+
+    <string name="signature_goal_text">How many signatures do you plan to reach ?</string>
+    <string name="signature_goal_hint">Enter signature goal</string>
+
+    <string name="next">Save and Continue</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_main_dashboard">MainDashboard</string>
-    <string name="title_activity_local_reps">LocalRepsActivity</string>
+
 </resources>
