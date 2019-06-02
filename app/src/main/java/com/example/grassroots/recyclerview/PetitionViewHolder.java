@@ -4,6 +4,7 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -35,7 +36,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     }
 
     @RequiresApi(api = Build.VERSION_CODES.N)
-    public void onBind(Petition currentPetition,PetitionFragmentsListener mListener) {
+    public void onBind(final Petition currentPetition,PetitionFragmentsListener mListener) {
         petitionNameTextView.setText(currentPetition.getmPetitionName());
         pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
         petitionSignatureTextView.setText(currentPetition.getmPetitionSignature()+" singed of "+currentPetition.getmPetitionSignatureGoal()+" goal");
@@ -48,6 +49,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
                 .centerCrop()
                 .placeholder(R.drawable.petition_placeholder)
                 .into(petitionImageImageView);
+
 
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override

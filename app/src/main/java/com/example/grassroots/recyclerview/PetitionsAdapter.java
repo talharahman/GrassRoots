@@ -1,6 +1,8 @@
 package com.example.grassroots.recyclerview;
 
+import android.os.Build;
 import android.support.annotation.NonNull;
+import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -40,9 +42,11 @@ public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
         return new PetitionViewHolder(childViewHolder);
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     public void onBindViewHolder(@NonNull PetitionViewHolder petitionViewHolder, int i) {
         Petition currentPetition=petitionList.get(i);
+
         petitionViewHolder.onBind(currentPetition,mListener);
 
     }

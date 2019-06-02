@@ -4,9 +4,7 @@ package com.example.grassroots.fragment.petition;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
 import android.content.Context;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.Signature;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,7 +12,6 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,22 +20,19 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
@@ -46,24 +40,32 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.StorageTask;
 import com.google.firebase.storage.UploadTask;
 
-import java.security.MessageDigest;
-import java.security.NoSuchAlgorithmException;
+import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.app.Activity.RESULT_OK;
 
-public class PetitionReviewFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link PetitionUpdatesSecondFragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class PetitionUpdatesSecondFragment extends Fragment {
+    private static final String ARG_PARAM1 = "param1";
+    private static final String ARG_PARAM2 = "param2";
 
+    private static final int PICK_IMAGE_REQUEST = 1;
+
+    private String mParam1;
+    private String mParam2;
+    private Uri mImageUri;
+    private ImageView petitionUpdatesImageView;
+    private Button uploadImageButton;
+    private Button saveReviewButton;
     private PetitionViewModel petitionViewModel;
-    private TextView petitionNameTextView;
-    private TextView petitionSupporterTextView;
-    private TextView petitionDescriptionTextView;
-    private ImageView petitionImageView;
-    private Button publishButton,shareButton;
     private StorageTask mUploadTask;
     private ProgressBar mProgressBar;
-    private PetitionFragmentsListener mListener;
-    public static Context contextOfApplication;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
 
 
@@ -72,16 +74,19 @@ public class PetitionReviewFragment extends Fragment {
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
-    public PetitionReviewFragment() {
+
+
+
+    public PetitionUpdatesSecondFragment() {
         // Required empty public constructor
     }
 
 
-    public static PetitionReviewFragment newInstance(String param1, String param2) {
-        PetitionReviewFragment fragment = new PetitionReviewFragment();
+    public static PetitionUpdatesSecondFragment newInstance(String param1, String param2) {
+        PetitionUpdatesSecondFragment fragment = new PetitionUpdatesSecondFragment();
         Bundle args = new Bundle();
-//        args.putString(ARG_PARAM1, param1);
-//        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -90,8 +95,8 @@ public class PetitionReviewFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-//            mParam1 = getArguments().getString(ARG_PARAM1);
-//            mParam2 = getArguments().getString(ARG_PARAM2);
+            mParam1 = getArguments().getString(ARG_PARAM1);
+            mParam2 = getArguments().getString(ARG_PARAM2);
         }
     }
 
@@ -99,7 +104,7 @@ public class PetitionReviewFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_petition_review, container, false);
+        return inflater.inflate(R.layout.fragment_petition_updates_second, container, false);
     }
 
     @Override
@@ -109,67 +114,73 @@ public class PetitionReviewFragment extends Fragment {
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-        petitionNameTextView=view.findViewById(R.id.text_view_petition_name);
-        petitionSupporterTextView=view.findViewById(R.id.text_view_petition_supporter);
-        petitionDescriptionTextView=view.findViewById(R.id.text_view_petition_description);
-        petitionImageView=view.findViewById(R.id.image_view_petition);
-        publishButton=view.findViewById(R.id.publish_button);
-        mProgressBar=view.findViewById(R.id.progress_bar);
-        shareButton=view.findViewById(R.id.share_button);
-
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
-        petitionNameTextView.setText(petitionViewModel.getmPetitionName());
-        petitionSupporterTextView.setText(petitionViewModel.getmPetitionSupporter());
-        petitionDescriptionTextView.setText(petitionViewModel.getmPetitionDescription());
+        petitionViewModel.setmPetitionImage(mImageUri);
 
 
+        uploadImageButton=view.findViewById(R.id.button_choose_image);
+        petitionUpdatesImageView=view.findViewById(R.id.image_view);
+        saveReviewButton=view.findViewById(R.id.save_button2);
+        mProgressBar=view.findViewById(R.id.progressBar);
 
-        Glide.with((FragmentActivity) requireContext())
-                .load(petitionViewModel.getmPetitionImage())
-                .centerCrop()
-                .into(petitionImageView);
 
-        shareButton.setOnClickListener(new View.OnClickListener() {
+        uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToSharePetition(new PetitionSharedFragment());
+                openFileChooser();
             }
         });
-        publishButton.setOnClickListener(new View.OnClickListener() {
+
+
+        saveReviewButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //uploadFile();
-                uploadFile2();
+
+                Toast.makeText(requireContext(),"hi "+petitionViewModel.getPetitionKey(),Toast.LENGTH_LONG).show();
+                uploadfiledcumentway();
             }
         });
     }
+
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof PetitionFragmentsListener) {
-            mListener = (PetitionFragmentsListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == PICK_IMAGE_REQUEST && resultCode == RESULT_OK
+                && data != null && data.getData() != null) {
+            mImageUri = data.getData();
+            petitionViewModel.getPetitionUpdates().setmPetitionImageUri(mImageUri);
+            Glide.with(requireContext())
+                    .load(mImageUri)
+                    .into(petitionUpdatesImageView);
         }
     }
 
-    @Override
-    public void onDetach() {
-        super.onDetach();
-        mListener = null;
+    private void openFileChooser() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(intent, PICK_IMAGE_REQUEST);
+    }
+
+    private String getFileExtension(Uri uri) {
+        Context applicationContext = requireActivity().getApplicationContext();
+
+        applicationContext.getContentResolver();
+        ContentResolver cR = applicationContext.getContentResolver();
+        MimeTypeMap mime = MimeTypeMap.getSingleton();
+        return mime.getExtensionFromMimeType(cR.getType(uri));
     }
 
 
-
     private void uploadFile() {
-        printKeyHash();
         if (petitionViewModel.getmPetitionImage() != null) {
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+
+            StorageReference fileReference = mStorageRef.child("updates").child(System.currentTimeMillis()
                     + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
 
             mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
-            .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
                             Handler handler = new Handler();
@@ -186,7 +197,9 @@ public class PetitionReviewFragment extends Fragment {
                                     Log.d("testtoday", "onSuccess: uri= "+ uri.toString());
                                 }
                             });
+
                             petitionViewModel.setmPetitionSignature(1);
+
 
                             fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
 //                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
@@ -197,9 +210,11 @@ public class PetitionReviewFragment extends Fragment {
 //                                        petitionViewModel.getmPetitionSignature()
 //
 //                                );
+//
+//                                String petitionId = mDatabaseRef.push().getKey();
+//                                mDatabaseRef.child(petitionId).setValue(petition);
+//                                mDatabaseRef.child(petitionViewModel.getPetitionKey());
 
-                                String petitionId = mDatabaseRef.push().getKey();
-                               // mDatabaseRef.child(petitionId).setValue(petition);
 
                             });
 
@@ -223,13 +238,13 @@ public class PetitionReviewFragment extends Fragment {
         }
     }
 
-    private void uploadFile2(){
-        printKeyHash();
-        if (petitionViewModel.getmPetitionImage() != null) {
-            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
-                    + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
+    private void  uploadfiledcumentway(){
 
-            mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
+        if (petitionViewModel.getPetitionUpdates().getmPetitionImageUri() != null) {
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(petitionViewModel.getPetitionUpdates().getmPetitionImageUri()));
+
+            mUploadTask = fileReference.putFile(petitionViewModel.getPetitionUpdates().getmPetitionImageUri())
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -247,27 +262,22 @@ public class PetitionReviewFragment extends Fragment {
                                     Log.d("test today", "onSuccess: uri= "+ uri.toString());
                                 }
                             });
-                            petitionViewModel.setmPetitionSignature(1);
 
-                            List<PetitionUpdates> updatesList=new ArrayList<>();
-
+                            DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
 
                             fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
-                                        petitionViewModel.getmPetitionSupporter(),
-                                        petitionViewModel.getmPetitionDescription(),
-                                        uri.toString(),
-                                        petitionViewModel.getmPetitionSignatureGoal(),
-                                        petitionViewModel.getmPetitionSignature(),updatesList
+
+                                PetitionUpdates petitionUpdates = new PetitionUpdates (
+                                        petitionViewModel.getPetitionUpdates().getmPetitionHeadLine(),
+                                        petitionViewModel.getPetitionUpdates().getmPetitionDescription(),
+                                        uri.toString()
                                 );
 
-
-                                db.collection("Petitioncol").add(petition)
-                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                documentReference.update("mPetitionUpdatesList", FieldValue.arrayUnion(petitionUpdates))
+                                        .addOnSuccessListener(new OnSuccessListener<Void>() {
                                             @Override
-                                            public void onSuccess(DocumentReference documentReference) {
-                                                Toast.makeText(requireContext(), "Note saved", Toast.LENGTH_SHORT).show();
-
+                                            public void onSuccess(Void aVoid) {
+                                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
                                             }
                                         })
                                         .addOnFailureListener(new OnFailureListener() {
@@ -298,42 +308,56 @@ public class PetitionReviewFragment extends Fragment {
             Toast.makeText(requireContext(), "No file selected", Toast.LENGTH_SHORT).show();
         }
 
-    }
 
 
 
 
-    private String getFileExtension(Uri uri) {
-        Context applicationContext = requireActivity().getApplicationContext();
+//
+//            List<PetitionUpdates> updatesList = new ArrayList<>();
+//            PetitionUpdates updates2 = new PetitionUpdates();
+//            updates2.setmPetitionDescription("ben nhhggggggggg");
+//            updatesList.add(updates2);
+//
+//            Log.d("tst", "uploadfiledcumentway: " + petitionViewModel.getPetitionKey());
+//
+//            DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+//
+//            Log.d("test", "uploadfiledcumentway: " + documentReference);
+//
+//            //documentReference.
+//            // mDatabaseRef.child("1").setValue(updates2);
+//
+//            documentReference.update("mPetitionUpdatesList", FieldValue.arrayUnion(updates2))
+//                    .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                        @Override
+//                        public void onSuccess(Void aVoid) {
+//                            Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
+//                        }
+//                    });
+        }
 
-        applicationContext.getContentResolver();
-        ContentResolver cR = applicationContext.getContentResolver();
-        MimeTypeMap mime = MimeTypeMap.getSingleton();
-        return mime.getExtensionFromMimeType(cR.getType(uri));
-    }
 
-    public static Context getContextOfApplication()
-    {
-        return contextOfApplication;
-    }
+//        StorageReference fileReference = mStorageRef.child("updates").child(System.currentTimeMillis()
+//                + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
+//
+//        mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
+//                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+//                    @Override
+//                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+//
+//                    }
+//                })
+//
+//
+//        StorageReference imageRef = mStorageRef.getDownloadUrl(selectedItem.getImageUrl());
+//        imageRef.delete().addOnSuccessListener(new OnSuccessListener<Void>() {
+//            @Override
+//            public void onSuccess(Void aVoid) {
+//                mDatabaseRef.child(petitionViewModel.getPetitionKey()).setValue()
+//                Toast.makeText(ImagesActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
+//            }
+//       });
 
-    private void printKeyHash() {
-        try {
-            PackageInfo info = getActivity().getPackageManager().getPackageInfo("com.example.petition", PackageManager.GET_SIGNATURES);
-
-            for (Signature signature : info.signatures) {
-
-                MessageDigest md = MessageDigest.getInstance("SHA");
-                md.update(signature.toByteArray());
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
-            }
-
-        } catch (PackageManager.NameNotFoundException e) {
-
-        } catch (NoSuchAlgorithmException e) {
-            e.printStackTrace();
-        };
-    }
 
 
 }
