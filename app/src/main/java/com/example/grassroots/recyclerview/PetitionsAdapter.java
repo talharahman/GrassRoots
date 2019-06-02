@@ -24,25 +24,20 @@ public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
     }
 
     public void setAdapterList(List<Petition> petitionList){
-        this.petitionList=petitionList;
-
+        this.petitionList = petitionList;
     }
 
     @NonNull
     @Override
     public PetitionViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-
-
         View childViewHolder= LayoutInflater.from(getApplicationContext()).inflate(R.layout.itemview_petition,viewGroup,false);
-
         return new PetitionViewHolder(childViewHolder);
     }
 
     @Override
     public void onBindViewHolder(@NonNull PetitionViewHolder petitionViewHolder, int i) {
-        Petition currentPetition=petitionList.get(i);
+        Petition currentPetition = petitionList.get(i);
         petitionViewHolder.onBind(currentPetition, listener);
-
     }
 
     @Override

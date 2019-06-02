@@ -59,9 +59,9 @@ public class PetitionFirstFragment extends Fragment {
         Button saveAndContinueButton = view.findViewById(R.id.save_button1);
         saveAndContinueButton.setOnClickListener(v -> {
             listener.moveToPetitionSecondPart(new PetitionSecondFragment());
-            petitionViewModel.setPetitionName(editTextPetitionName.getText().toString().trim());
-            petitionViewModel.setPetitionTarget(editTextPetitionSupporter.getText().toString().trim());
-            petitionViewModel.setPetitionSignatureGoal(Integer.valueOf(editTextPetitionSignatures.getText().toString()));
+            petitionViewModel.setmPetitionName(editTextPetitionName.getText().toString().trim());
+            petitionViewModel.setmPetitionSupporter(editTextPetitionSupporter.getText().toString().trim());
+            petitionViewModel.setmPetitionSignatureGoal(Integer.valueOf(editTextPetitionSignatures.getText().toString()));
         });
     }
 
@@ -74,7 +74,7 @@ public class PetitionFirstFragment extends Fragment {
                 AlertDialog alertDialog = new AlertDialog.Builder(PetitionFirstFragment.this.requireContext()).create();
                 alertDialog.setTitle("Petition Title");
                 alertDialog.setIcon(R.drawable.ic_help);
-                alertDialog.setMessage(PetitionFirstFragment.this.getResources().getString(R.string.petition_title_help));
+                alertDialog.setMessage(PetitionFirstFragment.this.getResources().getString(R.string.petition_title_info));
                 alertDialog.show();
             }
         });
@@ -87,7 +87,7 @@ public class PetitionFirstFragment extends Fragment {
             AlertDialog alertDialog = new AlertDialog.Builder(requireContext()).create();
             alertDialog.setTitle("Petition Target");
             alertDialog.setIcon(R.drawable.ic_help);
-            alertDialog.setMessage(getResources().getString(R.string.petition_target_help));
+            alertDialog.setMessage(getResources().getString(R.string.petition_target_info));
             alertDialog.show();
         });
 

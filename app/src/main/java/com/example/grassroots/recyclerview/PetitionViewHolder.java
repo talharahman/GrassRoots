@@ -24,7 +24,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
     private ImageView petitionImageImageView;
     private ProgressBar petitionProgressBarSignatures;
 
-    public PetitionViewHolder(@NonNull View itemView) {
+    PetitionViewHolder(@NonNull View itemView) {
         super(itemView);
         petitionNameTextView=itemView.findViewById(R.id.petition_name_text_view);
         petitionImageImageView=itemView.findViewById(R.id.petition_image_image_view);
@@ -36,14 +36,14 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
 
     @RequiresApi(api = Build.VERSION_CODES.N)
     public void onBind(Petition currentPetition, PetitionsFeedInterface listener) {
-        petitionNameTextView.setText(currentPetition.getPetitionName());
-        pettitonDescrptionTextView.setText(currentPetition.getPetitionDescription());
-        petitionSignatureTextView.setText(currentPetition.getPetitionSignature() + " signed of " + currentPetition.getPetitionSignatureGoal()+" goal");
-        petitionProgressBarSignatures.setMax(currentPetition.getPetitionSignatureGoal());
-        petitionProgressBarSignatures.setProgress(currentPetition.getPetitionSignature(),true);
+        petitionNameTextView.setText(currentPetition.getmPetitionName());
+        pettitonDescrptionTextView.setText(currentPetition.getmPetitionDescription());
+        petitionSignatureTextView.setText(currentPetition.getmPetitionSignature() + " signed of " + currentPetition.getmPetitionSignatureGoal()+" goal");
+        petitionProgressBarSignatures.setMax(currentPetition.getmPetitionSignatureGoal());
+        petitionProgressBarSignatures.setProgress(currentPetition.getmPetitionSignature(),true);
 
         Glide.with(getApplicationContext())
-                .load(currentPetition.getPetitionImageURL())
+                .load(currentPetition.getmPetitionImageURL())
                 .fitCenter()
                 .centerCrop()
                 .placeholder(R.drawable.petition_placeholder)

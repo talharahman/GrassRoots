@@ -5,46 +5,52 @@ import android.arch.lifecycle.ViewModelProviders;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.TextView;
 
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.R;
 
-public class OverviewFragment extends Fragment {
+public class OverviewFragment extends Fragment implements View.OnClickListener {
 
-    private CongressOverviewVM congressOverviewVM;
+    private View rootView;
+    private FloatingActionButton fabMain, fabTwitter, fabFacebook;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private boolean isFabOpen = false;
 
     public OverviewFragment() {
     }
 
     public static OverviewFragment newInstance() {
-        OverviewFragment overviewFragment = new OverviewFragment();
-        return overviewFragment;
+        return new OverviewFragment();
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_overview, container, false);
+        rootView = inflater.inflate(R.layout.fragment_overview, container, false);
+        return rootView;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
+        setButtons();
 
+        CongressOverviewVM congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
 
         TextView ov_first_congressmember = view.findViewById(R.id.ov_first_congressmember);
         TextView ov_second_congressmember = view.findViewById(R.id.ov_second_congressmember);
@@ -71,5 +77,58 @@ public class OverviewFragment extends Fragment {
         ov_txtv_vs_pct_party.setText("Votes with Party Percentage: " + congressOverviewVM.getCongressMember().getVotes_with_party_pct());
 
         ov_txtv_nextElection_congressmember.setText(congressOverviewVM.getCongressMember().getNext_election());
+    }
+
+    private void setButtons() {
+        fabMain = rootView.findViewById(R.id.fab_main);
+        fabTwitter = rootView.findViewById(R.id.fab_twitter);
+        fabFacebook = rootView.findViewById(R.id.fab_facebook);
+
+        fab_open = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_close);
+        rotate_forward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_forward);
+        rotate_backward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_backward);
+
+        fabMain.setOnClickListener(this);
+        fabTwitter.setOnClickListener(this);
+        fabFacebook.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab_main:
+                animateFAB();
+                break;
+            case R.id.fab_twitter:
+                break;
+            case R.id.fab_facebook:
+                break;
+        }
+    }
+
+    public void animateFAB() {
+        if (isFabOpen) {
+            fabMain.startAnimation(rotate_backward);
+
+            fabTwitter.startAnimation(fab_close);
+            fabFacebook.startAnimation(fab_close);
+
+            fabTwitter.setClickable(false);
+            fabFacebook.setClickable(false);
+
+            isFabOpen = false;
+        } else {
+            fabMain.startAnimation(rotate_forward);
+
+            fabTwitter.startAnimation(fab_open);
+            fabFacebook.startAnimation(fab_open);
+
+            fabTwitter.setClickable(true);
+            fabFacebook.setClickable(true);
+
+            isFabOpen = true;
+        }
     }
 }
