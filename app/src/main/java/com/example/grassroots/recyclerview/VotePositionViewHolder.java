@@ -15,19 +15,29 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
 
     TextView votePostion;
     TextView voteDescription;
-    TextView voteID;
+    TextView voteSummary;
+    TextView voteBillID;
+    TextView voteBillTitle;
+    TextView voteBillLatestAction;
 
     public VotePositionViewHolder(@NonNull View itemView) {
         super(itemView);
-        votePostion= itemView.findViewById(R.id.txt_category);
+        votePostion= itemView.findViewById(R.id.txt_position);
         voteDescription= itemView.findViewById(R.id.txt_description);
-        voteID= itemView.findViewById(R.id.txt_position);
+        voteSummary= itemView.findViewById(R.id.txt_summary);
+        voteBillID = itemView.findViewById(R.id.txt_bill_id);
+        voteBillTitle = itemView.findViewById(R.id.txt_bill_title);
+        voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_action);
     }
 
     public void onBind(VotePositionResults votes) {
-        voteDescription.setText(votes.getVotes().get(0).getPosition());
-        votePostion.setText(votes.getVotes().get(0).getDescription());
-        voteID.setText(votes.getVotes().get(0).getResult());
+        voteBillID.setText(votes.getVotes().get(0).getBill().getBill_id());
+        voteBillTitle.setText(votes.getVotes().get(0).getBill().getTitle());
+        voteBillLatestAction.setText(votes.getVotes().get(0).getBill().getLatest_action());
+        voteDescription.setText(votes.getVotes().get(0).getDescription());
+        votePostion.setText(votes.getVotes().get(0).getPosition());
+        voteSummary.setText(votes.getVotes().get(0).getResult());
+
     }
 }
 
