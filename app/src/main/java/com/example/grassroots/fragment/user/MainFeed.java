@@ -129,23 +129,23 @@ public class MainFeed extends Fragment {
                             petitionList.add(petition);
                         }
                         petitionViewModel.setPetitionList(petitionList);
-                        petitionsAdapter=new PetitionsAdapter(mListener);
+                        petitionsAdapter=new PetitionsAdapter();
                         petitionsAdapter.setAdapterList(petitionList);
                         petitionRecyclerView.setAdapter(petitionsAdapter);
                     }
                 });
     }
 
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        if (context instanceof PetitionFragmentsListener) {
-            mListener = (PetitionFragmentsListener) context;
-        } else {
-            throw new RuntimeException(context.toString()
-                    + " must implement OnFragmentInteractionListener");
-        }
-    }
+//    @Override
+//    public void onAttach(Context context) {
+//        super.onAttach(context);
+//        if (context instanceof PetitionFragmentsListener) {
+//            mListener = (PetitionFragmentsListener) context;
+//        } else {
+//            throw new RuntimeException(context.toString()
+//                    + " must implement OnFragmentInteractionListener");
+//        }
+//    }
 
     @Override
     public void onDetach() {

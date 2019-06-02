@@ -23,9 +23,11 @@ public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
     private PetitionFragmentsListener mListener;
     public static final String TAG = "PetitionsAdapter";
 
-    public PetitionsAdapter(PetitionFragmentsListener mListener){
-        this.mListener=mListener;
-
+//    public PetitionsAdapter(PetitionFragmentsListener mListener){
+//        this.mListener=mListener;
+//
+//    }
+    public PetitionsAdapter(){
     }
     public void setAdapterList(List<Petition> petitionList){
         this.petitionList=petitionList;
