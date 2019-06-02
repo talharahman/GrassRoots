@@ -16,16 +16,6 @@ import java.util.List;
 
 public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseViewHolder> {
 
-//    private List<OfficeExpenseResponse> category_list;
-
-//    public ExpenseAdapter(){}
-//
-//    public void setCategory_list(List<OfficeExpResult> category_list) {
-//        this.category_list = category_list;
-//        notifyDataSetChanged();
-//    }
-//   public ExpenseAdapter(List<OfficeExpenseResponse> category_list){
-//        this.category_list = category_list;
 
     private List<OfficeExpResult> category_list;
 
@@ -43,7 +33,6 @@ public class ExpenseAdapter extends RecyclerView.Adapter<ExpenseViewHolder> {
     @Override
     public void onBindViewHolder(@NonNull ExpenseViewHolder expenseViewHolder, int i) {
         expenseViewHolder.onBind(category_list.get(i));
-//        Log.d("FIND", "onBindViewHolder: " + category_list.get(0));
     }
 
     @Override

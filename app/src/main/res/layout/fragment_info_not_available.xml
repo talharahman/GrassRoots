@@ -2,6 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/neutral_white"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -20,9 +21,9 @@
         android:id="@+id/txt_no_records"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="316dp"
+        android:layout_marginBottom="252dp"
         android:gravity="center_horizontal"
-        android:text="There are no public records for Senators at this time.\n Contact your representative to request full transparency."
+        android:text="Information is not available at this time. Contact your representative for more information."
         android:textColor="#000"
         android:textSize="24sp"
         android:textStyle="bold"

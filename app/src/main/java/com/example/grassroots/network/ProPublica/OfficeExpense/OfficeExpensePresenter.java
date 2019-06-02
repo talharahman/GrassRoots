@@ -1,5 +1,7 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
+import android.util.Log;
+
 import com.example.grassroots.CongressExpenseVM;
 import com.example.grassroots.fragment.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
@@ -20,6 +22,7 @@ public class OfficeExpensePresenter {
             @Override
             public void successfulCall(OfficeExpenseResponse officeExpenseResponse) {
                 officeExpUIListener.updateOfficeExpUI(officeExpenseResponse);
+                Log.d("OFFICEEXPENSEPRESENTER", "successfulCall: " + congressApiKey + " " + member_id + " " + year + " " + quarter);
             }
 
             @Override

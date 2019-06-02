@@ -35,32 +35,11 @@ public class SpinnerOEFragment extends Fragment {
 
     private String short_title;
 
-//    private SpinnerUIListener spinnerUIListener;
-
     private Spinner yr_spinner;
     private Spinner qt_spinner;
 
     public SpinnerOEFragment() {
     }
-//
-//    public static SpinnerOEFragment newInstance(String member_id, String year, String quarter){
-//        SpinnerOEFragment spinnerOEFragment = new SpinnerOEFragment();
-//        Bundle spinnerArgs = new Bundle();
-//        spinnerArgs.putString(MEMBER_KEY, member_id);
-//        spinnerArgs.putString(YEAR_KEY, year);
-//        spinnerArgs.putString(QUARTER_KEY, quarter);
-//        spinnerOEFragment.setArguments(spinnerArgs);
-//        return spinnerOEFragment;
-//    }
-
-
-//    @Override
-//    public void onAttach(Context context) {
-//        super.onAttach(context);
-//        if (context instanceof SpinnerUIListener) {
-//            spinnerUIListener = (SpinnerUIListener) context;
-//        }
-//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -97,7 +76,7 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 year = parent.getItemAtPosition(position).toString();
-                Log.d("FINDFINDFINd", "onItemSelected: " + year);
+                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
 
             }
 
@@ -110,7 +89,7 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quarter = parent.getItemAtPosition(position).toString();
-                Log.d("FINDFINDFINd", "onItemSelected: " + quarter);
+                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
 
             }
 
@@ -129,39 +108,34 @@ public class SpinnerOEFragment extends Fragment {
         btn_exp_submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("FINDFINDFIND", "onClick: before inserting frag");
+                Log.d("SPINNEROEFRAG", "onClick: before inserting frag");
 
                 if(btn_exp_submit.isPressed() && short_title.equals("Rep.")){
                     insertOENestedFragment();
-                    btn_exp_submit.setVisibility(View.INVISIBLE);
+                    btn_exp_submit.setVisibility(v.GONE);
                 } else if(btn_exp_submit.isPressed() && short_title.equals("Sen.")){
                     insertCalltoActionFragment();
-                    btn_exp_submit.setVisibility(View.INVISIBLE);
+                    btn_exp_submit.setVisibility(v.INVISIBLE);
                 }
 
-//                if(short_title.equals("Rep.")){
-//                    insertOENestedFragment();
-//                } else {
-//                    insertCalltoActionFragment();
-//                }
-//                Log.d("FINDFINDFIND", "onClick: frag inserted");
-
-                Log.d("FINDFINDFIND", "onClick: " + member_id + " " + year + " " + quarter);
+                Log.d("SPINNEROEFRAG", "onClick: " + member_id + " " + year + " " + quarter);
             }
         });
     }
 
+    private void insertOENestedFragment() {
+        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(year, quarter);
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_spinner, officeExpFragment).addToBackStack(null).commit();
+        Log.d("SPINNEROEFRAG", "insertOENestedFragment: inflate OE FRAG");
+
+    }
     private void insertCalltoActionFragment() {
         TransparencyFragment transparencyFragment = new TransparencyFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_spinner, transparencyFragment).addToBackStack(null).commit();
-    }
-
-    private void insertOENestedFragment() {
-        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance(member_id, year, quarter);
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_spinner, officeExpFragment).addToBackStack(null).commit();
-
 
     }
+
+
 }
