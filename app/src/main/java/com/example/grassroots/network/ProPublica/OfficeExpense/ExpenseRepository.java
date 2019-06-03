@@ -1,9 +1,7 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
-import android.content.Intent;
 import android.util.Log;
 
-import com.example.grassroots.activity.MainActivity;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.network.ProPublica.Members.CongressService;
 
@@ -50,7 +48,6 @@ public class ExpenseRepository {
 
                     @Override
                     public void onFailure(Call<OfficeExpenseResponse> call, Throwable t) {
-                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
 //                        officeExpenseListener.failedCall();
                         //TO DO
                     }

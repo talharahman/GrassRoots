@@ -26,15 +26,20 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.grassroots.MainActivity;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
 import com.example.grassroots.utils.PetitionFragmentsListener;
 import com.facebook.share.widget.ShareButton;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
@@ -43,14 +48,23 @@ import com.google.firebase.storage.UploadTask;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class PetitionReviewFragment extends Fragment {
 
     private PetitionViewModel petitionViewModel;
-    private Button shareButton;
+    private TextView petitionNameTextView;
+    private TextView petitionSupporterTextView;
+    private TextView petitionDescriptionTextView;
+    private ImageView petitionImageView;
+    private Button publishButton,shareButton;
+    public static Context contextOfApplication;
+    private StorageTask mUploadTask;
     private ProgressBar mProgressBar;
     private PetitionFragmentsListener mListener;
-    public static Context contextOfApplication;
+    private FirebaseFirestore db=FirebaseFirestore.getInstance();
+
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
@@ -74,13 +88,13 @@ public class PetitionReviewFragment extends Fragment {
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-        TextView petitionNameTextView = view.findViewById(R.id.text_view_petition_name);
-        TextView petitionSupporterTextView = view.findViewById(R.id.text_view_petition_supporter);
-        TextView petitionDescriptionTextView = view.findViewById(R.id.text_view_petition_description);
-        ImageView petitionImageView = view.findViewById(R.id.image_view_petition);
-        Button publishButton = view.findViewById(R.id.publish_button);
-        mProgressBar = view.findViewById(R.id.progress_bar);
-        shareButton = view.findViewById(R.id.share_button);
+        petitionNameTextView=view.findViewById(R.id.text_view_petition_name);
+        petitionSupporterTextView=view.findViewById(R.id.text_view_petition_supporter);
+        petitionDescriptionTextView=view.findViewById(R.id.text_view_petition_description);
+        petitionImageView=view.findViewById(R.id.image_view_petition);
+        publishButton=view.findViewById(R.id.publish_button);
+        mProgressBar=view.findViewById(R.id.progress_bar);
+        shareButton=view.findViewById(R.id.share_button);
 
         petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
         petitionNameTextView.setText(petitionViewModel.getmPetitionName());
@@ -102,11 +116,17 @@ public class PetitionReviewFragment extends Fragment {
         shareButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                mListener.moveToSharePetition(new PetitionSharedFragment());
+            }
+        });
+        publishButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //uploadFile();
+                uploadFile2();
             }
         });
     }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -143,22 +163,23 @@ public class PetitionReviewFragment extends Fragment {
                         fileReference.getDownloadUrl().addOnSuccessListener(uri -> Log.d("testtoday", "onSuccess: uri= " + uri.toString()));
                         petitionViewModel.setmPetitionSignature(1);
 
-                        fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
-                            Petition petition = new Petition(petitionViewModel.getmPetitionName(),
-                                    petitionViewModel.getmPetitionSupporter(),
-                                    petitionViewModel.getmPetitionDescription(),
-                                    uri.toString(),
-                                    petitionViewModel.getmPetitionSignatureGoal(),
-                                    petitionViewModel.getmPetitionSignature()
+                            fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+//                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
+//                                        petitionViewModel.getmPetitionSupporter(),
+//                                        petitionViewModel.getmPetitionDescription(),
+//                                        uri.toString(),
+//                                        petitionViewModel.getmPetitionSignatureGoal(),
+//                                        petitionViewModel.getmPetitionSignature()
+//
+//                                );
 
-                            );
+                                String petitionId = mDatabaseRef.push().getKey();
+                               // mDatabaseRef.child(petitionId).setValue(petition);
 
-                            String petitionId = mDatabaseRef.push().getKey();
-                            mDatabaseRef.child(petitionId).setValue(petition);
+                            });
 
-                        });
-
-                    })
+                        }
+                    )
                     .addOnFailureListener(new OnFailureListener() {
                         @Override
                         public void onFailure(@NonNull Exception e) {
@@ -176,6 +197,88 @@ public class PetitionReviewFragment extends Fragment {
             Toast.makeText(requireContext(), "No file selected", Toast.LENGTH_SHORT).show();
         }
     }
+
+
+    private void uploadFile2(){
+        printKeyHash();
+        if (petitionViewModel.getmPetitionImage() != null) {
+            StorageReference fileReference = mStorageRef.child(System.currentTimeMillis()
+                    + "." + getFileExtension(petitionViewModel.getmPetitionImage()));
+
+            mUploadTask = fileReference.putFile(petitionViewModel.getmPetitionImage())
+                    .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                            Handler handler = new Handler();
+                            handler.postDelayed(new Runnable() {
+                                @Override
+                                public void run() {
+                                    mProgressBar.setProgress(0);
+                                }
+                            }, 500);
+
+                            fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+                                @Override
+                                public void onSuccess(Uri uri) {
+                                    Log.d("test today", "onSuccess: uri= "+ uri.toString());
+                                }
+                            });
+                            petitionViewModel.setmPetitionSignature(1);
+
+                            List<PetitionUpdates> updatesList=new ArrayList<>();
+
+
+                            fileReference.getDownloadUrl().addOnSuccessListener(uri -> {
+                                Petition petition = new Petition(petitionViewModel.getmPetitionName(),
+                                        petitionViewModel.getmPetitionSupporter(),
+                                        petitionViewModel.getmPetitionDescription(),
+                                        uri.toString(),
+                                        petitionViewModel.getmPetitionSignatureGoal(),
+                                        petitionViewModel.getmPetitionSignature(),updatesList
+                                );
+
+
+                                db.collection("Petitioncol").add(petition)
+                                        .addOnSuccessListener(new OnSuccessListener<DocumentReference>() {
+                                            @Override
+                                            public void onSuccess(DocumentReference documentReference) {
+                                                Toast.makeText(requireContext(), "Note saved", Toast.LENGTH_SHORT).show();
+
+
+                                        }})
+                                        .addOnFailureListener(new OnFailureListener() {
+                                            @Override
+                                            public void onFailure(@NonNull Exception e) {
+                                                Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
+                                                Log.d("TEst", e.toString());
+                                            }
+                                        });
+
+
+                            });
+                            }
+                    })
+                    .addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(requireContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    })
+                    .addOnProgressListener(new OnProgressListener<UploadTask.TaskSnapshot>() {
+                        @Override
+                        public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
+                            double progress = (100.0 * taskSnapshot.getBytesTransferred() / taskSnapshot.getTotalByteCount());
+                            mProgressBar.setProgress((int) progress);
+                        }
+                    });
+        } else {
+            Toast.makeText(requireContext(), "No file selected", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+
+
 
     private String getFileExtension(Uri uri) {
         Context applicationContext = requireActivity().getApplicationContext();

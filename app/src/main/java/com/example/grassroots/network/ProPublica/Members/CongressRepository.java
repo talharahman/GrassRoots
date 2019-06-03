@@ -1,11 +1,6 @@
 package com.example.grassroots.network.ProPublica.Members;
 
-import android.util.Log;
-
-import com.example.grassroots.activity.MainActivity;
 import com.example.grassroots.model.ProPublica.Members.CongressResponse;
-import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
-import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpenseListener;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +13,8 @@ public class CongressRepository {
     private static Retrofit instance;
     private static final String CONGRESS_BASE_URL = "https://api.propublica.org/congress/v1/";
 
-    CongressRepository() {}
+    CongressRepository() {
+    }
 
     private static Retrofit getInstance() {
         if (instance == null) {
@@ -38,15 +34,13 @@ public class CongressRepository {
                     @Override
                     public void onResponse(Call<CongressResponse> call, Response<CongressResponse> response) {
                         CongressResponse congressResponse = response.body();
-                        if(congressResponse != null){
-                            Log.d(MainActivity.TAG, "onResponse: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                        if (congressResponse != null) {
                             congressListener.successfulCall(congressResponse);
                         }
-                   }
+                    }
 
                     @Override
                     public void onFailure(Call<CongressResponse> call, Throwable t) {
-                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
                         congressListener.failedCall();
 
                     }
@@ -61,15 +55,13 @@ public class CongressRepository {
                     @Override
                     public void onResponse(Call<CongressResponse> call, Response<CongressResponse> response) {
                         CongressResponse congressResponse = response.body();
-                        if(congressResponse != null){
-                            Log.d(MainActivity.TAG, "onResponse: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                        if (congressResponse != null) {
                             congressListener.successfulCall(congressResponse);
                         }
                     }
 
                     @Override
                     public void onFailure(Call<CongressResponse> call, Throwable t) {
-                        Log.d(MainActivity.TAG, "Call failed " + t.getMessage());
                         congressListener.failedCall();
                         //TO DO
 
