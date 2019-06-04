@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
@@ -24,8 +25,8 @@ import com.example.grassroots.R;
 public class OverviewFragment extends Fragment implements View.OnClickListener {
 
     private View rootView;
-    private CardView finSummary;
     private String fecID;
+    private Button fecID_button;
     private FloatingActionButton fabMain, fabTwitter, fabFacebook;
     private Animation fab_open, fab_close, rotate_forward, rotate_backward;
     private boolean isFabOpen = false;
@@ -69,6 +70,8 @@ public class OverviewFragment extends Fragment implements View.OnClickListener {
         TextView ov_txtv_vs_pct_party = rootView.findViewById(R.id.ov_txtv_vs_pct_party);
         TextView ov_txtv_nextElection_congressmember = rootView.findViewById(R.id.ov_txtv_nextElection_congressmember);
 
+        fecID_button = rootView.findViewById(R.id.fecID_button);
+
         ov_first_congressmember.setText(
                 congressOverviewVM.getCongressMember().getShort_title() + " " +
                 congressOverviewVM.getCongressMember().getFirst_name() + " " +
@@ -96,7 +99,6 @@ public class OverviewFragment extends Fragment implements View.OnClickListener {
     }
 
     private void setButtons() {
-        finSummary = rootView.findViewById(R.id.overview_first_cardview);
         fabMain = rootView.findViewById(R.id.fab_main);
         fabTwitter = rootView.findViewById(R.id.fab_twitter);
         fabFacebook = rootView.findViewById(R.id.fab_facebook);
@@ -106,7 +108,7 @@ public class OverviewFragment extends Fragment implements View.OnClickListener {
         rotate_forward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_forward);
         rotate_backward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_backward);
 
-        finSummary.setOnClickListener(new View.OnClickListener() {
+       fecID_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Uri uri = Uri.parse(ADDRESS + fecID + "/");

@@ -59,10 +59,10 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         Glide.with(itemView.getContext())
                 .load(electedRepresentatives.getPhotoUrl())
                 .centerCrop()
-                .placeholder(R.drawable.image_na)
+                .placeholder(R.drawable.silhouette)
                 .into(repImage);
 
-        if (electedRepresentatives.getParty() != null) {
+        /*if (electedRepresentatives.getParty() != null) {
             if (electedRepresentatives.getParty().startsWith("D")) {
                 repCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
                 socialsCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
@@ -73,7 +73,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 repCardview.setCardBackgroundColor(Color.WHITE);
                 socialsCardview.setCardBackgroundColor(Color.WHITE);
             }
-        }
+        }*/
 
         urlView(electedRepresentatives);
         phoneView(electedRepresentatives);
@@ -84,10 +84,10 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         boolean expanded = electedRepresentatives.isExpanded();
         if (expanded) {
             socialsCardview.setVisibility(View.VISIBLE);
-            showText.setText("hide");
+            showText.setText("hide contact");
         } else {
             socialsCardview.setVisibility(View.GONE);
-            showText.setText("show");
+            showText.setText("show contact");
         }
     }
 
