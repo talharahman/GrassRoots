@@ -30,13 +30,13 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
         voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_action);
     }
 
-    public void onBind(VotePositionResults votes) {
-        voteBillID.setText(votes.getVotes().get(0).getBill().getBill_id());
-        voteBillTitle.setText(votes.getVotes().get(0).getBill().getTitle());
-        voteBillLatestAction.setText(votes.getVotes().get(0).getBill().getLatest_action());
-        voteDescription.setText(votes.getVotes().get(0).getDescription());
-        votePostion.setText(votes.getVotes().get(0).getPosition());
-        voteSummary.setText(votes.getVotes().get(0).getResult());
+    public void onBind(Votes votes) {
+        voteBillID.setText(votes.getBill().getBill_id());
+        voteBillTitle.setText(votes.getBill().getTitle());
+        voteBillLatestAction.setText(votes.getBill().getLatest_action());
+        voteDescription.setText(votes.getDescription());
+        votePostion.setText(votes.getPosition());
+        voteSummary.setText(votes.getResult());
 
     }
 }

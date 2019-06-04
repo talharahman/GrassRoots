@@ -9,7 +9,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.petition.DetailsPetitionFragment;
 import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 

@@ -14,7 +14,6 @@ import android.support.v7.widget.SearchView;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
-import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpResult;
 import com.example.grassroots.network.ProPublica.Members.CongressPresenter;
 import com.example.grassroots.recyclerview.CongressAdapter;
 

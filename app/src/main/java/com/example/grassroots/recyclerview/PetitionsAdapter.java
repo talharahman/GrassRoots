@@ -29,6 +29,7 @@ public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
     public PetitionsAdapter(PetitionsFeedInterface listener) {
         this.listener = listener;
     }
+
     public void setAdapterList(List<Petition> petitionList){
         this.petitionList = petitionList;
     }

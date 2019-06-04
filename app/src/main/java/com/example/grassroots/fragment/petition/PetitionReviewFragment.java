@@ -88,13 +88,13 @@ public class PetitionReviewFragment extends Fragment {
         mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
-        petitionNameTextView=view.findViewById(R.id.text_view_petition_name);
-        petitionSupporterTextView=view.findViewById(R.id.text_view_petition_supporter);
-        petitionDescriptionTextView=view.findViewById(R.id.text_view_petition_description);
-        petitionImageView=view.findViewById(R.id.image_view_petition);
-        publishButton=view.findViewById(R.id.publish_button);
-        mProgressBar=view.findViewById(R.id.progress_bar);
-        shareButton=view.findViewById(R.id.share_button);
+        TextView petitionNameTextView = view.findViewById(R.id.text_view_petition_name);
+        TextView petitionSupporterTextView = view.findViewById(R.id.text_view_petition_supporter);
+        TextView petitionDescriptionTextView = view.findViewById(R.id.text_view_petition_description);
+        ImageView petitionImageView = view.findViewById(R.id.image_view_petition);
+        Button publishButton = view.findViewById(R.id.publish_button);
+        mProgressBar = view.findViewById(R.id.progress_bar);
+        shareButton = view.findViewById(R.id.share_button);
 
         petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
         petitionNameTextView.setText(petitionViewModel.getmPetitionName());
