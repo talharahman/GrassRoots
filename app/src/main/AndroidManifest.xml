@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.UserViewActivity"
+        <activity android:name=".activity.UserActionActivity"
             android:theme="@style/AppTheme.NoActionBar"/>
         <activity
             android:name=".activity.PetitionHostActivity"

@@ -1,192 +1,190 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/grey_scale">
 
     <android.support.v7.widget.CardView
-        android:id="@+id/overview_first_cardview"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="36dp"
-        app:cardCornerRadius="16dp"
-        app:cardMaxElevation="16dp"
-        android:clickable="true"
-        android:focusable="true"
+        android:layout_width="match_parent"
+        android:layout_height="617dp"
         app:cardBackgroundColor="@color/purple_drop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/ov_first_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
-            android:text="Title, Name, Gender"
-            android:textColor="@color/grey_scale"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/quicksand" />
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/ov_second_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="40dp"
-            android:text="Party, State"
-            android:textColor="@color/grey_scale"
-            android:textSize="16sp"
-            android:textStyle="italic"
-            app:fontFamily="@font/open_sans" />
 
-        <TextView
-            android:id="@+id/ov_third_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="80dp"
-            android:text="@string/ov_fec_id_number"
-            android:textColor="@color/grey_scale"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/quicksand"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ov_second_congressmember" />
+            <TextView
+                android:id="@+id/ov_first_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:fontFamily="@font/quicksand"
+                android:text="Title, Name, Gender"
+                android:textColor="@color/grey_scale"
+                android:textSize="30sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:id="@+id/ov_txtv_third_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="112dp"
-            android:fontFamily="@font/open_sans"
-            android:text="FEC ID NUMBER"
-            android:textColor="@color/grey_scale"
-            android:textSize="16sp"
-            android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ov_third_congressmember" />
+            <TextView
+                android:id="@+id/ov_second_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:text="Party, State"
+                android:textColor="@color/grey_scale"
+                android:textSize="24sp"
+                android:textStyle="italic"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_first_congressmember" />
+
+            <TextView
+                android:id="@+id/ov_third_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:fontFamily="@font/quicksand"
+                android:text="@string/ov_fec_id_number"
+                android:textColor="@color/grey_scale"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_second_congressmember" />
+
+            <Button
+                android:id="@+id/fecID_button"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="124dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/ic_info"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.094"
+                app:layout_constraintStart_toEndOf="@+id/ov_third_congressmember"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintVertical_bias="0.03" />
+
+            <TextView
+                android:id="@+id/ov_txtv_third_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/quicksand"
+                android:text="FEC ID NUMBER"
+                android:textColor="@color/grey_scale"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_third_congressmember" />
+
+
+            <TextView
+                android:id="@+id/ov_votingSnapshot_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="@string/ov_voting_snapshot"
+                android:textColor="@color/grey_scale"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_txtv_third_congressmember" />
+
+            <TextView
+                android:id="@+id/ov_txtv_vs_votesRatio"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="missed votes / total votes"
+                android:textColor="@color/grey_scale"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_votingSnapshot_congressmember" />
+
+            <TextView
+                android:id="@+id/ov_txtv_vs_pct_missed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="missed votes pct"
+                android:textColor="@color/grey_scale"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_votesRatio" />
+
+            <TextView
+                android:id="@+id/ov_txtv_vs_pct_party"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="votes with party pct"
+                android:textColor="@color/grey_scale"
+                android:textStyle="bold"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_missed" />
+
+            <TextView
+                android:id="@+id/ov_nextElection_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:text="@string/ov_next_election"
+                android:textColor="@color/grey_scale"
+                android:textSize="24sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_txtv_vs_pct_party" />
+
+            <TextView
+                android:id="@+id/ov_txtv_nextElection_congressmember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="72dp"
+                android:text="YEAR"
+                android:textColor="@color/red_leaf"
+                android:textSize="72sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.502"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ov_nextElection_congressmember"
+                app:layout_constraintVertical_bias="0.0" />
+
+        </android.support.constraint.ConstraintLayout>
+
 
     </android.support.v7.widget.CardView>
 
-    <android.support.v7.widget.CardView
-        android:id="@+id/overview_second_cardview"
-        android:layout_width="250dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="28dp"
-        app:cardCornerRadius="16dp"
-        app:cardBackgroundColor="@color/purple_drop"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overview_first_cardview">
-
-        <TextView
-            android:id="@+id/ov_votingSnapshot_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/ov_voting_snapshot"
-            android:textColor="@color/grey_scale"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/quicksand" />
-
-        <TextView
-            android:id="@+id/ov_txtv_vs_votesRatio"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="48dp"
-            android:text="missed votes / total votes"
-            android:textColor="@color/grey_scale"
-            android:textStyle="bold"
-            app:fontFamily="@font/open_sans" />
-
-        <TextView
-            android:id="@+id/ov_txtv_vs_pct_missed"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="88dp"
-            android:text="missed votes pct"
-            android:textColor="@color/grey_scale"
-            android:textStyle="bold"
-            app:fontFamily="@font/open_sans" />
-
-        <TextView
-            android:id="@+id/ov_txtv_vs_pct_party"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="112dp"
-            app:fontFamily="@font/open_sans"
-            android:text="votes with party pct"
-            android:textColor="@color/grey_scale"
-            android:textStyle="bold" />
-
-    </android.support.v7.widget.CardView>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/overview_third_cardview"
-        android:layout_width="253dp"
-        android:layout_height="128dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginBottom="8dp"
-        app:cardCornerRadius="16dp"
-        app:cardMaxElevation="16dp"
-        app:cardBackgroundColor="@color/purple_drop"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/overview_second_cardview"
-        app:layout_constraintVertical_bias="0.008">
-
-        <TextView
-            android:id="@+id/ov_nextElection_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginLeft="16dp"
-            android:layout_marginTop="8dp"
-            android:text="@string/ov_next_election"
-            android:textColor="@color/grey_scale"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:fontFamily="@font/quicksand" />
-
-        <TextView
-            android:id="@+id/ov_txtv_nextElection_congressmember"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_marginLeft="12dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="8dp"
-            app:fontFamily="@font/open_sans"
-            android:text="YEAR"
-            android:textColor="@color/red_leaf"
-            android:textSize="56sp"
-            android:textStyle="bold" />
-
-    </android.support.v7.widget.CardView>
 
     <!--  <android.support.design.widget.FloatingActionButton
         android:id="@+id/fab_web"

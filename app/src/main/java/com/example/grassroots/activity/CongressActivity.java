@@ -93,7 +93,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
-                Intent view = new Intent(this, UserViewActivity.class);
+                Intent view = new Intent(this, UserActionActivity.class);
                 startActivity(view);
                 return true;
             case R.id.bot_nav_contact:

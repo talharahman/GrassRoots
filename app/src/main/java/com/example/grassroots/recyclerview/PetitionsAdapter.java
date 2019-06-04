@@ -20,6 +20,7 @@ import java.util.List;
 import static com.facebook.FacebookSdk.getApplicationContext;
 
 public class PetitionsAdapter extends RecyclerView.Adapter<PetitionViewHolder> {
+
     private List<Petition>petitionList;
     private PetitionFragmentsListener mListener;
     private PetitionsFeedInterface listener;

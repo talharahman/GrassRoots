@@ -42,6 +42,9 @@ public class Petition implements Serializable {
         this.mPetitionUpdatesList = mPetitionUpdatesList;
     }
 
+    // TODO private String ownerId;
+    // TODO private List<String> signers;
+
     public Petition() { }
 
     public Petition( String petitionName, String petitionSupporter, String petitionDescription, String petitionImage,int petitionSignatureGoal,int petitionSignature,List<PetitionUpdates>petitionUpdatesList) {

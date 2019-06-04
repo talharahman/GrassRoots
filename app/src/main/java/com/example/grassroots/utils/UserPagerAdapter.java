@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.example.grassroots.fragment.user.UserActions;
+import com.example.grassroots.fragment.user.UserHistory;
 import com.example.grassroots.fragment.user.UserFeed;
 
 public class UserPagerAdapter extends FragmentPagerAdapter {
@@ -17,7 +17,7 @@ public class UserPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                return new UserActions();
+                return new UserHistory();
             case 1:
                 return new UserFeed();
         }

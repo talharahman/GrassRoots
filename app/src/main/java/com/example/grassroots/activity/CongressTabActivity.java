@@ -63,7 +63,7 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
                 startActivity(action);
                 return true;
             case R.id.bot_view_activity:
-                Intent view = new Intent(this, UserViewActivity.class);
+                Intent view = new Intent(this, UserActionActivity.class);
                 startActivity(view);
                 return true;
             case R.id.bot_nav_contact:
