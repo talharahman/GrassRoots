@@ -4,15 +4,13 @@ import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.annotation.RequiresApi;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
-import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
+import com.example.grassroots.fragment.petition.DetailsPetitionFragment;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 
@@ -55,7 +53,7 @@ public class PetitionViewHolder extends RecyclerView.ViewHolder {
         itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToDetailsPetition(DetailsPetitonFragment.newInstance(currentPetition));
+                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(currentPetition));
             }
         });
     }

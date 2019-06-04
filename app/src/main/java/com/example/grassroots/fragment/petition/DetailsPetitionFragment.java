@@ -12,12 +12,16 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.SeekBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
@@ -25,22 +29,19 @@ import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
 import com.example.grassroots.recyclerview.PetitionUpdatesAdapter;
-import com.example.grassroots.recyclerview.PetitionViewHolder;
-import com.example.grassroots.recyclerview.PetitionsAdapter;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class DetailsPetitonFragment extends Fragment {
+import me.itangqi.waveloadingview.WaveLoadingView;
+
+
+public class DetailsPetitionFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String PARAM_PETITION = "param1";
@@ -63,15 +64,18 @@ public class DetailsPetitonFragment extends Fragment {
     private DocumentReference petitionUpdateRef;
     private List<PetitionUpdates>petitionUpdatesList=new ArrayList<>();
     private RecyclerView petitionUpdateRecyclerView;
+    private WaveLoadingView waveLoadingView;
+    private SeekBar seekBar;
 
 
 
+    public DetailsPetitionFragment() {
+        // Required empty public constructor
+    }
 
-    public DetailsPetitonFragment() {}
 
-
-    public static DetailsPetitonFragment newInstance(Petition petition) {
-        DetailsPetitonFragment fragment = new DetailsPetitonFragment();
+    public static DetailsPetitionFragment newInstance(Petition petition) {
+        DetailsPetitionFragment fragment = new DetailsPetitionFragment();
         Bundle args = new Bundle();
         args.putSerializable(PARAM_PETITION,petition);
         fragment.setArguments(args);
@@ -79,6 +83,13 @@ public class DetailsPetitonFragment extends Fragment {
 
         return fragment;
     }
+
+//    @Override
+//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+//        super.onCreateOptionsMenu(menu, inflater);
+//        MenuInflater menuInflater =requireActivity().getMenuInflater();
+//        menuInflater.inflate(R.menu.detail_petition_opetion_menu,menu );
+//    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -97,9 +108,20 @@ public class DetailsPetitonFragment extends Fragment {
 
     }
 
+
+
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        waveLoadingView=view.findViewById(R.id.cirele);
+        waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
+
+        waveLoadingView.setBottomTitle(" Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
+        waveLoadingView.setCenterTitle("have signed. ");
+        waveLoadingView.setTopTitle(String.valueOf(mParam1.getmPetitionSignature()));
+
+
 
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
@@ -121,7 +143,7 @@ public class DetailsPetitonFragment extends Fragment {
         petitionNameTextView.setText(mParam1.getmPetitionName());
         petitionSupporterTextView.setText(mParam1.getmPetitionSupporter());
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
-        petitionViewModel.setPetitionKey(mParam1.getPetitiopnKey());
+        petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
 
         Glide.with(requireContext()).load(mParam1.getmPetitionImageURL()).fitCenter().centerCrop().into(petitionImageImageView);
@@ -134,15 +156,27 @@ public class DetailsPetitonFragment extends Fragment {
         petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Boolean updatesMood=true;
-                mListener.moveToPetitionUpdatesFirstFrgament(new PetitionUpdateFirstFragment());
+                mListener.moveToPetitionUpdatesFirstFragament(new PetitionUpdateFirstFragment());
             }
         });
 
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                petitionUpdateRef =db.collection("Petitioncol").document(mParam1.getPetitionKey());
+                DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature()+1)
+                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                            @Override
+                            public void onSuccess(Void aVoid) {
+                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
+                                petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
+                                waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
+
+
+                            }
+                        });
+
 
 
             }
@@ -162,15 +196,13 @@ public class DetailsPetitonFragment extends Fragment {
     }
 
     public void loadPetitionUpdates() {
-
-        //TODO: FIX NULL OBJECT REFERENCE
         petitionUpdateRef =db.collection("Petitioncol").document(mParam1.getPetitionKey());
 
         petitionUpdateRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 Petition petition=documentSnapshot.toObject(Petition.class);
-                petition.setPetitiopnKey(documentSnapshot.getId());
+                petition.setPetitionKey(documentSnapshot.getId());
                 for(PetitionUpdates p: petition.getmPetitionUpdatesList()) {
                     petitionUpdatesList.add(p);
                 }

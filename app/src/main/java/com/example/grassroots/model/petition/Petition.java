@@ -1,6 +1,8 @@
 package com.example.grassroots.model.petition;
 
 import android.net.Uri;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 
 import com.google.firebase.database.Exclude;
@@ -20,21 +22,14 @@ public class Petition implements Serializable {
     private String petitionKey;
     private List<PetitionUpdates> mPetitionUpdatesList =new ArrayList();
 
-    @Exclude
-    public String getPetitiopnKey() {
-        return petitionKey;
-    }
+
 
     @Exclude
-    public void setPetitiopnKey(String petitiopnKey) {
-        this.petitionKey = petitiopnKey;
-    }
-
-
     public String getPetitionKey() {
         return petitionKey;
     }
 
+    @Exclude
     public void setPetitionKey(String petitionKey) {
         this.petitionKey = petitionKey;
     }
@@ -113,6 +108,7 @@ public class Petition implements Serializable {
     public void setmPetitionImageURL(String mPetitionImageURL) {
         this.mPetitionImageURL = mPetitionImageURL;
     }
+
 
 }
 

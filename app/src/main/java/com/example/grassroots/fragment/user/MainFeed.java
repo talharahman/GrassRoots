@@ -88,13 +88,14 @@ public class MainFeed extends Fragment {
     }
 
     public void loadNote() {
+        petitionList.clear();
         petitionRef.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
                     @Override
                     public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
                         for (QueryDocumentSnapshot documentSnapshot: queryDocumentSnapshots) {
                             Petition petition=documentSnapshot.toObject(Petition.class);
-                            petition.setPetitiopnKey(documentSnapshot.getId());
+                            petition.setPetitionKey(documentSnapshot.getId());
                             petitionList.add(petition);
                         }
                         petitionViewModel.setPetitionList(petitionList);

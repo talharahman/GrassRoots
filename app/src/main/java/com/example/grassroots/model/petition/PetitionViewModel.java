@@ -36,6 +36,7 @@ public class PetitionViewModel extends ViewModel implements Serializable {
         return mPetitionList;
     }
 
+
     public String getPetitionKey() {
         return petitionKey;
     }

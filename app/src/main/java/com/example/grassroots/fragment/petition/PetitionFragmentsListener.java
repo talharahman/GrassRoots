@@ -13,7 +13,7 @@ public interface PetitionFragmentsListener {
     void moveToSharePetition(Fragment fragment);
 //    void moveToListOfPetitions(Fragment fragment);
 //    void moveToDetailsPetition(Fragment fragment);
-//    void moveToPetitionUpdatesFirstFrgament(Fragment fragment);
+//    void moveToPetitionUpdatesFirstFragament(Fragment fragment);
 //    void moveToPetitionUpdatesSecondFragment(Fragment fragment);
 
 }

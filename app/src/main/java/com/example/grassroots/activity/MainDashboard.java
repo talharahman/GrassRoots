@@ -9,7 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.petition.DetailsPetitonFragment;
+import com.example.grassroots.fragment.petition.DetailsPetitionFragment;
 import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 
@@ -61,7 +61,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     public void moveToDetailsPetition(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.feed_container, new DetailsPetitonFragment())
+                .replace(R.id.feed_container, fragment)
                 .addToBackStack(null)
                 .commit();
     }
@@ -78,7 +78,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
 //    }
 
     @Override
-    public void moveToPetitionUpdatesFirstFrgament(Fragment fragment) {
+    public void moveToPetitionUpdatesFirstFragament(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.frame_container, fragment)
