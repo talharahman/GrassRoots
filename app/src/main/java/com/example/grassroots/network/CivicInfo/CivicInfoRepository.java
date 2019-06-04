@@ -35,7 +35,7 @@ class CivicInfoRepository {
                     public void onResponse(Call<CivicInfoModel> call, Response<CivicInfoModel> response) {
                         CivicInfoModel civicInfoModel = response.body();
                         if (response.body() != null) {
-                            Log.d("README", "onResponse: " + response.body().getElectedRepresentatives().get(0).getName());
+                            Log.d("README", "onResponse: " + response.raw());
                             civicInfoListener.onSuccess(civicInfoModel);
                         }
                     }

@@ -13,3 +13,4 @@
 .externalNativeBuild
 **/*/res/values/keys.xml
 /.idea
+google-services.json

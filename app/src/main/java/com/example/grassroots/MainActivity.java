@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -16,11 +18,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 
-import com.example.grassroots.fragment.BillsFragment;
-import com.example.grassroots.fragment.CongressFragment;
-import com.example.grassroots.fragment.LocalRepsFragment;
+import com.example.grassroots.fragment.petition.PetitionFirstFragment;
+import com.example.grassroots.fragment.petition.PetitionFragmentsListener;
+import com.example.grassroots.fragment.user.MainFeed;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener, PetitionFragmentsListener {
 
     public static final String TAG = "findme";
     private DrawerLayout drawer;
@@ -32,8 +34,9 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        setReferences();
+//        setReferences();
         initialize();
+//        moveToListOfPetitions(new MainFeed());
     }
 
     private void initialize() {
@@ -64,17 +67,18 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_action:
+                moveToPetitionFirstPart(new PetitionFirstFragment());
                 //inflateFragment(createPetitionFragment)
-                return true;
-            case R.id.nav_contact:
-                getLocaleDialog();
-                return true;
-            case R.id.nav_bills:
-                inflateFragment(new BillsFragment());
-                return true;
-            case R.id.nav_search:
-                inflateFragment(new CongressFragment());
-                return true;
+//                return true;
+//            case R.id.nav_contact:
+//                getLocaleDialog();
+//                return true;
+//            case R.id.nav_bills:
+//                inflateFragment(new Bills());
+//                return true;
+//            case R.id.nav_search:
+//                inflateFragment(new CongressFragment());
+//                return true;
         }
         return true;
     }
@@ -88,25 +92,104 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
                 .commit();
     }
 
-    private void setReferences(){
-        toolbar = findViewById(R.id.toolbar);
-        drawer = findViewById(R.id.drawer_layout);
-        navigationView = findViewById(R.id.nav_view);
-        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//    private void setReferences(){
+//        toolbar = findViewById(R.id.toolbar);
+//        drawer = findViewById(R.id.drawer_layout);
+//        navigationView = findViewById(R.id.nav_view);
+//        toggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+//    }
+//
+//    private void getLocaleDialog() {
+//        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
+//        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
+//        EditText localeText = dialogLayout.findViewById(R.id.localeText);
+//        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
+//
+//        getLocale.setView(dialogLayout);
+//        final AlertDialog alertDialog = getLocale.create();
+//        submitButton.setOnClickListener(v -> {
+//            alertDialog.dismiss();
+//            inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
+//        });
+//        alertDialog.show();
+//    }
+
+    @Override
+    public void moveToPetitionFirstPart(Fragment fragment) {
+
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
     }
 
-    private void getLocaleDialog() {
-        AlertDialog.Builder getLocale = new AlertDialog.Builder(this);
-        View dialogLayout = getLayoutInflater().inflate(R.layout.local_alert_dialog, null);
-        EditText localeText = dialogLayout.findViewById(R.id.localeText);
-        Button submitButton = dialogLayout.findViewById(R.id.submit_button);
-
-        getLocale.setView(dialogLayout);
-        final AlertDialog alertDialog = getLocale.create();
-        submitButton.setOnClickListener(v -> {
-            alertDialog.dismiss();
-            inflateFragment(LocalRepsFragment.newInstance(localeText.getText().toString()));
-        });
-        alertDialog.show();
+    @Override
+    public void moveToPetitionSecondPart(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
     }
+
+    @Override
+    public void moveToPetitionThirdPart(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToPetitionPreview(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToSharePetition(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.frame_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+                .addToBackStack(null)
+                .commit();
+    }
+//    @Override
+//    public void moveToListOfPetitions(Fragment fragment) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.frame_container, fragment)
+//                .setCustomAnimations(R.anim.enter, R.anim.exit)
+//                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+//                .addToBackStack(null)
+//                .commit();
+//    }
+//
+//    @Override
+//    public void moveToDetailsPetition(Fragment fragment) {
+//        getSupportFragmentManager()
+//                .beginTransaction()
+//                .replace(R.id.frame_container, fragment)
+//                .setCustomAnimations(R.anim.enter, R.anim.exit)
+//                //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
+//                .addToBackStack(null)
+//                .commit();
+//    }
+
+
 }

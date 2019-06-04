@@ -2,9 +2,7 @@ package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
@@ -25,14 +23,16 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     public void setAdapterList(List<ElectedPositions> electedPositions,
                                List<ElectedRepresentatives> electedRepresentatives) {
+        reverseList(electedRepresentatives);
+
         this.electedRepresentatives = electedRepresentatives;
+        reverseList(electedPositions);
         this.electedPositions = electedPositions;
         notifyDataSetChanged();
     }
 
     private <E> void reverseList(List<E> list) {
         Collections.reverse(list);
-
     }
 
     @NonNull
@@ -40,7 +40,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
     public CivicInfoViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         return new CivicInfoViewHolder(LayoutInflater
                 .from(viewGroup.getContext())
-                .inflate(R.layout.expanded_local_rep_itemview, viewGroup, false));
+                .inflate(R.layout.local_reps_itemview, viewGroup, false));
     }
 
     @Override
@@ -51,15 +51,12 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
                 positionsMap.put(electedPositions.get(j).getOfficialIndices().get(k), electedPositions.get(j).getName());
             }
         }
-        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(i));
+        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1));
 
-        civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean expanded = electedRepresentatives.get(i).isExpanded();
-                electedRepresentatives.get(i).setExpanded(!expanded);
-                notifyItemChanged(i);
-            }
+        civicInfoViewHolder.itemView.setOnClickListener(v -> {
+            boolean expanded = electedRepresentatives.get(i).isExpanded();
+            electedRepresentatives.get(i).setExpanded(!expanded);
+            notifyItemChanged(i);
         });
     }
 

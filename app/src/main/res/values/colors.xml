@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#240645</color>
+    <color name="colorPrimary">#A080FC</color>
     <color name="colorPrimaryDark">#118335</color>
-    <color name="colorAccent">#f0eceb</color>
-    <color name="green_txt">#118335</color>
-    <color name="red_leaf">#ec5757</color>
-    <color name="blue_leaf">#48699e</color>
-    <color name="grey_sun">#f0eceb</color>
+    <color name="red_leaf">#E85977</color>
+    <color name="blue_leaf">#81A3FB</color>
+    <color name="grey_scale">#bac9d8</color>
     <color name="purple_drop">#240645</color>
+    <color name="blue_tint">#123C69</color>
+    <color name="neutral_white">#FFFFFF</color>
 
 </resources>
