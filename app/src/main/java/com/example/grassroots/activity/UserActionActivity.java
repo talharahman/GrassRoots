@@ -10,12 +10,17 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.UserPagerAdapter;
+import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -28,6 +33,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference petitionRef = db.collection("Petitioncol");
+    private String currentUserId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,10 +60,26 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-        getData();
+        getFirebaseData();
     }
 
-    private void getData() {
+    private void getFirebaseData() {
+        FirebaseAuth firebaseAuth = FirebaseAuth
+                .getInstance();
+        firebaseAuth
+                .createUserWithEmailAndPassword("grassroots2019usa@gmail.com", "password")
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            currentUserId = firebaseAuth.getUid();
+                        } else {
+                            Toast.makeText(UserActionActivity.this.getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
         UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
         // with this context, create a viewmodel of this type
 
