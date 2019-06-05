@@ -78,14 +78,4 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
         return true;
     }
 
-
-//    @Override
-//    public void toOfficeExpenseRecords(String member_id) {
-//        OfficeExpFragment officeExpFragment = OfficeExpFragment.newInstance();
-//        getSupportFragmentManager()
-//                .beginTransaction()
-//                .replace(R.id., officeExpFragment)
-//                .addToBackStack(null)
-//                .commit();
-//    }
 }
