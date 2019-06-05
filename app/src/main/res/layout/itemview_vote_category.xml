@@ -14,7 +14,6 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_scale"
         android:orientation="vertical">
 
         <TextView
@@ -22,7 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="BILL ID: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -40,7 +40,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PURPOSE: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -58,7 +59,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="LATEST ACTION: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -76,7 +78,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="STATUS: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -94,7 +97,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="DESCRIPTION: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
@@ -112,7 +116,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="POSITION: "
-            android:textSize="14sp"
+            android:fontFamily="@font/quicksand"
+            android:textSize="22sp"
             android:textStyle="bold" />
 
         <TextView
