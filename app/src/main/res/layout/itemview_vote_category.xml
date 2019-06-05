@@ -14,7 +14,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="#B5FA5B"
         android:orientation="vertical">
+
 
         <TextView
             android:id="@+id/bill_id"
@@ -22,34 +24,55 @@
             android:layout_height="wrap_content"
             android:text="BILL ID: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
+
 
         <TextView
             android:id="@+id/txt_bill_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_horizontal"
-            android:textSize="16sp"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
             android:textStyle="bold"
             android:textColor="#000"/>
 
         <TextView
-            android:id="@+id/bill_title"
+            android:id="@+id/space_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/bill_purpose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="PURPOSE: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
 
+
         <TextView
-            android:id="@+id/txt_bill_title"
+            android:id="@+id/txt_bill_purpose"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/space_purpose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000"/>
@@ -60,6 +83,7 @@
             android:layout_height="wrap_content"
             android:text="LATEST ACTION: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -67,8 +91,17 @@
             android:id="@+id/txt_bill_latest_action"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/space_latest_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000"/>
@@ -79,6 +112,7 @@
             android:layout_height="wrap_content"
             android:text="STATUS: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -86,8 +120,18 @@
             android:id="@+id/txt_summary"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+
+        <TextView
+            android:id="@+id/space_summary"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000"/>
@@ -96,8 +140,9 @@
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="DESCRIPTION: "
+            android:text="TITLE: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -105,8 +150,17 @@
             android:id="@+id/txt_description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:gravity="center_horizontal"
+            android:layout_marginTop="18dp"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/space_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000"/>
@@ -117,6 +171,7 @@
             android:layout_height="wrap_content"
             android:text="POSITION: "
             android:fontFamily="@font/quicksand"
+            android:textColor="@color/purple_drop"
             android:textSize="22sp"
             android:textStyle="bold" />
 
@@ -124,9 +179,18 @@
             android:id="@+id/txt_position"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="18dp"
             android:layout_marginBottom="8dp"
-            android:gravity="center_horizontal"
+            android:fontFamily="@font/roboto"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#000"/>
+
+        <TextView
+            android:id="@+id/space_position"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
             android:textSize="16sp"
             android:textStyle="bold"
             android:textColor="#000"/>

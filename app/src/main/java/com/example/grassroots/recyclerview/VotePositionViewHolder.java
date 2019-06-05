@@ -26,7 +26,7 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
         voteDescription= itemView.findViewById(R.id.txt_description);
         voteSummary= itemView.findViewById(R.id.txt_summary);
         voteBillID = itemView.findViewById(R.id.txt_bill_id);
-        voteBillTitle = itemView.findViewById(R.id.txt_bill_title);
+        voteBillTitle = itemView.findViewById(R.id.txt_bill_purpose);
         voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_action);
     }
 
