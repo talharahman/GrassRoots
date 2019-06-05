@@ -61,6 +61,7 @@
                 android:textColor="@android:color/black"
                 android:textSize="15sp"
                 android:textStyle="bold"
+                android:maxLines="2"
                 app:layout_constraintBottom_toTopOf="@+id/progress_bar"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.2"

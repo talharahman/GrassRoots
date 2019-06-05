@@ -8,10 +8,9 @@
     tools:context=".fragment.petition.DetailsPetitionFragment">
 
     <android.support.constraint.ConstraintLayout
-
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@android:color/white">
+        android:background="@color/grey_scale">
 
         <TextView
             android:id="@+id/petition_name_text_view1"
@@ -23,10 +22,12 @@
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
             android:gravity="center_horizontal"
+            android:padding="10dp"
             android:text="Petition Name"
             android:textColor="@android:color/black"
-            android:textSize="30dp"
+            android:textSize="32sp"
             android:textStyle="bold"
+            app:fontFamily="@font/quicksand"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
@@ -34,63 +35,90 @@
 
         <ImageView
             android:id="@+id/image_petition_image"
-            android:layout_width="364dp"
-            android:layout_height="271dp"
+            android:layout_width="360dp"
+            android:layout_height="280dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/petition_name_text_view1"
             tools:layout_editor_absoluteX="26dp"
             tools:layout_editor_absoluteY="87dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petition_name_text_view1"
             tools:src="@tools:sample/avatars" />
-
 
         <TextView
             android:id="@+id/petition_supporter_text_view"
-            android:layout_width="377dp"
-            android:layout_height="30dp"
+            android:layout_width="360dp"
+            android:layout_height="40dp"
             android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
             android:layout_marginEnd="15dp"
             android:layout_marginRight="15dp"
+            android:fontFamily="@font/montserrat"
+            android:gravity="center"
             android:text="petition_supporter"
-            android:textSize="15sp"
+            android:textAlignment="center"
+            android:textSize="16sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/petition_description_text_view"
+            app:layout_constraintBottom_toTopOf="@id/petition_description_scrollview"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.761"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_petition_image" />
 
-        <TextView
-            android:id="@+id/petition_description_text_view"
-            android:layout_width="370dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
+        <ScrollView
+            android:id="@+id/petition_description_scrollview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:background="@color/neutral_white"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.463"
+            app:layout_constraintHorizontal_bias="0.421"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petition_supporter_text_view" />
+            app:layout_constraintTop_toBottomOf="@id/petition_supporter_text_view">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/petition_description_text_view"
+                android:layout_width="360dp"
+                android:layout_height="160dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
+                android:text="save the world"
+                android:textSize="16sp"
+                android:scrollbars="vertical"
+                android:fontFamily="@font/quicksand"
+                android:textColor="@color/purple_drop" />
+            </LinearLayout>
+        </ScrollView>
 
 
         <TextView
             android:id="@+id/petition_Signatures_text_view"
-            android:layout_width="58dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="340dp"
-            android:layout_marginRight="340dp"
-            android:text="TextView"
+            android:layout_width="360dp"
+            android:layout_height="30dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginRight="32dp"
+            android:textSize="16sp"
+            android:text="3000"
+            android:textAlignment="center"
+            android:textStyle="bold"
+            android:fontFamily="@font/concert_one"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petition_description_text_view" />
+            app:layout_constraintTop_toBottomOf="@+id/petition_description_scrollview" />
 
         <ProgressBar
             android:id="@+id/progress_bar_signatures"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
             android:layout_width="392dp"
             android:layout_height="14dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="12dp"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintHorizontal_bias="0.578"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/petition_Signatures_text_view" />
@@ -100,6 +128,7 @@
             android:id="@+id/cirele"
             android:layout_width="403dp"
             android:layout_height="204dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/progress_bar_signatures"
@@ -108,73 +137,71 @@
             app:wlv_round_rectangle="true"
             app:wlv_shapeType="circle"
             app:wlv_titleBottomColor="@android:color/black"
-
             app:wlv_titleBottomSize="24sp"
             app:wlv_titleBottomStrokeColor="@android:color/darker_gray"
             app:wlv_titleBottomStrokeWidth="3dp"
             app:wlv_titleCenterColor="@android:color/black"
-
-
             app:wlv_titleCenterSize="24sp"
             app:wlv_titleCenterStrokeColor="@android:color/darker_gray"
             app:wlv_titleCenterStrokeWidth="3dp"
             app:wlv_titleTopColor="@android:color/black"
-
             app:wlv_titleTopSize="24sp"
             app:wlv_titleTopStrokeColor="@android:color/darker_gray"
             app:wlv_titleTopStrokeWidth="3dp"
             app:wlv_triangle_direction="north"
-
             app:wlv_waveAmplitude="70"
             app:wlv_waveColor="@android:color/holo_green_light" />
 
-
-
-
-
-        <Button
+     <!--   <Button
             android:id="@+id/petition_update_button"
-            android:layout_width="64dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="48dp"
+            android:layout_width="81dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="28dp"
+            android:background="@color/colorPrimary"
             android:text="post an update"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cirele" />
+            app:layout_constraintTop_toBottomOf="@+id/cirele" />-->
 
 
         <Button
             android:id="@+id/sing_petition"
-            android:layout_width="wrap_content"
-            android:layout_height="48dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:layout_marginTop="46dp"
+            android:background="@color/purple_drop"
             android:text="sign this petition"
+            android:textColor="#fff"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.443"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petition_update_button" />
+            app:layout_constraintTop_toBottomOf="@+id/cirele" />
 
         <TextView
             android:id="@+id/textView10"
-            android:layout_width="388dp"
-            android:layout_height="29dp"
+            android:layout_width="360dp"
+            android:layout_height="30dp"
+            android:layout_margin="8dp"
+            android:gravity="center"
             android:text="updates"
+            android:textAlignment="center"
+            android:textSize="24sp"
+            app:fontFamily="@font/quicksand"
             app:layout_constraintBottom_toTopOf="@id/updates_recyclerView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.869"
+            app:layout_constraintHorizontal_bias="0.49"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/sing_petition"
             app:layout_constraintVertical_bias="0.38" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/updates_recyclerView"
-            android:layout_width="377dp"
-            android:layout_height="600dp"
+            android:layout_width="360dp"
+            android:layout_height="500dp"
+            android:layout_margin="8dp"
             android:layout_marginTop="28dp"
             android:layout_marginEnd="16dp"
             android:layout_marginRight="16dp"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="1.0"

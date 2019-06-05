@@ -20,7 +20,7 @@ public class Petition implements Serializable {
     private int mPetitionSignature;
     private int mPetitionSignatureGoal;
     private String petitionKey;
-    private List<PetitionUpdates> mPetitionUpdatesList =new ArrayList();
+    private List<PetitionUpdates> mPetitionUpdatesList = new ArrayList();
 
 
 

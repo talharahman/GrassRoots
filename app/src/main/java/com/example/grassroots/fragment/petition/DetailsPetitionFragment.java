@@ -10,6 +10,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -128,11 +129,12 @@ public class DetailsPetitionFragment extends Fragment {
 
         petitionNameTextView=view.findViewById(R.id.petition_name_text_view1);
         petitionDescrptionTextView=view.findViewById(R.id.petition_description_text_view);
+        petitionDescrptionTextView.setMovementMethod(new ScrollingMovementMethod());
         petitionSupporterTextView=view.findViewById(R.id.petition_supporter_text_view);
         petitionSignatureTextView=view.findViewById(R.id.petition_Signatures_text_view);
         petitionImageImageView=view.findViewById(R.id.image_petition_image);
         petitionProgressBar=view.findViewById(R.id.progress_bar_signatures);
-        petitionUpdatesButton=view.findViewById(R.id.petition_update_button);
+      //  petitionUpdatesButton=view.findViewById(R.id.petition_update_button);
         petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
         petitionSignButton=view.findViewById(R.id.sing_petition);
 
@@ -140,7 +142,7 @@ public class DetailsPetitionFragment extends Fragment {
 
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
-        petitionSupporterTextView.setText(mParam1.getmPetitionSupporter());
+        petitionSupporterTextView.setText("To: " + mParam1.getmPetitionSupporter());
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
@@ -152,12 +154,12 @@ public class DetailsPetitionFragment extends Fragment {
 
         loadPetitionUpdates();
 
-        petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
+   /*     petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.moveToPetitionUpdatesFirstFragament(new PetitionUpdateFirstFragment());
             }
-        });
+        });*/
 
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override

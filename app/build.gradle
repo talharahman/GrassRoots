@@ -52,8 +52,6 @@ dependencies {
 
     implementation 'me.itangqi.waveloadingview:library:0.3.5'
 
-
-
     implementation 'com.facebook.android:facebook-share:5.0.1'
     implementation 'com.google.firebase:firebase-firestore:19.0.1'
 

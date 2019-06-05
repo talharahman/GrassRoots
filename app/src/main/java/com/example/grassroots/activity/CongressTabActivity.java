@@ -49,8 +49,8 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
         floatingActionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent home = new Intent(getApplicationContext(), MainDashboard.class);
-                startActivity(home);
+                Intent home = new Intent(CongressTabActivity.this.getApplicationContext(), MainDashboard.class);
+                CongressTabActivity.this.startActivity(home);
             }
         });
     }
