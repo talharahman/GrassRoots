@@ -8,12 +8,14 @@
     app:cardCornerRadius="16dp">
 
     <ImageView
+        android:id="@+id/uh_img_notification"
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:src="@drawable/image_na"
         android:layout_margin="8dp"/>
 
     <TextView
+        android:id="@+id/uh_txt_notification"
         android:layout_width="200dp"
         android:layout_height="40dp"
         android:layout_margin="8dp"
@@ -23,6 +25,7 @@
         app:fontFamily="@font/quicksand"/>
 
     <TextView
+        android:id="@+id/uh_txt_petition"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end"
