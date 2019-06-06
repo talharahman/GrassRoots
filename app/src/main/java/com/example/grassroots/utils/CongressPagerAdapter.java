@@ -37,7 +37,7 @@ public class CongressPagerAdapter extends FragmentPagerAdapter {
                 tabFragment = new VotePositionFragment();
                 break;
             case 2:
-                tabFragment = new SpinnerOEFragment();
+                tabFragment = new OfficeExpFragment();
                 break;
         }
         return tabFragment;

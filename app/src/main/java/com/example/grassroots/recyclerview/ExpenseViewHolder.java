@@ -27,10 +27,12 @@ public class ExpenseViewHolder extends RecyclerView.ViewHolder {
 
     public void onBind(OfficeExpResult officeExpResult) {
         Log.d("give me stuff", officeExpResult.getCategory());
+
+
         oe_category.setText(officeExpResult.getCategory());
-        txtv_amt.setText("Amount: " + String.valueOf(officeExpResult.getAmount()));
-        txtv_ytd.setText("Year-to-Date: " + String.valueOf(officeExpResult.getYear_to_date()));
-        txtv_chng.setText("Change from Previous Quarter: " + String.valueOf(officeExpResult.getChange_from_previous_quarter()));
+        txtv_amt.setText("Amount: $" + String.valueOf(officeExpResult.getAmount()));
+        txtv_ytd.setText("Year-to-Date: $" + String.valueOf(officeExpResult.getYear_to_date()));
+        txtv_chng.setText("Change from Previous Quarter: $" + String.valueOf(officeExpResult.getChange_from_previous_quarter()));
 
     }
 }

@@ -16,6 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
+        android:background="#B5FA5B"
         android:gravity="center_horizontal">
 
         <TextView
@@ -23,6 +24,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Category"
+            android:fontFamily="@font/quicksand"
             android:textColor="#000"
             android:textSize="24sp"
             android:textStyle="bold" />
@@ -32,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
+            android:fontFamily="@font/roboto"
             android:text="Amount"
             android:textColor="#000"
             android:textSize="16sp"
@@ -41,6 +44,7 @@
             android:id="@+id/txtv_ytd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/roboto"
             android:text="Year to Date"
             android:textColor="#000"
             android:textSize="16sp"
@@ -51,6 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/roboto"
             android:text="Change from Previous Quarter"
             android:textColor="#000"
             android:textSize="16sp"
