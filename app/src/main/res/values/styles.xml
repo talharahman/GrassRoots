@@ -13,9 +13,11 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
     </style>
 
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
 
-    <style name="Datilepetiton" parent="Theme.AppCompat.Light.DarkActionBar" />
+
 
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
