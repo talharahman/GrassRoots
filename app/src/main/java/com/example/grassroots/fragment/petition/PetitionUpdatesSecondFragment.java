@@ -24,6 +24,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
+import com.example.grassroots.activity.MainDashboard;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
@@ -46,16 +47,10 @@ import java.util.List;
 
 import static android.app.Activity.RESULT_OK;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PetitionUpdatesSecondFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PetitionUpdatesSecondFragment extends Fragment {
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
     private static final int PICK_IMAGE_REQUEST = 1;
+    private static final int SPLASH_TIME_OUT = 1000;
 
     private String mParam1;
     private String mParam2;
@@ -68,42 +63,20 @@ public class PetitionUpdatesSecondFragment extends Fragment {
     private ProgressBar mProgressBar;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
 
-
-
-
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
 
+    private View anim;
 
+    public PetitionUpdatesSecondFragment() { }
 
-
-    public PetitionUpdatesSecondFragment() {
-        // Required empty public constructor
-    }
-
-
-    public static PetitionUpdatesSecondFragment newInstance(String param1, String param2) {
-        PetitionUpdatesSecondFragment fragment = new PetitionUpdatesSecondFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
+    public static PetitionUpdatesSecondFragment newInstance() {
+        return new PetitionUpdatesSecondFragment();
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_petition_updates_second, container, false);
     }
 
@@ -111,7 +84,19 @@ public class PetitionUpdatesSecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        anim = view.findViewById(R.id.av_check);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                anim.setVisibility(View.INVISIBLE);
+                Intent intent = new Intent(requireContext(), MainDashboard.class);
+                startActivity(intent);
+            }
+        }, SPLASH_TIME_OUT);
+
+
+        /*mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
@@ -139,7 +124,7 @@ public class PetitionUpdatesSecondFragment extends Fragment {
                 Toast.makeText(requireContext(),"hi "+petitionViewModel.getPetitionKey(),Toast.LENGTH_LONG).show();
                 uploadfiledcumentway();
             }
-        });
+        });*/
     }
 
     @Override
@@ -308,10 +293,6 @@ public class PetitionUpdatesSecondFragment extends Fragment {
             Toast.makeText(requireContext(), "No file selected", Toast.LENGTH_SHORT).show();
         }
 
-
-
-
-
 //
 //            List<PetitionUpdates> updatesList = new ArrayList<>();
 //            PetitionUpdates updates2 = new PetitionUpdates();
@@ -357,7 +338,4 @@ public class PetitionUpdatesSecondFragment extends Fragment {
 //                Toast.makeText(ImagesActivity.this, "Item deleted", Toast.LENGTH_SHORT).show();
 //            }
 //       });
-
-
-
 }

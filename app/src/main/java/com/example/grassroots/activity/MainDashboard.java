@@ -91,7 +91,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     public void moveToPetitionUpdatesSecondFragment(Fragment fragment) {
         getSupportFragmentManager()
                 .beginTransaction()
-                .replace(R.id.frame_container, fragment)
+                .replace(R.id.feed_container, fragment)
                 .setCustomAnimations(R.anim.enter, R.anim.exit)
                 //.setCustomAnimations(R.anim.enter_from_right, R.anim.exit_to_right, R.anim.enter_from_right, R.anim.exit_to_right);
                 .addToBackStack(null)

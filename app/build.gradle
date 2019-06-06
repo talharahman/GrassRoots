@@ -56,4 +56,5 @@ dependencies {
     implementation 'com.google.firebase:firebase-firestore:19.0.1'
 
     implementation 'com.android.support:multidex:1.0.3'
+    implementation 'com.airbnb.android:lottie:2.5.0'
 }

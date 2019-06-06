@@ -4,6 +4,7 @@ package com.example.grassroots.fragment.petition;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -48,6 +49,7 @@ public class DetailsPetitionFragment extends Fragment {
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String PARAM_PETITION = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private static final int SPLASH_TIME_OUT = 5000;
 
     // TODO: Rename and change types of parameters
     private TextView petitionNameTextView;
@@ -122,8 +124,6 @@ public class DetailsPetitionFragment extends Fragment {
         waveLoadingView.setTopTitle(String.valueOf(mParam1.getmPetitionSignature()));
 
 
-
-
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
 
@@ -157,7 +157,7 @@ public class DetailsPetitionFragment extends Fragment {
    /*     petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToPetitionUpdatesFirstFragament(new PetitionUpdateFirstFragment());
+                mListener.moveToPetitionUpdatesFirstFragament(new PetitionSecondFragment());
             }
         });*/
 
@@ -170,11 +170,11 @@ public class DetailsPetitionFragment extends Fragment {
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
+                                Toast.makeText(requireContext(), "Petition Signed!", Toast.LENGTH_SHORT).show();
                                 petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
-
+                                mListener.moveToPetitionUpdatesSecondFragment(new PetitionUpdatesSecondFragment());
                             }
                         });
 
