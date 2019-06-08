@@ -10,30 +10,32 @@
         android:layout_height="wrap_content">
 
         <LinearLayout
-            android:background="@drawable/gradient_bkg_p"
             android:layout_width="match_parent"
             android:layout_height="200dp"
+            android:background="@drawable/gradient_bkg_p"
             android:orientation="vertical">
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="28dp"
-                android:textColor="#fff"
                 android:text="116th Congress"
-                android:textStyle="bold"
-                android:textSize="24sp"/>
+                android:textColor="#fff"
+                android:textSize="24sp"
+                android:textStyle="bold" />
 
             <TextView
-                android:layout_gravity="center_horizontal"
+                android:id="@+id/vp_txt_title_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="4dp"
-                android:textColor="#fff"
+                android:fontFamily="@font/quicksand"
                 android:text="Title, Name "
-                android:textStyle="bold"
-                android:textSize="42sp"/>
+                android:textColor="#fff"
+                android:textSize="42sp"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -44,97 +46,96 @@
             android:layout_marginTop="140dp">
 
             <TextView
-                android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
                 android:layout_marginTop="8dp"
-                android:textColor="#000"
                 android:text="V O T I N G  S N A P S H O T"
-                android:textStyle="bold"
-                android:textSize="20sp"/>
+                android:textColor="#000"
+                android:textSize="20sp"
+                android:textStyle="bold" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="18dp"
                 android:orientation="horizontal"
-                android:weightSum="6"
-                android:layout_marginTop="18dp">
+                android:weightSum="6">
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginTop="18dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="missed / total "
+                        android:text="Missed / Total "
+                        android:layout_marginTop="16dp"
                         android:textColor="#000"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# / #"
                         android:textColor="#000"
-                        android:textStyle="bold"
                         android:textSize="36sp"
-                        android:paddingTop="10dp"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginTop="18dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Missed Pct"
+                        android:layout_marginTop="16dp"
                         android:textColor="#000"
-                        android:textStyle="bold"/>
+                        android:textStyle="bold" />
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
                         android:textColor="#000"
-                        android:textStyle="bold"
                         android:textSize="36sp"
-                        android:paddingTop="10dp"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
                 <LinearLayout
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
-                    android:layout_weight="2"
                     android:layout_marginTop="18dp"
-                    android:orientation="vertical"
-                    android:gravity="center">
+                    android:layout_weight="2"
+                    android:gravity="center"
+                    android:orientation="vertical">
 
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
                         android:text="Votes Party Pct"
                         android:textColor="#000"
-                        android:textStyle="bold"/>
-
+                        android:textStyle="bold" />
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
                         android:textColor="#000"
-                        android:textStyle="bold"
                         android:textSize="36sp"
-                        android:paddingTop="10dp"/>
+                        android:textStyle="bold" />
 
                 </LinearLayout>
 
@@ -147,11 +148,12 @@
     <LinearLayout
         android:layout_width="320dp"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="48dp">
+        android:layout_marginTop="24dp"
+        android:orientation="vertical">
 
         <android.support.v7.widget.SearchView
+            android:id="@+id/sv_bill_deets"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 

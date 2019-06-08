@@ -24,7 +24,7 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
     @NonNull
     @Override
     public VotePositionViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_vote_category, viewGroup, false);
+        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_bill_deets_design_v2, viewGroup, false);
         return new VotePositionViewHolder(childView);
     }
 

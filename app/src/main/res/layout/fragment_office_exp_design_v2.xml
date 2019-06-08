@@ -16,11 +16,13 @@
             android:orientation="vertical">
 
             <TextView
+                android:id="@+id/oe_txt_title_name"
                 android:layout_gravity="center_horizontal"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="48dp"
                 android:textColor="#fff"
+                android:fontFamily="@font/quicksand"
                 android:text="Title, Name "
                 android:textStyle="bold"
                 android:textSize="42sp"/>
@@ -29,7 +31,7 @@
 
         <android.support.v7.widget.CardView
             android:layout_width="330dp"
-            android:layout_height="100dp"
+            android:layout_height="110dp"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="140dp">
 
@@ -61,12 +63,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
                         android:text="YEAR "
                         android:textColor="#000"
                         android:textStyle="bold"/>
 
                     <Spinner
-                        android:id="@+id/yr_spinner_off_exp"
+                        android:id="@+id/oe_yr_spinner_off_exp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -84,12 +89,15 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Quarter"
+                        android:layout_marginTop="12dp"
+                        android:text="QUARTER"
                         android:textColor="#000"
                         android:textStyle="bold"/>
 
                     <Spinner
-                        android:id="@+id/qt_spinner_off_exp"
+                        android:id="@+id/oe_qt_spinner_off_exp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="8dp"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"/>
 
@@ -107,7 +115,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_gravity="center"
-        android:layout_marginTop="48dp">
+        android:layout_marginTop="24dp">
 
         <ScrollView
             android:layout_width="match_parent"

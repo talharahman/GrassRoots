@@ -173,28 +173,4 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_go_to_vote_positions"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="32dp"
-        android:textSize="14sp"
-        android:text="View Vote Positions"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        android:background="@drawable/btn_viewpositions"/>
-
-    <Button
-        android:id="@+id/btn_go_to_office_expenses"
-        android:layout_width="320dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="20dp"
-        android:textSize="14sp"
-        android:text="View Office Expenses"
-        android:textColor="#FFF"
-        android:textStyle="bold"
-        android:background="@drawable/btn_viewpositions"/>
-
 </LinearLayout>

@@ -10,9 +10,12 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.congress.OfficeExpFragment;
+import com.example.grassroots.fragment.congress.OfficeExpFragmentv2;
 import com.example.grassroots.fragment.congress.OverviewFragment;
+import com.example.grassroots.fragment.congress.OverviewFragmentv2;
 import com.example.grassroots.fragment.congress.SpinnerOEFragment;
 import com.example.grassroots.fragment.congress.VotePositionFragment;
+import com.example.grassroots.fragment.congress.VotePositionFragmentv2;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 public class CongressPagerAdapter extends FragmentPagerAdapter {
@@ -31,13 +34,13 @@ public class CongressPagerAdapter extends FragmentPagerAdapter {
         Fragment tabFragment = null;
         switch (position) {
             case 0:
-                tabFragment = new OverviewFragment();
+                tabFragment = new OverviewFragmentv2();
                 break;
             case 1:
-                tabFragment = new VotePositionFragment();
+                tabFragment = new VotePositionFragmentv2();
                 break;
             case 2:
-                tabFragment = new OfficeExpFragment();
+                tabFragment = new OfficeExpFragmentv2();
                 break;
         }
         return tabFragment;
