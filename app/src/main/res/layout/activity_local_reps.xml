@@ -14,9 +14,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            app:contentScrim="@color/grey_scale"
+            android:background="@drawable/gradient"
+            app:contentScrim="@color/colorPrimary"
             app:expandedTitleGravity="top"
-            android:background="@drawable/nyc"
             app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
             <android.support.v7.widget.Toolbar
@@ -26,15 +26,25 @@
                 app:layout_collapseMode="pin"
                 app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <android.support.v7.widget.SearchView
-                android:id="@+id/sv_local_reps"
+            <android.support.v7.widget.CardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:iconifiedByDefault="false"
-                app:queryHint="search reps by address or zip code">
+                android:layout_margin="8dp"
+                android:padding="10dp"
+                app:cardBackgroundColor="@color/colorPrimary"
+                app:cardCornerRadius="16dp"
+                app:cardMaxElevation="16dp">
 
-                <requestFocus />
-            </android.support.v7.widget.SearchView>
+                <android.support.v7.widget.SearchView
+                    android:id="@+id/sv_local_reps"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:iconifiedByDefault="false"
+                    app:queryHint="search reps by address or zip code">
+
+                    <requestFocus />
+                </android.support.v7.widget.SearchView>
+            </android.support.v7.widget.CardView>
 
             <TextView
                 android:id="@+id/user_district2"
@@ -43,9 +53,9 @@
                 android:layout_gravity="bottom"
                 android:layout_margin="8dp"
                 android:text="My District"
+                android:textColor="@color/neutral_white"
                 android:textSize="32sp"
                 android:textStyle="bold"
-                android:textColor="@color/neutral_white"
                 app:fontFamily="@font/montserrat" />
 
         </android.support.design.widget.CollapsingToolbarLayout>
@@ -56,7 +66,7 @@
         android:id="@+id/local_reps_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/grey_scale"
+        android:background="@drawable/curve_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </android.support.v7.widget.RecyclerView>
@@ -69,15 +79,16 @@
         android:layout_gravity="bottom"
         android:visibility="visible"
         app:labelVisibilityMode="unlabeled"
-        app:menu="@menu/menu_bottom_nav"
-        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior"
+        app:menu="@menu/menu_bottom_nav">
 
         <android.support.design.widget.FloatingActionButton
             android:id="@+id/fab_contact_home"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_home"
-            android:layout_gravity="top|center" />
+            android:layout_gravity="top|center"
+            android:backgroundTint="@color/colorPrimary"
+            android:src="@drawable/ic_home" />
     </android.support.design.widget.BottomNavigationView>
 
 </android.support.design.widget.CoordinatorLayout>

@@ -16,7 +16,7 @@
         android:layout_weight="1"
         app:contentScrim="@color/grey_scale"
         app:expandedTitleGravity="top"
-        android:background="@color/colorPrimary"
+        android:background="@drawable/gradient"
         app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
     <android.support.v7.widget.Toolbar
@@ -31,13 +31,14 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
-            android:background="@color/blue_tint">
+            android:background="@color/colorPrimary">
 
             <android.support.design.widget.TabItem
                 android:id="@+id/user_actions"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Saved" />
+                android:text="History"
+                />
 
             <android.support.design.widget.TabItem
                 android:id="@+id/user_feed"
@@ -71,6 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_gravity="top|center" />
     </android.support.design.widget.BottomNavigationView>
 

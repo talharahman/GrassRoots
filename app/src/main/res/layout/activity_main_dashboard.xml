@@ -5,7 +5,7 @@
     android:id="@+id/coordinator_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_scale"
+    android:background="@drawable/gradient"
     android:fitsSystemWindows="true">
 
     <FrameLayout
@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_gravity="top|center" />
     </android.support.design.widget.BottomNavigationView>
 
