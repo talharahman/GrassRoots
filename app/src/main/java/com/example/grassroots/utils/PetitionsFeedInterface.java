@@ -5,6 +5,6 @@ import android.support.v4.app.Fragment;
 public interface PetitionsFeedInterface {
 
     void moveToDetailsPetition(Fragment fragment);
-    void moveToPetitionUpdatesFirstFragament(Fragment fragment);
+    void moveToPetitionUpdatesFirstFragment(Fragment fragment);
     void moveToPetitionUpdatesSecondFragment(Fragment fragment);
 }
