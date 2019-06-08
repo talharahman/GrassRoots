@@ -42,6 +42,10 @@
 
                 android:scaleType="fitXY"
                 />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hi i am here"/>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/app_bar"
@@ -93,8 +97,9 @@
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
                 android:text="Petition Name"
+                android:fontFamily="@font/roboto"
                 android:textColor="@android:color/black"
-                android:textSize="30dp"
+                android:textSize="32sp"
                 android:textStyle="bold" />
 
             <TableRow
@@ -111,8 +116,9 @@
                 android:layout_height="wrap_content"
                 android:padding="5dp"
                 android:text="petition_supporter"
+                android:fontFamily="@font/montserrat"
                 android:textSize="15sp"
-                android:textStyle="bold" />
+                android:textStyle="bold|italic" />
 
         </LinearLayout>
 
@@ -154,8 +160,9 @@
                 android:id="@+id/petition_description_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
                 android:text="petition_descrption"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="normal" />
 
 
@@ -170,8 +177,7 @@
     android:layout_height="wrap_content"
     android:elevation="20dp"
     android:orientation="vertical"
-    android:layout_margin="20dp"
-    android:background="@drawable/curve_background">
+    android:layout_margin="20dp">
 
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/cirele"

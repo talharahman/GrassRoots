@@ -23,7 +23,7 @@
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="BottomNavigation">
-        <item name="android:background">@color/grey_scale</item>
+        <item name="android:background">@color/neutral_white</item>
         <item name="itemIconTint">@color/purple_drop</item>
         <item name="itemTextColor">@color/purple_drop</item>
     </style>

@@ -67,7 +67,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         FirebaseAuth firebaseAuth = FirebaseAuth
                 .getInstance();
         firebaseAuth
-                .createUserWithEmailAndPassword("grassroots2019usa@gmail.com", "password")
+                .signInWithEmailAndPassword("grassroots2019usa@gmail.com", "password")
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {

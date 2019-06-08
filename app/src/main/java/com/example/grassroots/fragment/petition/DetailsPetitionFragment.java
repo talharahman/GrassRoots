@@ -136,7 +136,7 @@ public class DetailsPetitionFragment extends Fragment {
 
       // collapsingToolbarLayout.setTitle(mParam1.getmPetitionName());
 
-       collapsingToolbarLayout.setTitle(" ");
+      collapsingToolbarLayout.setTitle(" ");
 
         waveLoadingView=view.findViewById(R.id.cirele);
         waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
