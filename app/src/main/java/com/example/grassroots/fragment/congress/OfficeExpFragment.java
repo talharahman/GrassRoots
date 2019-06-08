@@ -26,12 +26,12 @@ public class OfficeExpFragment extends Fragment {
 
     private CongressOverviewVM congressOverviewVM;
 
-    private static final String KEY_YEAR = "Year" ;
-    private static final String KEY_QUARTER = "Quarter" ;
+//    private static final String KEY_YEAR = "Year" ;
+//    private static final String KEY_QUARTER = "Quarter" ;
 
     private String member_id;
 //    private String year;
-    private String quarter;
+//    private String quarter;
 
     public static final String TAG = "HERE";
 
@@ -41,14 +41,14 @@ public class OfficeExpFragment extends Fragment {
     public OfficeExpFragment() {
     }
 
-    public static OfficeExpFragment newInstance(int year, int quarter){
-        OfficeExpFragment officeExpFragment = new OfficeExpFragment();
-        Bundle officeArgs = new Bundle();
-        officeArgs.putInt(KEY_YEAR, year);
-        officeArgs.putInt(KEY_QUARTER, quarter);
-        officeExpFragment.setArguments(officeArgs);
-        return officeExpFragment;
-    }
+//    public static OfficeExpFragment newInstance(int year, int quarter){
+//        OfficeExpFragment officeExpFragment = new OfficeExpFragment();
+//        Bundle officeArgs = new Bundle();
+//        officeArgs.putInt(KEY_YEAR, year);
+//        officeArgs.putInt(KEY_QUARTER, quarter);
+//        officeExpFragment.setArguments(officeArgs);
+//        return officeExpFragment;
+//    }
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +68,7 @@ public class OfficeExpFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        final Bundle officeArgs = getArguments();
+//        final Bundle officeArgs = getArguments();
 
         recyclerView = view.findViewById(R.id.rv_oe);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));

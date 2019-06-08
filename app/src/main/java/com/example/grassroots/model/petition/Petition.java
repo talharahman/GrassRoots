@@ -20,9 +20,16 @@ public class Petition implements Serializable {
     private int mPetitionSignature;
     private int mPetitionSignatureGoal;
     private String petitionKey;
-    private List<PetitionUpdates> mPetitionUpdatesList =new ArrayList();
+    private List<PetitionUpdates> mPetitionUpdatesList = new ArrayList();
+    private List<String> signers = new ArrayList<>();
 
+    public List<String> getSigners() {
+        return signers;
+    }
 
+    public void setSigners(List<String> signers) {
+        this.signers = signers;
+    }
 
     @Exclude
     public String getPetitionKey() {

@@ -3,25 +3,30 @@ package com.example.grassroots.fragment.petition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomSheetBehavior;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
@@ -35,7 +40,6 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,19 +47,14 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 
 
 public class DetailsPetitionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String PARAM_PETITION = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    private static final String PARAM_PETITION = "param1";
+
     private TextView petitionNameTextView;
     private TextView petitionDescrptionTextView;
     private TextView petitionSupporterTextView;
     private TextView petitionSignatureTextView;
     private ImageView petitionImageImageView;
-    private ProgressBar petitionProgressBar;
-    private Button petitionUpdatesButton;
     private Button petitionSignButton;
     private PetitionUpdatesAdapter petitionUpdatesAdapter;
     private Petition mParam1=new Petition();
@@ -66,13 +65,10 @@ public class DetailsPetitionFragment extends Fragment {
     private List<PetitionUpdates>petitionUpdatesList=new ArrayList<>();
     private RecyclerView petitionUpdateRecyclerView;
     private WaveLoadingView waveLoadingView;
-    private SeekBar seekBar;
 
+    private List<String> signersList = new ArrayList<>();
 
-
-    public DetailsPetitionFragment() {
-        // Required empty public constructor
-    }
+    public DetailsPetitionFragment() { }
 
 
     public static DetailsPetitionFragment newInstance(Petition petition) {
@@ -80,17 +76,15 @@ public class DetailsPetitionFragment extends Fragment {
         Bundle args = new Bundle();
         args.putSerializable(PARAM_PETITION,petition);
         fragment.setArguments(args);
-        Log.d("ben", "onClick:  "+petition.getmPetitionName());
 
         return fragment;
     }
 
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        MenuInflater menuInflater =requireActivity().getMenuInflater();
-//        menuInflater.inflate(R.menu.detail_petition_opetion_menu,menu );
-//    }
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        super.onCreateOptionsMenu(menu, inflater);
+        inflater.inflate(R.menu.opetion_petiton_menu,menu );
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -104,83 +98,97 @@ public class DetailsPetitionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_details_petiton, container, false);
-
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ConstraintLayout constraintLayout;
+        BottomSheetBehavior bottomSheetBehavior;
+        constraintLayout=view.findViewById(R.id.bottom_button_layout);
+        bottomSheetBehavior=BottomSheetBehavior.from(constraintLayout);
+
+        Toolbar toolbar = view.findViewById(R.id.app_bar);
+        ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
+        CollapsingToolbarLayout collapsingToolbarLayout=view.findViewById(R.id.collapsing);
+
+      // collapsingToolbarLayout.setTitle(mParam1.getmPetitionName());
+
+      collapsingToolbarLayout.setTitle(" ");
 
         waveLoadingView=view.findViewById(R.id.cirele);
-        waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
+        double percentage=(double) (mParam1.getmPetitionSignature()*100)/mParam1.getmPetitionSignatureGoal();
 
-        waveLoadingView.setBottomTitle(" Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
-        waveLoadingView.setCenterTitle("have signed. ");
-        waveLoadingView.setTopTitle(String.valueOf(mParam1.getmPetitionSignature()));
+        int ger=(int)Math.round(percentage);
 
-
-
+        waveLoadingView.setProgressValue(ger);
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
-
 
         petitionNameTextView=view.findViewById(R.id.petition_name_text_view1);
         petitionDescrptionTextView=view.findViewById(R.id.petition_description_text_view);
         petitionSupporterTextView=view.findViewById(R.id.petition_supporter_text_view);
-        petitionSignatureTextView=view.findViewById(R.id.petition_Signatures_text_view);
-        petitionImageImageView=view.findViewById(R.id.image_petition_image);
-        petitionProgressBar=view.findViewById(R.id.progress_bar_signatures);
-        petitionUpdatesButton=view.findViewById(R.id.petition_update_button);
+        petitionImageImageView=view.findViewById(R.id.petition_image_image_view);
+        petitionSignatureTextView=view.findViewById(R.id.signatures_text_view);
         petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
-        petitionSignButton=view.findViewById(R.id.sing_petition);
+        petitionSignButton=view.findViewById(R.id.bottom_button);
 
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
-        petitionSupporterTextView.setText(mParam1.getmPetitionSupporter());
+        petitionSupporterTextView.setText(" Ben started this petition to "+mParam1.getmPetitionSupporter());
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
+        petitionSignatureTextView.setText(mParam1.getmPetitionSignature()+" have signed. "+"Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
 
-        Glide.with(requireContext()).load(mParam1.getmPetitionImageURL()).fitCenter().centerCrop().into(petitionImageImageView);
-        petitionProgressBar.setMax(mParam1.getmPetitionSignatureGoal());
-        petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
-        petitionSignatureTextView.setText(mParam1.getmPetitionSignature()+" have signed. Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
 
-        loadPetitionUpdates();
+        Glide.with(requireContext()).load(mParam1.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(petitionImageImageView);
 
-        petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mListener.moveToPetitionUpdatesFirstFragament(new PetitionUpdateFirstFragment());
-            }
-        });
+       loadPetitionUpdates();
+
+
 
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
 
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature()+1)
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
+                        "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
-                                petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
+                             //   Toast.makeText(requireContext(), "Petition Signed!", Toast.LENGTH_SHORT).show();
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
+                                // add a signature to the petition
+                                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                                petitionViewModel.setSigners(signersList);
 
+                                mListener.moveToPetitionAnim(new PetitionSignAnim());
                             }
                         });
-
-
 
             }
         });
 
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.update:
+               mListener.moveToPetitionUpdatesFirstFragment(new PetitionUpdateFirstFragment());
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
     @Override

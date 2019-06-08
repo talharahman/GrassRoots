@@ -31,13 +31,11 @@ public class PetitionThirdFragment extends Fragment {
     private PetitionFragmentsListener mListener;
 
     private Uri mImageUri;
-    private Button buttonChooseImage;
     private ImageView mImageView;
-    private Button saveReviewButton;
 
     public PetitionThirdFragment() {}
 
-    public static PetitionThirdFragment newInstance(String param1, String param2) {
+    public static PetitionThirdFragment newInstance() {
        return new PetitionThirdFragment();
     }
 
@@ -50,9 +48,9 @@ public class PetitionThirdFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        buttonChooseImage = view.findViewById(R.id.button_choose_image);
+        Button buttonChooseImage = view.findViewById(R.id.button_choose_image);
         mImageView = view.findViewById(R.id.image_view);
-        saveReviewButton = view.findViewById(R.id.save_button3);
+        Button saveReviewButton = view.findViewById(R.id.save_button3);
 
         petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 

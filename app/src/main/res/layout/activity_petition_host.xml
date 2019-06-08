@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 
@@ -30,6 +30,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"
+            android:backgroundTint="@color/colorPrimary"
             android:layout_gravity="top|center" />
     </android.support.design.widget.BottomNavigationView>
 
