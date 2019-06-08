@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
+import android.support.constraint.ConstraintLayout;
+import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -129,6 +131,10 @@ public class DetailsPetitionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        ConstraintLayout constraintLayout;
+        BottomSheetBehavior bottomSheetBehavior;
+        constraintLayout=view.findViewById(R.id.bottom_button_layout);
+        bottomSheetBehavior=BottomSheetBehavior.from(constraintLayout);
 
         Toolbar toolbar = view.findViewById(R.id.app_bar);
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
@@ -155,7 +161,7 @@ public class DetailsPetitionFragment extends Fragment {
         //petitionProgressBar=view.findViewById(R.id.progress_bar_signatures);
        // petitionUpdatesButton=view.findViewById(R.id.petition_update_button);
         petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
-        petitionSignButton=view.findViewById(R.id.sing_petition);
+        //petitionSignButton=view.findViewById(R.id.sing_petition);
 
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
 
@@ -170,7 +176,7 @@ public class DetailsPetitionFragment extends Fragment {
 //        petitionProgressBar.setMax(mParam1.getmPetitionSignatureGoal());
 //        petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
 //        petitionSignatureTextView.setText(mParam1.getmPetitionSignature()+" have signed. Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
-       loadPetitionUpdates();
+    //   loadPetitionUpdates();
 
 //        petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
 //            @Override
@@ -179,27 +185,27 @@ public class DetailsPetitionFragment extends Fragment {
 //            }
 //        });
 
-        petitionSignButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
-
-                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature()+1);
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature())
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
-                                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(mParam1));
-
-
-                            }
-                        });
-
-
-
-            }
-        });
+//        petitionSignButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+//
+//                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature()+1);
+//                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature())
+//                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+//                            @Override
+//                            public void onSuccess(Void aVoid) {
+//                                Toast.makeText(requireContext(), "hi is done", Toast.LENGTH_LONG).show();
+//                                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(mParam1));
+//
+//
+//                            }
+//                        });
+//
+//
+//
+//            }
+//        });
 
     }
 

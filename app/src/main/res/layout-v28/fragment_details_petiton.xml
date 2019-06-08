@@ -82,8 +82,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="15dp"
             android:layout_marginRight="5dp"
-            android:outlineSpotShadowColor="@color/yellow_end"
-            android:outlineAmbientShadowColor="@color/yellow_end"
+            android:outlineSpotShadowColor="@android:color/holo_purple"
             android:background="@drawable/curve_background"
             android:elevation="20dp"
             android:orientation="vertical">
@@ -93,15 +92,16 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="Petition Name"
+                android:text="@string/petition_name"
                 android:textColor="@android:color/black"
-                android:textSize="30dp"
+                android:textSize="30sp"
                 android:textStyle="bold" />
 
             <TableRow
                 android:id="@+id/hr"
                 android:layout_width="match_parent"
-                android:layout_height="3dp"
+                android:layout_height="2dp"
+
                 android:background="#4C4DB6">
 
             </TableRow>
@@ -200,8 +200,7 @@
             android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
             android:elevation="10dp"
-            android:outlineSpotShadowColor="@color/yellow_end"
-            android:outlineAmbientShadowColor="@color/yellow_end"
+            android:outlineSpotShadowColor="@android:color/holo_purple"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="20dp"
             android:background="@drawable/curve_background"
@@ -251,12 +250,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:elevation="20dp"
-    android:outlineSpotShadowColor="@color/yellow_end"
     android:layout_marginTop="20dp"
     android:layout_marginLeft="20dp"
     android:layout_marginRight="20dp"
     android:layout_marginBottom="200dp"
     android:orientation="vertical"
+        android:outlineSpotShadowColor="@android:color/holo_purple"
 
     android:background="@drawable/curve_background"
         >
