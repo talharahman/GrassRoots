@@ -11,7 +11,7 @@
    >
 
     <Button
-        android:id="@+id/buttom_button"
+        android:id="@+id/bottom_button"
         android:layout_width="390dp"
         android:layout_height="55dp"
         android:layout_margin="8dp"
