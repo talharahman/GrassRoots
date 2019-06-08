@@ -71,7 +71,7 @@ public class DetailsPetitionFragment extends Fragment {
     private WaveLoadingView waveLoadingView;
     private SeekBar seekBar;
 
-
+    private List<String> signersList = new ArrayList<>();
 
     public DetailsPetitionFragment() {
         // Required empty public constructor
@@ -157,7 +157,7 @@ public class DetailsPetitionFragment extends Fragment {
    /*     petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.moveToPetitionUpdatesFirstFragament(new PetitionSecondFragment());
+                mListener.moveToPetitionUpdatesFirstFragament(new PetitionUpdatesFirstFragment());
             }
         });*/
 
@@ -165,8 +165,10 @@ public class DetailsPetitionFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
 
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature()+1)
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
+                        "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
@@ -174,12 +176,13 @@ public class DetailsPetitionFragment extends Fragment {
                                 petitionProgressBar.setProgress(mParam1.getmPetitionSignature());
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
-                                mListener.moveToPetitionUpdatesSecondFragment(new PetitionUpdatesSecondFragment());
+                                // add a signature to the petition
+                                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                                petitionViewModel.setSigners(signersList);
+
+                                mListener.moveToPetitionAnim(new PetitionSignAnim());
                             }
                         });
-
-
-
             }
         });
 

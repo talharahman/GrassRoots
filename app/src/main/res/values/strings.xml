@@ -86,6 +86,8 @@
     <string name="petition_problem_text">Explain the problem you want to solve</string>
     <string name="petition_problem_info">People are more likely to support your petition if it’s clear why you care. Explain how this change will impact you, your family, or your community</string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

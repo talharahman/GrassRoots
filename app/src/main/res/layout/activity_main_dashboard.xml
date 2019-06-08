@@ -21,12 +21,12 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 
         <android.support.design.widget.FloatingActionButton
-            android:id="@+id/fab"
+            android:id="@+id/fab_main"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_home"

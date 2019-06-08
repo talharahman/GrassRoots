@@ -41,11 +41,9 @@ public class PetitionUpdateFirstFragment extends Fragment {
     private PetitionViewModel petitionViewModel;
     private PetitionsFeedInterface mListener;
 
-
     public PetitionUpdateFirstFragment() {
         // Required empty public constructor
     }
-
 
     public static PetitionUpdateFirstFragment newInstance() {
         PetitionUpdateFirstFragment fragment = new PetitionUpdateFirstFragment();
@@ -105,6 +103,4 @@ public class PetitionUpdateFirstFragment extends Fragment {
         super.onDetach();
         mListener = null;
     }
-
-
 }

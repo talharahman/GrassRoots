@@ -1,6 +1,5 @@
 package com.example.grassroots.fragment.petition;
 
-
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.ContentResolver;
 import android.content.Context;
@@ -50,7 +49,6 @@ import static android.app.Activity.RESULT_OK;
 public class PetitionUpdatesSecondFragment extends Fragment {
 
     private static final int PICK_IMAGE_REQUEST = 1;
-    private static final int SPLASH_TIME_OUT = 1000;
 
     private String mParam1;
     private String mParam2;
@@ -65,8 +63,6 @@ public class PetitionUpdatesSecondFragment extends Fragment {
 
     private StorageReference mStorageRef;
     private DatabaseReference mDatabaseRef;
-
-    private View anim;
 
     public PetitionUpdatesSecondFragment() { }
 
@@ -84,19 +80,7 @@ public class PetitionUpdatesSecondFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        anim = view.findViewById(R.id.av_check);
-
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                anim.setVisibility(View.INVISIBLE);
-                Intent intent = new Intent(requireContext(), MainDashboard.class);
-                startActivity(intent);
-            }
-        }, SPLASH_TIME_OUT);
-
-
-        /*mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
+        mStorageRef = FirebaseStorage.getInstance().getReference("uploads");
         mDatabaseRef = FirebaseDatabase.getInstance().getReference("uploads");
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
@@ -124,7 +108,7 @@ public class PetitionUpdatesSecondFragment extends Fragment {
                 Toast.makeText(requireContext(),"hi "+petitionViewModel.getPetitionKey(),Toast.LENGTH_LONG).show();
                 uploadfiledcumentway();
             }
-        });*/
+        });
     }
 
     @Override

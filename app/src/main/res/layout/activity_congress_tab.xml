@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 

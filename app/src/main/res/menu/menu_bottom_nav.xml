@@ -7,7 +7,7 @@
         android:icon="@drawable/ic_add_circle"/>
 
     <item android:id="@+id/bot_view_activity"
-        android:icon="@drawable/ic_view"
+        android:icon="@drawable/ic_profile"
         android:title="View"/>
 
     <item

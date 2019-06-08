@@ -56,7 +56,7 @@
         android:id="@+id/local_reps_recyclerview"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#bac9d8"
+        android:background="@color/grey_scale"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </android.support.v7.widget.RecyclerView>
@@ -68,7 +68,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
         android:visibility="visible"
-        app:labelVisibilityMode="selected"
+        app:labelVisibilityMode="unlabeled"
         app:menu="@menu/menu_bottom_nav"
         app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 
