@@ -33,7 +33,6 @@ public class MainFeed extends Fragment {
     private RecyclerView petitionRecyclerView;
     private PetitionsAdapter petitionsAdapter;
     private DatabaseReference databaseReference;
-//    private PetitionFragmentsListener mListener;
     private PetitionsFeedInterface listener;
     private List<Petition>petitionList=new ArrayList<>();
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
