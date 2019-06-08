@@ -28,7 +28,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private ImageView repFacebookIcon;
     private ImageView repTwitterIcon;
 
-    private CardView repCardview;
+    private ImageView arrow;
     private CardView socialsCardview;
 
     CivicInfoViewHolder(@NonNull View itemView) {
@@ -48,7 +48,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repFacebookIcon = itemview.findViewById(R.id.rep_facebook_icon);
         repTwitterIcon = itemview.findViewById(R.id.rep_twitter_icon);
 
-        repCardview = itemView.findViewById(R.id.local_rep_card_view);
+        arrow = itemview.findViewById(R.id.arrow);
         socialsCardview = itemview.findViewById(R.id.local_rep_socials);
     }
 
@@ -62,19 +62,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 .placeholder(R.drawable.silhouette)
                 .into(repImage);
 
-        /*if (electedRepresentatives.getParty() != null) {
-            if (electedRepresentatives.getParty().startsWith("D")) {
-                repCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
-                socialsCardview.setCardBackgroundColor(Color.rgb(129, 163, 251));
-            } else if (electedRepresentatives.getParty().startsWith("R")) {
-                repCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
-                socialsCardview.setCardBackgroundColor(Color.rgb(234, 94, 128));
-            } else {
-                repCardview.setCardBackgroundColor(Color.WHITE);
-                socialsCardview.setCardBackgroundColor(Color.WHITE);
-            }
-        }*/
-
         urlView(electedRepresentatives);
         phoneView(electedRepresentatives);
         emailView(electedRepresentatives);
@@ -85,9 +72,11 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         if (expanded) {
             socialsCardview.setVisibility(View.VISIBLE);
             showText.setText("hide contact");
+            arrow.setImageResource(R.drawable.ic_arrow_up);
         } else {
             socialsCardview.setVisibility(View.GONE);
             showText.setText("show contact");
+            arrow.setImageResource(R.drawable.ic_arrow_down);
         }
     }
 

@@ -47,19 +47,14 @@ import me.itangqi.waveloadingview.WaveLoadingView;
 
 
 public class DetailsPetitionFragment extends Fragment {
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String PARAM_PETITION = "param1";
-    private static final String ARG_PARAM2 = "param2";
 
-    // TODO: Rename and change types of parameters
+    private static final String PARAM_PETITION = "param1";
+
     private TextView petitionNameTextView;
     private TextView petitionDescrptionTextView;
     private TextView petitionSupporterTextView;
     private TextView petitionSignatureTextView;
     private ImageView petitionImageImageView;
-    private ProgressBar petitionProgressBar;
-    private Button petitionUpdatesButton;
     private Button petitionSignButton;
     private PetitionUpdatesAdapter petitionUpdatesAdapter;
     private Petition mParam1=new Petition();
@@ -71,11 +66,9 @@ public class DetailsPetitionFragment extends Fragment {
     private RecyclerView petitionUpdateRecyclerView;
     private WaveLoadingView waveLoadingView;
 
+    private List<String> signersList = new ArrayList<>();
 
-
-    public DetailsPetitionFragment() {
-        // Required empty public constructor
-    }
+    public DetailsPetitionFragment() { }
 
 
     public static DetailsPetitionFragment newInstance(Petition petition) {
@@ -102,26 +95,12 @@ public class DetailsPetitionFragment extends Fragment {
         }
     }
 
-
-
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-       setHasOptionsMenu(true);
-
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_details_petiton, container, false);
-
     }
-
-//    @Override
-//    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-//        super.onCreateOptionsMenu(menu, inflater);
-//        inflater.inflate(R.menu.opetion_petiton_menu, menu);
-//    }
-
-
-
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     @Override
@@ -146,11 +125,6 @@ public class DetailsPetitionFragment extends Fragment {
         int ger=(int)Math.round(percentage);
 
         waveLoadingView.setProgressValue(ger);
-
-
-//        waveLoadingView.setBottomTitle("Let’s get to \n"+mParam1.getmPetitionSignatureGoal()+"!");
-//        waveLoadingView.setCenterTitle("have signed. ");
-//        waveLoadingView.setTopTitle(String.valueOf(mParam1.getmPetitionSignature()));
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
@@ -179,30 +153,27 @@ public class DetailsPetitionFragment extends Fragment {
 
 
 
-//        petitionUpdatesButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mListener.moveToPetitionUpdatesFirstFragment(new PetitionUpdateFirstFragment());
-//            }
-//        });
-
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
 
-                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature()+1);
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature())
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
+                        "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(mParam1));
+                             //   Toast.makeText(requireContext(), "Petition Signed!", Toast.LENGTH_SHORT).show();
+                                waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
+                                // add a signature to the petition
+                                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                                petitionViewModel.setSigners(signersList);
 
+                                mListener.moveToPetitionAnim(new PetitionSignAnim());
                             }
                         });
-
-
 
             }
         });

@@ -16,6 +16,15 @@ public class PetitionViewModel extends ViewModel implements Serializable {
     private String petitionKey;
     private List<Petition> mPetitionList;
     private List<PetitionUpdates> mPetitionUpdatesList;
+    private List<String> signers;
+
+    public List<String> getSigners() {
+        return signers;
+    }
+
+    public void setSigners(List<String> signers) {
+        this.signers = signers;
+    }
 
     public void setmPetitionList(List<Petition> mPetitionList) {
         this.mPetitionList = mPetitionList;

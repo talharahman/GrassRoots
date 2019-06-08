@@ -92,8 +92,12 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
                             petitions.add(petition);
                         }
                         userActionViewModel.setPetitions(petitions);
+
+
                     }
                 });
+
+      //  firebaseAuth.signOut();
     }
 
     @Override

@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
@@ -53,6 +54,7 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
         userLocation = findViewById(R.id.user_district2);
         recyclerView = findViewById(R.id.local_reps_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         civicInfoAdapter = new CivicInfoAdapter();
 
         makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), "11101");
