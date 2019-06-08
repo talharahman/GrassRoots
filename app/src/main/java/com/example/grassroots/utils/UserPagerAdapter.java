@@ -4,12 +4,13 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
+import com.example.grassroots.activity.UserActionActivity;
 import com.example.grassroots.fragment.user.UserHistory;
 import com.example.grassroots.fragment.user.UserFeed;
 
 public class UserPagerAdapter extends FragmentPagerAdapter {
 
-    public UserPagerAdapter(FragmentManager fm) {
+    public UserPagerAdapter(UserActionActivity userActionActivity, FragmentManager fm) {
         super(fm);
     }
 

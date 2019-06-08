@@ -54,7 +54,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         });
 
         ViewPager viewPager = findViewById(R.id.user_activity_container);
-        viewPager.setAdapter(new UserPagerAdapter(getSupportFragmentManager()));
+        viewPager.setAdapter(new UserPagerAdapter(this, getSupportFragmentManager()));
         TabLayout tabLayout = findViewById(R.id.tabs_user);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
