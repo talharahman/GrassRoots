@@ -8,12 +8,22 @@
         <item name="windowNoTitle">true</item>
     </style>
 
+    <style name="AppTheme2" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+    </style>
+
+
+
     <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+
+
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <style name="BottomNavigation">
-        <item name="android:background">@color/grey_scale</item>
+        <item name="android:background">@color/neutral_white</item>
         <item name="itemIconTint">@color/purple_drop</item>
         <item name="itemTextColor">@color/purple_drop</item>
     </style>

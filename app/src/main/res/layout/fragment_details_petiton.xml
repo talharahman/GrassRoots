@@ -1,188 +1,760 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/scrollView2"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.MainDashboard">
+
+    <!-- fitsSystemWindows  this the gap top of tool bar -->
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:fitsSystemWindows="false"
+        android:background="?colorPrimary"
+        >
+        <!-- fitsSystemWindows  this the gap top of tool bar  app:layout_scrollFlags="scroll|enterAlwaysCollapsed"
+-->
+
+        <android.support.design.widget.CollapsingToolbarLayout
+            android:id="@+id/collapsing"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:contentScrim="?attr/colorPrimaryDark"
+            android:fitsSystemWindows="true"
+            app:layout_scrollFlags="exitUntilCollapsed|scroll"
+
+
+            app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"
+            app:collapsedTitleGravity="start"
+            app:expandedTitleGravity="center_horizontal"
+            app:title="@string/app_name"
+
+
+            >
+            <ImageView
+                android:id="@+id/petition_image_image_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+
+                android:scaleType="fitXY"
+                />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="hi i am here"/>
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/app_bar"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+                app:contentInsetStart="72dp"
+                android:fitsSystemWindows="true"
+                app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+                app:layout_collapseMode="pin">
+
+            </android.support.v7.widget.Toolbar>
+
+
+
+
+
+
+        </android.support.design.widget.CollapsingToolbarLayout>
+
+
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.widget.NestedScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="fill_vertical"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context=".fragment.petition.DetailsPetitionFragment">
+    android:background="#f5f5f5">
 
-    <android.support.constraint.ConstraintLayout
-
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white">
-
-        <TextView
-            android:id="@+id/petition_name_text_view1"
-            android:layout_width="0dp"
+    <!-- petition name -->
+        <LinearLayout
+            android:id="@+id/one"
+            android:layout_width="380dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:layout_marginLeft="8dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginRight="8dp"
-            android:gravity="center_horizontal"
-            android:text="Petition Name"
-            android:textColor="@android:color/black"
-            android:textSize="30dp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/image_petition_image"
-            android:layout_width="364dp"
-            android:layout_height="271dp"
-            tools:layout_editor_absoluteX="26dp"
-            tools:layout_editor_absoluteY="87dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petition_name_text_view1"
-            tools:src="@tools:sample/avatars" />
-
-
-        <TextView
-            android:id="@+id/petition_supporter_text_view"
-            android:layout_width="377dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="15dp"
             android:layout_marginLeft="15dp"
-            android:layout_marginEnd="15dp"
+            android:layout_marginRight="5dp"
+            android:background="@drawable/curve_background"
+            android:elevation="20dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/petition_name_text_view1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:text="Petition Name"
+                android:fontFamily="@font/roboto"
+                android:textColor="@android:color/black"
+                android:textSize="32sp"
+                android:textStyle="bold" />
+
+            <TableRow
+                android:id="@+id/hr"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#444">
+
+            </TableRow>
+
+            <TextView
+                android:id="@+id/petition_supporter_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="5dp"
+                android:text="petition_supporter"
+                android:fontFamily="@font/montserrat"
+                android:textSize="15sp"
+                android:textStyle="bold|italic" />
+
+        </LinearLayout>
+
+    <!-- AboutCollapsingToolbar -->
+    <RelativeLayout
+    android:id="@+id/two"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/one"
+    android:layout_marginStart="15dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginTop="5dp"
+    android:layout_marginEnd="20dp"
+
+    android:layout_marginRight="20dp"
+    android:layout_marginBottom="20dp"
+    android:elevation="20dp">
+
+
+    </RelativeLayout>
+
+
+    <!-- petition supporter -->
+        <RelativeLayout
+            android:id="@+id/three"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/two"
+            android:layout_marginLeft="15dp"
             android:layout_marginRight="15dp"
-            android:text="petition_supporter"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toTopOf="@id/petition_description_text_view"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/image_petition_image" />
-
-        <TextView
-            android:id="@+id/petition_description_text_view"
-            android:layout_width="370dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.463"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/petition_supporter_text_view" />
+            android:elevation="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/curve_background"
+            android:padding="10dp">
 
 
-        <TextView
-            android:id="@+id/petition_Signatures_text_view"
-            android:layout_width="58dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="340dp"
-            android:layout_marginRight="340dp"
-            android:text="TextView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petition_description_text_view" />
+            <TextView
+                android:id="@+id/petition_description_text_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/roboto"
+                android:text="petition_descrption"
+                android:textSize="18sp"
+                android:textStyle="normal" />
 
-        <ProgressBar
-            android:id="@+id/progress_bar_signatures"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_width="392dp"
-            android:layout_height="14dp"
-            android:layout_marginTop="20dp"
-            app:layout_constraintEnd_toEndOf="parent"
 
-            app:layout_constraintHorizontal_bias="0.578"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petition_Signatures_text_view" />
+        </RelativeLayout>
 
+
+    <!-- petition supporter -->
+    <LinearLayout
+    android:id="@+id/four"
+    android:layout_below="@id/three"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="20dp"
+    android:orientation="vertical"
+    android:layout_margin="20dp">
 
         <me.itangqi.waveloadingview.WaveLoadingView
             android:id="@+id/cirele"
-            android:layout_width="403dp"
-            android:layout_height="204dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/progress_bar_signatures"
-            app:wlv_borderColor="@android:color/holo_green_dark"
+            android:layout_width="298dp"
+            android:layout_height="300dp"
+            android:layout_marginLeft="35dp"
+            app:wlv_borderColor="#2b8477"
             app:wlv_borderWidth="3dp"
             app:wlv_round_rectangle="true"
             app:wlv_shapeType="circle"
-            app:wlv_titleBottomColor="@android:color/black"
 
+            app:wlv_titleBottomColor="@android:color/black"
             app:wlv_titleBottomSize="24sp"
             app:wlv_titleBottomStrokeColor="@android:color/darker_gray"
             app:wlv_titleBottomStrokeWidth="3dp"
+
+
             app:wlv_titleCenterColor="@android:color/black"
-
-
             app:wlv_titleCenterSize="24sp"
             app:wlv_titleCenterStrokeColor="@android:color/darker_gray"
             app:wlv_titleCenterStrokeWidth="3dp"
-            app:wlv_titleTopColor="@android:color/black"
 
+            app:wlv_titleTopColor="@android:color/black"
             app:wlv_titleTopSize="24sp"
             app:wlv_titleTopStrokeColor="@android:color/darker_gray"
             app:wlv_titleTopStrokeWidth="3dp"
+
             app:wlv_triangle_direction="north"
-
             app:wlv_waveAmplitude="70"
-            app:wlv_waveColor="@android:color/holo_green_light" />
-
-
-
-
-
-        <Button
-            android:id="@+id/petition_update_button"
-            android:layout_width="64dp"
-            android:layout_height="36dp"
-            android:layout_marginTop="48dp"
-            android:text="post an update"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/cirele" />
-
+            app:wlv_waveColor="#2b8477" />
 
         <Button
             android:id="@+id/sing_petition"
             android:layout_width="wrap_content"
             android:layout_height="48dp"
-            android:layout_marginTop="24dp"
-            android:text="sign this petition"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.443"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/petition_update_button" />
+            android:layout_marginLeft="100dp"
+            android:text="sign this petition" />
+
+
+    </LinearLayout>
+
+    <!--&lt;!&ndash; petition supporter &ndash;&gt;-->
+    <!--<RelativeLayout-->
+    <!--android:id="@+id/fifth"-->
+    <!--android:layout_below="@id/four"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:elevation="20dp"-->
+    <!--android:layout_margin="20dp"-->
+    <!--android:background="@drawable/curve_background">-->
+
+    <!--<Button-->
+    <!--android:id="@+id/sing_petition"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="48dp"-->
+        <!--android:layout_marginLeft="100dp"-->
+    <!--android:text="sign this petition" />-->
+
+
+    <!--</RelativeLayout>-->
+
+
+
+    <LinearLayout
+    android:id="@+id/sixth"
+    android:layout_below="@id/four"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:elevation="20dp"
+    android:layout_margin="20dp"
+    android:orientation="vertical"
+    android:background="@drawable/curve_background">
 
         <TextView
-            android:id="@+id/textView10"
-            android:layout_width="388dp"
-            android:layout_height="29dp"
-            android:text="updates"
-            app:layout_constraintBottom_toTopOf="@id/updates_recyclerView"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.869"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/sing_petition"
-            app:layout_constraintVertical_bias="0.38" />
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Updates"
+            android:textSize="20sp"
+            android:layout_margin="10dp"
+            android:textStyle="bold" />
+
+        <TableRow
+            android:id="@+id/hr2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="10dp"
+            android:background="#444">
+
+        </TableRow>
+
+
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/updates_recyclerView"
-            android:layout_width="377dp"
-            android:layout_height="600dp"
-            android:layout_marginTop="28dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginRight="16dp"
+    android:id="@+id/updates_recyclerView"
+    android:layout_width="377dp"
+    android:layout_height="600dp">
 
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/textView10">
-
-        </android.support.v7.widget.RecyclerView>
+    </android.support.v7.widget.RecyclerView>
 
 
-    </android.support.constraint.ConstraintLayout>
-</ScrollView>
+
+    </LinearLayout>
+
+
+
+
+    </RelativeLayout>
+
+
+    </android.support.v4.widget.NestedScrollView>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<android.support.design.widget.CoordinatorLayout-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--tools:context=".MainActivity">-->
+
+
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:id="@+id/app_bar_layout"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="400dp"-->
+        <!--android:fitsSystemWindows="true"-->
+        <!--android:background="?colorPrimary"-->
+        <!--&gt;-->
+
+        <!--<android.support.design.widget.CollapsingToolbarLayout-->
+            <!--android:id="@+id/collapsing"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+            <!--app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+            <!--app:collapsedTitleGravity="start"-->
+            <!--app:expandedTitleGravity="center_horizontal"-->
+            <!--app:title="@string/app_name"-->
+            <!--app:contentScrim="?attr/colorPrimaryDark"-->
+            <!--app:layout_scrollFlags="exitUntilCollapsed|scroll"-->
+            <!--&gt;-->
+
+            <!--<android.support.v7.widget.Toolbar-->
+                <!--android:id="@+id/app_bar"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="?attr/actionBarSize"-->
+                <!--android:fitsSystemWindows="true"-->
+                <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+                <!--app:contentInsetStart="72dp"-->
+                <!--app:layout_collapseMode="pin"-->
+                <!--app:popupTheme="@style/ThemeOverlay.AppCompat.Light">-->
+
+
+            <!--</android.support.v7.widget.Toolbar>-->
+
+
+        <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+    <!--&lt;!&ndash; Now we are going to add content for app good look below collapsing toolbar &ndash;&gt;-->
+    <!--<android.support.v4.widget.NestedScrollView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:layout_gravity="fill_vertical"-->
+        <!--app:layout_behavior="@string/appbar_scrolling_view_behavior">-->
+
+        <!--<RelativeLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#f5f5f5">-->
+
+            <!--&lt;!&ndash; petition name &ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/one"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginRight="20dp"-->
+
+                <!--android:elevation="20dp"-->
+                <!--android:background="@drawable/curve_background">-->
+
+                <!--<TextView-->
+                <!--android:id="@+id/petition_name_text_view1"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center_horizontal"-->
+                <!--android:text="Petition Name"-->
+                <!--android:textColor="@android:color/black"-->
+                <!--android:textSize="30dp"-->
+                <!--android:textStyle="bold" />-->
+
+            <!--</RelativeLayout>-->
+
+            <!--&lt;!&ndash; AboutCollapsingToolbar &ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/two"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_below="@id/one"-->
+                <!--android:layout_marginStart="20dp"-->
+                <!--android:layout_marginLeft="20dp"-->
+                <!--android:layout_marginTop="8dp"-->
+                <!--android:layout_marginEnd="20dp"-->
+
+                <!--android:layout_marginRight="20dp"-->
+                <!--android:layout_marginBottom="20dp"-->
+                <!--android:background="@drawable/curve_background"-->
+                <!--android:elevation="20dp">-->
+
+
+                <!--<TextView-->
+                    <!--android:id="@+id/petition_supporter_text_view"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:padding="5dp"-->
+                    <!--android:text="petition_supporter"-->
+                    <!--android:textSize="15sp"-->
+                    <!--android:textStyle="bold" />-->
+
+
+            <!--</RelativeLayout>-->
+
+
+            <!--&lt;!&ndash; petition supporter &ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/three"-->
+                <!--android:layout_below="@id/two"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:elevation="20dp"-->
+                <!--android:padding="5dp"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:background="@drawable/curve_background">-->
+
+
+                <!--<TextView-->
+                <!--android:id="@+id/petition_description_text_view"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:text="petition_descrption"-->
+                <!--android:textSize="15sp"-->
+                <!--android:textStyle="bold"/>-->
+
+
+
+            <!--</RelativeLayout>-->
+
+
+            <!--&lt;!&ndash; petition supporter &ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/four"-->
+                <!--android:layout_below="@id/three"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:elevation="20dp"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:background="@drawable/curve_background">-->
+
+                <!--<me.itangqi.waveloadingview.WaveLoadingView-->
+                    <!--android:id="@+id/cirele"-->
+                    <!--android:layout_width="258dp"-->
+                    <!--android:layout_height="254dp"-->
+                    <!--app:wlv_borderColor="#2b8477"-->
+                    <!--app:wlv_borderWidth="3dp"-->
+                    <!--app:wlv_round_rectangle="true"-->
+                    <!--app:wlv_shapeType="circle"-->
+                    <!--app:wlv_titleBottomColor="@android:color/black"-->
+
+                    <!--app:wlv_titleBottomSize="24sp"-->
+                    <!--app:wlv_titleBottomStrokeColor="@android:color/darker_gray"-->
+                    <!--app:wlv_titleBottomStrokeWidth="3dp"-->
+                    <!--app:wlv_titleCenterColor="@android:color/black"-->
+
+
+                    <!--app:wlv_titleCenterSize="24sp"-->
+                    <!--app:wlv_titleCenterStrokeColor="@android:color/darker_gray"-->
+                    <!--app:wlv_titleCenterStrokeWidth="3dp"-->
+                    <!--app:wlv_titleTopColor="@android:color/black"-->
+
+                    <!--app:wlv_titleTopSize="24sp"-->
+                    <!--app:wlv_titleTopStrokeColor="@android:color/darker_gray"-->
+                    <!--app:wlv_titleTopStrokeWidth="3dp"-->
+                    <!--app:wlv_triangle_direction="north"-->
+
+                    <!--app:wlv_waveAmplitude="70"-->
+                    <!--app:wlv_waveColor="#2b8477" />-->
+
+            <!--</RelativeLayout>-->
+
+            <!--&lt;!&ndash; petition supporter &ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/fifth"-->
+                <!--android:layout_below="@id/four"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:elevation="20dp"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:background="@drawable/curve_background">-->
+
+                <!--<Button-->
+                <!--android:id="@+id/sing_petition"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="48dp"-->
+                <!--android:text="sign this petition" />-->
+
+
+            <!--</RelativeLayout>-->
+
+
+
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/sixth"-->
+                <!--android:layout_below="@id/fifth"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:elevation="20dp"-->
+                <!--android:layout_margin="20dp"-->
+                <!--android:background="@drawable/curve_background">-->
+
+
+                <!--<android.support.v7.widget.RecyclerView-->
+                <!--android:id="@+id/updates_recyclerView"-->
+                <!--android:layout_width="377dp"-->
+                <!--android:layout_height="600dp">-->
+
+                <!--</android.support.v7.widget.RecyclerView>-->
+
+
+
+            <!--</RelativeLayout>-->
+
+
+
+
+        <!--</RelativeLayout>-->
+
+
+    <!--</android.support.v4.widget.NestedScrollView>-->
+
+
+<!--</android.support.design.widget.CoordinatorLayout>-->
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8"?>-->
+<!--<ScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+    <!--xmlns:tools="http://schemas.android.com/tools"-->
+    <!--android:id="@+id/scrollView2"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--tools:context=".fragment.petition.DetailsPetitionFragment">-->
+
+
+
+    <!--<android.support.constraint.ConstraintLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:background="@android:color/white">-->
+
+
+        <!--<android.support.design.widget.AppBarLayout-->
+            <!--android:id="@+id/app_bar_layout"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="400dp"-->
+            <!--android:fitsSystemWindows="true"-->
+            <!--android:background="?colorPrimary"-->
+
+            <!--&gt;-->
+
+            <!--<android.support.design.widget.CollapsingToolbarLayout-->
+                <!--android:id="@+id/collapsing"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="match_parent"-->
+                <!--app:collapsedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+                <!--app:expandedTitleTextAppearance="@style/TextAppearance.AppCompat.Widget.ActionBar.Title.Inverse"-->
+                <!--app:collapsedTitleGravity="start"-->
+                <!--app:expandedTitleGravity="center_horizontal"-->
+                <!--app:title="@string/app_name"-->
+                <!--app:contentScrim="?attr/colorPrimaryDark"-->
+                <!--app:layout_scrollFlags="exitUntilCollapsed|scroll"-->
+                <!--&gt;-->
+
+                <!--<ImageView-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:src="@drawable/background234"-->
+                    <!--android:scaleType="centerCrop"-->
+                    <!--app:layout_collapseMode="parallax"/>-->
+
+                <!--<android.support.v7.widget.Toolbar-->
+                    <!--android:id="@+id/app_bar"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="?actionBarSize"-->
+                    <!--android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"-->
+                    <!--app:contentInsetStart="72dp"-->
+                    <!--app:layout_collapseMode="pin">-->
+
+
+                <!--</android.support.v7.widget.Toolbar>-->
+
+
+            <!--</android.support.design.widget.CollapsingToolbarLayout>-->
+
+
+        <!--</android.support.design.widget.AppBarLayout>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="match_parent"-->
+            <!--android:src="@drawable/background234"-->
+            <!--android:scaleType="centerCrop"-->
+            <!--app:layout_collapseMode="parallax"/>-->
+
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/petition_name_text_view1"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_marginStart="8dp"-->
+            <!--android:layout_marginLeft="8dp"-->
+            <!--android:layout_marginTop="424dp"-->
+            <!--android:layout_marginEnd="8dp"-->
+            <!--android:layout_marginRight="8dp"-->
+            <!--android:gravity="center_horizontal"-->
+            <!--android:text="Petition Name"-->
+            <!--android:textColor="@android:color/black"-->
+            <!--android:textSize="30dp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="1.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toTopOf="parent" />-->
+
+        <!--<ImageView-->
+            <!--android:id="@+id/image_petition_image"-->
+            <!--android:layout_width="364dp"-->
+            <!--android:layout_height="271dp"-->
+            <!--tools:layout_editor_absoluteX="26dp"-->
+            <!--tools:layout_editor_absoluteY="87dp"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/petition_name_text_view1"-->
+            <!--tools:src="@tools:sample/avatars" />-->
+
+
+        <!--<TextView-->
+            <!--android:id="@+id/petition_supporter_text_view"-->
+            <!--android:layout_width="377dp"-->
+            <!--android:layout_height="30dp"-->
+            <!--android:layout_marginStart="15dp"-->
+            <!--android:layout_marginLeft="15dp"-->
+            <!--android:layout_marginEnd="15dp"-->
+            <!--android:layout_marginRight="15dp"-->
+            <!--android:text="petition_supporter"-->
+            <!--android:textSize="15sp"-->
+            <!--android:textStyle="bold"-->
+            <!--app:layout_constraintBottom_toTopOf="@id/petition_description_text_view"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="1.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/image_petition_image" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/petition_description_text_view"-->
+            <!--android:layout_width="370dp"-->
+            <!--android:layout_height="19dp"-->
+            <!--android:layout_marginTop="20dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.463"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/petition_supporter_text_view" />-->
+
+
+        <!--<me.itangqi.waveloadingview.WaveLoadingView-->
+            <!--android:id="@+id/cirele"-->
+            <!--android:layout_width="258dp"-->
+            <!--android:layout_height="254dp"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/petition_description_text_view"-->
+            <!--app:wlv_borderColor="#2b8477"-->
+            <!--app:wlv_borderWidth="3dp"-->
+            <!--app:wlv_round_rectangle="true"-->
+            <!--app:wlv_shapeType="circle"-->
+            <!--app:wlv_titleBottomColor="@android:color/black"-->
+
+            <!--app:wlv_titleBottomSize="24sp"-->
+            <!--app:wlv_titleBottomStrokeColor="@android:color/darker_gray"-->
+            <!--app:wlv_titleBottomStrokeWidth="3dp"-->
+            <!--app:wlv_titleCenterColor="@android:color/black"-->
+
+
+            <!--app:wlv_titleCenterSize="24sp"-->
+            <!--app:wlv_titleCenterStrokeColor="@android:color/darker_gray"-->
+            <!--app:wlv_titleCenterStrokeWidth="3dp"-->
+            <!--app:wlv_titleTopColor="@android:color/black"-->
+
+            <!--app:wlv_titleTopSize="24sp"-->
+            <!--app:wlv_titleTopStrokeColor="@android:color/darker_gray"-->
+            <!--app:wlv_titleTopStrokeWidth="3dp"-->
+            <!--app:wlv_triangle_direction="north"-->
+
+            <!--app:wlv_waveAmplitude="70"-->
+            <!--app:wlv_waveColor="#2b8477" />-->
+
+
+
+
+
+        <!--<Button-->
+            <!--android:id="@+id/petition_update_button"-->
+            <!--android:layout_width="64dp"-->
+            <!--android:layout_height="36dp"-->
+            <!--android:layout_marginTop="48dp"-->
+            <!--android:text="post an update"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.498"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/cirele" />-->
+
+
+        <!--<Button-->
+            <!--android:id="@+id/sing_petition"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="48dp"-->
+            <!--android:layout_marginTop="24dp"-->
+            <!--android:text="sign this petition"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.443"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@+id/petition_update_button" />-->
+
+        <!--<TextView-->
+            <!--android:id="@+id/textView10"-->
+            <!--android:layout_width="388dp"-->
+            <!--android:layout_height="29dp"-->
+            <!--android:text="updates"-->
+            <!--app:layout_constraintBottom_toTopOf="@id/updates_recyclerView"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="0.869"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/sing_petition"-->
+            <!--app:layout_constraintVertical_bias="0.38" />-->
+
+        <!--<android.support.v7.widget.RecyclerView-->
+            <!--android:id="@+id/updates_recyclerView"-->
+            <!--android:layout_width="377dp"-->
+            <!--android:layout_height="600dp"-->
+            <!--android:layout_marginTop="28dp"-->
+            <!--android:layout_marginEnd="16dp"-->
+            <!--android:layout_marginRight="16dp"-->
+
+            <!--app:layout_constraintBottom_toBottomOf="parent"-->
+            <!--app:layout_constraintEnd_toEndOf="parent"-->
+            <!--app:layout_constraintHorizontal_bias="1.0"-->
+            <!--app:layout_constraintStart_toStartOf="parent"-->
+            <!--app:layout_constraintTop_toBottomOf="@id/textView10">-->
+
+        <!--</android.support.v7.widget.RecyclerView>-->
+
+
+    <!--</android.support.constraint.ConstraintLayout-->
+
+        <!--&gt;-->
+<!--</ScrollView>-->
