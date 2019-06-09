@@ -222,7 +222,7 @@ public class DetailsPetitionFragment extends Fragment {
     public void loadPetitionUpdates() {
         new FirebaseRepository().getPetitionUpdates(mParam1.getPetitionKey(), new PetitionUpdateOnCompleteListener() {
             @Override
-            public void onPetitionUpdatesOnSucces(List<PetitionUpdates> petitionUpdatesList) {
+            public void onPetitionUpdatesOnSuccess(List<PetitionUpdates> petitionUpdatesList) {
                 petitionViewModel.setmPetitionUpdatesList(petitionUpdatesList);
                 petitionUpdatesAdapter=new PetitionUpdatesAdapter();
                 petitionUpdatesAdapter.setPetitionUpdatesList(petitionUpdatesList);
@@ -230,7 +230,7 @@ public class DetailsPetitionFragment extends Fragment {
             }
 
             @Override
-            public void onPetitionUpdatesOnfialer(Throwable t) {
+            public void onPetitionUpdatesOnFailure(Throwable t) {
                 Log.d("TAG", "OnFailure: " + t.getMessage());
             }
 

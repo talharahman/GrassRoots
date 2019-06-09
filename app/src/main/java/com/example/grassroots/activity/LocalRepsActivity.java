@@ -1,26 +1,40 @@
 package com.example.grassroots.activity;
 
+import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.model.CivicInfo.CivicInfoModel;
+import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
+import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
+import com.example.grassroots.network.PetitionDB.FirebaseRepository;
+import com.example.grassroots.network.PetitionDB.MyPetitionHistoryInterface;
+import com.example.grassroots.network.PetitionDB.SendPetitionToRepCallBack;
 import com.example.grassroots.recyclerview.CivicInfoAdapter;
+import com.example.grassroots.utils.LocalRepsUIListener;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 
@@ -29,6 +43,8 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     private TextView userLocation;
     private RecyclerView recyclerView;
     private CivicInfoAdapter civicInfoAdapter;
+    private UserActionViewModel userActionViewModel;
+    private List<Petition> myPetitionsHistory = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +55,8 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void initialize() {
+        userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_contact);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -58,16 +76,66 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
         civicInfoAdapter = new CivicInfoAdapter();
 
         makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), "11101");
+        makeDatabaseCall();
     }
 
     private void makeNetworkCall(String key, String zipCode) {
-        CivicInfoPresenter presenter = new CivicInfoPresenter(civicInfoModel -> {
-            civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
-            recyclerView.setAdapter(civicInfoAdapter);
-            userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+        CivicInfoPresenter presenter = new CivicInfoPresenter(new LocalRepsUIListener() {
+            @Override
+            public void updateUI(CivicInfoModel civicInfoModel) {
+                civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
+                recyclerView.setAdapter(civicInfoAdapter);
+                userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+            }
         });
 
         presenter.networkCall(key, zipCode);
+    }
+
+    private void makeDatabaseCall() {
+        new FirebaseRepository().getAllPetitions(new MyPetitionHistoryInterface() {
+            @Override
+            public void myHistoryOfPetitions(List<Petition> myPetitions) {
+                myPetitionsHistory = myPetitions;
+                userActionViewModel.setPetitions(myPetitionsHistory);
+                civicInfoAdapter.setSendListener(new SendPetitionToRepCallBack() {
+                    @Override
+                    public void sendMyPetitionToRep(ElectedRepresentatives representative) {
+                        Toast.makeText(getApplicationContext(), "Petition Sent!", Toast.LENGTH_SHORT).show();
+
+                        AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
+                        petitions.setIcon(R.drawable.send);
+                        petitions.setTitle("Choose a Petition to send");
+
+                        String[] myPetitions = {
+                                myPetitionsHistory.get(0).getmPetitionName(),
+                                myPetitionsHistory.get(1).getmPetitionName(),
+                                myPetitionsHistory.get(2).getmPetitionName()};
+
+
+                        int checkedItem = 0;
+                        petitions.setSingleChoiceItems(myPetitions, checkedItem, new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Toast.makeText( LocalRepsActivity.this, "You selected " + myPetitions[which], Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                        petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
+                                startActivity(email);
+                            }
+                        });
+                        petitions.setNegativeButton("Cancel", null);
+
+                        AlertDialog dialog = petitions.create();
+                        dialog.show();
+                    }
+                });
+            }
+        });
+
     }
 
     @Override

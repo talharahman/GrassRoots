@@ -2,35 +2,21 @@ package com.example.grassroots.recyclerview;
 
 import android.app.AlertDialog;
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.graphics.Color;
 import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.ListAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
-import com.example.grassroots.activity.LocalRepsActivity;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
-import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.user.UserActionViewModel;
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.firestore.CollectionReference;
-import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
-
-import java.util.ArrayList;
-import java.util.List;
+import com.example.grassroots.network.PetitionDB.SendPetitionToRepCallBack;
 
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
@@ -49,16 +35,12 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     private ImageView arrow;
     private CardView socialsCardview;
 
-    private UserActionViewModel userActionViewModel;
-
     CivicInfoViewHolder(@NonNull View itemView) {
         super(itemView);
         setRepresentativeReferences(itemView);
     }
 
     private void setRepresentativeReferences(View itemview) {
-        userActionViewModel = ViewModelProviders.of((FragmentActivity) itemview.getContext()).get(UserActionViewModel.class);
-
         repName = itemView.findViewById(R.id.rep_name);
         showText = itemView.findViewById(R.id.contact_show);
         repPosition = itemView.findViewById(R.id.rep_position);
@@ -75,7 +57,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         socialsCardview = itemview.findViewById(R.id.local_rep_socials);
     }
 
-    void onBind(ElectedRepresentatives electedRepresentatives, String position) {
+    void onBind(ElectedRepresentatives electedRepresentatives, String position, SendPetitionToRepCallBack listener) {
         repName.setText(electedRepresentatives.getName());
         repPosition.setText(position);
 
@@ -90,7 +72,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         emailView(electedRepresentatives);
         facebookView(electedRepresentatives);
         twitterView(electedRepresentatives);
-        sendView();
+        sendView(listener, electedRepresentatives);
 
         boolean expanded = electedRepresentatives.isExpanded();
         if (expanded) {
@@ -104,54 +86,14 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         }
     }
 
-    private void sendView() {
+    private void sendView(SendPetitionToRepCallBack listener, ElectedRepresentatives representative) {
         send.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                List<Petition> myPetitionsList = new ArrayList<>();
-                FirebaseFirestore db = FirebaseFirestore.getInstance();
-                CollectionReference petitionRef = db.collection("Petitioncol");
-
-                petitionRef.get()
-                        .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
-                            @Override
-                            public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
-                                for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
-                                    Petition petition = documentSnapshot.toObject(Petition.class);
-                                    myPetitionsList.add(petition);
-                                }
-                                userActionViewModel.setPetitions(myPetitionsList);
-                            }
-                        });
-
-                AlertDialog.Builder petitions = new AlertDialog.Builder(itemView.getContext());
-                petitions.setIcon(R.drawable.send);
-                petitions.setTitle("Choose a Petition to send");
-
-                String[] myPetitons = {myPetitionsList.get(0).getmPetitionName(),
-                                            myPetitionsList.get(1).getmPetitionName(),
-                                                    myPetitionsList.get(2).getmPetitionName()};
-
-                int checkedItem = 0;
-                petitions.setSingleChoiceItems(myPetitons, checkedItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(itemView.getContext(), "You selected " + myPetitons[which], Toast.LENGTH_SHORT).show();
-                    }
-                });
-                petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // user clicked OK
-                    }
-                });
-                petitions.setNegativeButton("Cancel", null);
-
-                AlertDialog dialog = petitions.create();
-                dialog.show();
+                listener.sendMyPetitionToRep(representative);
             }
-        });
 
+        });
     }
 
     private void urlView(ElectedRepresentatives representative) {

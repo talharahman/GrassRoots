@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface PetitionUpdateOnCompleteListener {
 
-     void onPetitionUpdatesOnSucces(List<PetitionUpdates> petitionUpdatesList);
-     void onPetitionUpdatesOnfialer(Throwable t);
+     void onPetitionUpdatesOnSuccess(List<PetitionUpdates> petitionUpdatesList);
+     void onPetitionUpdatesOnFailure(Throwable t);
 }

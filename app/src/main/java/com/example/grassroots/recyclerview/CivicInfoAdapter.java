@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import com.example.grassroots.R;
 import com.example.grassroots.model.CivicInfo.ElectedPositions;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
+import com.example.grassroots.network.PetitionDB.SendPetitionToRepCallBack;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -19,6 +20,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     private List<ElectedPositions> electedPositions = new ArrayList<>();
     private List<ElectedRepresentatives> electedRepresentatives = new ArrayList<>();
+    private SendPetitionToRepCallBack listener;
 
     public CivicInfoAdapter() {}
 
@@ -34,6 +36,10 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
 
     private <E> void reverseList(List<E> list) {
         Collections.reverse(list);
+    }
+
+    public void setSendListener(SendPetitionToRepCallBack listener) {
+        this.listener = listener;
     }
 
     @NonNull
@@ -52,7 +58,7 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
                 positionsMap.put(electedPositions.get(j).getOfficialIndices().get(k), electedPositions.get(j).getName());
             }
         }
-        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1));
+        civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1), listener);
 
         civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override

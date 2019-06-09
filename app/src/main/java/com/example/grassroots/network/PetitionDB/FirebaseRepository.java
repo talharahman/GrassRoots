@@ -3,9 +3,12 @@ package com.example.grassroots.network.PetitionDB;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,11 +19,23 @@ public class FirebaseRepository {
     private DocumentReference petitionReference;
     private Throwable t = new Throwable();
 
-    /*public List<Petition> getAllPetitions() {
-
+    public void getAllPetitions(MyPetitionHistoryInterface myPetitionHistoryInterface) {
+        CollectionReference petitionRef = db.collection("Petitioncol");
+        petitionRef.get()
+                .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
+                    @Override
+                    public void onSuccess(QuerySnapshot queryDocumentSnapshots) {
+                        List<Petition> petitions = new ArrayList<>();
+                        for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
+                            Petition petition = documentSnapshot.toObject(Petition.class);
+                            petitions.add(petition);
+                        }
+                        myPetitionHistoryInterface.myHistoryOfPetitions(petitions);
+                    }
+                });
     }
 
-    public Petition getPetition(String petitionKey) {
+   /* public Petition getPetition(String petitionKey) {
 
     }*/
 
@@ -40,8 +55,8 @@ public class FirebaseRepository {
                             petitionUpdatesList.add(p);
                         }
 
-                        petitionUpdateListener.onPetitionUpdatesOnSucces(petitionUpdatesList);
-                        petitionUpdateListener.onPetitionUpdatesOnfialer(t);
+                        petitionUpdateListener.onPetitionUpdatesOnSuccess(petitionUpdatesList);
+                        petitionUpdateListener.onPetitionUpdatesOnFailure(t);
                     }
                 });
     }
