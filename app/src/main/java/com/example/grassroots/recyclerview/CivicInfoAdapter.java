@@ -3,6 +3,7 @@ package com.example.grassroots.recyclerview;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
@@ -53,10 +54,13 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         }
         civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1));
 
-        civicInfoViewHolder.itemView.setOnClickListener(v -> {
-            boolean expanded = electedRepresentatives.get(i).isExpanded();
-            electedRepresentatives.get(i).setExpanded(!expanded);
-            notifyItemChanged(i);
+        civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean expanded = electedRepresentatives.get(i).isExpanded();
+                electedRepresentatives.get(i).setExpanded(!expanded);
+                CivicInfoAdapter.this.notifyItemChanged(i);
+            }
         });
     }
 
