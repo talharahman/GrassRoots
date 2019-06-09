@@ -36,7 +36,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
     private CongressOverviewVM congressOverviewVM;
 
     private String member_id;
-    private SearchView.OnQueryTextListener queryTextListener;
+//    private SearchView.OnQueryTextListener queryTextListener;
 
     public static final String TAG = "HERE";
 
@@ -62,7 +62,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         android.support.v7.widget.SearchView searchView = view.findViewById(R.id.sv_bill_deets);
-//        searchView.setOnQueryTextListener(queryTextListener);
+//        searchView.setOnQueryTextListener((android.support.v7.widget.SearchView.OnQueryTextListener) queryTextListener);
 
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
@@ -92,18 +92,19 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
 
     @Override
     public boolean onQueryTextSubmit(String query) {
+        final List<Votes> newVotesList = new ArrayList<>();
+        for (Votes votes : votesList) {
+            if (votes.getDescription().toLowerCase().contains(query.toLowerCase())) {
+                newVotesList.add(votes);
+            }
+        }
+        votePositionAdapter.setData(newVotesList);
         return false;
     }
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        final List<Votes> newVotesList = new ArrayList<>();
-                for (Votes votes : votesList) {
-                    if (votes.getDescription().toLowerCase().contains(newText.toLowerCase())) {
-                        newVotesList.add(votes);
-                    }
-                }
-                votePositionAdapter.setData(newVotesList);
+
                 return false;
     }
 }

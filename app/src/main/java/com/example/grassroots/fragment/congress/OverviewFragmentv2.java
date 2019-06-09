@@ -10,12 +10,14 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
@@ -25,7 +27,7 @@ public class OverviewFragmentv2 extends Fragment {
 
     private View rootView;
     private String fecID;
-    public static final String ADDRESS = "https://www.fec.gov/data/candidate/";
+    private TabContactListener tabContactListener;
 
     public OverviewFragmentv2() {
     }
@@ -61,11 +63,74 @@ public class OverviewFragmentv2 extends Fragment {
         TextView txt_fec_id = rootView.findViewById(R.id.txt_fec_id_number);
         TextView txt_year = rootView.findViewById(R.id.txt_year);
 
+        ImageView twitter = rootView.findViewById(R.id.acct_twitter);
+        ImageView facebook = rootView.findViewById(R.id.acct_facebook);
+        ImageView youtube = rootView.findViewById(R.id.acct_youtube);
+        ImageView gmail = rootView.findViewById(R.id.acct_gmail);
+        ImageView website = rootView.findViewById(R.id.website);
+        ImageView phone = rootView.findViewById(R.id.phone);
 
-//        TextView ov_txtv_vs_votesRatio = rootView.findViewById(R.id.ov_txtv_vs_votesRatio);
-//        TextView ov_txtv_vs_pct_missed = rootView.findViewById(R.id.ov_txtv_vs_pct_missed);
-//        TextView ov_txtv_vs_pct_party = rootView.findViewById(R.id.ov_txtv_vs_pct_party);
-//        TextView ov_txtv_nextElection_congressmember = rootView.findViewById(R.id.ov_txtv_nextElection_congressmember);
+//        twitter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                if(tabContactListener != null){
+//                    tabContactListener.openTwitter(congressOverviewVM.getCongressMember().getTwitter_account());
+//                }
+//            }
+//        });
+//
+//        facebook.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(tabContactListener != null){
+//                    tabContactListener.openFacebook(congressOverviewVM.getCongressMember().getFacebook_account());
+//                }
+//            }
+//        });
+//
+//        youtube.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(tabContactListener != null){
+//                    tabContactListener.openYoutube(congressOverviewVM.getCongressMember().getYoutube_account());
+//                }
+//
+//            }
+//        });
+//
+//        gmail.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(tabContactListener != null){
+//                    tabContactListener.openEmail(congressOverviewVM.getCongressMember().getContact_form());
+//                }
+//            }
+//        });
+//
+//        website.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(tabContactListener != null){
+//                    tabContactListener.openWebsite(congressOverviewVM.getCongressMember().getUrl());
+//                }
+//
+//            }
+//        });
+//
+//        phone.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//                if(tabContactListener != null){
+//                    tabContactListener.openPhont(congressOverviewVM.getCongressMember().getPhone());
+//                }
+//            }
+//        });
+
 
         txt_title_name.setText(
                 congressOverviewVM.getCongressMember().getShort_title() + " " +
@@ -81,17 +146,5 @@ public class OverviewFragmentv2 extends Fragment {
 
         txt_year.setText(congressOverviewVM.getCongressMember().getNext_election());
 
-//        ov_txtv_vs_votesRatio.setText(
-//                "Missed Votes / Total Votes Ratio: " + congressOverviewVM.getCongressMember().getMissed_votes() + " / " +
-//                congressOverviewVM.getCongressMember().getTotal_votes());
-//
-//        ov_txtv_vs_pct_missed.setText(
-//                "Missed Votes Percentage: " + congressOverviewVM.getCongressMember().getMissed_votes_pct());
-//
-//        ov_txtv_vs_pct_party.setText(
-//                "Votes with Party Percentage: " + congressOverviewVM.getCongressMember().getVotes_with_party_pct());
-//
-//        ov_txtv_nextElection_congressmember.setText(
-//                congressOverviewVM.getCongressMember().getNext_election());
     }
 }

@@ -2,7 +2,7 @@
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/neutral_white"
+    android:background="@color/bkg_frag_tint_purple"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
@@ -23,7 +23,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="224dp"
         android:gravity="center_horizontal"
-        android:text="There are no public records for Senators at this time.\n Contact your representative \n for more information."
+        android:text="There are no public office expense records for Senators at this time.\n Contact your representative \n for more information."
         android:textColor="#000"
         android:textSize="24sp"
         android:textStyle="bold"

@@ -87,5 +87,9 @@
     <string name="petition_problem_info">People are more likely to support your petition if it’s clear why you care. Explain how this change will impact you, your family, or your community</string>
     <string name="petition_name">Petition Name</string>
 
+    <!--Instructions-->
+
+    <string name="instruction_view_oe"><b>The House of Representatives publishes quarterly reports detailing official office expenses by lawmakers. \n \nData is currently available from the 3rd quarter of 2009 to the 4th quarter of 2017. \n \nNewly elected representatives do not have any records as of yet. Please contact their office for more information. </b> </string>
+
 
 </resources>

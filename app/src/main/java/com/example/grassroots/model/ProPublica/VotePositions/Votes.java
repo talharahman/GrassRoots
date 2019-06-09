@@ -54,6 +54,3 @@ public class Votes implements Comparable<Votes> {
         return votes_description;
     }
 }
-
-//    final int congressMember = this.getFirst_name().toLowerCase().compareTo(o.getFirst_name().toLowerCase());
-//        return congressMember;

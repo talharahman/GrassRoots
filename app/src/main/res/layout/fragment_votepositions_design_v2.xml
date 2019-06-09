@@ -53,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:layout_marginTop="12dp"
+                android:layout_marginTop="18dp"
                 android:text="V O T I N G  S N A P S H O T"
                 android:textColor="#000"
                 android:textSize="14sp"
@@ -167,14 +167,16 @@
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="18dp"
         android:orientation="vertical">
 
         <android.support.v7.widget.SearchView
             android:id="@+id/sv_bill_deets"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            app:queryHint="Enter bill ID or subject">
+            android:layout_height="28dp"
+            android:layout_marginBottom="8dp"
+            app:queryHint="Enter bill title"
+            android:background="@color/color_light_purple_ic">
 
         </android.support.v7.widget.SearchView>
 
@@ -182,7 +184,8 @@
             android:id="@+id/rv_vote_positions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:scrollbars="vertical">
+            android:scrollbars="vertical"
+            android:background="#E9E4F8">
 
         </android.support.v7.widget.RecyclerView>
 
