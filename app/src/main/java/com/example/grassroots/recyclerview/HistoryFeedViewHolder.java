@@ -10,6 +10,11 @@ import com.example.grassroots.R;
 import com.example.grassroots.fragment.user.UserHistory;
 import com.example.grassroots.model.petition.Petition;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class HistoryFeedViewHolder extends RecyclerView.ViewHolder {
 
     TextView textView_history;
@@ -19,8 +24,11 @@ public class HistoryFeedViewHolder extends RecyclerView.ViewHolder {
         textView_history = itemView.findViewById(R.id.petition_description_user_history_test);
     }
 
-    public void onBind(Petition petition){
+    public void onBind(Petition petition, String currentID){
 
-        textView_history.setText("You have signed 1 petition");
+
+        textView_history.setText(petition.getmPetitionName() + "has been signed by 1 person." );
+
+
     }
 }

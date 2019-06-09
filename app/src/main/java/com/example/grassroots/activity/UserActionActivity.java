@@ -9,6 +9,7 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -21,6 +22,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -33,7 +35,8 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference petitionRef = db.collection("Petitioncol");
-    private String currentUserId;
+    public static String CURRENT_USER_ID;
+    UserActionViewModel userActionViewModel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +47,8 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
     }
 
     private void initialize() {
+        getFirebaseData();
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_user);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
 
@@ -60,18 +65,25 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-        getFirebaseData();
     }
 
     private void getFirebaseData() {
+
+        userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+
+        currentUser.getUid();
+
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         firebaseAuth
-                .signInWithEmailAndPassword("grassroots2019usa@gmail.com", "password")
+                .signInWithEmailAndPassword("talharahman@pursuit.org", "password2")
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            currentUserId = firebaseAuth.getUid();
+                            userActionViewModel.setCurrentUserID(firebaseAuth.getUid());
+                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
                         } else {
                             Toast.makeText(UserActionActivity.this.getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
                         }
@@ -79,7 +91,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
                 });
 
 
-        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+//        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
         // with this context, create a viewmodel of this type
 
         petitionRef.get()
