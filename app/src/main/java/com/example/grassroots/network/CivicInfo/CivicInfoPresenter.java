@@ -11,6 +11,21 @@ public class CivicInfoPresenter {
         this.localRepsUIListener = localRepsUIListener;
     }
 
+    public void networkCall(String civicAPIKey){
+        CivicInfoRepository instance = new CivicInfoRepository();
+        instance.fetchElectedRepresentatives(civicAPIKey, new CivicInfoListener() {
+            @Override
+            public void onSuccess(CivicInfoModel civicInfoModel) {
+                localRepsUIListener.updateUI(civicInfoModel);
+            }
+
+            @Override
+            public void onFailure() {
+                //insert callback method
+            }
+        });
+    }
+
     public void networkCall(String civicAPIKey, String zipCode){
         CivicInfoRepository instance = new CivicInfoRepository();
         instance.fetchElectedRepresentatives(zipCode, civicAPIKey, new CivicInfoListener() {

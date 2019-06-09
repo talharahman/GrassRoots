@@ -20,6 +20,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.OfficeExpUIListener;
@@ -28,6 +29,8 @@ import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpensePresenter;
 import com.example.grassroots.recyclerview.ExpenseAdapter;
+
+import java.nio.file.Path;
 
 import static android.view.View.GONE;
 import static android.view.View.INVISIBLE;
@@ -41,6 +44,9 @@ public class OfficeExpFragmentv2 extends Fragment {
     private String quarter;
     private String short_title;
 
+    private int yr_;
+    private int qt_;
+
     private Spinner oe_yr_spinner;
     private Spinner oe_qt_spinner;
 
@@ -48,6 +54,8 @@ public class OfficeExpFragmentv2 extends Fragment {
 
     private ExpenseAdapter expenseAdapter;
     private RecyclerView recyclerView;
+
+    private OfficeExpensePresenter officeExpensePresenter;
 
     public OfficeExpFragmentv2() {
     }
@@ -103,9 +111,9 @@ public class OfficeExpFragmentv2 extends Fragment {
         member_id = congressOverviewVM.getCongressMember().getId();
         short_title = congressOverviewVM.getCongressMember().getShort_title();
 
-        if(short_title.equals("Rep.")){
+        if (short_title.equals("Rep.")) {
             recyclerView.setVisibility(View.VISIBLE);
-        } else if(short_title.equals("Sen.")) {
+        } else if (short_title.equals("Sen.")) {
             insertCalltoActionFragment();
         }
 
@@ -115,8 +123,7 @@ public class OfficeExpFragmentv2 extends Fragment {
         3. senators
         */
 
-
-        OfficeExpensePresenter expensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
+        officeExpensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
             @Override
             public void updateOfficeExpUI(OfficeExpenseResponse officeExpenseResponse) {
                 expenseAdapter = new ExpenseAdapter(officeExpenseResponse.getResults());
@@ -125,18 +132,24 @@ public class OfficeExpFragmentv2 extends Fragment {
             }
         });
 
-        expensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
-                member_id);
-        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " );
 
+        if (year == null && quarter == null) {
+            Toast.makeText(getContext(), "Select year and quarter", Toast.LENGTH_LONG).show();
+        }
+
+//        if(year != null && quarter == null){
+//            Toast.makeText(getContext(), "Select Quarter", Toast.LENGTH_SHORT).show();
+//        } else if(year == null && quarter != null){
+//            Toast.makeText(getContext(), "Select Year", Toast.LENGTH_SHORT).show();
+//        }
 
     }
 
     private void insertInfoNotAvailable() {
-            InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
-            FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-            transaction.replace(R.id.container_oe, infoNotAvailableFragment).addToBackStack(null).commit();
-            Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
+        InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_oe, infoNotAvailableFragment).addToBackStack(null).commit();
+        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 
     private void setSpinners() {
@@ -145,12 +158,20 @@ public class OfficeExpFragmentv2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 year = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
-
+                if(!year.equals("") && !quarter.equals("")) {
+                    if(year != null && quarter != null) {
+                        yr_ = Integer.parseInt(year);
+                        qt_ = Integer.parseInt(quarter);
+                        officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
+                                member_id, yr_, qt_);
+                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
+                    }
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+//                Toast.makeText(getContext(), "Select Year", Toast.LENGTH_SHORT).show();
             }
         });
         oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -159,11 +180,20 @@ public class OfficeExpFragmentv2 extends Fragment {
                 quarter = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
 
+                if(!year.equals("") && !quarter.equals("")) {
+                    if(year != null && quarter != null) {
+                        yr_ = Integer.parseInt(year);
+                        qt_ = Integer.parseInt(quarter);
+                        officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
+                                member_id, yr_, qt_);
+                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
+                    }
+                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-
+//                Toast.makeText(getContext(), "Select Quarter", Toast.LENGTH_SHORT).show();
             }
         });
     }
