@@ -31,6 +31,7 @@ public class PetitionUpdatesViewHolder extends RecyclerView.ViewHolder {
         Log.d("tets", "onBind: "+currentPetitionUpdate.getmPetitionDescription());
         Glide.with(itemView.getContext())
                 .load(currentPetitionUpdate.getmPetitionImageURL())
+                .fitCenter()
                 .centerCrop().fitCenter()
                 .into(petitionUpdateImageImageView);
 

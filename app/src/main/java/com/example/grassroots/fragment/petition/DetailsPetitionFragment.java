@@ -25,6 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -136,8 +137,7 @@ public class DetailsPetitionFragment extends Fragment {
         petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
         petitionSignButton=view.findViewById(R.id.bottom_button);
 
-        petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext()));
-
+        petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false));
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
         petitionSupporterTextView.setText(" Ben started this petition to "+mParam1.getmPetitionSupporter());
@@ -158,8 +158,9 @@ public class DetailsPetitionFragment extends Fragment {
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
                 signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature()+1);
 
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature(),
                         "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
@@ -167,11 +168,12 @@ public class DetailsPetitionFragment extends Fragment {
                              //   Toast.makeText(requireContext(), "Petition Signed!", Toast.LENGTH_SHORT).show();
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
+
                                 // add a signature to the petition
                                 signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
                                 petitionViewModel.setSigners(signersList);
-
                                 mListener.moveToPetitionAnim(new PetitionSignAnim());
+                                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(mParam1));
                             }
                         });
 

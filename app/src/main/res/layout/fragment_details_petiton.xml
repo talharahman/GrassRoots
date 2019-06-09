@@ -266,7 +266,7 @@
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/updates_recyclerView"
                     android:layout_width="377dp"
-                    android:layout_height="600dp"
+                    android:layout_height="wrap_content"
 
                     >
 
