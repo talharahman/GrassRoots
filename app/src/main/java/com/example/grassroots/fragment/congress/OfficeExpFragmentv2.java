@@ -145,12 +145,7 @@ public class OfficeExpFragmentv2 extends Fragment {
 
     }
 
-    private void insertInfoNotAvailable() {
-        InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_oe, infoNotAvailableFragment).addToBackStack(null).commit();
-        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
-    }
+
 
     private void setSpinners() {
         oe_yr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -202,5 +197,12 @@ public class OfficeExpFragmentv2 extends Fragment {
         TransparencyFragment transparencyFragment = new TransparencyFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_oe, transparencyFragment).addToBackStack(null).commit();
+    }
+
+    private void insertInfoNotAvailable() {
+        InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
+        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
+        transaction.replace(R.id.container_oe, infoNotAvailableFragment).addToBackStack(null).commit();
+        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 }
