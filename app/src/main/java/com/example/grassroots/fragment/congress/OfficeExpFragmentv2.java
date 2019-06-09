@@ -109,10 +109,10 @@ public class OfficeExpFragmentv2 extends Fragment {
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
 
-        TextView txt_title_name = view.findViewById(R.id.oe_txt_title_name);
-        txt_title_name.setText(congressOverviewVM.getCongressMember().getShort_title() + " "
-                + congressOverviewVM.getCongressMember().getFirst_name() + " "
-                + congressOverviewVM.getCongressMember().getLast_name());
+//        TextView txt_title_name = view.findViewById(R.id.oe_txt_title_name);
+//        txt_title_name.setText(congressOverviewVM.getCongressMember().getShort_title() + " "
+//                + congressOverviewVM.getCongressMember().getFirst_name() + " "
+//                + congressOverviewVM.getCongressMember().getLast_name());
 
         OfficeExpensePresenter expensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
             @Override

@@ -13,28 +13,38 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
+import com.example.grassroots.model.ProPublica.Members.CongressMember;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
+import com.example.grassroots.model.ProPublica.VotePositions.Votes;
 import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPresenter;
 import com.example.grassroots.recyclerview.VotePositionAdapter;
 import com.example.grassroots.utils.VotePositionUIListener;
 
 import org.w3c.dom.Text;
 
-public class VotePositionFragmentv2 extends Fragment {
+import java.util.ArrayList;
+import java.util.List;
+
+public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQueryTextListener {
 
     private CongressOverviewVM congressOverviewVM;
 
     private String member_id;
-
+    private SearchView.OnQueryTextListener queryTextListener;
 
     public static final String TAG = "HERE";
 
     private VotePositionAdapter votePositionAdapter;
     private RecyclerView recyclerView;
+
+    private List<Votes> votesList = new ArrayList<>();
+
 
     public VotePositionFragmentv2() {}
 
@@ -51,22 +61,20 @@ public class VotePositionFragmentv2 extends Fragment {
         recyclerView = view.findViewById(R.id.rv_vote_positions);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
+        android.support.v7.widget.SearchView searchView = view.findViewById(R.id.sv_bill_deets);
+//        searchView.setOnQueryTextListener(queryTextListener);
+
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
-
-//        TextView vp_txt_title_name = view.findViewById(R.id.vp_txt_title_name);
-//        vp_txt_title_name.setText(congressOverviewVM.getCongressMember().getShort_title() + " "
-//                + congressOverviewVM.getCongressMember().getFirst_name() + " "
-//                + congressOverviewVM.getCongressMember().getLast_name());
 
         TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
         txt_missed_total.setText(congressOverviewVM.getCongressMember().getMissed_votes() + " / " + congressOverviewVM.getCongressMember().getTotal_votes());
 
         TextView txt_missed_votes = view.findViewById(R.id.txt_missed_votes);
-        txt_missed_votes.setText(congressOverviewVM.getCongressMember().getMissed_votes_pct());
+        txt_missed_votes.setText(congressOverviewVM.getCongressMember().getMissed_votes_pct() + "%");
 
         TextView txt_votes_with_party = view.findViewById(R.id.txt_votes_with_party);
-        txt_votes_with_party.setText(congressOverviewVM.getCongressMember().getVotes_with_party_pct());
+        txt_votes_with_party.setText(congressOverviewVM.getCongressMember().getVotes_with_party_pct() + "%");
 
         VotePostitionPresenter votePostitionPresenter = new VotePostitionPresenter(new VotePositionUIListener() {
             @Override
@@ -82,4 +90,20 @@ public class VotePositionFragmentv2 extends Fragment {
 
     }
 
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        return false;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        final List<Votes> newVotesList = new ArrayList<>();
+                for (Votes votes : votesList) {
+                    if (votes.getDescription().toLowerCase().contains(newText.toLowerCase())) {
+                        newVotesList.add(votes);
+                    }
+                }
+                votePositionAdapter.setData(newVotesList);
+                return false;
+    }
 }
