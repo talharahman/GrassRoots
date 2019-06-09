@@ -22,12 +22,16 @@ import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.recyclerview.PetitionActivityAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserHistory extends Fragment {
 
-    RecyclerView recyclerView;
+    RecyclerView recyclerView1;
     PetitionActivityAdapter petitionActivityAdapter;
+    List<Petition>  totalPetitions;
+    String userCurrentIDNum;
+    UserActionViewModel userActionViewModel;
 
     public UserHistory() { }
 
@@ -44,27 +48,35 @@ public class UserHistory extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView= view.findViewById(R.id.user_saved_recycler_view);
+        recyclerView1= view.findViewById(R.id.user_saved_recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
 
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerView1.setLayoutManager(layoutManager);
 
 
-        UserActionViewModel userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
+        userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
+
+
+
+
         MutableLiveData<List<Petition>> petitionsHistory = userActionViewModel.getPetitions();
         petitionsHistory.observe(this, new Observer<List<Petition>>() {
             @Override
             public void onChanged(@Nullable List<Petition> petitions) {
                 petitionActivityAdapter = new PetitionActivityAdapter();
-                List<Petition>  totalPetitions = new ArrayList<>();
+                totalPetitions = new ArrayList<>();
                 totalPetitions.addAll(petitions);
-                totalPetitions.addAll(petitions);
-                Log.d("ISTHISWORKING?", "onChanged: " + totalPetitions.size());
+//                Log.d("ISTHISWORKING?", "onChanged: " + totalPetitions.size());
 
-                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions, petitions);
+                Collections.reverse(totalPetitions);
 
 
-                recyclerView.setAdapter(petitionActivityAdapter);
+
+                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions,userActionViewModel.getCurrentUserID(), 1);
+
+                Log.d("setPetitionActivity", "onChanged: " + userActionViewModel.getCurrentUserID());
+
+                recyclerView1.setAdapter(petitionActivityAdapter);
                 petitionActivityAdapter.notifyDataSetChanged();
 
                 // filter petitions that have my userId as signers
