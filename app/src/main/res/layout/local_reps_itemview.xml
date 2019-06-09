@@ -41,7 +41,7 @@
                 app:layout_constraintHorizontal_bias="0.727"
                 app:layout_constraintStart_toEndOf="@+id/Rep_image"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintVertical_bias="0.083" />
+                app:layout_constraintVertical_bias="0.268" />
 
             <TextView
                 android:id="@+id/rep_position"
@@ -64,7 +64,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toEndOf="@+id/Rep_image"
                 app:layout_constraintTop_toBottomOf="@+id/rep_name"
-                app:layout_constraintVertical_bias="0.0" />
+                app:layout_constraintVertical_bias="0.037" />
 
             <ImageView
                 android:id="@+id/arrow"
@@ -107,18 +107,15 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
-                android:layout_width="34dp"
-                android:layout_height="27dp"
-                android:layout_marginStart="8dp"
-                android:layout_marginLeft="8dp"
-                android:layout_marginTop="4dp"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginTop="12dp"
                 android:layout_marginEnd="8dp"
                 android:layout_marginRight="8dp"
-                android:src="@drawable/message"
+                android:src="@drawable/send"
+                android:tint="@color/colorPrimary"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.96"
-                app:layout_constraintStart_toEndOf="@+id/contact_show"
-                app:layout_constraintTop_toBottomOf="@+id/rep_position" />
+                app:layout_constraintTop_toTopOf="parent" />
 
         </android.support.constraint.ConstraintLayout>
 
@@ -128,8 +125,8 @@
         android:id="@+id/local_rep_socials"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        app:cardMaxElevation="16dp">
+        app:cardMaxElevation="16dp"
+        android:paddingBottom="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -143,6 +140,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
+                android:tint="#6B4F99"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/web" />
 
             <ImageView
@@ -152,6 +151,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
+                android:tint="#6B4F99"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/phone" />
 
             <ImageView
@@ -161,6 +162,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
+                android:tint="#6B4F99"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/email" />
 
             <ImageView
@@ -170,6 +173,8 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
+                android:tint="#6B4F99"
+                android:layout_marginBottom="8dp"
                 android:src="@drawable/facebook" />
 
             <ImageView
@@ -179,7 +184,10 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginStart="32dp"
                 android:layout_marginLeft="32dp"
-                android:src="@drawable/twitter" />
+                android:tint="#6B4F99"
+                android:layout_marginBottom="8dp"
+                android:src="@drawable/twitter"
+            />
 
         </LinearLayout>
 
