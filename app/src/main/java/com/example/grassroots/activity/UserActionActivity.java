@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.petition.PetitionSignatures;
 import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.UserPagerAdapter;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -29,6 +30,7 @@ import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class UserActionActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -71,27 +73,27 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
 
         userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
 
-        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        currentUser.getUid();
+//
+//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+//        firebaseAuth
+//                .signInWithEmailAndPassword("talharahman@pursuit.org", "password2")
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if (task.isSuccessful()) {
+//                            userActionViewModel.setCurrentUserID(firebaseAuth.getUid());
+//                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
+//                        } else {
+//                            Toast.makeText(UserActionActivity.this.getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
+//                        }
+//                    }
+//                });
 
-        currentUser.getUid();
 
-        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        firebaseAuth
-                .signInWithEmailAndPassword("talharahman@pursuit.org", "password2")
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if (task.isSuccessful()) {
-                            userActionViewModel.setCurrentUserID(firebaseAuth.getUid());
-                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
-                        } else {
-                            Toast.makeText(UserActionActivity.this.getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-
-
-//        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
         // with this context, create a viewmodel of this type
 
         petitionRef.get()
@@ -105,6 +107,9 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
                         }
                         userActionViewModel.setPetitions(petitions);
 
+
+
+                        Log.d("TODAYDATE", "onSuccess: " +Calendar.getInstance().getTime() );
 
                     }
                 });

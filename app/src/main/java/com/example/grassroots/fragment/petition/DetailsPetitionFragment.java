@@ -31,16 +31,19 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.petition.PetitionSignatures;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
 import com.example.grassroots.recyclerview.PetitionUpdatesAdapter;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import me.itangqi.waveloadingview.WaveLoadingView;
@@ -67,6 +70,7 @@ public class DetailsPetitionFragment extends Fragment {
     private WaveLoadingView waveLoadingView;
 
     private List<String> signersList = new ArrayList<>();
+    private List<PetitionSignatures> petitionSignaturesList = new ArrayList<>();
 
     public DetailsPetitionFragment() { }
 
@@ -158,6 +162,10 @@ public class DetailsPetitionFragment extends Fragment {
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
                 signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+
+//                petitionSignaturesList.add(new PetitionSignatures(FirebaseAuth.getInstance().getCurrentUser().getUid(), Calendar.getInstance().getTime().toString()));
+
+
 
                 documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
                         "signers", signersList)

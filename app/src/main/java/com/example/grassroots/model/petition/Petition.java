@@ -6,6 +6,7 @@ import android.os.Parcelable;
 
 
 import com.google.firebase.database.Exclude;
+import com.google.firebase.firestore.DocumentReference;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,6 +23,16 @@ public class Petition implements Serializable {
     private String petitionKey;
     private List<PetitionUpdates> mPetitionUpdatesList = new ArrayList();
     private List<String> signers = new ArrayList<>();
+//    private List<DocumentReference> petitionSignatures;
+//
+//    public List<DocumentReference> getPetitionSignatures() {
+//        return petitionSignatures;
+//    }
+
+
+    public void addPetitionSignature(String signatureID, String timeSigned){
+//        return new PetitionSignatures( signatureID,  timeSigned);
+    }
 
     public List<String> getSigners() {
         return signers;
