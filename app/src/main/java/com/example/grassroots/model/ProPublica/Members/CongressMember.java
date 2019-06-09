@@ -207,8 +207,7 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
 
     @Override
     public int compareTo(CongressMember o) {
-        final int congressMember = this.getFirst_name().toLowerCase().compareTo(o.getFirst_name().toLowerCase());
-        return congressMember;
+        return this.getLast_name().toLowerCase().compareTo(o.getLast_name().toLowerCase());
     }
 
 
