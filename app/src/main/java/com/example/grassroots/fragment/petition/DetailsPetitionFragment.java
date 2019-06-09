@@ -158,20 +158,20 @@ public class DetailsPetitionFragment extends Fragment {
             public void onClick(View v) {
                 DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
                 signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature() + 1);
 
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature() + 1,
+                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature(),
                         "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
-                             //   Toast.makeText(requireContext(), "Petition Signed!", Toast.LENGTH_SHORT).show();
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
                                 // add a signature to the petition
                                 signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
                                 petitionViewModel.setSigners(signersList);
 
-                                mListener.moveToPetitionAnim(new PetitionSignAnim());
+                                mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
                             }
                         });
 

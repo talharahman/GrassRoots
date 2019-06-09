@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.user.MainFeed;
@@ -31,6 +33,15 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
     private void initialize() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab_main);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(getApplicationContext(), MainDashboard.class);
+                startActivity(home);
+            }
+        });
     }
 
     @Override
@@ -70,7 +81,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.feed_container, fragment)
-                .addToBackStack(null)
                 .commit();
     }
 

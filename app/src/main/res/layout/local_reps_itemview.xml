@@ -107,6 +107,7 @@
                 app:layout_constraintTop_toTopOf="parent" />
 
             <ImageView
+                android:id="@+id/send_petition"
                 android:layout_width="28dp"
                 android:layout_height="28dp"
                 android:layout_marginTop="12dp"
