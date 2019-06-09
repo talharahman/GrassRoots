@@ -22,6 +22,8 @@ import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPres
 import com.example.grassroots.recyclerview.VotePositionAdapter;
 import com.example.grassroots.utils.VotePositionUIListener;
 
+import org.w3c.dom.Text;
+
 public class VotePositionFragmentv2 extends Fragment {
 
     private CongressOverviewVM congressOverviewVM;
@@ -52,11 +54,19 @@ public class VotePositionFragmentv2 extends Fragment {
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
 
-        TextView vp_txt_title_name = view.findViewById(R.id.vp_txt_title_name);
-        vp_txt_title_name.setText(congressOverviewVM.getCongressMember().getShort_title() + " "
-                + congressOverviewVM.getCongressMember().getFirst_name() + " "
-                + congressOverviewVM.getCongressMember().getLast_name());
+//        TextView vp_txt_title_name = view.findViewById(R.id.vp_txt_title_name);
+//        vp_txt_title_name.setText(congressOverviewVM.getCongressMember().getShort_title() + " "
+//                + congressOverviewVM.getCongressMember().getFirst_name() + " "
+//                + congressOverviewVM.getCongressMember().getLast_name());
 
+        TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
+        txt_missed_total.setText(congressOverviewVM.getCongressMember().getMissed_votes() + " / " + congressOverviewVM.getCongressMember().getTotal_votes());
+
+        TextView txt_missed_votes = view.findViewById(R.id.txt_missed_votes);
+        txt_missed_votes.setText(congressOverviewVM.getCongressMember().getMissed_votes_pct());
+
+        TextView txt_votes_with_party = view.findViewById(R.id.txt_votes_with_party);
+        txt_votes_with_party.setText(congressOverviewVM.getCongressMember().getVotes_with_party_pct());
 
         VotePostitionPresenter votePostitionPresenter = new VotePostitionPresenter(new VotePositionUIListener() {
             @Override
