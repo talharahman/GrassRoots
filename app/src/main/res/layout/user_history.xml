@@ -4,7 +4,7 @@
     android:id="@+id/user_saved_recycler_view"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_scale"
+    android:background="@color/cream"
     tools:context=".fragment.user.UserHistory">
 
 </android.support.v7.widget.RecyclerView>

@@ -16,7 +16,7 @@
         android:layout_weight="1"
         app:contentScrim="@color/grey_scale"
         app:expandedTitleGravity="top"
-        android:background="@drawable/gradient"
+        android:background="@drawable/gradient_bkg_p"
         app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
     <android.support.v7.widget.Toolbar
@@ -54,6 +54,7 @@
         android:id="@+id/user_activity_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/cream"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.BottomNavigationView

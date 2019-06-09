@@ -92,7 +92,6 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
 //                    }
 //                });
 
-
         UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
         // with this context, create a viewmodel of this type
 
@@ -106,11 +105,6 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
                             petitions.add(petition);
                         }
                         userActionViewModel.setPetitions(petitions);
-
-
-
-                        Log.d("TODAYDATE", "onSuccess: " +Calendar.getInstance().getTime() );
-
                     }
                 });
 
