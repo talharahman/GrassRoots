@@ -37,4 +37,9 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
     public int getItemCount() {
         return vp_category_list.size();
     }
+
+    public void setData(List<Votes> newVotesList) {
+        this.vp_category_list = newVotesList;
+        notifyDataSetChanged();
+    }
 }

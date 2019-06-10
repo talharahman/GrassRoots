@@ -29,6 +29,13 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
     private String contact_form;
     private String office;
     private String phone;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
+
 
     private String missed_votes_pct;
     private String votes_with_party_pct;

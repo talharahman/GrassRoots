@@ -2,6 +2,7 @@ package com.example.grassroots.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -14,12 +15,14 @@ import android.view.MenuItem;
 import android.view.View;
 
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.congress.TabContactListener;
 import com.example.grassroots.utils.CongressPagerAdapter;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 
-public class CongressTabActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class CongressTabActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
 
+//    ,TabContactListener
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,4 +81,46 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
         return true;
     }
 
+//    @Override
+//    public void openTwitter(String link) {
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void openFacebook(String link) {
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void openYoutube(String link) {
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void openEmail(String link) {
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void openWebsite(String link) {
+//
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
+//
+//    @Override
+//    public void openPhont(String link) {
+//        Uri uri = Uri.parse(link);
+//        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+//        startActivity(intent);
+//    }
 }

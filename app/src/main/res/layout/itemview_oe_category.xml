@@ -21,10 +21,11 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:tint="#D3BEFC"
-                    android:src="@drawable/ic_person_profile"/>
+                    android:layout_width="100dp"
+                    android:layout_height="100dp"
+                    android:layout_gravity="center_horizontal"
+                    android:tint="@color/color_light_purple_ic"
+                    android:src="@drawable/ic_monetization"/>
 
             </LinearLayout>
 
@@ -46,7 +47,7 @@
                     android:layout_gravity="start"
                     android:textAlignment="textStart"
                     android:textColor="#000"
-                    android:textSize="18sp"
+                    android:textSize="14sp"
                     android:textStyle="bold" />
 
                 <TextView

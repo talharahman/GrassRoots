@@ -10,13 +10,13 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class CongressRepository {
 
-    private static Retrofit instance;
+    public static Retrofit instance;
     private static final String CONGRESS_BASE_URL = "https://api.propublica.org/congress/v1/";
 
-    CongressRepository() {
+    public CongressRepository() {
     }
 
-    private static Retrofit getInstance() {
+    public static Retrofit getInstance() {
         if (instance == null) {
             instance = new Retrofit.Builder()
                     .baseUrl(CONGRESS_BASE_URL)

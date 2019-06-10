@@ -11,6 +11,11 @@
     <color name="neutral_white">#FFFFFF</color>
     <color name="yellow_middle">#8E82C2</color>
     <color name="yellow_end">#F8021D42</color>
+    <color name="green_tab">#09D30D</color>
+    <color name="color_light_purple_ic">#D3BEFC</color>
+    <color name="bkg_start_clr">#280558</color>
+    <color name="bkg_end_clr">#5D25A5</color>
+    <color name="bkg_frag_tint_purple">#E9E4F8</color>
     <color name="cream">#E7E2DE</color>
 
 </resources>

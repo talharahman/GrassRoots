@@ -1,6 +1,6 @@
 package com.example.grassroots.model.ProPublica.VotePositions;
 
-public class Votes {
+public class Votes implements Comparable<Votes> {
 
    private Bill bill;
    private String description;
@@ -46,5 +46,11 @@ public class Votes {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    @Override
+    public int compareTo(Votes o) {
+        final int votes_description = this.getDescription().toLowerCase().compareTo(o.getDescription().toLowerCase());
+        return votes_description;
     }
 }

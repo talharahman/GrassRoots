@@ -1,6 +1,6 @@
 package com.example.grassroots.model.ProPublica.VotePositions;
 
-public class Bill {
+public class Bill  {
 
     private String bill_id;
     private String title;
@@ -29,4 +29,6 @@ public class Bill {
     public void setLatest_action(String latest_action) {
         this.latest_action = latest_action;
     }
+
 }
+

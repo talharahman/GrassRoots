@@ -78,18 +78,18 @@ public class OfficeExpFragment extends Fragment {
 //        int year = Integer.parseInt(officeArgs.getString(KEY_YEAR));
 //        int quarterToInt = Integer.parseInt(quarter);
 
-        OfficeExpensePresenter expensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
-            @Override
-            public void updateOfficeExpUI(OfficeExpenseResponse officeExpenseResponse) {
-                expenseAdapter = new ExpenseAdapter(officeExpenseResponse.getResults());
-                recyclerView.setAdapter(expenseAdapter);
-                expenseAdapter.notifyDataSetChanged();
-            }
-        });
-
-        expensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
-                member_id);
-        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " );
+//        OfficeExpensePresenter expensePresenter = new OfficeExpensePresenter(new OfficeExpUIListener() {
+//            @Override
+//            public void updateOfficeExpUI(OfficeExpenseResponse officeExpenseResponse) {
+//                expenseAdapter = new ExpenseAdapter(officeExpenseResponse.getResults());
+//                recyclerView.setAdapter(expenseAdapter);
+//                expenseAdapter.notifyDataSetChanged();
+//            }
+//        });
+//
+//        expensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
+//                member_id);
+//        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " );
 
 //        + officeArgs.getInt(KEY_YEAR) + " " + officeArgs.getInt(KEY_QUARTER)
 
