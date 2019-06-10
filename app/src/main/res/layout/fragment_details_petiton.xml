@@ -22,7 +22,7 @@
             android:id="@+id/collapsing"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimaryDark"
+            app:contentScrim="@color/bkg_start_clr"
             android:fitsSystemWindows="true"
             app:layout_scrollFlags="exitUntilCollapsed|scroll"
 

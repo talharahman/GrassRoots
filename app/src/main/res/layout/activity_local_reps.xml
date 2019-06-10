@@ -47,6 +47,17 @@
             </android.support.v7.widget.CardView>
 
             <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Local Representatives for "
+                android:layout_marginTop="124dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginLeft="8dp"
+                android:fontFamily="@font/montserrat"
+                android:textStyle="italic"
+                android:textColor="@color/neutral_white"/>
+
+            <TextView
                 android:id="@+id/user_district2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

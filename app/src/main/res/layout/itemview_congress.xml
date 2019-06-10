@@ -9,7 +9,8 @@
     android:layout_marginTop="8dp"
     android:layout_marginEnd="8dp"
     android:layout_marginBottom="8dp"
-    app:cardCornerRadius="16dp">
+    app:cardCornerRadius="8dp"
+    app:cardMaxElevation="8dp">
 
     <TextView
         android:id="@+id/congress_member_name_iv"
@@ -34,7 +35,7 @@
         android:layout_marginTop="16dp"
         android:text="NY"
         android:textSize="20sp"
-        app:fontFamily="@font/open_sans" />
+        app:fontFamily="@font/montserrat" />
 
     <ImageView
         android:id="@+id/party_square"
@@ -52,7 +53,7 @@
         android:layout_gravity="center"
         android:text="P, Title"
         android:textStyle="italic"
-        android:fontFamily="@font/open_sans"
+        android:fontFamily="@font/montserrat"
         android:textColor="@color/purple_drop"
         android:layout_marginTop="48dp"
         android:textSize="16sp"/>

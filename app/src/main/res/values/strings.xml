@@ -72,6 +72,8 @@
 
 
     <!-- Petiton Strings -->
+    <string name="main_feed">Petitions Feed</string>
+
     <string name="petition_title_text">What is your petition called ?</string>
     <string name="petition_title_hint">Enter petition name</string>
     <string name="petition_title_info">"This is the first thing people will see about your petition. Get their attention with a short title that focuses on the change you’d like them to support."</string>
