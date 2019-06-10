@@ -136,15 +136,7 @@ public class OfficeExpFragmentv2 extends Fragment {
         if (year == null && quarter == null) {
             Toast.makeText(getContext(), "Select year and quarter", Toast.LENGTH_LONG).show();
         }
-
-//        if(year != null && quarter == null){
-//            Toast.makeText(getContext(), "Select Quarter", Toast.LENGTH_SHORT).show();
-//        } else if(year == null && quarter != null){
-//            Toast.makeText(getContext(), "Select Year", Toast.LENGTH_SHORT).show();
-//        }
-
     }
-
 
 
     private void setSpinners() {
@@ -157,9 +149,8 @@ public class OfficeExpFragmentv2 extends Fragment {
                     if(year != null && quarter != null) {
                         yr_ = Integer.parseInt(year);
                         qt_ = Integer.parseInt(quarter);
-                        officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
-                                member_id, yr_, qt_);
-                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
+                        expenseCallback(yr_, qt_);
+//                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
                     }
                 }
             }
@@ -179,9 +170,8 @@ public class OfficeExpFragmentv2 extends Fragment {
                     if(year != null && quarter != null) {
                         yr_ = Integer.parseInt(year);
                         qt_ = Integer.parseInt(quarter);
-                        officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
-                                member_id, yr_, qt_);
-                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
+                        expenseCallback(yr_, qt_);
+//                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
                     }
                 }
             }
@@ -191,6 +181,11 @@ public class OfficeExpFragmentv2 extends Fragment {
 //                Toast.makeText(getContext(), "Select Quarter", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void expenseCallback(int year, int quarter) {
+        officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
+                member_id, year, quarter);
     }
 
     private void insertCalltoActionFragment() {
