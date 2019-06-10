@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/cream"
+    android:background="@color/default_background"
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="@font/montserrat"
-        android:text="United States Congress"
+        android:text="U.S. Congress"
         android:textAlignment="center"
         android:textSize="32sp"
         android:textStyle="bold"

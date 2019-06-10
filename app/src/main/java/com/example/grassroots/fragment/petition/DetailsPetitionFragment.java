@@ -137,6 +137,8 @@ public class DetailsPetitionFragment extends Fragment {
 
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
+
+
         petitionNameTextView=view.findViewById(R.id.petition_name_text_view1);
         petitionDescrptionTextView=view.findViewById(R.id.petition_description_text_view);
         petitionSupporterTextView=view.findViewById(R.id.petition_supporter_text_view);

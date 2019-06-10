@@ -18,5 +18,6 @@
     <color name="bkg_frag_tint_purple">#E9E4F8</color>
     <color name="cream">#E7E2DE</color>
     <color name="socials">#6B4F99</color>
+    <color name="default_background">#E9E4F8</color>
 
 </resources>
