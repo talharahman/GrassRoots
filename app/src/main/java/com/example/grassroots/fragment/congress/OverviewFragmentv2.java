@@ -44,7 +44,6 @@ import java.util.List;
 public class OverviewFragmentv2 extends Fragment {
 
     private View rootView;
-    private String fecID;
     private TabContactListener tabContactListener;
     private ElectedRepresentatives electedRepresentatives;
     private List<Petition> myPetitionsHistory = new ArrayList<>();
@@ -100,28 +99,35 @@ public class OverviewFragmentv2 extends Fragment {
         TextView txt_year = rootView.findViewById(R.id.txt_year);
         ImageView send = rootView.findViewById(R.id.plane);
 
-        send.setOnClickListener(v -> {
-            AlertDialog.Builder petitions = new AlertDialog.Builder(rootView.getContext());
-            petitions.setIcon(R.drawable.send);
-            petitions.setTitle("Choose a Petition to send");
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder petitions = new AlertDialog.Builder(rootView.getContext());
+                petitions.setIcon(R.drawable.send);
+                petitions.setTitle("Choose a Petition to send");
 
-            String[] myPetitionNames = {
-                    myPetitionsHistory.get(0).getmPetitionName(),
-                    myPetitionsHistory.get(1).getmPetitionName(),
-                    myPetitionsHistory.get(2).getmPetitionName(),
-                    myPetitionsHistory.get(3).getmPetitionName(),
-                    myPetitionsHistory.get(4).getmPetitionName()};
+                String[] myPetitionNames = {
+                        myPetitionsHistory.get(0).getmPetitionName(),
+                        myPetitionsHistory.get(1).getmPetitionName(),
+                        myPetitionsHistory.get(2).getmPetitionName(),
+                        myPetitionsHistory.get(3).getmPetitionName(),
+                        myPetitionsHistory.get(4).getmPetitionName()};
 
 
-            int checkedItem = 0;
-            petitions.setSingleChoiceItems(myPetitionNames, checkedItem, (dialog, which) -> Toast.makeText(rootView.getContext(), "You selected " + myPetitionNames[which], Toast.LENGTH_SHORT).show());
-            petitions.setPositiveButton("OK", (dialog, which) -> {
-                // TODO find way to email congress member by linking congress member by fragment instance
-            });
-            petitions.setNegativeButton("Cancel", null);
+                int checkedItem = 0;
+                petitions.setSingleChoiceItems(myPetitionNames, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }
+                });
+                petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) { }
+                });
+                petitions.setNegativeButton("Cancel", null);
 
-            AlertDialog dialog = petitions.create();
-            dialog.show();
+                AlertDialog dialog = petitions.create();
+                dialog.show();
+            }
         });
 
 
@@ -151,7 +157,7 @@ public class OverviewFragmentv2 extends Fragment {
                 congressOverviewVM.getCongressMember().getParty() + ", " +
                         congressOverviewVM.getCongressMember().getState());
 
-        fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
+        String fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
         txt_fec_id.setText(fecID);
 
         txt_year.setText(congressOverviewVM.getCongressMember().getNext_election());

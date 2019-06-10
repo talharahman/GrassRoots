@@ -45,7 +45,7 @@
         android:id="@+id/us_congress"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:fontFamily="@font/quicksand"
+        android:fontFamily="@font/montserrat"
         android:text="United States Congress"
         android:textAlignment="center"
         android:textSize="32sp"
