@@ -28,7 +28,8 @@ class CivicInfoRepository {
     }
 
     void fetchElectedRepresentatives(String streetAddress, String civicAPIKey, final CivicInfoListener civicInfoListener) {
-        getInstance().create(CivicInfoService.class)
+        getInstance()
+                .create(CivicInfoService.class)
                 .getCivicInfo(civicAPIKey, streetAddress)
                 .enqueue(new Callback<CivicInfoModel>() {
                     @Override

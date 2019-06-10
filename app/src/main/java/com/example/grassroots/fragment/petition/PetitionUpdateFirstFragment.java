@@ -22,11 +22,6 @@ import com.example.grassroots.utils.PetitionsFeedInterface;
 
 import java.util.Objects;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link PetitionUpdateFirstFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class PetitionUpdateFirstFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER

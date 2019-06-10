@@ -7,9 +7,10 @@ public class CivicInfoPresenter {
 
     private LocalRepsUIListener localRepsUIListener;
 
-    public CivicInfoPresenter( LocalRepsUIListener localRepsUIListener) {
+    public CivicInfoPresenter(LocalRepsUIListener localRepsUIListener) {
         this.localRepsUIListener = localRepsUIListener;
     }
+
 
     public void networkCall(String civicAPIKey, String zipCode){
         CivicInfoRepository instance = new CivicInfoRepository();
@@ -25,6 +26,7 @@ public class CivicInfoPresenter {
             }
         });
     }
+
 
 
 }

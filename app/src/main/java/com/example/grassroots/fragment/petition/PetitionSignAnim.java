@@ -21,7 +21,6 @@ public class PetitionSignAnim extends Fragment {
     private View anim;
     private PetitionsFeedInterface listener;
     public static final String PETITION_ARG = "signedPetition";
-    private TextView petitionSigned;
     private Petition petitionArg = new Petition();
 
     public PetitionSignAnim() { }
@@ -54,7 +53,7 @@ public class PetitionSignAnim extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         anim = view.findViewById(R.id.av_check);
-        petitionSigned = view.findViewById(R.id.signed_text);
+        TextView petitionSigned = view.findViewById(R.id.signed_text);
         petitionSigned.setText("You signed\n" + petitionArg.getmPetitionName());
         new Handler().postDelayed(new Runnable() {
             @Override

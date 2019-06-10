@@ -17,6 +17,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -35,6 +36,9 @@ import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionSignatures;
 import com.example.grassroots.model.petition.PetitionUpdates;
 import com.example.grassroots.model.petition.PetitionViewModel;
+import com.example.grassroots.network.PetitionDB.FirebaseRepository;
+import com.example.grassroots.network.PetitionDB.PetitionSignatureListener;
+import com.example.grassroots.network.PetitionDB.PetitionUpdateOnCompleteListener;
 import com.example.grassroots.recyclerview.PetitionUpdatesAdapter;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -65,8 +69,8 @@ public class DetailsPetitionFragment extends Fragment {
     private PetitionsFeedInterface mListener;
     private PetitionViewModel petitionViewModel;
     private FirebaseFirestore db=FirebaseFirestore.getInstance();
-    private DocumentReference petitionUpdateRef;
-    private List<PetitionUpdates>petitionUpdatesList=new ArrayList<>();
+  //  private DocumentReference petitionUpdateRef;
+  //  private List<PetitionUpdates>petitionUpdatesList=new ArrayList<>();
     private RecyclerView petitionUpdateRecyclerView;
     private WaveLoadingView waveLoadingView;
 
@@ -155,29 +159,44 @@ public class DetailsPetitionFragment extends Fragment {
 
        loadPetitionUpdates();
 
-
-
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
-                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
-                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature()+1);
+//                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature() + 1);
 
-                documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature(),
+                new FirebaseRepository().updatePetitionSignatures("GvMnoE6YKTeouWXheeHuT1FCc5q2", mParam1, new PetitionSignatureListener() {
+                    @Override
+                    public void petitionSignatureSuccess(int newSignatures, List<String> newSignersList) {
+                        waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
+
+                        petitionViewModel.setSigners(signersList);
+
+                        mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
+                    }
+
+                    @Override
+                    public void petitionSignatureFailure(Throwable t) {
+                        Log.d("TAG", "OnFailure: " +  t.getMessage());
+                    }
+                });
+
+          //      DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
+          //      signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+          //      mParam1.setmPetitionSignature(mParam1.getmPetitionSignature() + 1);
+
+               /* documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature(),
                         "signers", signersList)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
                             public void onSuccess(Void aVoid) {
                                 waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
-                                // add a signature to the petition
-                                signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
+                          //      signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
                                 petitionViewModel.setSigners(signersList);
-                                mListener.moveToPetitionAnim(new PetitionSignAnim());
-                                mListener.moveToDetailsPetition(DetailsPetitionFragment.newInstance(mParam1));
+
+                                mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
                             }
-                        });
+                        });*/
 
             }
         });
@@ -207,7 +226,23 @@ public class DetailsPetitionFragment extends Fragment {
     }
 
     public void loadPetitionUpdates() {
-        petitionUpdateRef =db.collection("Petitioncol").document(mParam1.getPetitionKey());
+        new FirebaseRepository().getPetitionUpdates(mParam1.getPetitionKey(), new PetitionUpdateOnCompleteListener() {
+            @Override
+            public void onPetitionUpdatesOnSuccess(List<PetitionUpdates> petitionUpdatesList) {
+                petitionViewModel.setmPetitionUpdatesList(petitionUpdatesList);
+                petitionUpdatesAdapter=new PetitionUpdatesAdapter();
+                petitionUpdatesAdapter.setPetitionUpdatesList(petitionUpdatesList);
+                petitionUpdateRecyclerView.setAdapter(petitionUpdatesAdapter);
+            }
+
+            @Override
+            public void onPetitionUpdatesOnFailure(Throwable t) {
+                Log.d("TAG", "OnFailure: " + t.getMessage());
+            }
+
+        });
+
+        /*petitionUpdateRef =db.collection("Petitioncol").document(mParam1.getPetitionKey());
 
         petitionUpdateRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
@@ -224,8 +259,7 @@ public class DetailsPetitionFragment extends Fragment {
                 petitionUpdateRecyclerView.setAdapter(petitionUpdatesAdapter);
 
             }
-        });
-
+        });*/
     }
 
 
