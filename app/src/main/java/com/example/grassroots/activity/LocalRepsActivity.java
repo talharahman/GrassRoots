@@ -90,43 +90,32 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void makeDatabaseCall() {
-        new FirebaseRepository().getAllPetitions(new MyPetitionHistoryInterface() {
-            @Override
-            public void myHistoryOfPetitions(List<Petition> myPetitions) {
-                myPetitionsHistory = myPetitions;
-                userActionViewModel.setPetitions(myPetitionsHistory);
-                civicInfoAdapter.setSendListener(representative -> {
-                    AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
-                    petitions.setIcon(R.drawable.send);
-                    petitions.setTitle("Choose a Petition to send");
-
-                    String[] myPetitions1 = {
-                            myPetitionsHistory.get(0).getmPetitionName(),
-                            myPetitionsHistory.get(1).getmPetitionName(),
-                            myPetitionsHistory.get(2).getmPetitionName(),
-                            myPetitionsHistory.get(3).getmPetitionName(),
-                            myPetitionsHistory.get(4).getmPetitionName()};
-
-
-                    int checkedItem = 0;
-                    petitions.setSingleChoiceItems(myPetitions1, checkedItem, new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) { }
-                    });
-                    petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
-                    petitions.setNegativeButton("Cancel", null);
-
-                    AlertDialog dialog = petitions.create();
-                    dialog.show();
-                });
-            }
+        new FirebaseRepository().getAllPetitions(myPetitions -> {
+            myPetitionsHistory = myPetitions;
+            userActionViewModel.setPetitions(myPetitionsHistory);
         });
 
+        civicInfoAdapter.setSendListener(representative -> {
+            AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
+            petitions.setIcon(R.drawable.send);
+            petitions.setTitle("Choose a Petition to send");
+
+            String[] myPetitions1 = {
+                    myPetitionsHistory.get(0).getmPetitionName(),
+                    myPetitionsHistory.get(1).getmPetitionName(),
+                    myPetitionsHistory.get(2).getmPetitionName(),
+                    myPetitionsHistory.get(3).getmPetitionName(),
+                    myPetitionsHistory.get(4).getmPetitionName()};
+
+
+            int checkedItem = 0;
+            petitions.setSingleChoiceItems(myPetitions1, checkedItem, (dialog, which) -> { });
+            petitions.setPositiveButton("OK", (dialog, which) -> { });
+            petitions.setNegativeButton("Cancel", null);
+
+            AlertDialog dialog = petitions.create();
+            dialog.show();
+        });
     }
 
     @Override
@@ -155,16 +144,18 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
 
         try {
             searchAddresses = geocoder.getFromLocationName(query, 1);
-            if (searchAddresses.isEmpty()) {
-                Toast.makeText(this,
-                        "Invalid location", Toast.LENGTH_SHORT).show();
+
+            if (searchAddresses.isEmpty() ) {
+                Toast.makeText(this, "Invalid location", Toast.LENGTH_SHORT).show();
             }
+
             Address searchAddress = searchAddresses.get(0);
 
             String newZipCode = searchAddress.getPostalCode();
+
             makeNetworkCall(this.getString(R.string.Civic_Info_API_Key), newZipCode);
 
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return false;
