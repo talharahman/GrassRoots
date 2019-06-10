@@ -47,7 +47,6 @@ public class OverviewFragmentv2 extends Fragment {
     private String fecID;
     private TabContactListener tabContactListener;
     private ElectedRepresentatives electedRepresentatives;
-    private ImageView send;
     private List<Petition> myPetitionsHistory = new ArrayList<>();
     private UserActionViewModel userActionViewModel;
 
@@ -99,41 +98,30 @@ public class OverviewFragmentv2 extends Fragment {
         TextView txt_party_state = rootView.findViewById(R.id.txt_party_state);
         TextView txt_fec_id = rootView.findViewById(R.id.txt_fec_id_number);
         TextView txt_year = rootView.findViewById(R.id.txt_year);
-        send = rootView.findViewById(R.id.plane);
+        ImageView send = rootView.findViewById(R.id.plane);
 
-        send.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                AlertDialog.Builder petitions = new AlertDialog.Builder(rootView.getContext());
-                petitions.setIcon(R.drawable.send);
-                petitions.setTitle("Choose a Petition to send");
+        send.setOnClickListener(v -> {
+            AlertDialog.Builder petitions = new AlertDialog.Builder(rootView.getContext());
+            petitions.setIcon(R.drawable.send);
+            petitions.setTitle("Choose a Petition to send");
 
-                String[] myPetitionNames = {
-                        myPetitionsHistory.get(0).getmPetitionName(),
-                        myPetitionsHistory.get(1).getmPetitionName(),
-                        myPetitionsHistory.get(2).getmPetitionName(),
-                        myPetitionsHistory.get(3).getmPetitionName(),
-                        myPetitionsHistory.get(4).getmPetitionName()};
+            String[] myPetitionNames = {
+                    myPetitionsHistory.get(0).getmPetitionName(),
+                    myPetitionsHistory.get(1).getmPetitionName(),
+                    myPetitionsHistory.get(2).getmPetitionName(),
+                    myPetitionsHistory.get(3).getmPetitionName(),
+                    myPetitionsHistory.get(4).getmPetitionName()};
 
 
-                int checkedItem = 0;
-                petitions.setSingleChoiceItems(myPetitionNames, checkedItem, new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        Toast.makeText(rootView.getContext(), "You selected " + myPetitionNames[which], Toast.LENGTH_SHORT).show();
-                    }
-                });
-                petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        // TODO find way to email congress member by linking congress member by fragment instance
-                    }
-                });
-                petitions.setNegativeButton("Cancel", null);
+            int checkedItem = 0;
+            petitions.setSingleChoiceItems(myPetitionNames, checkedItem, (dialog, which) -> Toast.makeText(rootView.getContext(), "You selected " + myPetitionNames[which], Toast.LENGTH_SHORT).show());
+            petitions.setPositiveButton("OK", (dialog, which) -> {
+                // TODO find way to email congress member by linking congress member by fragment instance
+            });
+            petitions.setNegativeButton("Cancel", null);
 
-                AlertDialog dialog = petitions.create();
-                dialog.show();
-            }
+            AlertDialog dialog = petitions.create();
+            dialog.show();
         });
 
 

@@ -80,60 +80,43 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void makeNetworkCall(String key, String zipCode) {
-        CivicInfoPresenter presenter = new CivicInfoPresenter(new LocalRepsUIListener() {
-            @Override
-            public void updateUI(CivicInfoModel civicInfoModel) {
-                civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
-                recyclerView.setAdapter(civicInfoAdapter);
-                userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
-            }
+        CivicInfoPresenter presenter = new CivicInfoPresenter(civicInfoModel -> {
+            civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
+            recyclerView.setAdapter(civicInfoAdapter);
+            userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
         });
 
         presenter.networkCall(key, zipCode);
     }
 
     private void makeDatabaseCall() {
-        new FirebaseRepository().getAllPetitions(new MyPetitionHistoryInterface() {
-            @Override
-            public void myHistoryOfPetitions(List<Petition> myPetitions) {
-                myPetitionsHistory = myPetitions;
-                userActionViewModel.setPetitions(myPetitionsHistory);
-                civicInfoAdapter.setSendListener(new SendPetitionToRepCallBack() {
-                    @Override
-                    public void sendMyPetitionToRep(ElectedRepresentatives representative) {
-                        AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
-                        petitions.setIcon(R.drawable.send);
-                        petitions.setTitle("Choose a Petition to send");
+        new FirebaseRepository().getAllPetitions(myPetitions -> {
+            myPetitionsHistory = myPetitions;
+            userActionViewModel.setPetitions(myPetitionsHistory);
+            civicInfoAdapter.setSendListener(representative -> {
+                AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
+                petitions.setIcon(R.drawable.send);
+                petitions.setTitle("Choose a Petition to send");
 
-                        String[] myPetitions = {
-                                myPetitionsHistory.get(0).getmPetitionName(),
-                                myPetitionsHistory.get(1).getmPetitionName(),
-                                myPetitionsHistory.get(2).getmPetitionName(),
-                                myPetitionsHistory.get(3).getmPetitionName(),
-                                myPetitionsHistory.get(4).getmPetitionName()};
+                String[] myPetitions1 = {
+                        myPetitionsHistory.get(0).getmPetitionName(),
+                        myPetitionsHistory.get(1).getmPetitionName(),
+                        myPetitionsHistory.get(2).getmPetitionName(),
+                        myPetitionsHistory.get(3).getmPetitionName(),
+                        myPetitionsHistory.get(4).getmPetitionName()};
 
 
-                        int checkedItem = 0;
-                        petitions.setSingleChoiceItems(myPetitions, checkedItem, new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Toast.makeText( LocalRepsActivity.this, "You selected " + myPetitions[which], Toast.LENGTH_SHORT).show();
-                            }
-                        });
-                        petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog, int which) {
-                                Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
-                                startActivity(email);
-                            }
-                        });
-                        petitions.setNegativeButton("Cancel", null);
-
-                        AlertDialog dialog = petitions.create();
-                        dialog.show();
-                    }
+                int checkedItem = 0;
+                petitions.setSingleChoiceItems(myPetitions1, checkedItem, (dialog, which) -> Toast.makeText( LocalRepsActivity.this, "You selected " + myPetitions1[which], Toast.LENGTH_SHORT).show());
+                petitions.setPositiveButton("OK", (dialog, which) -> {
+                    Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
+                    startActivity(email);
                 });
-            }
+                petitions.setNegativeButton("Cancel", null);
+
+                AlertDialog dialog = petitions.create();
+                dialog.show();
+            });
         });
 
     }

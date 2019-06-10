@@ -34,6 +34,7 @@
         android:layout_marginRight="4dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/ic_info"
+        android:backgroundTint="@color/purple_drop"
         app:layout_constraintBottom_toTopOf="@+id/edit_text_petition_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -78,6 +79,7 @@
         android:layout_marginTop="60dp"
         android:background="@drawable/ic_info"
         app:layout_constraintStart_toEndOf="@+id/target_text"
+        android:backgroundTint="@color/purple_drop"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_petition_name" />
 
     <EditText

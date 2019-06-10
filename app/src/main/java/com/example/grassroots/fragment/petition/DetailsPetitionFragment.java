@@ -162,8 +162,6 @@ public class DetailsPetitionFragment extends Fragment {
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                mParam1.setmPetitionSignature(mParam1.getmPetitionSignature() + 1);
-
                 new FirebaseRepository().updatePetitionSignatures("GvMnoE6YKTeouWXheeHuT1FCc5q2", mParam1, new PetitionSignatureListener() {
                     @Override
                     public void petitionSignatureSuccess(int newSignatures, List<String> newSignersList) {
@@ -179,25 +177,6 @@ public class DetailsPetitionFragment extends Fragment {
                         Log.d("TAG", "OnFailure: " +  t.getMessage());
                     }
                 });
-
-          //      DocumentReference documentReference = db.collection("Petitioncol").document(petitionViewModel.getPetitionKey());
-          //      signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
-          //      mParam1.setmPetitionSignature(mParam1.getmPetitionSignature() + 1);
-
-               /* documentReference.update("mPetitionSignature", mParam1.getmPetitionSignature(),
-                        "signers", signersList)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
-                            @Override
-                            public void onSuccess(Void aVoid) {
-                                waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
-
-                          //      signersList.add("GvMnoE6YKTeouWXheeHuT1FCc5q2");
-                                petitionViewModel.setSigners(signersList);
-
-                                mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
-                            }
-                        });*/
-
             }
         });
 
@@ -205,13 +184,11 @@ public class DetailsPetitionFragment extends Fragment {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.update:
-               mListener.moveToPetitionUpdatesFirstFragment(new PetitionUpdateFirstFragment());
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
+        if (item.getItemId() == R.id.update) {
+            mListener.moveToPetitionUpdatesFirstFragment(new PetitionUpdateFirstFragment());
+            return true;
         }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override
@@ -241,25 +218,6 @@ public class DetailsPetitionFragment extends Fragment {
             }
 
         });
-
-        /*petitionUpdateRef =db.collection("Petitioncol").document(mParam1.getPetitionKey());
-
-        petitionUpdateRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                Petition petition=documentSnapshot.toObject(Petition.class);
-                petition.setPetitionKey(documentSnapshot.getId());
-                for(PetitionUpdates p: petition.getmPetitionUpdatesList()) {
-                    petitionUpdatesList.add(p);
-                }
-
-                petitionViewModel.setmPetitionUpdatesList(petitionUpdatesList);
-                petitionUpdatesAdapter=new PetitionUpdatesAdapter();
-                petitionUpdatesAdapter.setPetitionUpdatesList(petitionUpdatesList);
-                petitionUpdateRecyclerView.setAdapter(petitionUpdatesAdapter);
-
-            }
-        });*/
     }
 
 
