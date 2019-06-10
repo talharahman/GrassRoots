@@ -2,6 +2,7 @@ package com.example.grassroots.fragment.congress;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.support.annotation.Nullable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +21,25 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
+import com.example.grassroots.activity.CongressActivity;
+import com.example.grassroots.activity.LocalRepsActivity;
 import com.example.grassroots.model.CivicInfo.CivicInfoModel;
 import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
+import com.example.grassroots.model.petition.Petition;
+import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.network.CivicInfo.CivicInfoPresenter;
+import com.example.grassroots.network.PetitionDB.FirebaseRepository;
+import com.example.grassroots.network.PetitionDB.MyPetitionHistoryInterface;
 import com.example.grassroots.utils.LocalRepsUIListener;
+import com.google.firebase.firestore.auth.User;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class OverviewFragmentv2 extends Fragment {
 
@@ -34,6 +47,9 @@ public class OverviewFragmentv2 extends Fragment {
     private String fecID;
     private TabContactListener tabContactListener;
     private ElectedRepresentatives electedRepresentatives;
+    private ImageView send;
+    private List<Petition> myPetitionsHistory = new ArrayList<>();
+    private UserActionViewModel userActionViewModel;
 
     public OverviewFragmentv2() {
     }
@@ -59,16 +75,67 @@ public class OverviewFragmentv2 extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         initialize();
+        makeDatabaseCall();
+    }
+
+    private void makeDatabaseCall() {
+        new FirebaseRepository().getAllPetitions(new MyPetitionHistoryInterface() {
+            @Override
+            public void myHistoryOfPetitions(List<Petition> myPetitions) {
+                myPetitionsHistory = myPetitions;
+                userActionViewModel.setPetitions(myPetitionsHistory);
+            }
+        });
     }
 
     private void initialize() {
         CongressOverviewVM congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
+        userActionViewModel = ViewModelProviders
+                .of((FragmentActivity) requireContext())
+                .get(UserActionViewModel.class);
 
         ImageView img_profile_rep = rootView.findViewById(R.id.img_profile_rep);
         TextView txt_title_name = rootView.findViewById(R.id.txt_title_name);
         TextView txt_party_state = rootView.findViewById(R.id.txt_party_state);
         TextView txt_fec_id = rootView.findViewById(R.id.txt_fec_id_number);
         TextView txt_year = rootView.findViewById(R.id.txt_year);
+        send = rootView.findViewById(R.id.plane);
+
+        send.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder petitions = new AlertDialog.Builder(rootView.getContext());
+                petitions.setIcon(R.drawable.send);
+                petitions.setTitle("Choose a Petition to send");
+
+                String[] myPetitionNames = {
+                        myPetitionsHistory.get(0).getmPetitionName(),
+                        myPetitionsHistory.get(1).getmPetitionName(),
+                        myPetitionsHistory.get(2).getmPetitionName(),
+                        myPetitionsHistory.get(3).getmPetitionName(),
+                        myPetitionsHistory.get(4).getmPetitionName()};
+
+
+                int checkedItem = 0;
+                petitions.setSingleChoiceItems(myPetitionNames, checkedItem, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Toast.makeText(rootView.getContext(), "You selected " + myPetitionNames[which], Toast.LENGTH_SHORT).show();
+                    }
+                });
+                petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        // TODO find way to email congress member by linking congress member by fragment instance
+                    }
+                });
+                petitions.setNegativeButton("Cancel", null);
+
+                AlertDialog dialog = petitions.create();
+                dialog.show();
+            }
+        });
+
 
         String rep_name = congressOverviewVM.getCongressMember().getFirst_name() + " " + congressOverviewVM.getCongressMember().getLast_name();
 

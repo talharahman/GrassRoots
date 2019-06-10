@@ -101,8 +101,6 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                 civicInfoAdapter.setSendListener(new SendPetitionToRepCallBack() {
                     @Override
                     public void sendMyPetitionToRep(ElectedRepresentatives representative) {
-                        Toast.makeText(getApplicationContext(), "Petition Sent!", Toast.LENGTH_SHORT).show();
-
                         AlertDialog.Builder petitions = new AlertDialog.Builder(LocalRepsActivity.this);
                         petitions.setIcon(R.drawable.send);
                         petitions.setTitle("Choose a Petition to send");
@@ -110,7 +108,9 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
                         String[] myPetitions = {
                                 myPetitionsHistory.get(0).getmPetitionName(),
                                 myPetitionsHistory.get(1).getmPetitionName(),
-                                myPetitionsHistory.get(2).getmPetitionName()};
+                                myPetitionsHistory.get(2).getmPetitionName(),
+                                myPetitionsHistory.get(3).getmPetitionName(),
+                                myPetitionsHistory.get(4).getmPetitionName()};
 
 
                         int checkedItem = 0;
