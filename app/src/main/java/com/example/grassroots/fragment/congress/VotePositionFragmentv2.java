@@ -63,7 +63,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
 
         final android.support.v7.widget.SearchView searchView = view.findViewById(R.id.sv_bill_deets);
-        searchView.setOnQueryTextListener((android.support.v7.widget.SearchView.OnQueryTextListener) requireContext());
+//        searchView.setOnQueryTextListener((android.support.v7.widget.SearchView.OnQueryTextListener) requireContext());
 
         congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         member_id = congressOverviewVM.getCongressMember().getId();
