@@ -134,7 +134,7 @@ public class OfficeExpFragmentv2 extends Fragment {
 
 
         if (year == null && quarter == null) {
-            Toast.makeText(getContext(), "Select year and quarter", Toast.LENGTH_LONG).show();
+            Toast.makeText(getContext(), "Select year and quarter", Toast.LENGTH_SHORT).show();
         }
     }
 

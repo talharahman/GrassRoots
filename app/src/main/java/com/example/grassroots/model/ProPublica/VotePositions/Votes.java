@@ -50,7 +50,6 @@ public class Votes implements Comparable<Votes> {
 
     @Override
     public int compareTo(Votes o) {
-        final int votes_description = this.getDescription().toLowerCase().compareTo(o.getDescription().toLowerCase());
-        return votes_description;
+        return this.getDescription().toLowerCase().compareTo(o.getDescription().toLowerCase());
     }
 }

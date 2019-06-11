@@ -14,8 +14,10 @@ import android.support.v7.widget.SearchView;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 import com.example.grassroots.network.ProPublica.Members.CongressPresenter;
 import com.example.grassroots.recyclerview.CongressAdapter;
+import com.example.grassroots.utils.CongressUIListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -56,14 +58,17 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     }
 
     private void networkCall() {
-        CongressPresenter congressPresenter = new CongressPresenter(congressResponse -> {
-            congressAdapter = new CongressAdapter(congressMembersList);
-            congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-            Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
-            Collections.sort(congressMembersList);
+        CongressPresenter congressPresenter = new CongressPresenter(new CongressUIListener() {
+            @Override
+            public void updateCongressDirectoryUI(CongressResponse congressResponse) {
+                congressAdapter = new CongressAdapter(congressMembersList);
+                congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
+                Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                Collections.sort(congressMembersList);
 
-            recyclerView.setAdapter(congressAdapter);
-            congressAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(congressAdapter);
+                congressAdapter.notifyDataSetChanged();
+            }
         });
         congressPresenter.networkCall(getApplicationContext().getString(R.string.ProPublica_Congress_API_Key));
     }

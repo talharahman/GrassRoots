@@ -80,8 +80,9 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
         VotePostitionPresenter votePostitionPresenter = new VotePostitionPresenter(new VotePositionUIListener() {
             @Override
             public void updateUI(VotePositionResponse votePositionResponse) {
+                votesList = votePositionResponse.getResults().get(0).getVotes();
                 Log.d(TAG, "updateUI: " + votePositionResponse.getStatus());
-                votePositionAdapter = new VotePositionAdapter(votePositionResponse.getResults().get(0).getVotes());
+                votePositionAdapter = new VotePositionAdapter(votesList);
                 recyclerView.setAdapter(votePositionAdapter);
                 votePositionAdapter.notifyDataSetChanged();
             }
