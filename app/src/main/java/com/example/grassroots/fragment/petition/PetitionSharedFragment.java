@@ -101,16 +101,13 @@ public class PetitionSharedFragment extends Fragment {
 
         callbackManager = CallbackManager.Factory.create();
         shareDialog = new ShareDialog(requireActivity());
-        shareEmailButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_SEND);
-                intent.putExtra(Intent.EXTRA_SUBJECT, "Join us in this petition");
-                intent.putExtra(Intent.EXTRA_TEXT, petitionViewModel.getmPetitionName() + " \n " + petitionViewModel.getmPetitionDescription());
-                intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
-                intent.setType("message/rfc822");
-                startActivity(Intent.createChooser(intent, "Choose an email client"));
-            }
+        shareEmailButton.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_SEND);
+            intent.putExtra(Intent.EXTRA_SUBJECT, "Join us in this petition");
+            intent.putExtra(Intent.EXTRA_TEXT, petitionViewModel.getmPetitionName() + " \n " + petitionViewModel.getmPetitionDescription());
+            intent.putExtra(Intent.EXTRA_STREAM, petitionViewModel.getmPetitionImage());
+            intent.setType("message/rfc822");
+            startActivity(Intent.createChooser(intent, "Choose an email client"));
         });
 
         shareLinkButton.setOnClickListener(new View.OnClickListener() {

@@ -3,6 +3,8 @@ package com.example.grassroots.fragment.petition;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -239,6 +241,20 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
                 animateFAB();
                 break;
             case R.id.fab_petition_twitter:
+                Intent shareIntent = requireContext().getPackageManager().getLaunchIntentForPackage("com.twitter.android");
+                if (shareIntent != null) {
+                    shareIntent = new Intent(android.content.Intent.ACTION_SEND);
+                    shareIntent.setType("image/*");
+                    shareIntent.putExtra(Intent.EXTRA_STREAM, mParam1.getmPetitionImageUri());
+                    shareIntent.putExtra(Intent.EXTRA_TEXT, "Please sign\n" + mParam1.getmPetitionName() + "\n'Join us in this petition at \n https://play.google.com/store/apps/details?id=com.nexon.durango.global'");
+                    shareIntent.setPackage("com.twitter.android");
+                    startActivity(shareIntent);
+                } else {
+                    shareIntent = new Intent(Intent.ACTION_VIEW);
+                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                    shareIntent.setData(Uri.parse("market://details?id=" + "com.twitter.android"));
+                    startActivity(shareIntent);
+                }
                 break;
             case R.id.fab_petition_facebook:
                 break;
