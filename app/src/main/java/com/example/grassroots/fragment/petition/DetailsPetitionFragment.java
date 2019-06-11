@@ -78,7 +78,7 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
     private List<PetitionSignatures> petitionSignaturesList = new ArrayList<>();
 
     private FloatingActionButton socialFab, fabTwitter, fabFacebook;
-    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private Animation fab_open, fab_close;
     private boolean isFabOpen = false;
 
     public DetailsPetitionFragment() { }
@@ -129,6 +129,8 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         socialFab.setOnClickListener(this);
         fabTwitter.setOnClickListener(this);
         fabFacebook.setOnClickListener(this);
+        fab_open = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_close);
 
         waveLoadingView=view.findViewById(R.id.cirele);
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
@@ -144,13 +146,12 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false));
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
-        petitionSupporterTextView.setText(" Ben started this petition to "+mParam1.getmPetitionSupporter());
+        petitionSupporterTextView.setText("Michelle started this petition to "+mParam1.getmPetitionSupporter());
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
         petitionSignatureTextView
                 .setText(mParam1.getmPetitionSignature()+" have signed. "+"Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
-
 
         Glide.with(requireContext())
                 .load(mParam1.getmPetitionImageURL())
@@ -164,7 +165,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         waveLoadingView.setProgressValue(ger);
 
         loadPetitionUpdates();
-        setButtons();
 
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -227,13 +227,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         });
     }
 
-    private void setButtons() {
-        fab_open = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open);
-        fab_close = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_close);
-   //     rotate_forward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_forward);
-   //     rotate_backward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_backward);
-    }
-
     @Override
     public void onClick(View v) {
         int id = v.getId();
@@ -268,8 +261,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
     private void animateFAB() {
         if (isFabOpen) {
-     //       socialFab.startAnimation(rotate_backward);
-
             fabTwitter.startAnimation(fab_close);
             fabFacebook.startAnimation(fab_close);
 
@@ -278,8 +269,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
             isFabOpen = false;
         } else {
-      //      socialFab.startAnimation(rotate_forward);
-
             fabTwitter.startAnimation(fab_open);
             fabFacebook.startAnimation(fab_open);
 

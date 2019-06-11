@@ -26,11 +26,25 @@
         app:layout_collapseMode="pin"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <TextView
+            android:text="Rafael Torres"
+            android:textSize="32sp"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="96dp"
+            />
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:tabTextColor="@color/neutral_white"
             android:background="@color/colorPrimary">
 
             <android.support.design.widget.TabItem

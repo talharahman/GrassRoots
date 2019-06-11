@@ -167,6 +167,8 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/quicksand"
                     android:textAlignment="center"
+                    android:textColor="#000"
+                    android:textSize="18sp"
                     android:textStyle="bold"/>
 
 

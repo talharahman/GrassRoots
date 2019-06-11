@@ -142,7 +142,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-
     private void facebookView(ElectedRepresentatives representative) {
         repFacebookIcon.setImageResource(R.drawable.facebook);
         if (representative.getChannels() == null) {
@@ -196,6 +195,4 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             });
         }*/
     }
-
-
 }
