@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.splashscreenFragment;
 import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.PetitionsFeedInterface;
@@ -32,12 +33,8 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
 
         initialize();
         getFirebaseData();
+        moveTosplashScreen(new splashscreenFragment());
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.feed_container, new MainFeed())
-                .addToBackStack(null)
-                .commit();
     }
 
     private void initialize() {
@@ -53,6 +50,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
             }
         });
     }
+
 
 
     private void getFirebaseData() {
@@ -114,6 +112,25 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.feed_container, fragment)
+                .commit();
+    }
+
+    @Override
+    public void moveTosplashScreen(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void openMainfeed() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, new MainFeed())
+                .addToBackStack(null)
                 .commit();
     }
 

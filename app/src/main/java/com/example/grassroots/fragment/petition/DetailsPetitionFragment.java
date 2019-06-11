@@ -148,7 +148,7 @@ public class DetailsPetitionFragment extends Fragment {
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false));
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
-        petitionSupporterTextView.setText(" Ben started this petition to "+mParam1.getmPetitionSupporter());
+        petitionSupporterTextView.setText("Ben started this petition to "+mParam1.getmPetitionSupporter());
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 

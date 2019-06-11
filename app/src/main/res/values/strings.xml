@@ -93,5 +93,8 @@
 
     <string name="instruction_view_oe"><b>The House of Representatives publishes quarterly reports detailing official office expenses by lawmakers. \n \nData is currently available from the 3rd quarter of 2009 to the 4th quarter of 2017. \n \nNewly elected representatives do not have any records as of yet. Please contact their office for more information. </b> </string>
 
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 
 </resources>
