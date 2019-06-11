@@ -1,26 +1,88 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/bottom_button_layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginBottom="8dp"
-    android:background="@android:color/white"
-    app:layout_behavior="android.support.design.widget.BottomSheetBehavior"
+    android:background="@android:color/transparent"
+    app:layout_behavior="android.support.design.widget.BottomSheetBehavior">
 
-   >
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_petition_facebook"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="336dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:padding="8dp"
+        android:src="@drawable/facebook"
+        android:visibility="invisible"
+        app:elevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.963"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:maxImageSize="68dp"
+        android:tint="@color/purple_drop"
+        android:backgroundTint="@color/colorPrimary"
+        app:pressedTranslationZ="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_petition_twitter"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:padding="8dp"
+        android:src="@drawable/twitter"
+        android:visibility="invisible"
+        app:elevation="6dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/fab_petition_facebook"
+        app:maxImageSize="68dp"
+        android:tint="@color/purple_drop"
+        android:backgroundTint="@color/colorPrimary"
+        app:pressedTranslationZ="12dp" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab_petition_social"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="28dp"
+        android:layout_marginRight="28dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:src="@drawable/share"
+        app:elevation="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fab_petition_twitter"
+        app:layout_constraintVertical_bias="0.066"
+        app:maxImageSize="32dp"
+        android:tint="@color/colorPrimary"
+        android:backgroundTint="@color/purple_drop"
+        app:pressedTranslationZ="12dp" />
 
     <Button
         android:id="@+id/bottom_button"
-        android:layout_width="390dp"
-        android:layout_height="55dp"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
         android:layout_margin="8dp"
+        android:layout_marginTop="16dp"
         android:background="@drawable/bottom_buttom"
         android:text="Sign This Petition"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/fab_petition_social" />
 
 </android.support.constraint.ConstraintLayout>

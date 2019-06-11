@@ -11,6 +11,7 @@ import android.support.annotation.RequiresApi;
 import android.support.constraint.ConstraintLayout;
 import android.support.design.widget.BottomSheetBehavior;
 import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -54,16 +57,10 @@ import java.util.List;
 import me.itangqi.waveloadingview.WaveLoadingView;
 
 
-public class DetailsPetitionFragment extends Fragment {
+public class DetailsPetitionFragment extends Fragment implements View.OnClickListener {
 
     private static final String PARAM_PETITION = "param1";
 
-    private TextView petitionNameTextView;
-    private TextView petitionDescrptionTextView;
-    private TextView petitionSupporterTextView;
-    private TextView petitionSignatureTextView;
-    private ImageView petitionImageImageView;
-    private Button petitionSignButton;
     private PetitionUpdatesAdapter petitionUpdatesAdapter;
     private Petition mParam1=new Petition();
     private PetitionsFeedInterface mListener;
@@ -76,6 +73,10 @@ public class DetailsPetitionFragment extends Fragment {
 
     private List<String> signersList = new ArrayList<>();
     private List<PetitionSignatures> petitionSignaturesList = new ArrayList<>();
+
+    private FloatingActionButton socialFab, fabTwitter, fabFacebook;
+    private Animation fab_open, fab_close, rotate_forward, rotate_backward;
+    private boolean isFabOpen = false;
 
     public DetailsPetitionFragment() { }
 
@@ -100,7 +101,6 @@ public class DetailsPetitionFragment extends Fragment {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = (Petition) getArguments().getSerializable(PARAM_PETITION);
-
         }
     }
 
@@ -115,37 +115,28 @@ public class DetailsPetitionFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        ConstraintLayout constraintLayout;
-        BottomSheetBehavior bottomSheetBehavior;
-        constraintLayout=view.findViewById(R.id.bottom_button_layout);
-        bottomSheetBehavior=BottomSheetBehavior.from(constraintLayout);
-
         Toolbar toolbar = view.findViewById(R.id.app_bar);
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
         CollapsingToolbarLayout collapsingToolbarLayout=view.findViewById(R.id.collapsing);
+        collapsingToolbarLayout.setTitle(" ");
 
-      // collapsingToolbarLayout.setTitle(mParam1.getmPetitionName());
-
-      collapsingToolbarLayout.setTitle(" ");
+        socialFab = view.findViewById(R.id.fab_petition_social);
+        fabTwitter = view.findViewById(R.id.fab_petition_twitter);
+        fabFacebook = view.findViewById(R.id.fab_petition_facebook);
+        socialFab.setOnClickListener(this);
+        fabTwitter.setOnClickListener(this);
+        fabFacebook.setOnClickListener(this);
 
         waveLoadingView=view.findViewById(R.id.cirele);
-        double percentage=(double) (mParam1.getmPetitionSignature()*100)/mParam1.getmPetitionSignatureGoal();
-
-        int ger=(int)Math.round(percentage);
-
-        waveLoadingView.setProgressValue(ger);
-
         petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
-
-
-        petitionNameTextView=view.findViewById(R.id.petition_name_text_view1);
-        petitionDescrptionTextView=view.findViewById(R.id.petition_description_text_view);
-        petitionSupporterTextView=view.findViewById(R.id.petition_supporter_text_view);
-        petitionImageImageView=view.findViewById(R.id.petition_image_image_view);
-        petitionSignatureTextView=view.findViewById(R.id.signatures_text_view);
+        TextView petitionNameTextView = view.findViewById(R.id.petition_name_text_view1);
+        TextView petitionDescrptionTextView = view.findViewById(R.id.petition_description_text_view);
+        TextView petitionSupporterTextView = view.findViewById(R.id.petition_supporter_text_view);
+        ImageView petitionImageImageView = view.findViewById(R.id.petition_image_image_view);
+        TextView petitionSignatureTextView = view.findViewById(R.id.signatures_text_view);
         petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
-        petitionSignButton=view.findViewById(R.id.bottom_button);
+        Button petitionSignButton = view.findViewById(R.id.bottom_button);
 
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false));
 
@@ -154,12 +145,23 @@ public class DetailsPetitionFragment extends Fragment {
         petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
-        petitionSignatureTextView.setText(mParam1.getmPetitionSignature()+" have signed. "+"Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
+        petitionSignatureTextView
+                .setText(mParam1.getmPetitionSignature()+" have signed. "+"Let’s get to "+mParam1.getmPetitionSignatureGoal()+"!");
 
 
-        Glide.with(requireContext()).load(mParam1.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(petitionImageImageView);
+        Glide.with(requireContext())
+                .load(mParam1.getmPetitionImageURL())
+                .optionalFitCenter()
+                .centerCrop()
+                .into(petitionImageImageView);
 
-       loadPetitionUpdates();
+        double percentage=(double) (mParam1.getmPetitionSignature()*100)/mParam1.getmPetitionSignatureGoal();
+        int ger=(int)Math.round(percentage);
+
+        waveLoadingView.setProgressValue(ger);
+
+        loadPetitionUpdates();
+        setButtons();
 
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -222,6 +224,48 @@ public class DetailsPetitionFragment extends Fragment {
         });
     }
 
+    private void setButtons() {
+        fab_open = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open);
+        fab_close = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_close);
+   //     rotate_forward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_forward);
+   //     rotate_backward = AnimationUtils.loadAnimation(requireContext(), R.anim.rotate_backward);
+    }
 
+    @Override
+    public void onClick(View v) {
+        int id = v.getId();
+        switch (id) {
+            case R.id.fab_petition_social:
+                animateFAB();
+                break;
+            case R.id.fab_petition_twitter:
+                break;
+            case R.id.fab_petition_facebook:
+                break;
+        }
+    }
 
+    private void animateFAB() {
+        if (isFabOpen) {
+     //       socialFab.startAnimation(rotate_backward);
+
+            fabTwitter.startAnimation(fab_close);
+            fabFacebook.startAnimation(fab_close);
+
+            fabTwitter.setClickable(false);
+            fabFacebook.setClickable(false);
+
+            isFabOpen = false;
+        } else {
+      //      socialFab.startAnimation(rotate_forward);
+
+            fabTwitter.startAnimation(fab_open);
+            fabFacebook.startAnimation(fab_open);
+
+            fabTwitter.setClickable(true);
+            fabFacebook.setClickable(true);
+
+            isFabOpen = true;
+        }
+    }
 }
