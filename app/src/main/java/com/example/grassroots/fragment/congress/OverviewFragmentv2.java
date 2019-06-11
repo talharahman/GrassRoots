@@ -3,6 +3,7 @@ package com.example.grassroots.fragment.congress;
 
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.DialogInterface;
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,6 +45,7 @@ import java.util.List;
 public class OverviewFragmentv2 extends Fragment {
 
     private View rootView;
+    private String fecID;
     private TabContactListener tabContactListener;
     private ElectedRepresentatives electedRepresentatives;
     private List<Petition> myPetitionsHistory = new ArrayList<>();
@@ -54,6 +56,16 @@ public class OverviewFragmentv2 extends Fragment {
 
     public static OverviewFragmentv2 newInstance() {
         return new OverviewFragmentv2();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof TabContactListener) {
+            tabContactListener = (TabContactListener) context;
+        } else {
+            throw new RuntimeException(context.toString() + "must implement TabContactListener");
+        }
     }
 
     @Override
@@ -119,11 +131,11 @@ public class OverviewFragmentv2 extends Fragment {
         });
 
 
-        String rep_name = congressOverviewVM.getCongressMember().getFirst_name() + " " + congressOverviewVM.getCongressMember().getLast_name();
-
-        CivicInfoPresenter civicInfoPresenter = new CivicInfoPresenter(new LocalRepsUIListener() {
-            @Override
-            public void updateUI(CivicInfoModel civicInfoModel) {
+//        String rep_name = congressOverviewVM.getCongressMember().getFirst_name() + " " + congressOverviewVM.getCongressMember().getLast_name();
+//
+//        CivicInfoPresenter civicInfoPresenter = new CivicInfoPresenter(new LocalRepsUIListener() {
+//            @Override
+//            public void updateUI(CivicInfoModel civicInfoModel) {
 
 //                if (rep_name.equals(civicInfoModel.getElectedRepresentatives().get(0).getName())) {
 //                    Glide.with(rootView.getContext())
@@ -131,93 +143,106 @@ public class OverviewFragmentv2 extends Fragment {
 //                            .centerCrop()
 //                            .into(img_profile_rep);
 //                }
-            }
-        });
+//            }
+//        });
 
-        civicInfoPresenter.networkCall(this.getString(R.string.Civic_Info_API_Key));
+//        civicInfoPresenter.networkCall(this.getString(R.string.Civic_Info_API_Key));
 
         txt_title_name.setText(
-                congressOverviewVM.getCongressMember().getShort_title() + " " +
-                        congressOverviewVM.getCongressMember().getFirst_name() + " " +
-                        congressOverviewVM.getCongressMember().getLast_name());
+                String.format("%s %s %s", congressOverviewVM.getCongressMember().getShort_title(), congressOverviewVM.getCongressMember().getFirst_name(), congressOverviewVM.getCongressMember().getLast_name()));
 
         txt_party_state.setText(
-                congressOverviewVM.getCongressMember().getParty() + ", " +
-                        congressOverviewVM.getCongressMember().getState());
+                String.format("%s, %s", congressOverviewVM.getCongressMember().getParty(), congressOverviewVM.getCongressMember().getState()));
 
-        String fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
+        fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
         txt_fec_id.setText(fecID);
 
         txt_year.setText(congressOverviewVM.getCongressMember().getNext_election());
 
 
-//        ImageView twitter = rootView.findViewById(R.id.acct_twitter);
-//        ImageView facebook = rootView.findViewById(R.id.acct_facebook);
-//        ImageView youtube = rootView.findViewById(R.id.acct_youtube);
-//        ImageView gmail = rootView.findViewById(R.id.acct_gmail);
-//        ImageView website = rootView.findViewById(R.id.website);
-//        ImageView phone = rootView.findViewById(R.id.phone);
+        ImageView twitter = rootView.findViewById(R.id.acct_twitter);
+        ImageView facebook = rootView.findViewById(R.id.acct_facebook);
+        ImageView youtube = rootView.findViewById(R.id.acct_youtube);
+        ImageView gmail = rootView.findViewById(R.id.acct_gmail);
+        ImageView website = rootView.findViewById(R.id.website);
+        ImageView phone = rootView.findViewById(R.id.phone);
 
-//        twitter.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if(tabContactListener != null){
-//                    tabContactListener.openTwitter(congressOverviewVM.getCongressMember().getTwitter_account());
-//                }
-//            }
-//        });
-//
-//        facebook.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(tabContactListener != null){
-//                    tabContactListener.openFacebook(congressOverviewVM.getCongressMember().getFacebook_account());
-//                }
-//            }
-//        });
-//
-//        youtube.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(tabContactListener != null){
-//                    tabContactListener.openYoutube(congressOverviewVM.getCongressMember().getYoutube_account());
-//                }
-//
-//            }
-//        });
-//
-//        gmail.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(tabContactListener != null){
-//                    tabContactListener.openEmail(congressOverviewVM.getCongressMember().getContact_form());
-//                }
-//            }
-//        });
-//
-//        website.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(tabContactListener != null){
-//                    tabContactListener.openWebsite(congressOverviewVM.getCongressMember().getUrl());
-//                }
-//
-//            }
-//        });
-//
-//        phone.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//
-//                if(tabContactListener != null){
-//                    tabContactListener.openPhont(congressOverviewVM.getCongressMember().getPhone());
-//                }
-//            }
-//        });
+        twitter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: TWITTER");
+                if (tabContactListener != null) {
+                    tabContactListener.openTwitter(congressOverviewVM.getCongressMember().getTwitter_account());
+                    Log.d("OFRAG2", "onClick: TWITTER" + congressOverviewVM.getCongressMember().getTwitter_account());
+
+                }
+            }
+        });
+
+        facebook.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: FACEBOOK");
+                if (tabContactListener != null) {
+                    tabContactListener.openFacebook(congressOverviewVM.getCongressMember().getFacebook_account());
+                    Log.d("OFRAG2", "onClick: FACEBOOK" + congressOverviewVM.getCongressMember().getFacebook_account());
+
+                }
+            }
+        });
+
+        youtube.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: YOUTUBE");
+
+                if (tabContactListener != null) {
+                    tabContactListener.openYoutube(congressOverviewVM.getCongressMember().getYoutube_account());
+                    Log.d("OFRAG2", "onClick: YOUTUBE" + congressOverviewVM.getCongressMember().getYoutube_account());
+
+                }
+
+            }
+        });
+
+        gmail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: GMAIL");
+                if (tabContactListener != null) {
+                    tabContactListener.openEmail(congressOverviewVM.getCongressMember().getContact_form());
+                    Log.d("OFRAG2", "onClick: GMAIL" + " " + congressOverviewVM.getCongressMember().getContact_form());
+
+                }
+            }
+        });
+
+        website.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: WEBSITE");
+
+                if (tabContactListener != null) {
+                    tabContactListener.openWebsite(congressOverviewVM.getCongressMember().getUrl());
+                    Log.d("OFRAG2", "onClick: WEBSITE" + congressOverviewVM.getCongressMember().getUrl());
+
+                }
+
+            }
+        });
+
+        phone.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("OFRAG2", "onClick: PHONE");
+
+                if (tabContactListener != null) {
+                    tabContactListener.openPhont(congressOverviewVM.getCongressMember().getPhone());
+                    Log.d("OFRAG2", "onClick: PHONE" + congressOverviewVM.getCongressMember().getPhone());
+
+                }
+            }
+        });
 
     }
 }

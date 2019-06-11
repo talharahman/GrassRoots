@@ -128,17 +128,16 @@
 
         </RelativeLayout>
 
-        <LinearLayout
+        <FrameLayout
             android:layout_width="360dp"
-            android:layout_height="wrap_content"
+            android:layout_height="450dp"
             android:layout_gravity="center"
             android:layout_marginTop="24dp"
-            android:orientation="vertical">
+            android:id="@+id/container_oe_rv">
 
            <!-- <ScrollView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">-->
-
 
                 <android.support.v7.widget.RecyclerView
                     android:id="@+id/rv_office_expenses"
@@ -150,7 +149,7 @@
 
     <!--        </ScrollView>-->
 
-        </LinearLayout>
+        </FrameLayout>
 
     </LinearLayout>
 

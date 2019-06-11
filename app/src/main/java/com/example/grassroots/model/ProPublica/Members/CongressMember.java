@@ -36,11 +36,11 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
     }
 
 
-
     private String missed_votes_pct;
     private String votes_with_party_pct;
 
-    public CongressMember(){}
+    public CongressMember() {
+    }
 
 
     public String getLast_name() {
@@ -216,7 +216,6 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
     public int compareTo(CongressMember o) {
         return this.getLast_name().toLowerCase().compareTo(o.getLast_name().toLowerCase());
     }
-
 
 
 }
