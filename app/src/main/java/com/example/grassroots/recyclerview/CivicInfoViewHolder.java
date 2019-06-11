@@ -101,9 +101,12 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         if (representative.getUrls() == null) {
             repUrlIcon.setVisibility(View.GONE);
         } else {
-            repUrlIcon.setOnClickListener(v -> {
-                Intent uriIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(representative.getUrls().get(0)));
-                v.getContext().startActivity(uriIntent);
+            repUrlIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent uriIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(representative.getUrls().get(0)));
+                    v.getContext().startActivity(uriIntent);
+                }
             });
         }
     }
@@ -126,9 +129,9 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
-                alertDialog.setTitle(representative.getName());
-                alertDialog.setIcon(R.drawable.email);
                 if (representative.getEmails() == null) {
+                    alertDialog.setTitle(representative.getName());
+                    alertDialog.setIcon(R.drawable.email);
                     alertDialog.setMessage("No e-mail available for this representative");
                 } else {
                     Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
@@ -142,7 +145,19 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private void facebookView(ElectedRepresentatives representative) {
         repFacebookIcon.setImageResource(R.drawable.facebook);
-        if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
+        if (representative.getChannels() == null) {
+            repFacebookIcon.setVisibility(View.GONE);
+        } else {
+            repFacebookIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(0).getId()));
+                    v.getContext().startActivity(facebookIntent);
+                }
+            });
+        }
+
+        /*if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
             repFacebookIcon.setOnClickListener(v -> {
                 Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(1).getId()));
                 v.getContext().startActivity(facebookIntent);
@@ -152,12 +167,24 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(0).getId()));
                 v.getContext().startActivity(facebookIntent);
             });
-        }
+        }*/
     }
 
     private void twitterView(ElectedRepresentatives representative) {
         repTwitterIcon.setImageResource(R.drawable.twitter);
-        if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
+        if (representative.getChannels() == null) {
+            repTwitterIcon.setVisibility(View.GONE);
+        } else {
+            repTwitterIcon.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(1).getId()));
+                    v.getContext().startActivity(twitterIntent);
+                }
+            });
+        }
+
+        /*if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
             repTwitterIcon.setOnClickListener(v -> {
                 Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(2).getId()));
                 v.getContext().startActivity(twitterIntent);
@@ -167,7 +194,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(1).getId()));
                 v.getContext().startActivity(twitterIntent);
             });
-        }
+        }*/
     }
 
 
