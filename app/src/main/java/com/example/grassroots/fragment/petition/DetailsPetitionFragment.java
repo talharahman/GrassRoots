@@ -2,6 +2,7 @@ package com.example.grassroots.fragment.petition;
 
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -250,10 +251,14 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
                     shareIntent.setPackage("com.twitter.android");
                     startActivity(shareIntent);
                 } else {
-                    shareIntent = new Intent(Intent.ACTION_VIEW);
-                    shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    shareIntent.setData(Uri.parse("market://details?id=" + "com.twitter.android"));
-                    startActivity(shareIntent);
+                    try {
+                        shareIntent = new Intent(Intent.ACTION_VIEW);
+                        shareIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                        shareIntent.setData(Uri.parse("market://details?id=" + "com.twitter.android"));
+                        startActivity(shareIntent);
+                    } catch (ActivityNotFoundException a) {
+                        a.printStackTrace();
+                    }
                 }
                 break;
             case R.id.fab_petition_facebook:
