@@ -146,18 +146,25 @@ public class OfficeExpFragmentv2 extends Fragment {
                 year = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
                 if(!year.equals("") && !quarter.equals("")) {
-                    if(year != null && quarter != null) {
+                    if (year != null && quarter != null) {
+                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2") ){
+                            insertInfoNotAvailable();
+                        }
                         yr_ = Integer.parseInt(year);
                         qt_ = Integer.parseInt(quarter);
                         expenseCallback(yr_, qt_);
-//                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
                     }
+
+//                    while(year != null && quarter != null) {
+//                        yr_ = Integer.parseInt(year);
+//                        qt_ = Integer.parseInt(quarter);
+//                        expenseCallback(yr_, qt_);
+//                    }
                 }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-//                Toast.makeText(getContext(), "Select Year", Toast.LENGTH_SHORT).show();
             }
         });
         oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -165,20 +172,32 @@ public class OfficeExpFragmentv2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quarter = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
-
                 if(!year.equals("") && !quarter.equals("")) {
-                    if(year != null && quarter != null) {
+                    if (year != null && quarter != null) {
+                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2")){
+                            insertInfoNotAvailable();
+                        }
                         yr_ = Integer.parseInt(year);
                         qt_ = Integer.parseInt(quarter);
                         expenseCallback(yr_, qt_);
-//                        Log.d(TAG, "ARGS FOR NETWORK CALL: " + member_id + " " + yr_ + " " + qt_);
                     }
+//                    while(year != null && quarter != null) {
+//                        yr_ = Integer.parseInt(year);
+//                        qt_ = Integer.parseInt(quarter);
+//                        expenseCallback(yr_, qt_);
+//                    }
                 }
+//                if(!year.equals("") && !quarter.equals("")) {
+//                    if(year != null && quarter != null) {
+//                        yr_ = Integer.parseInt(year);
+//                        qt_ = Integer.parseInt(quarter);
+//                        expenseCallback(yr_, qt_);
+//                    }
+//                }
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> parent) {
-//                Toast.makeText(getContext(), "Select Quarter", Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -197,7 +216,7 @@ public class OfficeExpFragmentv2 extends Fragment {
     private void insertInfoNotAvailable() {
         InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_oe, infoNotAvailableFragment).addToBackStack(null).commit();
+        transaction.replace(R.id.container_oe_rv, infoNotAvailableFragment).addToBackStack(null).commit();
         Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 }

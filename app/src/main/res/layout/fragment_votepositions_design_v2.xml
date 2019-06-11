@@ -163,17 +163,17 @@
 
     </RelativeLayout>
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="360dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="18dp"
-        android:orientation="vertical">
+        android:id="@+id/container_vp">
 
         <android.support.v7.widget.SearchView
             android:id="@+id/sv_bill_deets"
             android:layout_width="match_parent"
-            android:layout_height="28dp"
+            android:layout_height="32dp"
             android:layout_marginBottom="8dp"
             app:queryHint="Enter bill title"
             android:background="@color/color_light_purple_ic">
@@ -184,11 +184,12 @@
             android:id="@+id/rv_vote_positions"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginTop="42dp"
             android:scrollbars="vertical"
             android:background="#E9E4F8">
 
         </android.support.v7.widget.RecyclerView>
 
-    </LinearLayout>
+    </FrameLayout>
 
 </LinearLayout>
