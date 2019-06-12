@@ -49,7 +49,7 @@
                     android:layout_gravity="center_horizontal"
                     android:layout_marginTop="18dp"
                     android:fontFamily="monospace"
-                    android:text="O F F I C E  E X P E N S E S"
+                    android:text="OFFICE EXPENSES"
                     android:textColor="#000"
                     android:textSize="14sp"
                     android:textStyle="bold" />

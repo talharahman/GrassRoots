@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:text="V O T I N G  S N A P S H O T"
+                android:text="VOTING SNAPSHOT"
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:textStyle="bold"
