@@ -54,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
                 android:layout_marginTop="18dp"
-                android:text="V O T I N G  S N A P S H O T"
+                android:text="VOTING SNAPSHOT"
                 android:textColor="#000"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -90,7 +90,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="# / #"
-                        android:textColor="#000"
+                        android:textColor="@color/red_leaf"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
@@ -120,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
-                        android:textColor="#000"
+                        android:textColor="@color/red_leaf"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
@@ -150,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
-                        android:textColor="#000"
+                        android:textColor="@color/red_leaf"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
