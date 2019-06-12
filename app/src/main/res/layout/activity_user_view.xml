@@ -26,6 +26,15 @@
         app:layout_collapseMode="pin"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="300dp"
+            android:src="@drawable/profile"
+            />
+
         <TextView
             android:text="Rafael Torres"
             android:textSize="32sp"
@@ -34,9 +43,9 @@
             android:textColor="@color/neutral_white"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="8dp"
-            android:layout_marginStart="8dp"
-            android:layout_marginTop="96dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="88dp"
             />
 
         <android.support.design.widget.TabLayout
@@ -58,7 +67,7 @@
                 android:id="@+id/user_feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activity" />
+                android:text="Updates" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.CollapsingToolbarLayout>
