@@ -11,4 +11,7 @@ public interface CivicInfoService {
 
     @GET(CIVIC_INFO_END_POINT)
     Call<CivicInfoModel> getCivicInfo(@Query("key") String key, @Query("address") String inputAddress);
+
+    @GET(CIVIC_INFO_END_POINT)
+    Call<CivicInfoModel> getCivicInfo(@Query("key") String key);
 }

@@ -15,14 +15,14 @@ public class OfficeExpensePresenter {
         this.officeExpUIListener = officeExpUIListener;
     }
 
-    public void expenseNetworkCall(String congressApiKey, String member_id){
+    public void expenseNetworkCall(String congressApiKey, String member_id, int year, int quarter){
 
         ExpenseRepository expenseRepository = new ExpenseRepository();
-        expenseRepository.fetchOfficeExpenses(congressApiKey, member_id, 2017, 4, new OfficeExpenseListener() {
+        expenseRepository.fetchOfficeExpenses(congressApiKey, member_id, year, quarter, new OfficeExpenseListener() {
             @Override
             public void successfulCall(OfficeExpenseResponse officeExpenseResponse) {
                 officeExpUIListener.updateOfficeExpUI(officeExpenseResponse);
-                Log.d("OFFICEEXPENSEPRESENTER", "successfulCall: " + congressApiKey + " " + member_id + " ");
+                Log.d("OFFICEEXPENSEPRESENTER", "successfulCall: " + congressApiKey + " " + member_id);
             }
 
             @Override

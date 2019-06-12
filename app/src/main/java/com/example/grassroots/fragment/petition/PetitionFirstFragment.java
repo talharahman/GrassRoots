@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
@@ -22,13 +23,15 @@ import java.util.Objects;
 
 public class PetitionFirstFragment extends Fragment {
 
-    private EditText editTextPetitionName;
-    private EditText editTextPetitionSupporter;
     private EditText editTextPetitionSignatures;
 
     private PetitionViewModel petitionViewModel;
     private PetitionFragmentsListener listener;
     private View rootView;
+
+    private String petitionName;
+    private String petitionTarget;
+    private String petitionSignatureGoal;
 
     public PetitionFirstFragment() {}
 
@@ -49,24 +52,18 @@ public class PetitionFirstFragment extends Fragment {
 
         setPetitionName();
         setPetitionTarget();
-
-        editTextPetitionSignatures=view.findViewById(R.id.petition_signature_goal);
+        setPetitionSignatures();
 
         petitionViewModel= ViewModelProviders.of
                 (Objects.requireNonNull(getActivity()))
                 .get(PetitionViewModel.class);
 
-        Button saveAndContinueButton = view.findViewById(R.id.save_button1);
-        saveAndContinueButton.setOnClickListener(v -> {
-            listener.moveToPetitionSecondPart(new PetitionSecondFragment());
-            petitionViewModel.setmPetitionName(editTextPetitionName.getText().toString().trim());
-            petitionViewModel.setmPetitionSupporter(editTextPetitionSupporter.getText().toString().trim());
-            petitionViewModel.setmPetitionSignatureGoal(Integer.valueOf(editTextPetitionSignatures.getText().toString()));
-        });
     }
 
+
     private void setPetitionName() {
-        editTextPetitionName = rootView.findViewById(R.id.edit_text_petition_name);
+        EditText editTextPetitionName = rootView.findViewById(R.id.edit_text_petition_name);
+        petitionName = editTextPetitionName.getText().toString().trim();
         Button titleDialog = rootView.findViewById(R.id.title_dialog_button);
         titleDialog.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,7 +78,8 @@ public class PetitionFirstFragment extends Fragment {
     }
 
     private void setPetitionTarget() {
-        editTextPetitionSupporter = rootView.findViewById(R.id.edit_text_target);
+        EditText editTextPetitionSupporter = rootView.findViewById(R.id.edit_text_target);
+        petitionTarget = editTextPetitionSupporter.getText().toString().trim();
         Button targetDialog = rootView.findViewById(R.id.target_dialog_button);
         targetDialog.setOnClickListener(v -> {
             AlertDialog alertDialog = new AlertDialog.Builder(requireContext()).create();
@@ -91,6 +89,28 @@ public class PetitionFirstFragment extends Fragment {
             alertDialog.show();
         });
 
+    }
+
+    private void setPetitionSignatures() {
+        editTextPetitionSignatures = rootView.findViewById(R.id.petition_signature_goal);
+        petitionSignatureGoal = editTextPetitionSignatures.getText().toString();
+
+        Button saveAndContinueButton = rootView.findViewById(R.id.save_button1);
+        saveAndContinueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (petitionName.isEmpty() || petitionTarget.isEmpty()) {
+                    if (petitionSignatureGoal.isEmpty()) {
+                        Toast.makeText(requireContext(), "Invalid submission", Toast.LENGTH_SHORT).show();
+                    }
+                } else {
+                    listener.moveToPetitionSecondPart(new PetitionSecondFragment());
+                    petitionViewModel.setmPetitionName(petitionName);
+                    petitionViewModel.setmPetitionSupporter(petitionTarget);
+                    petitionViewModel.setmPetitionSignatureGoal(Integer.valueOf(petitionSignatureGoal));
+                }
+            }
+        });
     }
 
     @Override

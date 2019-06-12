@@ -29,11 +29,18 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
     private String contact_form;
     private String office;
     private String phone;
+    private String url;
+
+    public String getUrl() {
+        return url;
+    }
+
 
     private String missed_votes_pct;
     private String votes_with_party_pct;
 
-    public CongressMember(){}
+    public CongressMember() {
+    }
 
 
     public String getLast_name() {
@@ -207,10 +214,8 @@ public class CongressMember implements Comparable<CongressMember>, Serializable 
 
     @Override
     public int compareTo(CongressMember o) {
-        final int congressMember = this.getFirst_name().toLowerCase().compareTo(o.getFirst_name().toLowerCase());
-        return congressMember;
+        return this.getLast_name().toLowerCase().compareTo(o.getLast_name().toLowerCase());
     }
-
 
 
 }

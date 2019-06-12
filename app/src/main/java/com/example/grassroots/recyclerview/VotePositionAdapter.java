@@ -21,6 +21,8 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
         this.vp_category_list = vp_category_list;
     }
 
+
+
     @NonNull
     @Override
     public VotePositionViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
@@ -36,5 +38,10 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
     @Override
     public int getItemCount() {
         return vp_category_list.size();
+    }
+
+    public void setData(List<Votes> newVotesList) {
+        this.vp_category_list = newVotesList;
+        notifyDataSetChanged();
     }
 }

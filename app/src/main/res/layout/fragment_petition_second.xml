@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/grey_scale"
+    android:background="@color/default_background"
     tools:context=".fragment.petition.PetitionSecondFragment">
 
 
@@ -71,7 +71,8 @@
         android:layout_marginEnd="24dp"
         android:layout_marginRight="24dp"
         android:layout_marginBottom="82dp"
-        android:background="@color/colorPrimary"
+        android:textColor="#fff"
+        android:background="@drawable/btn_viewpositions"
         android:text="@string/next"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

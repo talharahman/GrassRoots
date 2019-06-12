@@ -4,13 +4,21 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.utils.PetitionsFeedInterface;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 
 public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {
 
@@ -20,17 +28,48 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         setContentView(R.layout.activity_main_dashboard);
 
         initialize();
+        getFirebaseData();
+        openMainfeed();
+        //moveTosplashScreen(new splashscreenFragment());
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.feed_container, new MainFeed())
-                .addToBackStack(null)
-                .commit();
     }
 
     private void initialize() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
+
+        FloatingActionButton floatingActionButton = findViewById(R.id.fab_main);
+        floatingActionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent home = new Intent(getApplicationContext(), MainDashboard.class);
+                startActivity(home);
+            }
+        });
+    }
+
+
+
+    private void getFirebaseData() {
+
+
+//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+//
+//        currentUser.getUid();
+
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        firebaseAuth
+                .signInWithEmailAndPassword("talharahman@pursuit.org", "password2")
+                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                    @Override
+                    public void onComplete(@NonNull Task<AuthResult> task) {
+                        if (task.isSuccessful()) {
+                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
+                        } else {
+                            Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
     }
 
     @Override
@@ -70,6 +109,24 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.feed_container, fragment)
+                .commit();
+    }
+
+    @Override
+    public void moveTosplashScreen(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void openMainfeed() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, new MainFeed())
                 .addToBackStack(null)
                 .commit();
     }

@@ -21,11 +21,15 @@ import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.recyclerview.PetitionActivityAdapter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class UserFeed extends Fragment {
     RecyclerView recyclerView;
     PetitionActivityAdapter petitionActivityAdapter;
+    List<Petition>  totalPetitions;
+    String userCurrentID;
+    UserActionViewModel userActionViewModel;
 
     public UserFeed() { }
 
@@ -47,19 +51,26 @@ public class UserFeed extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
 
-        UserActionViewModel userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
+         userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
+
+
+
+
+
+
         MutableLiveData<List<Petition>> myPetitions = userActionViewModel.getPetitions();
         myPetitions.observe(this, new Observer<List<Petition>>() {
             @Override
             public void onChanged(@Nullable List<Petition> petitions) {
                 // filter petitions that have me as ownerId
                 petitionActivityAdapter = new PetitionActivityAdapter();
-                List<Petition>  totalPetitions = new ArrayList<>();
+                totalPetitions = new ArrayList<>();
                 totalPetitions.addAll(petitions);
-                totalPetitions.addAll(petitions);
-                Log.d("ISTHISWORKING?", "onChanged: " + totalPetitions.size());
+                Collections.reverse(totalPetitions);
+                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions,  userActionViewModel.getCurrentUserID(),0);
 
-                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions, petitions);
+                Log.d("setPetitionActivity", "onChanged: " + userActionViewModel.getCurrentUserID());
+
 
                 recyclerView.setAdapter(petitionActivityAdapter);
 

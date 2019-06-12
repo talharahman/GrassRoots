@@ -14,8 +14,10 @@ import android.support.v7.widget.SearchView;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
+import com.example.grassroots.model.ProPublica.Members.CongressResponse;
 import com.example.grassroots.network.ProPublica.Members.CongressPresenter;
 import com.example.grassroots.recyclerview.CongressAdapter;
+import com.example.grassroots.utils.CongressUIListener;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -50,20 +52,23 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
         recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
 
         SearchView searchView = findViewById(R.id.sv_congress);
-//        searchView.setOnQueryTextListener(this);
+        searchView.setOnQueryTextListener(this);
 
         networkCall();
     }
 
     private void networkCall() {
-        CongressPresenter congressPresenter = new CongressPresenter(congressResponse -> {
-            congressAdapter = new CongressAdapter(congressMembersList);
-            congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-            Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
-            Collections.sort(congressMembersList);
+        CongressPresenter congressPresenter = new CongressPresenter(new CongressUIListener() {
+            @Override
+            public void updateCongressDirectoryUI(CongressResponse congressResponse) {
+                congressAdapter = new CongressAdapter(congressMembersList);
+                congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
+                Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
+                Collections.sort(congressMembersList);
 
-            recyclerView.setAdapter(congressAdapter);
-            congressAdapter.notifyDataSetChanged();
+                recyclerView.setAdapter(congressAdapter);
+                congressAdapter.notifyDataSetChanged();
+            }
         });
         congressPresenter.networkCall(getApplicationContext().getString(R.string.ProPublica_Congress_API_Key));
     }
@@ -77,7 +82,8 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     public boolean onQueryTextChange(String newText) {
         final List<CongressMember> newMemberList = new ArrayList<>();
         for (CongressMember congressMember : congressMembersList) {
-            if (congressMember.getFirst_name().toLowerCase().contains(newText.toLowerCase())) {
+            if (congressMember.getFirst_name().toLowerCase().contains(newText.toLowerCase()) ||
+            congressMember.getLast_name().toLowerCase().contains(newText.toLowerCase())) {
                 newMemberList.add(congressMember);
             }
         }

@@ -22,12 +22,12 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
 
     public VotePositionViewHolder(@NonNull View itemView) {
         super(itemView);
-        votePostion= itemView.findViewById(R.id.txt_position);
-        voteDescription= itemView.findViewById(R.id.txt_description);
-        voteSummary= itemView.findViewById(R.id.txt_summary);
-        voteBillID = itemView.findViewById(R.id.txt_bill_id);
-        voteBillTitle = itemView.findViewById(R.id.txt_bill_purpose);
-        voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_action);
+        votePostion= itemView.findViewById(R.id.txt_positionv2);
+        voteDescription= itemView.findViewById(R.id.txt_descriptionv2);
+        voteSummary= itemView.findViewById(R.id.txt_summaryv2);
+        voteBillID = itemView.findViewById(R.id.txt_bill_idv2);
+        voteBillTitle = itemView.findViewById(R.id.txt_bill_purposev2);
+        voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_actionv2);
     }
 
     public void onBind(Votes votes) {
@@ -37,7 +37,6 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
         voteDescription.setText(votes.getDescription());
         votePostion.setText(votes.getPosition());
         voteSummary.setText(votes.getResult());
-
     }
 }
 

@@ -4,7 +4,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto"
 xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:background="@color/grey_scale"
+android:background="@color/default_background"
 tools:context=".fragment.petition.PetitionThirdFragment">
 
     <TextView
@@ -73,7 +73,8 @@ tools:context=".fragment.petition.PetitionThirdFragment">
     android:layout_marginRight="38dp"
     android:layout_marginBottom="68dp"
     android:text="save and preview"
-    android:background="@color/colorPrimary"
+    android:textColor="@color/neutral_white"
+    android:background="@drawable/btn_viewpositions"
     app:layout_constraintBottom_toBottomOf="parent"
     app:layout_constraintEnd_toEndOf="parent"
     app:layout_constraintTop_toBottomOf="@+id/button_choose_image" />

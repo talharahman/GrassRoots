@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true">
+    android:fitsSystemWindows="false">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appBarLayout2"
@@ -14,9 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="1"
-        app:contentScrim="@color/grey_scale"
+        app:contentScrim="@color/colorPrimary"
         app:expandedTitleGravity="top"
-        android:background="@drawable/gradient"
+        android:background="@drawable/gradient_bkg_p"
         app:layout_scrollFlags="exitUntilCollapsed|scroll">
 
     <android.support.v7.widget.Toolbar
@@ -26,11 +26,34 @@
         app:layout_collapseMode="pin"
         app:popupTheme="@style/AppTheme.PopupOverlay" />
 
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="300dp"
+            android:src="@drawable/profile"
+            />
+
+        <TextView
+            android:text="Rafael Torres"
+            android:textSize="32sp"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="88dp"
+            />
+
         <android.support.design.widget.TabLayout
             android:id="@+id/tabs_user"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom"
+            app:tabTextColor="@color/neutral_white"
             android:background="@color/colorPrimary">
 
             <android.support.design.widget.TabItem
@@ -44,7 +67,7 @@
                 android:id="@+id/user_feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Activity" />
+                android:text="Updates" />
 
         </android.support.design.widget.TabLayout>
     </android.support.design.widget.CollapsingToolbarLayout>
@@ -54,6 +77,7 @@
         android:id="@+id/user_activity_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/default_background"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
     <android.support.design.widget.BottomNavigationView

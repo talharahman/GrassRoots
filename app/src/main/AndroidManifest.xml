@@ -13,8 +13,21 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.UserActionActivity"
-            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity android:name=".activity.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar" >
+
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+        <activity
+            android:name=".activity.UserActionActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.PetitionHostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -32,11 +45,7 @@
         <activity
             android:name=".activity.MainDashboard"
             android:theme="@style/AppTheme.NoActionBar">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity
             android:name=".activity.CongressTabActivity"

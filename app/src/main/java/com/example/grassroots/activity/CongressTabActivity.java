@@ -1,7 +1,9 @@
 package com.example.grassroots.activity;
 
 import android.arch.lifecycle.ViewModelProviders;
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
@@ -12,13 +14,15 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.fragment.congress.TabContactListener;
 import com.example.grassroots.utils.CongressPagerAdapter;
 import com.example.grassroots.model.ProPublica.Members.CongressMember;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 
-public class CongressTabActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
+public class CongressTabActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, TabContactListener {
 
 
     @Override
@@ -78,4 +82,50 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
         return true;
     }
 
+    @Override
+    public void openTwitter(String link) {
+        Uri uri = Uri.parse("https://twitter.com/" + link);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openFacebook(String link) {
+        Uri uri = Uri.parse("https://www.facebook.com/" + link);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openYoutube(String link) {
+        Uri uri = Uri.parse("https://www.youtube.com/user/" + link);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openEmail(String link) {
+        try {
+            Uri email = Uri.parse(link);
+            Intent intent = new Intent(Intent.ACTION_VIEW, email);
+            startActivity(intent);
+        } catch (NullPointerException e) {
+            Toast.makeText(this, "This Congressmember's contact form is unavailable at this time.",  Toast.LENGTH_LONG).show();
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void openWebsite(String link) {
+        Uri uri = Uri.parse(link);
+        Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+        startActivity(intent);
+    }
+
+    @Override
+    public void openPhont(String link) {
+        Uri uri = Uri.parse("tel: " + link);
+        Intent intent = new Intent(Intent.ACTION_DIAL, uri);
+        startActivity(intent);
+    }
 }

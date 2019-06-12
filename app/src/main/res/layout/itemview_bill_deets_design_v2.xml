@@ -8,13 +8,13 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:elevation="4dp"
-        app:cardCornerRadius="8dp">
+        android:layout_marginTop="8dp">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_margin="8dp"
-            android:background="#23184B"
+            android:background="#280558"
             android:orientation="vertical">
 
 
@@ -32,14 +32,14 @@
 
 
             <TextView
-                android:id="@+id/txt_bill_id"
+                android:id="@+id/txt_bill_idv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold"/>
 
             <TextView
@@ -62,14 +62,14 @@
 
 
             <TextView
-                android:id="@+id/txt_bill_purpose"
+                android:id="@+id/txt_bill_purposev2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -92,14 +92,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_bill_latest_action"
+                android:id="@+id/txt_bill_latest_actionv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -122,14 +122,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_summary"
+                android:id="@+id/txt_summaryv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
 
@@ -153,14 +153,14 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_description"
+                android:id="@+id/txt_descriptionv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
                 android:layout_marginLeft="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
@@ -183,7 +183,7 @@
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/txt_position"
+                android:id="@+id/txt_positionv2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
@@ -191,7 +191,7 @@
                 android:layout_marginBottom="8dp"
                 android:fontFamily="@font/roboto"
                 android:textColor="@color/neutral_white"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView

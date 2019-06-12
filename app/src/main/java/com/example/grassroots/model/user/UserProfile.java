@@ -7,6 +7,7 @@ import java.util.List;
 public class UserProfile {
 
     private long userId;
+    // TODO private String userName;
     // ownerId = userId
     private List<Petition> myPetitions;
     private List<Petition> signedPetitions;
