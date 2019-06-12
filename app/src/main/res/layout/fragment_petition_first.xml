@@ -7,21 +7,41 @@
     android:background="@color/default_background"
     tools:context=".fragment.petition.PetitionFirstFragment">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_feed_toolbar"
+        android:background="@drawable/gradient_bkg_p"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent">
+
+        <TextView
+            android:text="Create a Petition"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/neutral_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start" />
+
+    </android.support.v7.widget.Toolbar>
+
+
     <TextView
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="0dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="76dp"
+        android:gravity="left"
         android:text="@string/petition_title_text"
+        android:textColor="#000000"
         android:textSize="24sp"
         android:textStyle="bold"
         app:fontFamily="@font/quicksand"
-        app:layout_constraintEnd_toStartOf="@+id/title_dialog_button"
-        app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -29,26 +49,29 @@
         android:id="@+id/title_dialog_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginRight="4dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginRight="24dp"
         android:layout_marginBottom="12dp"
         android:background="@drawable/ic_info"
         android:backgroundTint="@color/purple_drop"
         app:layout_constraintBottom_toTopOf="@+id/edit_text_petition_name"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/title_text"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.952" />
+        app:layout_constraintVertical_bias="0.945" />
 
     <EditText
         android:id="@+id/edit_text_petition_name"
         android:layout_width="379dp"
         android:layout_height="43dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginLeft="32dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginRight="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
         android:hint="@string/petition_title_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
@@ -57,13 +80,15 @@
 
     <TextView
         android:id="@+id/target_text"
-        android:layout_width="318dp"
+        android:layout_width="265dp"
         android:layout_height="67dp"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
         android:layout_marginTop="48dp"
+        android:gravity="left"
+        android:textColor="#000000"
         android:text="@string/petition_target_text"
-        android:textAlignment="center"
+        android:textAlignment="viewStart"
         android:textSize="24sp"
         android:textStyle="bold"
         app:fontFamily="@font/quicksand"
@@ -74,19 +99,17 @@
         android:id="@+id/target_dialog_button"
         android:layout_width="32dp"
         android:layout_height="32dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginLeft="20dp"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="68dp"
         android:background="@drawable/ic_info"
-        app:layout_constraintStart_toEndOf="@+id/target_text"
         android:backgroundTint="@color/purple_drop"
+        app:layout_constraintStart_toEndOf="@+id/target_text"
         app:layout_constraintTop_toBottomOf="@+id/edit_text_petition_name" />
 
     <EditText
         android:id="@+id/edit_text_target"
         android:layout_width="388dp"
         android:layout_height="43dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:hint="@string/petition_target_hint"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.695"
@@ -101,13 +124,13 @@
         android:layout_marginLeft="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
-        android:layout_marginBottom="120dp"
-        android:text="@string/next"
-        android:textColor="#fff"
+        android:layout_marginBottom="100dp"
         android:background="@drawable/btn_viewpositions"
+        android:text="@string/next"
+        android:textColor="@color/neutral_white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.909"
+        app:layout_constraintHorizontal_bias="0.932"
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
@@ -118,9 +141,11 @@
         android:layout_marginLeft="8dp"
         android:layout_marginTop="56dp"
         android:layout_marginEnd="8dp"
+        android:textColor="#000000"
         android:layout_marginRight="8dp"
         android:text="@string/signature_goal_text"
-        android:textAlignment="center"
+        android:textAlignment="textStart"
+        android:gravity="left"
         android:textSize="24sp"
         android:textStyle="bold"
         app:fontFamily="@font/quicksand"
@@ -133,6 +158,7 @@
         android:id="@+id/petition_signature_goal"
         android:layout_width="320dp"
         android:layout_height="50dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:ems="10"
@@ -140,9 +166,9 @@
         android:inputType="number"
         app:layout_constraintBottom_toTopOf="@+id/save_button1"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.096"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.211" />
 
 </android.support.constraint.ConstraintLayout>

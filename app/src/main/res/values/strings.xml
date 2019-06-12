@@ -74,7 +74,7 @@
     <!-- Petiton Strings -->
     <string name="main_feed">Petitions Feed</string>
 
-    <string name="petition_title_text">What is your petition called ?</string>
+    <string name="petition_title_text">What is your petition called?</string>
     <string name="petition_title_hint">Enter petition name</string>
     <string name="petition_title_info">"This is the first thing people will see about your petition. Get their attention with a short title that focuses on the change you’d like them to support."</string>
 
@@ -82,7 +82,7 @@
     <string name="petition_target_hint">Enter petition target</string>
     <string name="petition_target_info">Choose the recipient(s) of your petition. These are people or organizations with the power to solve your problem or take the action you’re demanding.</string>
 
-    <string name="signature_goal_text">How many signatures do you plan to reach ?</string>
+    <string name="signature_goal_text">How many signatures do you plan to reach?</string>
     <string name="signature_goal_info">Enter signature goal</string>
 
     <string name="next">Save and Continue</string>
