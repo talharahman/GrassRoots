@@ -57,6 +57,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
 
         recyclerView = view.findViewById(R.id.rv_vote_positions);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
         votePositionAdapter = new VotePositionAdapter();
 
         final SearchView searchView = view.findViewById(R.id.sv_bill_deets);
