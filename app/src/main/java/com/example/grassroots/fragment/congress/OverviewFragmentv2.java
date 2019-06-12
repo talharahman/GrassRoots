@@ -114,16 +114,20 @@ public class OverviewFragmentv2 extends Fragment {
             petitions.setTitle("Choose a Petition to send");
 
             String[] myPetitionNames = {
+                    myPetitionsHistory.get(myPetitionsHistory.size() -1).getmPetitionName(),
+                    myPetitionsHistory.get(myPetitionsHistory.size() -2).getmPetitionName(),
                     myPetitionsHistory.get(0).getmPetitionName(),
-                    myPetitionsHistory.get(1).getmPetitionName(),
-                    myPetitionsHistory.get(2).getmPetitionName(),
-                    myPetitionsHistory.get(3).getmPetitionName(),
-                    myPetitionsHistory.get(4).getmPetitionName()};
+                    myPetitionsHistory.get(1).getmPetitionName()};
 
 
             int checkedItem = 0;
             petitions.setSingleChoiceItems(myPetitionNames, checkedItem, (dialog, which) -> { });
-            petitions.setPositiveButton("OK", (dialog, which) -> { });
+            petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    Toast.makeText(rootView.getContext(), "Your Petition has been sent!", Toast.LENGTH_SHORT).show();
+                }
+            });
             petitions.setNegativeButton("Cancel", null);
 
             AlertDialog dialog = petitions.create();
