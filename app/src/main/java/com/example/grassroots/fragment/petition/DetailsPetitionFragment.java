@@ -64,6 +64,12 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
     private static final String PARAM_PETITION = "param1";
 
+    private TextView petitionNameTextView;
+    private TextView petitionDescrptionTextView;
+    private TextView petitionSupporterTextView;
+    private TextView petitionSignatureTextView;
+    private ImageView petitionImageImageView;
+    private Button petitionSignButton;
     private PetitionUpdatesAdapter petitionUpdatesAdapter;
     private Petition mParam1=new Petition();
     private PetitionsFeedInterface mListener;

@@ -1,6 +1,5 @@
 package com.example.grassroots.activity;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -15,13 +14,11 @@ import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.fragment.user.MainFeed;
-import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {
 
@@ -32,12 +29,9 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
 
         initialize();
         getFirebaseData();
+        openMainfeed();
+        //moveTosplashScreen(new splashscreenFragment());
 
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.feed_container, new MainFeed())
-                .addToBackStack(null)
-                .commit();
     }
 
     private void initialize() {
@@ -53,6 +47,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
             }
         });
     }
+
 
 
     private void getFirebaseData() {
@@ -114,6 +109,25 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.feed_container, fragment)
+                .commit();
+    }
+
+    @Override
+    public void moveTosplashScreen(Fragment fragment) {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, fragment)
+                .setCustomAnimations(R.anim.enter, R.anim.exit)
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void openMainfeed() {
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.feed_container, new MainFeed())
+                .addToBackStack(null)
                 .commit();
     }
 
