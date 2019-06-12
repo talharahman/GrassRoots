@@ -131,11 +131,6 @@ public class OfficeExpFragmentv2 extends Fragment {
                 expenseAdapter.notifyDataSetChanged();
             }
         });
-
-
-        if (year == null && quarter == null) {
-            Toast.makeText(getContext(), "Select year and quarter", Toast.LENGTH_SHORT).show();
-        }
     }
 
 

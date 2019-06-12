@@ -37,7 +37,6 @@ public class VotePositionViewHolder extends RecyclerView.ViewHolder {
         voteDescription.setText(votes.getDescription());
         votePostion.setText(votes.getPosition());
         voteSummary.setText(votes.getResult());
-
     }
 }
 

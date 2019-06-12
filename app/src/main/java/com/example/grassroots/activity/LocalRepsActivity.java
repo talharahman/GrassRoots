@@ -100,17 +100,18 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
             petitions.setIcon(R.drawable.send);
             petitions.setTitle("Choose a Petition to send");
 
-            String[] myPetitions1 = {
+            String[] myPetitionNames = {
+                    myPetitionsHistory.get(myPetitionsHistory.size() -1).getmPetitionName(),
+                    myPetitionsHistory.get(myPetitionsHistory.size() -2).getmPetitionName(),
                     myPetitionsHistory.get(0).getmPetitionName(),
-                    myPetitionsHistory.get(1).getmPetitionName(),
-                    myPetitionsHistory.get(2).getmPetitionName(),
-                    myPetitionsHistory.get(3).getmPetitionName(),
-                    myPetitionsHistory.get(4).getmPetitionName()};
+                    myPetitionsHistory.get(1).getmPetitionName()};
 
 
             int checkedItem = 0;
-            petitions.setSingleChoiceItems(myPetitions1, checkedItem, (dialog, which) -> { });
-            petitions.setPositiveButton("OK", (dialog, which) -> { });
+            petitions.setSingleChoiceItems(myPetitionNames, checkedItem, (dialog, which) -> { });
+            petitions.setPositiveButton("OK", (dialog, which) -> {
+                Toast.makeText(LocalRepsActivity.this, "Petition sent to " + representative.getName(), Toast.LENGTH_SHORT).show();
+            });
             petitions.setNegativeButton("Cancel", null);
 
             AlertDialog dialog = petitions.create();
