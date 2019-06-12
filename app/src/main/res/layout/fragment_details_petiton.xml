@@ -99,13 +99,7 @@
 
                 android:textStyle="bold" />
 
-                <TableRow
-                    android:id="@+id/hr"
-                    android:layout_width="match_parent"
-                    android:layout_height="2dp"
-                    android:background="#4C4DB6">
 
-                </TableRow>
 
             <TextView
                 android:id="@+id/petition_supporter_text_view"
@@ -117,6 +111,13 @@
                 android:textSize="15sp"
                 android:textStyle="bold|italic" />
 
+                <TableRow
+                    android:id="@+id/hr"
+                    android:layout_width="match_parent"
+                    android:layout_height="2dp"
+                    android:background="#4C4DB6">
+
+                </TableRow>
 
             </LinearLayout>
 
@@ -214,6 +215,7 @@
                     android:id="@+id/hr3"
                     android:layout_width="match_parent"
                     android:layout_height="2dp"
+                    android:paddingBottom="8dp"
                     android:background="#4C4DB6">
                 </TableRow>
                 <TextView
@@ -223,7 +225,8 @@
                     android:text="petition_descrption"
                     android:fontFamily="@font/roboto"
                     android:textSize="18sp"
-                    android:textStyle="normal" />
+                    android:textStyle="normal"
+                    android:layout_marginTop="16dp"/>
 
 
             </RelativeLayout>

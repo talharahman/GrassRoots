@@ -1,6 +1,5 @@
 package com.example.grassroots.activity;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -14,15 +13,12 @@ import android.view.View;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.splashscreenFragment;
 import com.example.grassroots.fragment.user.MainFeed;
-import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 
 public class MainDashboard extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener, PetitionsFeedInterface {
 
@@ -33,7 +29,8 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
 
         initialize();
         getFirebaseData();
-        moveTosplashScreen(new splashscreenFragment());
+        openMainfeed();
+        //moveTosplashScreen(new splashscreenFragment());
 
     }
 
