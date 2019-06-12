@@ -1,6 +1,5 @@
 package com.example.grassroots.utils;
 
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.annotation.StringRes;
@@ -9,14 +8,9 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.congress.OfficeExpFragment;
 import com.example.grassroots.fragment.congress.OfficeExpFragmentv2;
-import com.example.grassroots.fragment.congress.OverviewFragment;
 import com.example.grassroots.fragment.congress.OverviewFragmentv2;
-import com.example.grassroots.fragment.congress.SpinnerOEFragment;
-import com.example.grassroots.fragment.congress.VotePositionFragment;
 import com.example.grassroots.fragment.congress.VotePositionFragmentv2;
-import com.example.grassroots.model.ProPublica.Members.CongressMember;
 
 public class CongressPagerAdapter extends FragmentPagerAdapter {
 

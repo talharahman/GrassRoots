@@ -49,26 +49,4 @@ class CivicInfoRepository {
                     }
                 });
     }
-
-    public void fetchElectedRepresentatives(String civicAPIKey, CivicInfoListener civicInfoListener) {
-        getInstance().create(CivicInfoService.class)
-                .getCivicInfo(civicAPIKey)
-                .enqueue(new Callback<CivicInfoModel>() {
-                    @Override
-                    public void onResponse(Call<CivicInfoModel> call, Response<CivicInfoModel> response) {
-
-//                        CivicInfoModel civicInfoModel = response.body();
-//                        if (response.body() != null) {
-//                            Log.d("README", "onResponse: " + response.raw());
-//                            civicInfoListener.onSuccess(civicInfoModel);
-//                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<CivicInfoModel> call, Throwable t) {
-                        Log.d("README", "onFailure: " + t.getMessage());
-                        civicInfoListener.onFailure();
-                    }
-                });
-    }
 }

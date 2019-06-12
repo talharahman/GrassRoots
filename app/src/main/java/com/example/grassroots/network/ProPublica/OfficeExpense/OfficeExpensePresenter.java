@@ -2,8 +2,7 @@ package com.example.grassroots.network.ProPublica.OfficeExpense;
 
 import android.util.Log;
 
-import com.example.grassroots.CongressExpenseVM;
-import com.example.grassroots.fragment.OfficeExpUIListener;
+import com.example.grassroots.utils.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 
 public class OfficeExpensePresenter {

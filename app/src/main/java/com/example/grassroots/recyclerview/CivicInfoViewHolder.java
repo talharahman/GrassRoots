@@ -61,17 +61,13 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         repName.setText(electedRepresentatives.getName());
         repPosition.setText(position);
 
-        Glide.with(itemView.getContext())
-                .load(electedRepresentatives.getPhotoUrl())
-                .centerCrop()
-                .placeholder(R.drawable.silhouette)
-                .into(repImage);
-
         urlView(electedRepresentatives);
         phoneView(electedRepresentatives);
         emailView(electedRepresentatives);
         facebookView(electedRepresentatives);
         twitterView(electedRepresentatives);
+
+        setImages(electedRepresentatives);
         sendView(listener, electedRepresentatives);
 
         boolean expanded = electedRepresentatives.isExpanded();
@@ -84,6 +80,14 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             showText.setText("show contact");
             arrow.setImageResource(R.drawable.ic_arrow_down);
         }
+    }
+
+    private void setImages(ElectedRepresentatives electedRepresentatives) {
+        Glide.with(itemView.getContext())
+                .load(electedRepresentatives.getPhotoUrl())
+                .centerCrop()
+                .placeholder(R.drawable.silhouette)
+                .into(repImage);
     }
 
     private void sendView(SendPetitionToRepCallBack listener, ElectedRepresentatives representative) {

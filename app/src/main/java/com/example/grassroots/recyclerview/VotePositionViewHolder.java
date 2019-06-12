@@ -1,42 +1,53 @@
 package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
-import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResults;
 import com.example.grassroots.model.ProPublica.VotePositions.Votes;
-
-import java.util.ArrayList;
 
 public class VotePositionViewHolder extends RecyclerView.ViewHolder {
 
-    TextView votePostion;
-    TextView voteDescription;
-    TextView voteSummary;
+    TextView voteBillPostion;
+    TextView voteBillDescription;
+    TextView voteBillStatus;
     TextView voteBillID;
-    TextView voteBillTitle;
+    TextView voteBillPurpose;
     TextView voteBillLatestAction;
+    TextView showDetails;
+    CardView vpBillExpanded;
 
     public VotePositionViewHolder(@NonNull View itemView) {
         super(itemView);
-        votePostion= itemView.findViewById(R.id.txt_positionv2);
-        voteDescription= itemView.findViewById(R.id.txt_descriptionv2);
-        voteSummary= itemView.findViewById(R.id.txt_summaryv2);
-        voteBillID = itemView.findViewById(R.id.txt_bill_idv2);
-        voteBillTitle = itemView.findViewById(R.id.txt_bill_purposev2);
-        voteBillLatestAction = itemView.findViewById(R.id.txt_bill_latest_actionv2);
+        voteBillID = itemView.findViewById(R.id.vp_bill_id);
+        voteBillDescription = itemView.findViewById(R.id.vp_bill_description);
+        voteBillPostion = itemView.findViewById(R.id.vp_bill_result);
+        voteBillPurpose = itemView.findViewById(R.id.vp_bill_purpose_textview);
+        voteBillStatus = itemView.findViewById(R.id.vp_bill_status);
+        voteBillLatestAction = itemView.findViewById(R.id.vp_bill_latest_action);
+        showDetails = itemView.findViewById(R.id.show_details);
+        vpBillExpanded = itemView.findViewById(R.id.vote_position_bill_expanded);
     }
 
     public void onBind(Votes votes) {
         voteBillID.setText(votes.getBill().getBill_id());
-        voteBillTitle.setText(votes.getBill().getTitle());
+        voteBillPurpose.setText(votes.getBill().getTitle());
         voteBillLatestAction.setText(votes.getBill().getLatest_action());
-        voteDescription.setText(votes.getDescription());
-        votePostion.setText(votes.getPosition());
-        voteSummary.setText(votes.getResult());
+        voteBillDescription.setText(votes.getDescription());
+        voteBillPostion.setText(votes.getPosition());
+        voteBillStatus.setText(votes.getResult());
+
+        boolean expanded = votes.isExpanded();
+        if (expanded) {
+            vpBillExpanded.setVisibility(View.VISIBLE);
+            showDetails.setText("hide details");
+        } else {
+            vpBillExpanded.setVisibility(View.GONE);
+            showDetails.setText("show details");
+        }
     }
 }
 

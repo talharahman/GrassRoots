@@ -1,4 +1,4 @@
-package com.example.grassroots;
+package com.example.grassroots.model.ProPublica.OfficeExpenses;
 
 import android.arch.lifecycle.ViewModel;
 

@@ -80,10 +80,13 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     }
 
     private void makeNetworkCall(String key, String zipCode) {
-        CivicInfoPresenter presenter = new CivicInfoPresenter(civicInfoModel -> {
-            civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
-            recyclerView.setAdapter(civicInfoAdapter);
-            userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+        CivicInfoPresenter presenter = new CivicInfoPresenter(new LocalRepsUIListener() {
+            @Override
+            public void updateUI(CivicInfoModel civicInfoModel) {
+                civicInfoAdapter.setAdapterList(civicInfoModel.getPositions(), civicInfoModel.getElectedRepresentatives());
+                recyclerView.setAdapter(civicInfoAdapter);
+                userLocation.setText(civicInfoModel.getNormalizedInput().getCity());
+            }
         });
 
         presenter.networkCall(key, zipCode);

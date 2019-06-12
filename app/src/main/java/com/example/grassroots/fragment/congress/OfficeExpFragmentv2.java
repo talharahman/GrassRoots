@@ -19,21 +19,13 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.OfficeExpUIListener;
-import com.example.grassroots.fragment.petition.PetitionFirstFragment;
+import com.example.grassroots.utils.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
 import com.example.grassroots.network.ProPublica.OfficeExpense.OfficeExpensePresenter;
 import com.example.grassroots.recyclerview.ExpenseAdapter;
-
-import java.nio.file.Path;
-
-import static android.view.View.GONE;
-import static android.view.View.INVISIBLE;
 
 public class OfficeExpFragmentv2 extends Fragment {
 

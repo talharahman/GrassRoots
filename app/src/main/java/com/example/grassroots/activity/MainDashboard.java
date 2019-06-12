@@ -30,7 +30,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         initialize();
         getFirebaseData();
         openMainfeed();
-        //moveTosplashScreen(new splashscreenFragment());
 
     }
 
@@ -48,13 +47,8 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         });
     }
 
-
-
     private void getFirebaseData() {
-
-
 //        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//
 //        currentUser.getUid();
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();

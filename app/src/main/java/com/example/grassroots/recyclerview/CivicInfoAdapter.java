@@ -60,13 +60,10 @@ public class CivicInfoAdapter extends RecyclerView.Adapter<CivicInfoViewHolder> 
         }
         civicInfoViewHolder.onBind(electedRepresentatives.get(i), positionsMap.get(positionsMap.size()-i-1), listener);
 
-        civicInfoViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                boolean expanded = electedRepresentatives.get(i).isExpanded();
-                electedRepresentatives.get(i).setExpanded(!expanded);
-                CivicInfoAdapter.this.notifyItemChanged(i);
-            }
+        civicInfoViewHolder.itemView.setOnClickListener(v -> {
+            boolean expanded = electedRepresentatives.get(i).isExpanded();
+            electedRepresentatives.get(i).setExpanded(!expanded);
+            CivicInfoAdapter.this.notifyItemChanged(i);
         });
     }
 

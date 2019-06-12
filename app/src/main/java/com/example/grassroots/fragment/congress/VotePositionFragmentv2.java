@@ -8,6 +8,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -34,17 +35,12 @@ import java.util.List;
 
 public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQueryTextListener{
 
-    private CongressOverviewVM congressOverviewVM;
-
-    private String member_id;
-
     public static final String TAG = "HERE";
 
     private VotePositionAdapter votePositionAdapter;
     private RecyclerView recyclerView;
 
     private List<Votes> votesList = new ArrayList<>();
-
 
     public VotePositionFragmentv2() {
     }
@@ -61,12 +57,14 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
 
         recyclerView = view.findViewById(R.id.rv_vote_positions);
         recyclerView.setLayoutManager(new LinearLayoutManager(requireContext()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(recyclerView.getContext(), DividerItemDecoration.VERTICAL));
+        votePositionAdapter = new VotePositionAdapter();
 
         final SearchView searchView = view.findViewById(R.id.sv_bill_deets);
         searchView.setOnQueryTextListener(this);
 
-        congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
-        member_id = congressOverviewVM.getCongressMember().getId();
+        CongressOverviewVM congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
+        String member_id = congressOverviewVM.getCongressMember().getId();
 
         TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
         txt_missed_total.setText(String.format("%s / %s", congressOverviewVM.getCongressMember().getMissed_votes(), congressOverviewVM.getCongressMember().getTotal_votes()));
@@ -82,7 +80,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
             public void updateUI(VotePositionResponse votePositionResponse) {
                 votesList = votePositionResponse.getResults().get(0).getVotes();
                 Log.d(TAG, "updateUI: " + votePositionResponse.getStatus());
-                votePositionAdapter = new VotePositionAdapter(votesList);
+                votePositionAdapter.setVp_category_list(votesList);
                 recyclerView.setAdapter(votePositionAdapter);
                 votePositionAdapter.notifyDataSetChanged();
             }

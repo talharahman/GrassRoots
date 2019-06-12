@@ -17,22 +17,32 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
 
     private List<Votes> vp_category_list;
 
-    public VotePositionAdapter(List<Votes> vp_category_list){
+    public VotePositionAdapter() {}
+
+    public void setVp_category_list(List<Votes> vp_category_list) {
         this.vp_category_list = vp_category_list;
     }
-
-
 
     @NonNull
     @Override
     public VotePositionViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View childView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_bill_deets_design_v2, viewGroup, false);
-        return new VotePositionViewHolder(childView);
+     return new VotePositionViewHolder(LayoutInflater
+             .from(viewGroup.getContext())
+             .inflate(R.layout.itemview_vote_position_bills, viewGroup, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull VotePositionViewHolder votePositionViewHolder, int i) {
         votePositionViewHolder.onBind(vp_category_list.get(i));
+
+        votePositionViewHolder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                boolean expanded = vp_category_list.get(i).isExpanded();
+                vp_category_list.get(i).setExpanded(!expanded);
+                VotePositionAdapter.this.notifyItemChanged(i);
+            }
+        });
     }
 
     @Override

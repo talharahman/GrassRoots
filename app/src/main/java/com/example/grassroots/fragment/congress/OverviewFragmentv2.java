@@ -45,11 +45,10 @@ import java.util.List;
 public class OverviewFragmentv2 extends Fragment {
 
     private View rootView;
-    private String fecID;
     private TabContactListener tabContactListener;
-    private ElectedRepresentatives electedRepresentatives;
     private List<Petition> myPetitionsHistory = new ArrayList<>();
     private UserActionViewModel userActionViewModel;
+    public static final String ADDRESS = "https://www.fec.gov/data/candidate/";
 
     public OverviewFragmentv2() {
     }
@@ -134,32 +133,22 @@ public class OverviewFragmentv2 extends Fragment {
             dialog.show();
         });
 
-
-//        String rep_name = congressOverviewVM.getCongressMember().getFirst_name() + " " + congressOverviewVM.getCongressMember().getLast_name();
-//
-//        CivicInfoPresenter civicInfoPresenter = new CivicInfoPresenter(new LocalRepsUIListener() {
-//            @Override
-//            public void updateUI(CivicInfoModel civicInfoModel) {
-
-//                if (rep_name.equals(civicInfoModel.getElectedRepresentatives().get(0).getName())) {
-//                    Glide.with(rootView.getContext())
-//                            .load(electedRepresentatives.getPhotoUrl())
-//                            .centerCrop()
-//                            .into(img_profile_rep);
-//                }
-//            }
-//        });
-
-//        civicInfoPresenter.networkCall(this.getString(R.string.Civic_Info_API_Key));
-
         txt_title_name.setText(
                 String.format("%s %s %s", congressOverviewVM.getCongressMember().getShort_title(), congressOverviewVM.getCongressMember().getFirst_name(), congressOverviewVM.getCongressMember().getLast_name()));
 
         txt_party_state.setText(
                 String.format("%s, %s", congressOverviewVM.getCongressMember().getParty(), congressOverviewVM.getCongressMember().getState()));
 
-        fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
+        String fecID = congressOverviewVM.getCongressMember().getFec_candidate_id();
         txt_fec_id.setText(fecID);
+        txt_fec_id.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Uri uri = Uri.parse(ADDRESS + fecID + "/");
+                Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+                startActivity(intent);
+            }
+        });
 
         txt_year.setText(congressOverviewVM.getCongressMember().getNext_election());
 

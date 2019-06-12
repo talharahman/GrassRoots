@@ -2,11 +2,21 @@ package com.example.grassroots.model.ProPublica.VotePositions;
 
 public class Votes implements Comparable<Votes> {
 
-   private Bill bill;
-   private String description;
-   private String result;
-   private String date;
-   private String position;
+    private Bill bill;
+    private String description;
+    private String result;
+    private String date;
+    private String position;
+
+    private boolean isExpanded;
+
+    public boolean isExpanded() {
+        return isExpanded;
+    }
+
+    public void setExpanded(boolean expanded) {
+        isExpanded = expanded;
+    }
 
     public Bill getBill() {
         return bill;

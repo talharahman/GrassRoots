@@ -108,7 +108,7 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 if(btn_exp_submit.isPressed() && short_title.equals("Rep.")){
-                    insertOENestedFragment();
+               //     insertOENestedFragment();
                     btn_exp_submit.setVisibility(v.GONE);
                 } else if(btn_exp_submit.isPressed() && short_title.equals("Sen.")) {
                     insertCalltoActionFragment();
@@ -125,13 +125,13 @@ public class SpinnerOEFragment extends Fragment {
         Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 
-    private void insertOENestedFragment() {
+   /* private void insertOENestedFragment() {
         OfficeExpFragment officeExpFragment = new OfficeExpFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_spinner, officeExpFragment).addToBackStack(null).commit();
         Log.d("SPINNEROEFRAG", "insertOENestedFragment: inflate OE FRAG");
 
-    }
+    }*/
     private void insertCalltoActionFragment() {
         TransparencyFragment transparencyFragment = new TransparencyFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
