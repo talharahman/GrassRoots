@@ -83,11 +83,50 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
     }
 
     private void setImages(ElectedRepresentatives electedRepresentatives) {
-        Glide.with(itemView.getContext())
-                .load(electedRepresentatives.getPhotoUrl())
-                .centerCrop()
-                .placeholder(R.drawable.silhouette)
-                .into(repImage);
+        if (electedRepresentatives.getName().equals("Andrew M. Cuomo")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.andrew_cuomo)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+
+        } else if (electedRepresentatives.getName().equals("Thomas P. DiNapoli")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.thomas_dinapoli)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        } else if (electedRepresentatives.getName().equals("Letitia A. James")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.letitia_james)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        } else if (electedRepresentatives.getName().equals("Jumaane Williams")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.jumaane_williams)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        } else if (electedRepresentatives.getName().equals("Kathy Hochul")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.kathy_hochul)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        } else if (electedRepresentatives.getName().equals("Lee M. Zeldin")) {
+            Glide.with(itemView.getContext())
+                    .load(R.drawable.lee_zeldin)
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        } else {
+            Glide.with(itemView.getContext())
+                    .load(electedRepresentatives.getPhotoUrl())
+                    .centerCrop()
+                    .placeholder(R.drawable.silhouette)
+                    .into(repImage);
+        }
     }
 
     private void sendView(SendPetitionToRepCallBack listener, ElectedRepresentatives representative) {

@@ -22,7 +22,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="54dp"
-                android:src="@drawable/ferguson_a" />
+                android:src="@drawable/lee_zeldin" />
 
             <TextView
                 android:id="@+id/txt_title_name"
