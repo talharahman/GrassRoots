@@ -50,8 +50,7 @@ public class OverviewFragmentv2 extends Fragment {
     private UserActionViewModel userActionViewModel;
     public static final String ADDRESS = "https://www.fec.gov/data/candidate/";
 
-    public OverviewFragmentv2() {
-    }
+    public OverviewFragmentv2() { }
 
     public static OverviewFragmentv2 newInstance() {
         return new OverviewFragmentv2();

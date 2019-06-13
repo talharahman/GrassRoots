@@ -62,4 +62,9 @@ public class Votes implements Comparable<Votes> {
     public int compareTo(Votes o) {
         return this.getDescription().toLowerCase().compareTo(o.getDescription().toLowerCase());
     }
+
+   /* @Override
+    public int compareTo(Votes o) {
+        return this.getBill().getTitle().toLowerCase().compareTo(o.getBill().getTitle().toLowerCase());
+    }*/
 }

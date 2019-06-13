@@ -24,6 +24,11 @@ public interface CongressService {
             @Path("member-id") String memberId
     );
 
+
+
+//    @GET("rzmorales/2f045e833a8283f7985f9107e7585ff9/raw/d5db56be98bb06fc960b0aa17dae743fde2d612f/Bills%2520API%2520Endpoint%2520-%2520Temp")
+//    Call<VotePositionResponse> getVotePositions();
+
     @GET("members/{member-id}/office_expenses/{year}/{quarter}.json")
     Call<OfficeExpenseResponse> getOfficeExpenses(
             @Header("X-Api-Key") String apiKey,

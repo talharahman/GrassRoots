@@ -27,7 +27,7 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
 
     private CongressAdapter congressAdapter;
     private List<CongressMember> congressMembersList = new ArrayList<>();
-    private RecyclerView recyclerView;
+    private RecyclerView recyclerViewCongress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +48,9 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
             startActivity(home);
         });
 
-        recyclerView = findViewById(R.id.rv_congress);
-        recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        recyclerViewCongress = findViewById(R.id.rv_congress);
+        recyclerViewCongress.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+        congressAdapter = new CongressAdapter();
 
         SearchView searchView = findViewById(R.id.sv_congress);
         searchView.setOnQueryTextListener(this);
@@ -58,15 +59,17 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     }
 
     private void networkCall() {
+        Log.d("HERE", "updateCongressDirectoryUI: " + "newtork is running");
+
         CongressPresenter congressPresenter = new CongressPresenter(new CongressUIListener() {
             @Override
             public void updateCongressDirectoryUI(CongressResponse congressResponse) {
-                congressAdapter = new CongressAdapter(congressMembersList);
                 congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
                 Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
                 Collections.sort(congressMembersList);
 
-                recyclerView.setAdapter(congressAdapter);
+                congressAdapter.setMembers(congressMembersList);
+                recyclerViewCongress.setAdapter(congressAdapter);
                 congressAdapter.notifyDataSetChanged();
             }
         });
@@ -80,11 +83,13 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
 
     @Override
     public boolean onQueryTextChange(String newText) {
-        final List<CongressMember> newMemberList = new ArrayList<>();
+        List<CongressMember> newMemberList = new ArrayList<>();
         for (CongressMember congressMember : congressMembersList) {
             if (congressMember.getFirst_name().toLowerCase().contains(newText.toLowerCase()) ||
-            congressMember.getLast_name().toLowerCase().contains(newText.toLowerCase())) {
+                    congressMember.getLast_name().toLowerCase().contains(newText.toLowerCase())) {
                 newMemberList.add(congressMember);
+            }else {
+                Log.d("HERE", "onQueryTextChange: " + "string not found");
             }
         }
         congressAdapter.setData(newMemberList);

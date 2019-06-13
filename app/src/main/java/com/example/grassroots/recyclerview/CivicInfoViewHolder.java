@@ -18,6 +18,8 @@ import com.example.grassroots.model.CivicInfo.ElectedRepresentatives;
 import com.example.grassroots.model.user.UserActionViewModel;
 import com.example.grassroots.network.PetitionDB.SendPetitionToRepCallBack;
 
+import java.util.HashMap;
+
 class CivicInfoViewHolder extends RecyclerView.ViewHolder {
 
     private TextView repName;

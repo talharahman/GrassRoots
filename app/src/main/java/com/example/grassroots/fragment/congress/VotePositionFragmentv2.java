@@ -2,7 +2,6 @@ package com.example.grassroots.fragment.congress;
 
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,12 +14,10 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.support.v7.widget.SearchView;
 import android.widget.TextView;
 
 import com.example.grassroots.R;
-import com.example.grassroots.model.ProPublica.Members.CongressMember;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 import com.example.grassroots.model.ProPublica.VotePositions.Votes;
@@ -28,12 +25,11 @@ import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPres
 import com.example.grassroots.recyclerview.VotePositionAdapter;
 import com.example.grassroots.utils.VotePositionUIListener;
 
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQueryTextListener{
+public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQueryTextListener {
 
     public static final String TAG = "HERE";
 
@@ -65,6 +61,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
 
         CongressOverviewVM congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         String member_id = congressOverviewVM.getCongressMember().getId();
+        Log.d(TAG, "current memberID: " + member_id);
 
         TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
         txt_missed_total.setText(String.format("%s / %s", congressOverviewVM.getCongressMember().getMissed_votes(), congressOverviewVM.getCongressMember().getTotal_votes()));
@@ -79,15 +76,13 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
             @Override
             public void updateUI(VotePositionResponse votePositionResponse) {
                 votesList = votePositionResponse.getResults().get(0).getVotes();
-                Log.d(TAG, "updateUI: " + votePositionResponse.getStatus());
+                Log.d(TAG, "updateUI: " + votePositionResponse.getResults().get(0).getMember_id());
                 votePositionAdapter.setVp_category_list(votesList);
                 recyclerView.setAdapter(votePositionAdapter);
                 votePositionAdapter.notifyDataSetChanged();
             }
         });
-
         votePostitionPresenter.networkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key), member_id);
-
     }
 
     @Override
@@ -102,6 +97,9 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
             if (votes.getDescription().toLowerCase().contains(newText.toLowerCase())) {
                 newVotesList.add(votes);
             }
+            /*if (votes.getBill().getTitle().toLowerCase().contains(newText.toLowerCase())) {
+                newVotesList.add(votes);
+            }*/
         }
         votePositionAdapter.setData(newVotesList);
         return false;

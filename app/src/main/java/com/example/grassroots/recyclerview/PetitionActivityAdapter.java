@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.grassroots.R;
-import com.example.grassroots.fragment.user.UserHistory;
 import com.example.grassroots.model.petition.Petition;
 
 import java.util.ArrayList;
@@ -48,7 +47,7 @@ public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.V
                 itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_activity,viewGroup,false);
                 return new UserPetitionActivityViewHolder(itemView);
             case USER_HISTORY_TYPE:
-                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_petition_history,viewGroup,false);
+                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_history,viewGroup,false);
                 return new HistoryFeedViewHolder(itemView);
                 default:
                     return null;

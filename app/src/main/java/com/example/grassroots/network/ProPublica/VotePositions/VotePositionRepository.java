@@ -11,9 +11,10 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class VotePositionRepository {
+class VotePositionRepository {
     private static Retrofit instance;
     private static final String VOTE_POSITIONS_BASE_URL = "https://api.propublica.org/congress/v1/";
+  //  private static final String VOTE_POSITIONS_BASE_URL = "https://gist.githubusercontent.com/";
 
     VotePositionRepository() {}
 
@@ -35,7 +36,7 @@ public class VotePositionRepository {
             @Override
             public void onResponse(Call<VotePositionResponse> call, Response<VotePositionResponse> response) {
                 VotePositionResponse votePositionResponse = response.body();
-                Log.d("HERE", "onResponse: " + response.body().getStatus().toString());
+           //     Log.d("HERE", "VP onResponse: " + response.body().getStatus());
                 if (response.body() != null) {
                     votePositionListener.onSuccess(votePositionResponse);
                 }
@@ -43,8 +44,7 @@ public class VotePositionRepository {
 
             @Override
             public void onFailure(Call<VotePositionResponse> call, Throwable t) {
-
-                Log.d("ONERROR", "onFailure: " + t.getStackTrace());
+                Log.d("ONERROR", "onFailure: " + t.getMessage());
             }
         });
     }

@@ -51,7 +51,7 @@ public class UserFeed extends Fragment {
 
         recyclerView.setLayoutManager(layoutManager);
 
-         userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
+        userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
 
 
 
