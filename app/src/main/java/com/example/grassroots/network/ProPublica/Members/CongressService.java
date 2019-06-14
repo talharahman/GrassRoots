@@ -18,16 +18,16 @@ public interface CongressService {
             @Path("chamber") String chamber
     );
 
-    @GET("members/{member-id}/votes.json")
-    Call<VotePositionResponse> getVotePositions(
-            @Header("X-API-Key") String ApiKey,
-            @Path("member-id") String memberId
-    );
+//    @GET("members/{member-id}/votes.json")
+//    Call<VotePositionResponse> getVotePositions(
+//            @Header("X-API-Key") String ApiKey,
+//            @Path("member-id") String memberId
+//    );
 
 
 
-//    @GET("rzmorales/2f045e833a8283f7985f9107e7585ff9/raw/d5db56be98bb06fc960b0aa17dae743fde2d612f/Bills%2520API%2520Endpoint%2520-%2520Temp")
-//    Call<VotePositionResponse> getVotePositions();
+    @GET("rzmorales/2f045e833a8283f7985f9107e7585ff9/raw/e3e441f241756ea673681bb9b4d319bfc6555869/Bills%2520API%2520Endpoint%2520-%2520Temp")
+    Call<VotePositionResponse> getVotePositions();
 
     @GET("members/{member-id}/office_expenses/{year}/{quarter}.json")
     Call<OfficeExpenseResponse> getOfficeExpenses(

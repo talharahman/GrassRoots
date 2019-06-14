@@ -13,8 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class VotePositionRepository {
     private static Retrofit instance;
-    private static final String VOTE_POSITIONS_BASE_URL = "https://api.propublica.org/congress/v1/";
-  //  private static final String VOTE_POSITIONS_BASE_URL = "https://gist.githubusercontent.com/";
+//    private static final String VOTE_POSITIONS_BASE_URL = "https://api.propublica.org/congress/v1/";
+    private static final String VOTE_POSITIONS_BASE_URL = "https://gist.githubusercontent.com/";
 
     VotePositionRepository() {}
 
@@ -31,12 +31,17 @@ class VotePositionRepository {
     void fetchVotePositions(String apiKey, final String member_id, final VotePositionListener votePositionListener) {
         getInstance()
                 .create(CongressService.class)
-                .getVotePositions(apiKey, member_id)
+                .getVotePositions()
                 .enqueue(new Callback<VotePositionResponse>() {
             @Override
             public void onResponse(Call<VotePositionResponse> call, Response<VotePositionResponse> response) {
                 VotePositionResponse votePositionResponse = response.body();
-           //     Log.d("HERE", "VP onResponse: " + response.body().getStatus());
+                Log.d("HERE", "VP onResponse: " + response.code());
+                Log.d("HERE", "VP onResponse: " + response.errorBody());
+
+                Log.d("HERE", "VP onResponse: " + response.message());
+                Log.d("HERE", "VP onResponse: " + response.raw());
+
                 if (response.body() != null) {
                     votePositionListener.onSuccess(votePositionResponse);
                 }
