@@ -1,0 +1,642 @@
+{
+   "status":"OK",
+   "copyright":"Copyright (c) 2019 Pro Publica Inc. All Rights Reserved.",
+   "results":[
+      {
+         "member_id": "Z000017",
+         "num_results": "20",
+         "offset": "0",
+         "votes": [
+           {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "263",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/263.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Danny K. Davis of Illinois Part B Amendment No. 17",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:16:00",
+           "total":              {
+               "yes": 410,
+               "no": 12,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "Yes"
+         }, {
+         "member_id": "Z000017",
+         "num_results": "20",
+         "offset": "0",
+         "votes": [
+           {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "263",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/263.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "American Dream Act",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "American Dream Act",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:16:00",
+           "total":              {
+               "yes": 410,
+               "no": 12,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "262",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/262.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Pascrell of New Jersey Part B Amendment No. 16",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:12:00",
+           "total":              {
+               "yes": 413,
+               "no": 10,
+               "present": 0,
+               "not_voting": 16
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "261",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/261.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Jackson Lee of Texas Part B Amendment No. 15",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:09:00",
+           "total":              {
+               "yes": 312,
+               "no": 109,
+               "present": 0,
+               "not_voting": 18
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "260",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/260.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Jackson Lee of Texas Part B Amendment No. 14",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:05:00",
+           "total":              {
+               "yes": 317,
+               "no": 105,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "259",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/259.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "DeFazio of Oregon Part B Amendment No. 13",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "19:01:00",
+           "total":              {
+               "yes": 313,
+               "no": 109,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "258",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/258.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Scott of Virginia Part B Amendment No. 12",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:58:00",
+           "total":              {
+               "yes": 241,
+               "no": 181,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "257",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/257.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Smith of New Jersey Part B Amendment No. 11",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:53:00",
+           "total":              {
+               "yes": 413,
+               "no": 11,
+               "present": 0,
+               "not_voting": 15
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "256",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/256.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "DeSaulnier of California Part B Amendment No. 8",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:48:00",
+           "total":              {
+               "yes": 369,
+               "no": 55,
+               "present": 0,
+               "not_voting": 15
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "255",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/255.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "DeSaulnier of California Part B Amendment No. 7",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:44:00",
+           "total":              {
+               "yes": 347,
+               "no": 76,
+               "present": 0,
+               "not_voting": 16
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "254",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/254.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "DeSaulnier of California Part B Amendment No. 6",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:41:00",
+           "total":              {
+               "yes": 381,
+               "no": 42,
+               "present": 0,
+               "not_voting": 16
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "253",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/253.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "DeSaulnier of California Part B Amendment No. 5",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:36:00",
+           "total":              {
+               "yes": 290,
+               "no": 134,
+               "present": 0,
+               "not_voting": 15
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "252",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/252.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "Shalala of Florida Part B Amendment No. 4",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:32:00",
+           "total":              {
+               "yes": 243,
+               "no": 179,
+               "present": 0,
+               "not_voting": 17
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "251",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/251.json",
+           "bill": {
+             "bill_id": "hr2740-116",
+             "number": "H R 2740",
+             "sponsor_id": "D000216",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2740.json",
+             "title": "Making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes.",
+             "latest_action": "Rules Committee Resolution H. Res. 436 Reported to House. Rule provides for consideration of H.R. 2740. Previous question shall be considered as ordered without intervening motions except motion to recommit with or without instructions. Providing for further consideration of H.R. 2740."
+           },
+           "amendment": {
+           },
+                     "description": "McGovern of Massachusetts Part B Amendment No. 2",
+           "question": "On Agreeing to the Amendment",
+           "result": "Agreed to",
+           "date": "2019-06-12",
+           "time": "18:27:00",
+           "total":              {
+               "yes": 338,
+               "no": 83,
+               "present": 0,
+               "not_voting": 18
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "250",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/250.json",
+           "bill": {             "bill_id": "adjourn-116",
+             "number": "ADJOURN",
+             "api_uri": null,
+             "title": null,
+             "latest_action": null
+           },
+           "amendment": {
+           },
+                     "description": "",
+           "question": "On Motion to Adjourn",
+           "result": "Failed",
+           "date": "2019-06-12",
+           "time": "13:09:00",
+           "total":              {
+               "yes": 140,
+               "no": 254,
+               "present": 1,
+               "not_voting": 38
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "249",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/249.json",
+           "bill": {             "bill_id": "adjourn-116",
+             "number": "ADJOURN",
+             "api_uri": null,
+             "title": null,
+             "latest_action": null
+           },
+           "amendment": {
+           },
+                     "description": "",
+           "question": "On Motion to Adjourn",
+           "result": "Failed",
+           "date": "2019-06-12",
+           "time": "12:40:00",
+           "total":              {
+               "yes": 146,
+               "no": 244,
+               "present": 0,
+               "not_voting": 43
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "248",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/248.json",
+           "bill": {
+             "bill_id": "hr2609-116",
+             "number": "H R 2609",
+             "sponsor_id": "C001120",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2609.json",
+             "title": "To amend the Homeland Security Act of 2002 to establish the Acquisition Review Board in the Department of Homeland Security, and for other purposes.",
+             "latest_action": "Motion to reconsider laid on the table Agreed to without objection."
+           },
+           "amendment": {
+           },
+                     "description": "DHS Acquisition Review Board Act",
+           "question": "On Motion to Suspend the Rules and Pass",
+           "result": "Passed",
+           "date": "2019-06-11",
+           "time": "16:31:00",
+           "total":              {
+               "yes": 419,
+               "no": 0,
+               "present": 0,
+               "not_voting": 14
+           },
+           "position": "Yes"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "247",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/247.json",
+           "bill": {
+             "bill_id": "hres430-116",
+             "number": "H RES 430",
+             "sponsor_id": "M000312",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hres430.json",
+             "title": "Authorizing the Committee on the Judiciary to initiate or intervene in judicial proceedings to enforce certain subpoenas and for other purposes.",
+             "latest_action": "Motion to reconsider laid on the table Agreed to without objection."
+           },
+           "amendment": {
+           },
+                     "description": "Authorizing the Committee on the Judiciary to initiate or intervene in judicial proceedings to enforce certain subpoenas and for other purposes",
+           "question": "On Agreeing to the Resolution",
+           "result": "Passed",
+           "date": "2019-06-11",
+           "time": "16:23:00",
+           "total":              {
+               "yes": 229,
+               "no": 191,
+               "present": 0,
+               "not_voting": 13
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "246",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/246.json",
+           "bill": {
+             "bill_id": "hres431-116",
+             "number": "H RES 431",
+             "sponsor_id": "R000606",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hres431.json",
+             "title": "Providing for consideration of the bill (H.R. 2740) making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes, and providing for consideration of the resolution (H. Res. 430) authorizing the Committee on the Judiciary to initiate or intervene in judicial proceedings to enforce certain subpoenas and for other purposes.",
+             "latest_action": "Motion to reconsider laid on the table Agreed to without objection."
+           },
+           "amendment": {
+           },
+                     "description": "Providing for consideration of H.R. 2740 and H. Res. 430",
+           "question": "On Agreeing to the Resolution",
+           "result": "Passed",
+           "date": "2019-06-11",
+           "time": "14:12:00",
+           "total":              {
+               "yes": 227,
+               "no": 190,
+               "present": 0,
+               "not_voting": 16
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "245",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/245.json",
+           "bill": {
+             "bill_id": "hres431-116",
+             "number": "H RES 431",
+             "sponsor_id": "R000606",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hres431.json",
+             "title": "Providing for consideration of the bill (H.R. 2740) making appropriations for the Departments of Labor, Health and Human Services, and Education, and related agencies for the fiscal year ending September 30, 2020, and for other purposes, and providing for consideration of the resolution (H. Res. 430) authorizing the Committee on the Judiciary to initiate or intervene in judicial proceedings to enforce certain subpoenas and for other purposes.",
+             "latest_action": "Motion to reconsider laid on the table Agreed to without objection."
+           },
+           "amendment": {
+           },
+                     "description": "Providing for consideration of H.R. 2740 and H. Res. 430",
+           "question": "On Ordering the Previous Question",
+           "result": "Passed",
+           "date": "2019-06-11",
+           "time": "14:02:00",
+           "total":              {
+               "yes": 227,
+               "no": 190,
+               "present": 0,
+               "not_voting": 16
+           },
+           "position": "No"
+         },
+                  {
+           "member_id": "Z000017",
+           "chamber": "House",
+           "congress": "116",
+           "session": "1",
+           "roll_call": "244",
+           "vote_uri": "https://api.propublica.org/congress/v1/116/house/sessions/1/votes/244.json",
+           "bill": {
+             "bill_id": "hr2590-116",
+             "number": "H R 2590",
+             "sponsor_id": "K000386",
+             "bill_uri": "https://api.propublica.org/congress/v1/116/bills/hr2590.json",
+             "title": "To require a Department of Homeland Security overseas personnel enhancement plan, and for other purposes.",
+             "latest_action": "Received in the Senate and Read twice and referred to the Committee on Homeland Security and Governmental Affairs."
+           },
+           "amendment": {
+           },
+                     "description": "DHS Overseas Personnel Enhancement Act",
+           "question": "On Motion to Suspend the Rules and Pass, as Amended",
+           "result": "Passed",
+           "date": "2019-06-10",
+           "time": "19:24:00",
+           "total":              {
+               "yes": 394,
+               "no": 2,
+               "present": 0,
+               "not_voting": 37
+           },
+           "position": "Yes"
+         }
+       ]
+    }
+ ]}]}
