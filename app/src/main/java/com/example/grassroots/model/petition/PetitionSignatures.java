@@ -6,6 +6,7 @@ public class PetitionSignatures implements Serializable {
     String signatureID;
     String timeSigned;
 
+    public PetitionSignatures(){}
     public PetitionSignatures(String signatureID, String timeSigned) {
         this.signatureID = signatureID;
         this.timeSigned = timeSigned;

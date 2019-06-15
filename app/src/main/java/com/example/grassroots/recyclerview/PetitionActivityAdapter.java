@@ -22,6 +22,7 @@ public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.V
     final int USER_HISTORY_TYPE = 1;
     private List<Petition> petitionList;
     private List<Petition> petitionList1;
+    private List<Petition> petitionListWithSignatures;
 //    private List<MyActivity> myActivityList = new ArrayList<>();
     HistoryFeedViewHolder historyFeedViewHolder;
     UserPetitionActivityViewHolder userPetitionActivityViewHolder;
@@ -77,12 +78,15 @@ public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.V
 //                Log.d("PETITIONNAME", "onBind: " + petitionList1.get(i).getSigners().size());
 //            }
 //        }
+
+
+
         ((HistoryFeedViewHolder) historyViewHolder).onBind( petitionList.get(position), currentID);
 
     }
 
     private void userActivityFeedItemView(UserPetitionActivityViewHolder userPetitionActivityViewHolder, String currentID, int position) {
-//        while (position< petitionList1.size()) {
+//        while (position< petitionListWithSignatures.size()) {
             ((UserPetitionActivityViewHolder) userPetitionActivityViewHolder).onBind(petitionList.get(position), currentID);
 //        }
     }

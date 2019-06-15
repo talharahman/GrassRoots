@@ -23,7 +23,12 @@ public class Petition implements Serializable {
     private String petitionKey;
     private List<PetitionUpdates> mPetitionUpdatesList = new ArrayList();
     private List<String> signers = new ArrayList<>();
-//    private List<DocumentReference> petitionSignatures;
+    private List<PetitionSignatures> petitionSignatures = new ArrayList<>();
+
+    public List<PetitionSignatures> getPetitionSignatures() {
+        return petitionSignatures;
+    }
+    //    private List<DocumentReference> petitionSignatures;
 //
 //    public List<DocumentReference> getPetitionSignatures() {
 //        return petitionSignatures;

@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="100dp"
     android:layout_margin="10dp"
+    android:id="@+id/user_activity_cardview"
     app:cardCornerRadius="8dp"
     app:cardMaxElevation="8dp">
 
