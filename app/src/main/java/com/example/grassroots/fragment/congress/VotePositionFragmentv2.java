@@ -69,7 +69,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
         member_id = congressOverviewVM.getCongressMember().getId();
 
         TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
-        txt_missed_total.setText(String.format("%s / %s", congressOverviewVM.getCongressMember().getMissed_votes(), congressOverviewVM.getCongressMember().getTotal_votes()));
+        txt_missed_total.setText(String.format("%s : %s", congressOverviewVM.getCongressMember().getMissed_votes(), congressOverviewVM.getCongressMember().getTotal_votes()));
 
         TextView txt_missed_votes = view.findViewById(R.id.txt_missed_votes);
         txt_missed_votes.setText(String.format("%s%%", congressOverviewVM.getCongressMember().getMissed_votes_pct()));

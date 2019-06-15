@@ -30,8 +30,8 @@
         android:id="@+id/title_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="12dp"
         android:text="Petition Title"
         android:textColor="#000000"
         android:textSize="24sp"
@@ -51,8 +51,8 @@
         android:id="@+id/target_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginRight="8dp"
         android:textColor="#000000"
         android:text="Decision Maker"
@@ -73,8 +73,8 @@
         android:id="@+id/textView4"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="12dp"
         android:layout_marginRight="8dp"
         android:textColor="#000000"
         android:text="Target Goal"
@@ -96,13 +96,24 @@
         android:id="@+id/save_button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="54dp"
-        android:layout_marginLeft="220dp"
-        android:text="Save and Continue >"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="200dp"
+        android:text="Save and Continue >>"
         android:fontFamily="@font/quicksand"
         android:textStyle="bold"
         android:textSize="18sp"
         android:textColor="@color/black"/>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginLeft="300dp"-->
+        <!--android:text="1/4"-->
+        <!--android:fontFamily="@font/quicksand"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="12sp"-->
+        <!--android:textColor="@color/black"/>-->
 
     <!--<Button-->
         <!--android:id="@+id/save_button1"-->

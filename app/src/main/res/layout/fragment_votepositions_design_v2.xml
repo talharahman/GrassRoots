@@ -78,7 +78,7 @@
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="MISSED / TOTAL "
+                        android:text="MISSED : TOTAL "
                         android:layout_marginTop="12dp"
                         android:textColor="#000"
                         android:textStyle="bold"
@@ -89,8 +89,8 @@
                         android:id="@+id/txt_missed_total"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="# / #"
-                        android:textColor="@color/red_leaf"
+                        android:text="# : #"
+                        android:textColor="@color/green_txt"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
@@ -120,7 +120,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
-                        android:textColor="@color/red_leaf"
+                        android:textColor="@color/green_txt"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
@@ -150,7 +150,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="#%"
-                        android:textColor="@color/red_leaf"
+                        android:textColor="@color/green_txt"
                         android:textSize="24sp"
                         android:textStyle="bold"
                         android:fontFamily="@font/roboto"/>
