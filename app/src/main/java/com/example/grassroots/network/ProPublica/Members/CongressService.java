@@ -26,7 +26,7 @@ public interface CongressService {
 
 
 
-    @GET("rzmorales/2f045e833a8283f7985f9107e7585ff9/raw/e3e441f241756ea673681bb9b4d319bfc6555869/Bills%2520API%2520Endpoint%2520-%2520Temp")
+    @GET("rzmorales/2f045e833a8283f7985f9107e7585ff9/raw/0922dd5ad58f92f6b8ab7f371f37bcd3699e9547/Bills%2520API%2520Endpoint%2520-%2520Temp")
     Call<VotePositionResponse> getVotePositions();
 
     @GET("members/{member-id}/office_expenses/{year}/{quarter}.json")
