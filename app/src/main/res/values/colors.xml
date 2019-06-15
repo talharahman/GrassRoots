@@ -19,5 +19,7 @@
     <color name="cream">#E7E2DE</color>
     <color name="socials">#6B4F99</color>
     <color name="default_background">#E9E4F8</color>
+    <color name="black">#000</color>
+    <color name="green_txt">#4CAF50</color>
 
 </resources>

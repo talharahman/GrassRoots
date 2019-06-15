@@ -86,12 +86,20 @@
                             android:textColor="#000"
                             android:textStyle="bold" />
 
-                        <Spinner
+                        <TextView
                             android:id="@+id/oe_yr_spinner_off_exp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="16dp" />
+                            android:layout_marginTop="16dp"
+                            android:textColor="@color/black"
+                            android:text="2017"/>
+
+                        <!--<Spinner-->
+                            <!--android:id="@+id/oe_yr_spinner_off_exp"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="8dp"-->
+                            <!--android:layout_marginTop="16dp" />-->
 
 
                     </LinearLayout>
@@ -112,13 +120,20 @@
                             android:textColor="#000"
                             android:textStyle="bold" />
 
-                        <Spinner
+                        <TextView
                             android:id="@+id/oe_qt_spinner_off_exp"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginLeft="8dp"
-                            android:layout_marginTop="16dp" />
+                            android:layout_marginTop="16dp"
+                            android:textColor="@color/black"
+                            android:text="4"/>
 
+                        <!--<Spinner-->
+                            <!--android:id="@+id/oe_qt_spinner_off_exp"-->
+                            <!--android:layout_width="wrap_content"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_marginLeft="8dp"-->
+                            <!--android:layout_marginTop="16dp" />-->
 
                     </LinearLayout>
 
