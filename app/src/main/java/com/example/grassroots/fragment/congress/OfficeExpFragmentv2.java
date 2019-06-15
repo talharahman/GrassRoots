@@ -131,6 +131,8 @@ public class OfficeExpFragmentv2 extends Fragment {
                 expenseAdapter.notifyDataSetChanged();
             }
         });
+
+        expenseCallback(2017, 4);
     }
 
 
@@ -140,22 +142,16 @@ public class OfficeExpFragmentv2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 year = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
-                if(!year.equals("") && !quarter.equals("")) {
-                    if (year != null && quarter != null) {
-                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2") ){
-                            insertInfoNotAvailable();
-                        }
-                        yr_ = Integer.parseInt(year);
-                        qt_ = Integer.parseInt(quarter);
-                        expenseCallback(yr_, qt_);
-                    }
-
-//                    while(year != null && quarter != null) {
+//                if(!year.equals("") && !quarter.equals("")) {
+//                    if (year != null && quarter != null) {
+//                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2") ){
+//                            insertInfoNotAvailable();
+//                        }
 //                        yr_ = Integer.parseInt(year);
 //                        qt_ = Integer.parseInt(quarter);
 //                        expenseCallback(yr_, qt_);
 //                    }
-                }
+//                }
             }
 
             @Override
@@ -167,21 +163,16 @@ public class OfficeExpFragmentv2 extends Fragment {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quarter = parent.getItemAtPosition(position).toString();
                 Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
-                if(!year.equals("") && !quarter.equals("")) {
-                    if (year != null && quarter != null) {
-                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2")){
-                            insertInfoNotAvailable();
-                        }
-                        yr_ = Integer.parseInt(year);
-                        qt_ = Integer.parseInt(quarter);
-                        expenseCallback(yr_, qt_);
-                    }
-//                    while(year != null && quarter != null) {
+//                if(!year.equals("") && !quarter.equals("")) {
+//                    if (year != null && quarter != null) {
+//                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2")){
+//                            insertInfoNotAvailable();
+//                        }
 //                        yr_ = Integer.parseInt(year);
 //                        qt_ = Integer.parseInt(quarter);
 //                        expenseCallback(yr_, qt_);
 //                    }
-                }
+//                }
 //                if(!year.equals("") && !quarter.equals("")) {
 //                    if(year != null && quarter != null) {
 //                        yr_ = Integer.parseInt(year);
