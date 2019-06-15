@@ -70,19 +70,19 @@ public class OfficeExpFragmentv2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_office_exp_design_v2, container, false);
-        oe_yr_spinner = root.findViewById(R.id.oe_yr_spinner_off_exp);
-        oe_qt_spinner = root.findViewById(R.id.oe_qt_spinner_off_exp);
+//        oe_yr_spinner = root.findViewById(R.id.oe_yr_spinner_off_exp);
+//        oe_qt_spinner = root.findViewById(R.id.oe_qt_spinner_off_exp);
 
-        ArrayAdapter<CharSequence> oe_yr_adapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.years, android.R.layout.simple_spinner_item);
-        oe_yr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        oe_yr_spinner.setAdapter(oe_yr_adapter);
-
-
-        ArrayAdapter<CharSequence> oe_qt_adapter = ArrayAdapter.createFromResource(requireContext(),
-                R.array.quarter, android.R.layout.simple_spinner_item);
-        oe_qt_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        oe_qt_spinner.setAdapter(oe_qt_adapter);
+//        ArrayAdapter<CharSequence> oe_yr_adapter = ArrayAdapter.createFromResource(requireContext(),
+//                R.array.years, android.R.layout.simple_spinner_item);
+//        oe_yr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        oe_yr_spinner.setAdapter(oe_yr_adapter);
+//
+//
+//        ArrayAdapter<CharSequence> oe_qt_adapter = ArrayAdapter.createFromResource(requireContext(),
+//                R.array.quarter, android.R.layout.simple_spinner_item);
+//        oe_qt_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+//        oe_qt_spinner.setAdapter(oe_qt_adapter);
 
         return root;
     }
@@ -91,7 +91,7 @@ public class OfficeExpFragmentv2 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        setSpinners();
+//        setSpinners();
 
         ImageView btn_disclaimer_yr_qt = view.findViewById(R.id.btn_disclaimer_year_quarter);
         btn_disclaimer_yr_qt.setOnClickListener(new View.OnClickListener() {
@@ -136,12 +136,12 @@ public class OfficeExpFragmentv2 extends Fragment {
     }
 
 
-    private void setSpinners() {
-        oe_yr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                year = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
+//    private void setSpinners() {
+//        oe_yr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                year = parent.getItemAtPosition(position).toString();
+//                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
 //                if(!year.equals("") && !quarter.equals("")) {
 //                    if (year != null && quarter != null) {
 //                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2") ){
@@ -152,17 +152,17 @@ public class OfficeExpFragmentv2 extends Fragment {
 //                        expenseCallback(yr_, qt_);
 //                    }
 //                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-        oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                quarter = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
+//        oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+//            @Override
+//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+//                quarter = parent.getItemAtPosition(position).toString();
+//                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
 //                if(!year.equals("") && !quarter.equals("")) {
 //                    if (year != null && quarter != null) {
 //                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2")){
@@ -180,13 +180,13 @@ public class OfficeExpFragmentv2 extends Fragment {
 //                        expenseCallback(yr_, qt_);
 //                    }
 //                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-            }
-        });
-    }
+//            }
+//
+//            @Override
+//            public void onNothingSelected(AdapterView<?> parent) {
+//            }
+//        });
+//    }
 
     private void expenseCallback(int year, int quarter) {
         officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
