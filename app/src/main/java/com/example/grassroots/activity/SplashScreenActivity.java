@@ -22,7 +22,6 @@ public class SplashScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         imageView = findViewById(R.id.splash);
-        imageViewtext = findViewById(R.id.splash_text);
         StartAnimations();
     }
 
@@ -40,14 +39,14 @@ public class SplashScreenActivity extends AppCompatActivity {
         anim.reset();
         imageView.clearAnimation();
         imageView.startAnimation(anim);
-        imageViewtext.clearAnimation();
-        imageViewtext.startAnimation(anim);
+     //   imageViewtext.clearAnimation();
+     //   imageViewtext.startAnimation(anim);
         Intent intent=new Intent(this,MainDashboard.class);
         splashTread = new Thread() {
             @Override
             public void run() {
                 try {
-                    sleep(5000);
+                    sleep(2500);
 
                 }catch (InterruptedException e) {
 

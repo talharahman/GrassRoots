@@ -123,7 +123,7 @@ public class OverviewFragmentv2 extends Fragment {
             petitions.setPositiveButton("OK", new DialogInterface.OnClickListener() {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
-                    Toast.makeText(rootView.getContext(), "Your Petition has been sent!", Toast.LENGTH_SHORT).show();
+               //git      Toast.makeText(rootView.getContext(), "Your Petition has been sent!", Toast.LENGTH_SHORT).show();
 
                     Intent Email = new Intent(Intent.ACTION_SEND);
                     Email.setType("text/email");
