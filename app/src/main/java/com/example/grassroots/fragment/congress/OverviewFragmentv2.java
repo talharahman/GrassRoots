@@ -124,6 +124,18 @@ public class OverviewFragmentv2 extends Fragment {
                 @Override
                 public void onClick(DialogInterface dialog, int which) {
                     Toast.makeText(rootView.getContext(), "Your Petition has been sent!", Toast.LENGTH_SHORT).show();
+
+                    Intent Email = new Intent(Intent.ACTION_SEND);
+                    Email.setType("text/email");
+                    Email.putExtra(Intent.EXTRA_EMAIL,
+                            new String[]{"https://zeldin.house.gov/zip-code-lookup"});
+                    Email.putExtra(Intent.EXTRA_SUBJECT,
+                            "This Petition Needs Your Support");
+                    Email.putExtra(Intent.EXTRA_TEXT, "Hello congress member, ");
+                    startActivity(Intent.createChooser(Email, "Send Petiton: "));
+
+
+
                 }
             });
             petitions.setNegativeButton("Cancel", null);
