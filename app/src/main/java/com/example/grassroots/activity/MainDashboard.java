@@ -121,7 +121,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getSupportFragmentManager()
                 .beginTransaction()
                 .replace(R.id.feed_container, new MainFeed())
-                .addToBackStack(null)
                 .commit();
     }
 

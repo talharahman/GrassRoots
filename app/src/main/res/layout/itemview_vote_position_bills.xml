@@ -27,7 +27,7 @@
                 android:layout_height="wrap_content"
                 android:text="BILL ID: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"/>
@@ -37,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
                 android:padding="8dp"
                 />
@@ -47,7 +47,7 @@
                 android:layout_height="wrap_content"
                 android:text="DESCRIPTION: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"/>
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
                 android:padding="8dp"
                 />
@@ -67,7 +67,7 @@
                 android:layout_height="wrap_content"
                 android:text="VOTE POSITION: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"
@@ -78,8 +78,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
+                android:textStyle="bold"
                 android:padding="8dp"
                 />
 
@@ -117,7 +118,7 @@
                 android:layout_height="wrap_content"
                 android:text="BILL PURPOSE: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"/>
@@ -127,7 +128,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
                 android:padding="8dp"
                 />
@@ -137,7 +138,7 @@
                 android:layout_height="wrap_content"
                 android:text="STATUS: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"/>
@@ -147,7 +148,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
                 android:padding="8dp"
                 />
@@ -157,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:text="LATEST ACTION: "
                 android:textColor="#000"
-                android:textSize="20sp"
+                android:textSize="16sp"
                 android:textStyle="bold"
                 android:fontFamily="@font/quicksand"
                 android:layout_marginTop="8dp"
@@ -168,7 +169,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="#000"
-                android:textSize="16sp"
+                android:textSize="20sp"
                 android:fontFamily="@font/roboto"
                 android:padding="8dp"
                 />
