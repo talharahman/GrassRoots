@@ -31,7 +31,7 @@ class VotePositionRepository {
     void fetchVotePositions(String apiKey, final String member_id, final VotePositionListener votePositionListener) {
         getInstance()
                 .create(CongressService.class)
-                .getVotePositions()
+                .getVotePositions(apiKey, member_id)
                 .enqueue(new Callback<VotePositionResponse>() {
             @Override
             public void onResponse(Call<VotePositionResponse> call, Response<VotePositionResponse> response) {

@@ -53,12 +53,23 @@ public class PetitionFirstFragment extends Fragment {
 
         setPetitionName();
         setPetitionTarget();
-        setPetitionSignatures();
 
         petitionViewModel= ViewModelProviders.of
                 (Objects.requireNonNull(getActivity()))
                 .get(PetitionViewModel.class);
 
+        editTextPetitionSignatures = rootView.findViewById(R.id.petition_signature_goal);
+
+        TextView saveAndContinueButton = rootView.findViewById(R.id.save_button1);
+        saveAndContinueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                listener.moveToPetitionSecondPart(new PetitionSecondFragment());
+                petitionViewModel.setmPetitionName(petitionName);
+                petitionViewModel.setmPetitionSupporter(petitionTarget);
+                petitionViewModel.setmPetitionSignatureGoal(Integer.parseInt(String.valueOf(editTextPetitionSignatures.getText())));
+            }
+        });
     }
 
 
@@ -92,27 +103,6 @@ public class PetitionFirstFragment extends Fragment {
 
     }
 
-    private void setPetitionSignatures() {
-        editTextPetitionSignatures = rootView.findViewById(R.id.petition_signature_goal);
-        petitionSignatureGoal = editTextPetitionSignatures.getText().toString();
-
-        TextView saveAndContinueButton = rootView.findViewById(R.id.save_button1);
-        saveAndContinueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (petitionName.isEmpty() || petitionTarget.isEmpty()) {
-                    if (petitionSignatureGoal.isEmpty()) {
-                        Toast.makeText(requireContext(), "Invalid submission", Toast.LENGTH_SHORT).show();
-                    }
-                } else {
-                    listener.moveToPetitionSecondPart(new PetitionSecondFragment());
-                    petitionViewModel.setmPetitionName(petitionName);
-                    petitionViewModel.setmPetitionSupporter(petitionTarget);
-                    petitionViewModel.setmPetitionSignatureGoal(Integer.valueOf(petitionSignatureGoal));
-                }
-            }
-        });
-    }
 
     @Override
     public void onAttach(Context context) {

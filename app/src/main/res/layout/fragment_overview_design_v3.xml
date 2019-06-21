@@ -22,7 +22,7 @@
                 android:layout_width="130dp"
                 android:layout_height="130dp"
                 android:layout_marginTop="54dp"
-                android:src="@drawable/lee_zeldin" />
+                android:src="@drawable/silhouette" />
 
             <TextView
                 android:id="@+id/txt_title_name"
