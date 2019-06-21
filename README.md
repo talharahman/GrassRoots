@@ -11,5 +11,7 @@ Grassroots significantly reduces the gap between the users and those in or seeki
 We help users create petitions, connect with representatives, and view their vote positions and office expenses. 
 Our aim is to provide transparency and demand a higher level of accountability.
 
+Technologies used include Google Firebase, Google Civic Info, ProPublica Congress API. 
+
 
 
