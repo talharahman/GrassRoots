@@ -4,7 +4,7 @@ Elevating Civic Engagement
 
 Developed by Mohamed Ben-Rabaa, Caroline Kang, Talha Rahman and Robert Zarate-Morales
 
-Our key objective is to bring the power back into the hands of concerned citizens. 
+Our key objective is to bring the power back into the hands of concerned Americans. 
 Currently, a lot of the information revolving around the work of our elected officials live fragmented both online and offline.
 
 Grassroots significantly reduces the gap between the users and those in or seeking office. 
