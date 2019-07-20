@@ -135,20 +135,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
- /*   private void urlView(ElectedRepresentatives representative) {
-        repUrlIcon.setImageResource(R.drawable.web);
-        if (representative.getUrls() == null) {
-         //   repUrlIcon.setVisibility(View.GONE);
-        } else {
-            repUrlIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent uriIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(representative.getUrls().get(0)));
-                    v.getContext().startActivity(uriIntent);
-                }
-            });
-        }
-    }*/
     private void urlView(ElectedRepresentatives representative) {
         repUrlIcon.setImageResource(R.drawable.web);
         repUrlIcon.setOnClickListener(new View.OnClickListener() {
@@ -187,18 +173,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    /*private void phoneView(ElectedRepresentatives representative) {
-        repPhoneIcon.setImageResource(R.drawable.phone);
-        if (representative.getPhones() == null) {
-         //   repPhoneIcon.setVisibility(View.GONE);
-        } else {
-            repPhoneIcon.setOnClickListener(v -> {
-                Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + representative.getPhones().get(0)));
-                v.getContext().startActivity(phoneIntent);
-            });
-        }
-    }*/
-
     private void emailView(ElectedRepresentatives representative) {
         repEmailIcon.setImageResource(R.drawable.email);
         repEmailIcon.setOnClickListener(new View.OnClickListener() {
@@ -218,21 +192,6 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             }
         });
     }
-
-/*    private void facebookView(ElectedRepresentatives representative) {
-        repFacebookIcon.setImageResource(R.drawable.facebook);
-        if (representative.getChannels() == null) {
-           // repFacebookIcon.setVisibility(View.GONE);
-        } else {
-            repFacebookIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(0).getId()));
-                    v.getContext().startActivity(facebookIntent);
-                }
-            });
-        }
-    }*/
 
     private void facebookView(ElectedRepresentatives representative) {
         repFacebookIcon.setImageResource(R.drawable.facebook);
@@ -259,6 +218,7 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
             @Override
             public void onClick(View v) {
                 AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                // TODO fix bug
                 if (representative.getChannels() == null) {
                     alertDialog.setTitle(representative.getName());
                     alertDialog.setIcon(R.drawable.twitter);
@@ -272,18 +232,4 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-   /* private void twitterView(ElectedRepresentatives representative) {
-        repTwitterIcon.setImageResource(R.drawable.twitter);
-        if (representative.getChannels() == null) {
-        //    repTwitterIcon.setVisibility(View.GONE);
-        } else {
-            repTwitterIcon.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(1).getId()));
-                    v.getContext().startActivity(twitterIntent);
-                }
-            });
-        }
-    }*/
 }
