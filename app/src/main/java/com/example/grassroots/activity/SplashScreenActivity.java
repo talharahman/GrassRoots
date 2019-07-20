@@ -26,7 +26,6 @@ public class SplashScreenActivity extends AppCompatActivity {
     }
 
     private void StartAnimations() {
-
 //        mListener = (PetitionsFeedInterface) this;
 
         Animation anim = AnimationUtils.loadAnimation(this, R.anim.alpha);

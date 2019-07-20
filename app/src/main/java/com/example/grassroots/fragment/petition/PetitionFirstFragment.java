@@ -54,7 +54,7 @@ public class PetitionFirstFragment extends Fragment {
         setPetitionName();
         setPetitionTarget();
 
-        petitionViewModel= ViewModelProviders.of
+        petitionViewModel = ViewModelProviders.of
                 (Objects.requireNonNull(getActivity()))
                 .get(PetitionViewModel.class);
 

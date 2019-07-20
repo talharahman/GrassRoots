@@ -135,10 +135,10 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    private void urlView(ElectedRepresentatives representative) {
+ /*   private void urlView(ElectedRepresentatives representative) {
         repUrlIcon.setImageResource(R.drawable.web);
         if (representative.getUrls() == null) {
-            repUrlIcon.setVisibility(View.GONE);
+         //   repUrlIcon.setVisibility(View.GONE);
         } else {
             repUrlIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -148,19 +148,56 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 }
             });
         }
+    }*/
+    private void urlView(ElectedRepresentatives representative) {
+        repUrlIcon.setImageResource(R.drawable.web);
+        repUrlIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                if (representative.getUrls() == null) {
+                    alertDialog.setTitle(representative.getName());
+                    alertDialog.setIcon(R.drawable.web);
+                    alertDialog.setMessage("No web url available for this representative");
+                } else {
+                    Intent uriIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse(representative.getUrls().get(0)));
+                    v.getContext().startActivity(uriIntent);
+                }
+            }
+        });
     }
 
     private void phoneView(ElectedRepresentatives representative) {
         repPhoneIcon.setImageResource(R.drawable.phone);
+        repPhoneIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                if (representative.getPhones() == null) {
+                    alertDialog.setTitle(representative.getName());
+                    alertDialog.setIcon(R.drawable.phone);
+                    alertDialog.setMessage("No phone number available for this representative");
+                } else {
+                    Intent phoneIntent = new Intent(Intent.ACTION_DIAL,
+                            Uri.parse("tel: " + representative.getPhones().get(0)));
+                    v.getContext().startActivity(phoneIntent);
+                }
+            }
+        });
+    }
+
+    /*private void phoneView(ElectedRepresentatives representative) {
+        repPhoneIcon.setImageResource(R.drawable.phone);
         if (representative.getPhones() == null) {
-            repPhoneIcon.setVisibility(View.GONE);
+         //   repPhoneIcon.setVisibility(View.GONE);
         } else {
             repPhoneIcon.setOnClickListener(v -> {
                 Intent phoneIntent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel: " + representative.getPhones().get(0)));
                 v.getContext().startActivity(phoneIntent);
             });
         }
-    }
+    }*/
 
     private void emailView(ElectedRepresentatives representative) {
         repEmailIcon.setImageResource(R.drawable.email);
@@ -173,7 +210,8 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                     alertDialog.setIcon(R.drawable.email);
                     alertDialog.setMessage("No e-mail available for this representative");
                 } else {
-                    Intent email = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto: " + representative.getEmails().get(0)));
+                    Intent email = new Intent(Intent.ACTION_SENDTO,
+                            Uri.parse("mailto: " + representative.getEmails().get(0)));
                     v.getContext().startActivity(email);
                 }
                 alertDialog.show();
@@ -181,10 +219,10 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
         });
     }
 
-    private void facebookView(ElectedRepresentatives representative) {
+/*    private void facebookView(ElectedRepresentatives representative) {
         repFacebookIcon.setImageResource(R.drawable.facebook);
         if (representative.getChannels() == null) {
-            repFacebookIcon.setVisibility(View.GONE);
+           // repFacebookIcon.setVisibility(View.GONE);
         } else {
             repFacebookIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -194,24 +232,50 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 }
             });
         }
+    }*/
 
-        /*if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
-            repFacebookIcon.setOnClickListener(v -> {
-                Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(1).getId()));
-                v.getContext().startActivity(facebookIntent);
-            });
-        } else {
-            repFacebookIcon.setOnClickListener(v -> {
-                Intent facebookIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://facebook.com/" + representative.getChannels().get(0).getId()));
-                v.getContext().startActivity(facebookIntent);
-            });
-        }*/
+    private void facebookView(ElectedRepresentatives representative) {
+        repFacebookIcon.setImageResource(R.drawable.facebook);
+        repFacebookIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                if (representative.getChannels() == null) {
+                    alertDialog.setTitle(representative.getName());
+                    alertDialog.setIcon(R.drawable.facebook);
+                    alertDialog.setMessage("No Facebook page available for this representative");
+                } else {
+                    Intent facebookIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://facebook.com/" + representative.getChannels().get(0).getId()));
+                    v.getContext().startActivity(facebookIntent);
+                }
+            }
+        });
     }
 
     private void twitterView(ElectedRepresentatives representative) {
         repTwitterIcon.setImageResource(R.drawable.twitter);
+        repTwitterIcon.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog alertDialog = new AlertDialog.Builder(itemView.getContext()).create();
+                if (representative.getChannels() == null) {
+                    alertDialog.setTitle(representative.getName());
+                    alertDialog.setIcon(R.drawable.twitter);
+                    alertDialog.setMessage("No Twitter page available for this representative");
+                } else {
+                    Intent twitterIntent = new Intent(Intent.ACTION_VIEW,
+                            Uri.parse("https://twitter.com/" + representative.getChannels().get(1).getId()));
+                    v.getContext().startActivity(twitterIntent);
+                }
+            }
+        });
+    }
+
+   /* private void twitterView(ElectedRepresentatives representative) {
+        repTwitterIcon.setImageResource(R.drawable.twitter);
         if (representative.getChannels() == null) {
-            repTwitterIcon.setVisibility(View.GONE);
+        //    repTwitterIcon.setVisibility(View.GONE);
         } else {
             repTwitterIcon.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -221,17 +285,5 @@ class CivicInfoViewHolder extends RecyclerView.ViewHolder {
                 }
             });
         }
-
-        /*if (representative.getName().equals("Donald J. Trump") || representative.getName().equals("Mike Pence")) {
-            repTwitterIcon.setOnClickListener(v -> {
-                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(2).getId()));
-                v.getContext().startActivity(twitterIntent);
-            });
-        } else {
-            repTwitterIcon.setOnClickListener(v -> {
-                Intent twitterIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://twitter.com/" + representative.getChannels().get(1).getId()));
-                v.getContext().startActivity(twitterIntent);
-            });
-        }*/
-    }
+    }*/
 }
