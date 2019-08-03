@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:background="@color/default_background"
+tools:context=".fragment.petition.PetitionThirdFragment">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="313dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="46dp"
+        android:layout_marginLeft="46dp"
+        android:layout_marginTop="116dp"
+        android:layout_marginEnd="46dp"
+        android:layout_marginRight="46dp"
+        android:layout_marginBottom="13dp"
+        android:text="Add a photo or video"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="333dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="38dp"
+        android:layout_marginLeft="38dp"
+        android:layout_marginEnd="38dp"
+        android:layout_marginRight="38dp"
+        android:layout_marginBottom="23dp"
+        android:text="Petitions with a photo or video receive six times more signatures than those without. Include one that captures the emotion of your story."
+        app:layout_constraintBottom_toTopOf="@+id/image_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <ImageView
+        android:id="@+id/image_view"
+        android:layout_width="354dp"
+        android:layout_height="198dp"
+        android:layout_marginBottom="15dp"
+        app:layout_constraintBottom_toTopOf="@+id/button_choose_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+<Button
+    android:id="@+id/button_choose_image"
+    android:layout_width="173dp"
+    android:layout_height="40dp"
+    android:layout_marginEnd="4dp"
+    android:layout_marginRight="4dp"
+    android:layout_marginBottom="15dp"
+    android:text="upload photo"
+    android:background="@color/colorPrimary"
+    app:layout_constraintBottom_toTopOf="@+id/save_button3"
+    app:layout_constraintEnd_toEndOf="@+id/save_button3"
+    app:layout_constraintTop_toBottomOf="@+id/image_view" />
+
+
+<Button
+    android:id="@+id/save_button3"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="38dp"
+    android:layout_marginRight="38dp"
+    android:layout_marginBottom="68dp"
+    android:text="save and preview"
+    android:textColor="@color/neutral_white"
+    android:background="@drawable/btn_viewpositions"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintTop_toBottomOf="@+id/button_choose_image" />
+
+</android.support.constraint.ConstraintLayout>

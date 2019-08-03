@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/default_background"
+    tools:context=".fragment.petition.PetitionSecondFragment">
+
+
+    <TextView
+        android:id="@+id/textview3"
+        android:layout_width="330dp"
+        android:layout_height="35dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginTop="76dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginBottom="12dp"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/quicksand"
+        android:text="Updates Head line"
+        app:layout_constraintBottom_toTopOf="@+id/petition_headline_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/petition_headline_edit_text"
+        android:layout_width="334dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="37dp"
+        android:layout_marginLeft="37dp"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginBottom="25dp"
+
+        app:layout_constraintBottom_toTopOf="@+id/textview"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textview3" />
+
+    <TextView
+        android:id="@+id/textview"
+        android:layout_width="319dp"
+        android:layout_height="76dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginLeft="41dp"
+        android:layout_marginEnd="41dp"
+        android:layout_marginRight="41dp"
+        android:layout_marginBottom="18dp"
+        android:text="Explain the update you want others to see"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/quicksand"
+        app:layout_constraintBottom_toTopOf="@+id/petition_description_edit_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petition_headline_edit_text" />
+
+
+    <EditText
+        android:id="@+id/petition_description_edit_text"
+        android:layout_width="332dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/neutral_white"
+        android:gravity="top|start"
+        android:text=""
+        app:layout_constraintBottom_toTopOf="@+id/save_button"
+        app:layout_constraintEnd_toStartOf="@+id/save_button"
+        app:layout_constraintStart_toStartOf="@+id/save_button"
+        app:layout_constraintTop_toBottomOf="@+id/textview" />
+
+    <Button
+        android:id="@+id/save_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="37dp"
+        android:layout_marginRight="37dp"
+        android:layout_marginBottom="43dp"
+        android:text="Save and Continue"
+        android:textColor="@color/neutral_white"
+        android:background="@drawable/btn_viewpositions"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/petition_description_edit_text" />
+
+</android.support.constraint.ConstraintLayout>

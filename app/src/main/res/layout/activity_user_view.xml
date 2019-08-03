@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="false">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/appBarLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+    <android.support.design.widget.CollapsingToolbarLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        app:contentScrim="@color/colorPrimary"
+        app:expandedTitleGravity="top"
+        android:background="@drawable/gradient_bkg_p"
+        app:layout_scrollFlags="exitUntilCollapsed|scroll">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar_user_activity"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        app:layout_collapseMode="pin"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="96dp"
+            android:layout_height="96dp"
+            android:layout_marginTop="48dp"
+            android:layout_marginStart="300dp"
+            android:layout_marginLeft="300dp"
+            android:src="@drawable/profile"
+            />
+
+        <TextView
+            android:text="Rafael Torres"
+            android:textSize="32sp"
+            android:fontFamily="@font/montserrat"
+            android:textStyle="bold"
+            android:textColor="@color/neutral_white"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="88dp"
+            />
+
+        <android.support.design.widget.TabLayout
+            android:id="@+id/tabs_user"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            app:tabTextColor="@color/neutral_white"
+            android:background="@color/colorPrimary">
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/user_actions"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="History"
+                />
+
+            <android.support.design.widget.TabItem
+                android:id="@+id/user_feed"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Updates" />
+
+        </android.support.design.widget.TabLayout>
+    </android.support.design.widget.CollapsingToolbarLayout>
+    </android.support.design.widget.AppBarLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/user_activity_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/default_background"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
+
+    <android.support.design.widget.BottomNavigationView
+        android:id="@+id/bottom_nav_view_user"
+        style="@style/BottomNavigation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:visibility="visible"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_bottom_nav"
+        app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/fab_user_view_home"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_home"
+            android:backgroundTint="@color/colorPrimary"
+            android:layout_gravity="top|center" />
+    </android.support.design.widget.BottomNavigationView>
+
+</android.support.design.widget.CoordinatorLayout>

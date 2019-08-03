@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/default_background"
+    tools:context=".fragment.petition.PetitionFirstFragment">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/main_feed_toolbar"
+        android:background="@drawable/gradient_bkg_p"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Create a Petition"
+            android:textStyle="bold"
+            android:textSize="32sp"
+            android:fontFamily="@font/roboto"
+            android:textColor="@color/neutral_white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <TextView
+        android:id="@+id/title_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginLeft="12dp"
+        android:text="Petition Title"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/roboto"/>
+
+
+    <EditText
+        android:id="@+id/edit_text_petition_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="What do you want to achieve?" />
+
+    <TextView
+        android:id="@+id/target_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#000000"
+        android:text="Decision Maker"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/roboto" />
+
+    <EditText
+        android:id="@+id/edit_text_target"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="Who makes the key decisions?" />
+
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:layout_marginLeft="12dp"
+        android:layout_marginRight="8dp"
+        android:textColor="#000000"
+        android:text="Target Goal"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:fontFamily="@font/roboto"/>
+
+    <EditText
+        android:id="@+id/petition_signature_goal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:hint="What is your signature goal?"
+        android:inputType="number" />
+
+
+    <TextView
+        android:id="@+id/save_button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:layout_marginLeft="200dp"
+        android:text="Save and Continue >>"
+        android:fontFamily="@font/quicksand"
+        android:textStyle="bold"
+        android:textSize="18sp"
+        android:textColor="@color/black"/>
+
+    <!--<TextView-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="8dp"-->
+        <!--android:layout_marginLeft="300dp"-->
+        <!--android:text="1/4"-->
+        <!--android:fontFamily="@font/quicksand"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textSize="12sp"-->
+        <!--android:textColor="@color/black"/>-->
+
+    <!--<Button-->
+        <!--android:id="@+id/save_button1"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:layout_marginTop="54dp"-->
+        <!--android:layout_marginLeft="200dp"-->
+        <!--android:text="@string/next"-->
+        <!--android:fontFamily="@font/roboto"-->
+        <!--android:textColor="@color/colorPrimary" />-->
+
+</LinearLayout>

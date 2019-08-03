@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "223192190479",
+    "firebase_url": "https://grassroots-93865.firebaseio.com",
+    "project_id": "grassroots-93865",
+    "storage_bucket": "grassroots-93865.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223192190479:android:631bb9cb339e24c1",
+        "android_client_info": {
+          "package_name": "com.example.grassroots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223192190479-1g4e4ai9ijjqglr3eqqba1ok6qvokdt3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.grassroots",
+            "certificate_hash": "15c66ea81c9f6a3cf549e353feff74b61bfcb46a"
+          }
+        },
+        {
+          "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALPPbK7YkPxFS5qL_1TK1mh_kZ-rxjb-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
