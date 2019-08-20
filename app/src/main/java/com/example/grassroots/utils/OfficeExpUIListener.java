@@ -5,5 +5,6 @@ import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseRespo
 public interface OfficeExpUIListener {
 
     void updateOfficeExpUI(OfficeExpenseResponse officeExpenseResponse);
+    void noResponseOfficeExpUI();
 
 }
