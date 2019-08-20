@@ -21,7 +21,7 @@ import com.example.grassroots.R;
 import com.example.grassroots.model.ProPublica.Members.CongressOverviewVM;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 import com.example.grassroots.model.ProPublica.VotePositions.Votes;
-import com.example.grassroots.network.ProPublica.VotePositions.VotePostitionPresenter;
+import com.example.grassroots.network.ProPublica.VotePositions.VotePositionPresenter;
 import com.example.grassroots.recyclerview.VotePositionAdapter;
 import com.example.grassroots.utils.VotePositionUIListener;
 
@@ -72,7 +72,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
         TextView txt_votes_with_party = view.findViewById(R.id.txt_votes_with_party);
         txt_votes_with_party.setText(String.format("%s%%", congressOverviewVM.getCongressMember().getVotes_with_party_pct()));
 
-        VotePostitionPresenter votePostitionPresenter = new VotePostitionPresenter(new VotePositionUIListener() {
+        VotePositionPresenter votePositionPresenter = new VotePositionPresenter(new VotePositionUIListener() {
             @Override
             public void updateUI(VotePositionResponse votePositionResponse) {
                 votesList = votePositionResponse.getResults().get(0).getVotes();
@@ -82,7 +82,7 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
                 votePositionAdapter.notifyDataSetChanged();
             }
         });
-        votePostitionPresenter.networkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key), member_id);
+        votePositionPresenter.networkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key), member_id);
     }
 
     @Override

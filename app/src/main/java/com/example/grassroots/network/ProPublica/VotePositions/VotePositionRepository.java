@@ -13,8 +13,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 class VotePositionRepository {
     private static Retrofit instance;
-//    private static final String VOTE_POSITIONS_BASE_URL = "https://api.propublica.org/congress/v1/";
-    private static final String VOTE_POSITIONS_BASE_URL = "https://gist.githubusercontent.com/";
+    private static final String VOTE_POSITIONS_BASE_URL = "https://api.propublica.org/congress/v1/";
+//    private static final String VOTE_POSITIONS_BASE_URL = "https://gist.githubusercontent.com/";
 
     VotePositionRepository() {}
 

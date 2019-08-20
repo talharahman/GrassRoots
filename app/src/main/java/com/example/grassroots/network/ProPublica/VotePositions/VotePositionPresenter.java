@@ -3,10 +3,10 @@ package com.example.grassroots.network.ProPublica.VotePositions;
 import com.example.grassroots.utils.VotePositionUIListener;
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 
-public class VotePostitionPresenter {
+public class VotePositionPresenter {
     private VotePositionUIListener positionUIListener;
 
-    public VotePostitionPresenter(VotePositionUIListener votePositionUIListener){
+    public VotePositionPresenter(VotePositionUIListener votePositionUIListener){
         this.positionUIListener = votePositionUIListener;
     }
 
