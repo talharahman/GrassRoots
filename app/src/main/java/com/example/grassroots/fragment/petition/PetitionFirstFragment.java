@@ -67,7 +67,7 @@ public class PetitionFirstFragment extends Fragment {
                 listener.moveToPetitionSecondPart(new PetitionSecondFragment());
                 petitionViewModel.setmPetitionName(petitionName);
                 petitionViewModel.setmPetitionSupporter(petitionTarget);
-                petitionViewModel.setmPetitionSignatureGoal(Integer.parseInt(String.valueOf(editTextPetitionSignatures.getText())));
+//                petitionViewModel.setmPetitionSignatureGoal(Integer.parseInt(String.valueOf(editTextPetitionSignatures.getText())));
             }
         });
     }

@@ -15,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.grassroots.R;
@@ -42,7 +43,7 @@ public class PetitionThirdFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_petition_third, container, false);
+        return inflater.inflate(R.layout.fragment_petition_third_v2, container, false);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class PetitionThirdFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         Button buttonChooseImage = view.findViewById(R.id.button_choose_image);
         mImageView = view.findViewById(R.id.image_view);
-        Button saveReviewButton = view.findViewById(R.id.save_button3);
+        TextView saveReviewButton = view.findViewById(R.id.save_button3);
 
         petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 

@@ -19,6 +19,7 @@ import android.webkit.MimeTypeMap;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
@@ -55,7 +56,7 @@ public class PetitionUpdatesSecondFragment extends Fragment {
     private Uri mImageUri;
     private ImageView petitionUpdatesImageView;
     private Button uploadImageButton;
-    private Button saveReviewButton;
+    private TextView saveReviewButton;
     private PetitionViewModel petitionViewModel;
     private StorageTask mUploadTask;
     private ProgressBar mProgressBar;
@@ -73,7 +74,7 @@ public class PetitionUpdatesSecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_petition_updates_second, container, false);
+        return inflater.inflate(R.layout.fragment_petition_updates_second_v2, container, false);
     }
 
     @Override

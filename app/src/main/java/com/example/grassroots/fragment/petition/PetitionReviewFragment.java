@@ -75,7 +75,7 @@ public class PetitionReviewFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_petition_review, container, false);
+        return inflater.inflate(R.layout.fragment_petition_review_v2, container, false);
     }
 
     @Override
@@ -103,10 +103,10 @@ public class PetitionReviewFragment extends Fragment {
                 .centerCrop()
                 .into(petitionImageView);
 
-        shareButton.setOnClickListener(v -> mListener.moveToSharePetition(new PetitionSharedFragment()));
+//        shareButton.setOnClickListener(v -> mListener.moveToSharePetition(new PetitionSharedFragment()));
         publishButton.setOnClickListener(v -> uploadFile2());
 
-        setShareSocials();
+//        setShareSocials();
     }
 
     private void setShareSocials() {
