@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.activity.MainDashboard;
 import com.example.grassroots.activity.UserActionActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -92,7 +93,7 @@ public class UserAuthorization extends AppCompatActivity {
         if (user != null) {
             if (user.isEmailVerified()) {
 
-                Intent sendToMainFeed = new Intent(getApplicationContext(), UserActionActivity.class);
+                Intent sendToMainFeed = new Intent(getApplicationContext(), MainDashboard.class);
                 startActivity(sendToMainFeed);
             } else {
                 Toast.makeText(getApplicationContext(), "Verify your email", Toast.LENGTH_SHORT).show();

@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.activity.MainDashboard;
 import com.example.grassroots.activity.UserActionActivity;
 import com.example.grassroots.model.user.UserModel;
 import com.google.firebase.auth.FirebaseAuth;
@@ -79,7 +80,7 @@ public class UserSignUpActivity extends AppCompatActivity {
                         enterName.getText().toString(),
                         enterEmail.getText().toString()));
 
-                Intent sendToMainFeed = new Intent(getApplicationContext(), UserActionActivity.class);
+                Intent sendToMainFeed = new Intent(getApplicationContext(), MainDashboard.class);
                 startActivity(sendToMainFeed);
             } else {
                 Toast.makeText(getApplicationContext(), "verification will be sent soon! check soon!", Toast.LENGTH_SHORT).show();
