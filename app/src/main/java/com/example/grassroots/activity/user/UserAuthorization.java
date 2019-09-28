@@ -31,7 +31,7 @@ public class UserAuthorization extends AppCompatActivity {
         findViewByIds();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();
-        progressDialog = new ProgressDialog(getApplicationContext());
+        progressDialog = new ProgressDialog(UserAuthorization.this);
         FirebaseUser user = firebaseAuth.getCurrentUser();
 
         if (user != null) {

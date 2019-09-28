@@ -10,9 +10,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.activity.user.UserAuthorization;
 import com.example.grassroots.fragment.user.MainFeed;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -31,7 +33,10 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         getFirebaseData();
         openMainfeed();
 
+
     }
+
+
 
     private void initialize() {
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_main);
@@ -45,7 +50,12 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
                 startActivity(home);
             }
         });
+
+
+
+
     }
+
 
     private void getFirebaseData() {
 //        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
@@ -143,4 +153,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
                 .addToBackStack(null)
                 .commit();
     }
+
+
 }
