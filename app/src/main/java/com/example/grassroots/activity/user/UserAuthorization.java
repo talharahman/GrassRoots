@@ -8,6 +8,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
@@ -18,7 +19,7 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class UserAuthorization extends AppCompatActivity {
 
-    Button signUpButton, loginButton;
+    TextView signUpButton, loginButton;
     EditText emailEditText, passwordEditText;
     private ProgressDialog progressDialog;
     FirebaseAuth firebaseAuth;
@@ -27,7 +28,7 @@ public class UserAuthorization extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_authorization);
+        setContentView(R.layout.activity_user_authorization_v2);
         findViewByIds();
         firebaseAuth = FirebaseAuth.getInstance();
         user = firebaseAuth.getCurrentUser();

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
@@ -26,7 +27,7 @@ import java.util.Objects;
 
 public class UserSignUpActivity extends AppCompatActivity {
     private EditText enterName, enterEmail, enterPassword;
-    private Button registerNewUserButton;
+    private TextView registerNewUserButton;
     FirebaseAuth firebaseAuth;
     private FirebaseDatabase firebaseDatabase;
     private DatabaseReference appUsersDatabaseReference;
@@ -35,7 +36,7 @@ public class UserSignUpActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_user_sign_up);
+        setContentView(R.layout.activity_user_sign_up_v2);
 
         findViewByIds();
         registerNewUserButton = findViewById(R.id.register_user_button);

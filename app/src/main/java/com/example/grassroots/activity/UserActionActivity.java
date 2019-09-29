@@ -107,7 +107,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         TextView userName = findViewById(R.id.user_name);
         userName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
-        Button signOutButton = findViewById(R.id.signout_button);
+        TextView signOutButton = findViewById(R.id.signout_button);
         signOutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
