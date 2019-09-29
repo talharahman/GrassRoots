@@ -30,7 +30,7 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
         setContentView(R.layout.activity_main_dashboard);
 
         initialize();
-        getFirebaseData();
+//        getFirebaseData();
         openMainfeed();
 
 
