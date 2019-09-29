@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@color/default_background"
     android:orientation="vertical"
-    tools:context=".fragment.petition.PetitionThirdFragment">
+    tools:context="org.grassrootsapp.grassroots.fragment.petition.PetitionThirdFragment">
 
     <TextView
         android:id="@+id/textView"

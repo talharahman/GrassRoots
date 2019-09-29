@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/default_background"
-    tools:context=".fragment.petition.PetitionFirstFragment">
+    tools:context="org.grassrootsapp.grassroots.fragment.petition.PetitionFirstFragment">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/main_feed_toolbar"

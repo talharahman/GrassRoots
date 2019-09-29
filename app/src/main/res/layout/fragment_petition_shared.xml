@@ -5,7 +5,7 @@ xmlns:tools="http://schemas.android.com/tools"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
 android:background="@color/default_background"
-tools:context=".fragment.petition.PetitionSharedFragment">
+tools:context="org.grassrootsapp.grassroots.fragment.petition.PetitionSharedFragment">
 
 <Button
     android:id="@+id/share_photo_button"

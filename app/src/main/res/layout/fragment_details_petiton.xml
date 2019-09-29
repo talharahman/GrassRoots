@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activity.MainDashboard">
+    tools:context="org.grassrootsapp.grassroots.activity.MainDashboard">
 
     <!-- fitsSystemWindows  this the gap top of tool bar -->
     <android.support.design.widget.AppBarLayout

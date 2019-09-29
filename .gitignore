@@ -14,3 +14,5 @@
 **/*/res/values/keys.xml
 /.idea
 google-services.json
+app/google-services.json
+app/build.gradle

@@ -42,6 +42,64 @@
           ]
         }
       }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223192190479:android:fb3a9b2502550a53901d7a",
+        "android_client_info": {
+          "package_name": "org.grassrootsapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALPPbK7YkPxFS5qL_1TK1mh_kZ-rxjb-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:223192190479:android:7797170a32c7132d901d7a",
+        "android_client_info": {
+          "package_name": "org.grassrootsapp.grassroots"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALPPbK7YkPxFS5qL_1TK1mh_kZ-rxjb-Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "223192190479-4qlj9vt28ek3amlmek459a6atllll507.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
     }
   ],
   "configuration_version": "1"

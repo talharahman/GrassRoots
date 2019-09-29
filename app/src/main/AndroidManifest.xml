@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.grassroots">
+    package="org.grassrootsapp.grassroots">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
@@ -13,12 +13,12 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.user.UserSignUpActivity"
+        <activity android:name="org.grassrootsapp.grassroots.activity.user.UserSignUpActivity"
             android:theme="@style/AppTheme.NoActionBar">
         </activity>
-        <activity android:name=".activity.user.UserAuthorization" />
+        <activity android:name="org.grassrootsapp.grassroots.activity.user.UserAuthorization" />
         <activity
-            android:name=".activity.SplashScreenActivity"
+            android:name="org.grassrootsapp.grassroots.activity.SplashScreenActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -27,10 +27,10 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activity.UserActionActivity"
+            android:name="org.grassrootsapp.grassroots.activity.UserActionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.PetitionHostActivity"
+            android:name="org.grassrootsapp.grassroots.activity.PetitionHostActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <meta-data
@@ -38,16 +38,16 @@
             android:value="@string/facebook_app_id" />
 
         <activity
-            android:name=".activity.LocalRepsActivity"
+            android:name="org.grassrootsapp.grassroots.activity.LocalRepsActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.CongressActivity"
+            android:name="org.grassrootsapp.grassroots.activity.CongressActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.MainDashboard"
+            android:name="org.grassrootsapp.grassroots.activity.MainDashboard"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".activity.CongressTabActivity"
+            android:name="org.grassrootsapp.grassroots.activity.CongressTabActivity"
             android:theme="@style/AppTheme.NoActionBar" />
 
         <provider

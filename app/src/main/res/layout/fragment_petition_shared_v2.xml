@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/default_background"
-    tools:context=".fragment.petition.PetitionSharedFragment">
+    tools:context="org.grassrootsapp.grassroots.fragment.petition.PetitionSharedFragment">
 
     <ImageView
         android:layout_gravity="center_horizontal"

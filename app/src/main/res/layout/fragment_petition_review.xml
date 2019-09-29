@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/default_background"
-    tools:context=".fragment.petition.PetitionReviewFragment">
+    tools:context="org.grassrootsapp.grassroots.fragment.petition.PetitionReviewFragment">
 
     <TextView
         android:id="@+id/text_view_petition_name"

@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@color/neutral_white"
-    tools:context=".activity.user.UserAuthorization">
+    tools:context="org.grassrootsapp.grassroots.activity.user.UserAuthorization">
 
     <TextView
         android:id="@+id/username"

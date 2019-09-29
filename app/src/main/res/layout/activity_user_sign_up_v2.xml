@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/neutral_white"
     android:orientation="vertical"
-    tools:context=".activity.user.UserSignUpActivity">
+    tools:context="org.grassrootsapp.grassroots.activity.user.UserSignUpActivity">
 
     <TextView
         android:id="@+id/create_account_textview"
