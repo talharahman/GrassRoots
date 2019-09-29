@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/color_light_purple_ic"
+    android:background="@color/neutral_white"
     tools:context=".activity.user.UserAuthorization">
 
     <TextView
@@ -75,6 +75,13 @@
         android:textColor="@color/black"
         android:textSize="10sp"
         android:textStyle="bold"/>
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/powerpontlogo"/>
 
 
 </LinearLayout>
