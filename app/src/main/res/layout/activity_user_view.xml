@@ -24,7 +24,19 @@
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         app:layout_collapseMode="pin"
-        app:popupTheme="@style/AppTheme.PopupOverlay" />
+        app:popupTheme="@style/AppTheme.PopupOverlay" >
+
+
+        <Button
+            android:id="@+id/signout_button"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Sign Out"
+            />
+
+
+
+    </android.support.v7.widget.Toolbar>
 
         <de.hdodenhof.circleimageview.CircleImageView
             android:layout_width="96dp"
@@ -36,6 +48,7 @@
             />
 
         <TextView
+            android:id="@+id/user_name"
             android:text="Rafael Torres"
             android:textSize="32sp"
             android:fontFamily="@font/montserrat"

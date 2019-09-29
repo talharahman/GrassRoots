@@ -33,7 +33,7 @@ public class UserPetitionActivityViewHolder extends RecyclerView.ViewHolder {
             Log.d("PETITIONNAMESSS", "onBind: " + petition.getmPetitionName());
             Log.d("PETITIONNAMESSS", "onBind: " + petition.getSigners().get(i));
             Log.d("DOESTHISIDWORK", "onBind: " + currentID);
-            FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+            FirebaseAuth currentUser = FirebaseAuth.getInstance();
 
             if (petition.getSigners().get(i).equals(currentUser.getUid())){
                 textView_activity.setText("1 person has signed your petition\n" + petition.getmPetitionName());

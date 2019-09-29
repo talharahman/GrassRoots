@@ -13,18 +13,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".activity.SplashScreenActivity"
-            android:theme="@style/AppTheme.NoActionBar" >
-
-
+        <activity android:name=".activity.user.UserSignUpActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+        <activity android:name=".activity.user.UserAuthorization" />
+        <activity
+            android:name=".activity.SplashScreenActivity"
+            android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-
         </activity>
-
         <activity
             android:name=".activity.UserActionActivity"
             android:theme="@style/AppTheme.NoActionBar" />
@@ -44,9 +45,7 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.MainDashboard"
-            android:theme="@style/AppTheme.NoActionBar">
-
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".activity.CongressTabActivity"
             android:theme="@style/AppTheme.NoActionBar" />

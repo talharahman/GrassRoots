@@ -8,6 +8,7 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import com.example.grassroots.R;
+import com.example.grassroots.activity.user.UserAuthorization;
 import com.example.grassroots.utils.PetitionsFeedInterface;
 
 public class SplashScreenActivity extends AppCompatActivity {
@@ -40,7 +41,7 @@ public class SplashScreenActivity extends AppCompatActivity {
         imageView.startAnimation(anim);
      //   imageViewtext.clearAnimation();
      //   imageViewtext.startAnimation(anim);
-        Intent intent=new Intent(this,MainDashboard.class);
+        Intent intent=new Intent(this, UserAuthorization.class);
         splashTread = new Thread() {
             @Override
             public void run() {

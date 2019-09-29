@@ -11,9 +11,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.grassroots.R;
+import com.example.grassroots.activity.user.UserAuthorization;
 import com.example.grassroots.model.petition.Petition;
 import com.example.grassroots.model.petition.PetitionSignatures;
 import com.example.grassroots.model.user.UserActionViewModel;
@@ -67,6 +71,25 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
+        //TODO: will display user name here
+        TextView userName = findViewById(R.id.user_name);
+        userName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
+
+        Button signOutButton = findViewById(R.id.signout_button);
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userSignOut();
+            }
+        });
+
+
+    }
+
+    private void userSignOut(){
+        FirebaseAuth.getInstance().signOut();
+        Intent signOut = new Intent(getApplicationContext(), UserAuthorization.class);
+        startActivity(signOut);
     }
 
     private void getFirebaseData() {
