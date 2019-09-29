@@ -48,6 +48,7 @@
             />
 
         <TextView
+            android:id="@+id/user_name"
             android:text="Rafael Torres"
             android:textSize="32sp"
             android:fontFamily="@font/montserrat"
