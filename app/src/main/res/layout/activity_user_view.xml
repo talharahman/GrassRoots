@@ -27,14 +27,16 @@
         app:popupTheme="@style/AppTheme.PopupOverlay" >
 
 
-        <Button
+        <TextView
             android:id="@+id/signout_button"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="Sign Out"
-            />
-
-
+            android:layout_marginTop="16dp"
+            android:text=">> SIGN OUT"
+            android:textSize="12sp"
+            android:textColor="@color/neutral_white"
+            android:textStyle="bold"
+            android:fontFamily="@font/roboto" />
 
     </android.support.v7.widget.Toolbar>
 
