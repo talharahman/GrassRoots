@@ -66,11 +66,8 @@ public class UserHistory extends Fragment {
                 petitionActivityAdapter = new PetitionActivityAdapter();
                 totalPetitions = new ArrayList<>();
                 totalPetitions.addAll(petitions);
-//                Log.d("ISTHISWORKING?", "onChanged: " + totalPetitions.size());
 
                 Collections.reverse(totalPetitions);
-
-
 
                 petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions,userActionViewModel.getCurrentUserID(), 1);
 

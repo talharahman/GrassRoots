@@ -39,17 +39,18 @@
     </android.support.v7.widget.Toolbar>
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/user_image_upload"
             android:layout_width="96dp"
             android:layout_height="96dp"
             android:layout_marginTop="48dp"
             android:layout_marginStart="300dp"
             android:layout_marginLeft="300dp"
-            android:src="@drawable/profile"
+            android:src="@drawable/ic_image_upload"
             />
 
         <TextView
             android:id="@+id/user_name"
-            android:text="Rafael Torres"
+            android:text="No Name"
             android:textSize="32sp"
             android:fontFamily="@font/montserrat"
             android:textStyle="bold"

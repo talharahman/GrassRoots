@@ -1,8 +1,14 @@
 package com.example.grassroots.activity;
 
+import android.app.Activity;
 import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.Drawable;
+import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.TabLayout;
@@ -33,9 +39,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class UserActionActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
@@ -43,6 +55,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
     private CollectionReference petitionRef = db.collection("Petitioncol");
     public static String CURRENT_USER_ID;
     UserActionViewModel userActionViewModel;
+    CircleImageView userImage;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,8 +65,28 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         initialize();
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if(requestCode==1 && resultCode == Activity.RESULT_OK) {
+            Uri selectedImage = data.getData();
+            Bitmap bitmap = null;
+            try {
+                bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
+            } catch (FileNotFoundException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
     private void initialize() {
         getFirebaseData();
+        userImage = findViewById(R.id.user_image_upload);
+
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_user);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);
@@ -71,7 +104,6 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(viewPager));
 
-        //TODO: will display user name here
         TextView userName = findViewById(R.id.user_name);
         userName.setText(FirebaseAuth.getInstance().getCurrentUser().getDisplayName());
 
@@ -83,6 +115,16 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
             }
         });
 
+        Map<String, Drawable> userImageTracker = new HashMap<>();
+        userImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivityForResult(new Intent(Intent.ACTION_PICK, android.provider.MediaStore.Images.Media.INTERNAL_CONTENT_URI), 1);
+
+//                userImageTracker.put(FirebaseAuth.getInstance().getCurrentUser().getUid(),);
+//                userImage.setImageDrawable();
+            }
+        });
 
     }
 
