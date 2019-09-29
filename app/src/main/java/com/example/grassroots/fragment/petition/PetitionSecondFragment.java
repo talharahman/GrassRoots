@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 import com.example.grassroots.R;
 import com.example.grassroots.model.petition.PetitionViewModel;
@@ -32,14 +33,14 @@ public class PetitionSecondFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_petition_second, container, false);
+        return inflater.inflate(R.layout.fragment_petition_second_v2, container, false);
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        Button saveAndContinueButton = view.findViewById(R.id.save_button2);
+        TextView saveAndContinueButton = view.findViewById(R.id.save_button2);
         editTextPetitionProblem = view.findViewById(R.id.problem_edit_text);
 
         petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);

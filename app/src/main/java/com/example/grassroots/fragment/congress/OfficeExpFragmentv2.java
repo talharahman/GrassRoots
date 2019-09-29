@@ -20,6 +20,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.example.grassroots.R;
 import com.example.grassroots.utils.OfficeExpUIListener;
@@ -63,19 +64,19 @@ public class OfficeExpFragmentv2 extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_office_exp_design_v2, container, false);
-//        oe_yr_spinner = root.findViewById(R.id.oe_yr_spinner_off_exp);
-//        oe_qt_spinner = root.findViewById(R.id.oe_qt_spinner_off_exp);
+        oe_yr_spinner = root.findViewById(R.id.oe_yr_spinner_off_exp);
+        oe_qt_spinner = root.findViewById(R.id.oe_qt_spinner_off_exp);
 
-//        ArrayAdapter<CharSequence> oe_yr_adapter = ArrayAdapter.createFromResource(requireContext(),
-//                R.array.years, android.R.layout.simple_spinner_item);
-//        oe_yr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        oe_yr_spinner.setAdapter(oe_yr_adapter);
-//
-//
-//        ArrayAdapter<CharSequence> oe_qt_adapter = ArrayAdapter.createFromResource(requireContext(),
-//                R.array.quarter, android.R.layout.simple_spinner_item);
-//        oe_qt_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-//        oe_qt_spinner.setAdapter(oe_qt_adapter);
+        ArrayAdapter<CharSequence> oe_yr_adapter = ArrayAdapter.createFromResource(requireContext(),
+                R.array.years, android.R.layout.simple_spinner_item);
+        oe_yr_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        oe_yr_spinner.setAdapter(oe_yr_adapter);
+
+
+        ArrayAdapter<CharSequence> oe_qt_adapter = ArrayAdapter.createFromResource(requireContext(),
+                R.array.quarter, android.R.layout.simple_spinner_item);
+        oe_qt_adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        oe_qt_spinner.setAdapter(oe_qt_adapter);
 
         return root;
     }
@@ -84,7 +85,7 @@ public class OfficeExpFragmentv2 extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-//        setSpinners();
+        setSpinners();
 
         ImageView btn_disclaimer_yr_qt = view.findViewById(R.id.btn_disclaimer_year_quarter);
         btn_disclaimer_yr_qt.setOnClickListener(new View.OnClickListener() {
@@ -123,63 +124,54 @@ public class OfficeExpFragmentv2 extends Fragment {
                 recyclerView.setAdapter(expenseAdapter);
                 expenseAdapter.notifyDataSetChanged();
             }
-        });
 
-        expenseCallback(2017, 4);
+            @Override
+            public void noResponseOfficeExpUI() {
+                Toast.makeText(getContext(), "Information Unavailable", Toast.LENGTH_LONG).show();
+            }
+        });
     }
 
 
-//    private void setSpinners() {
-//        oe_yr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                year = parent.getItemAtPosition(position).toString();
-//                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
-//                if(!year.equals("") && !quarter.equals("")) {
-//                    if (year != null && quarter != null) {
-//                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2") ){
-//                            insertInfoNotAvailable();
-//                        }
-//                        yr_ = Integer.parseInt(year);
-//                        qt_ = Integer.parseInt(quarter);
-//                        expenseCallback(yr_, qt_);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-//        oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-//            @Override
-//            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-//                quarter = parent.getItemAtPosition(position).toString();
-//                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
-//                if(!year.equals("") && !quarter.equals("")) {
-//                    if (year != null && quarter != null) {
-//                        if(year.equals("2009") && quarter.equals("1") || year.equals("2009") && quarter.equals("2")){
-//                            insertInfoNotAvailable();
-//                        }
-//                        yr_ = Integer.parseInt(year);
-//                        qt_ = Integer.parseInt(quarter);
-//                        expenseCallback(yr_, qt_);
-//                    }
-//                }
-//                if(!year.equals("") && !quarter.equals("")) {
-//                    if(year != null && quarter != null) {
-//                        yr_ = Integer.parseInt(year);
-//                        qt_ = Integer.parseInt(quarter);
-//                        expenseCallback(yr_, qt_);
-//                    }
-//                }
-//            }
-//
-//            @Override
-//            public void onNothingSelected(AdapterView<?> parent) {
-//            }
-//        });
-//    }
+    private void setSpinners() {
+        oe_yr_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                year = parent.getItemAtPosition(position).toString();
+                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
+                if (!year.equals("") && !quarter.equals("")) {
+                    if (year != null && quarter != null) {
+                        yr_ = Integer.parseInt(year);
+                        qt_ = Integer.parseInt(quarter);
+                        expenseCallback(yr_, qt_);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+
+        oe_qt_spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                quarter = parent.getItemAtPosition(position).toString();
+                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
+                if (!year.equals("") && !quarter.equals("")) {
+                    if (year != null && quarter != null) {
+                        yr_ = Integer.parseInt(year);
+                        qt_ = Integer.parseInt(quarter);
+                        expenseCallback(yr_, qt_);
+                    }
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
+    }
 
     private void expenseCallback(int year, int quarter) {
         officeExpensePresenter.expenseNetworkCall(requireContext().getString(R.string.ProPublica_Congress_API_Key),
@@ -190,12 +182,5 @@ public class OfficeExpFragmentv2 extends Fragment {
         TransparencyFragment transparencyFragment = new TransparencyFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_oe, transparencyFragment).addToBackStack(null).commit();
-    }
-
-    private void insertInfoNotAvailable() {
-        InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
-        FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
-        transaction.replace(R.id.container_oe_rv, infoNotAvailableFragment).addToBackStack(null).commit();
-        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 }

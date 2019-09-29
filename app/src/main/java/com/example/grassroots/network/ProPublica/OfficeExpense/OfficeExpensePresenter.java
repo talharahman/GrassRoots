@@ -1,6 +1,7 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
 import android.util.Log;
+import android.widget.Toast;
 
 import com.example.grassroots.utils.OfficeExpUIListener;
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
@@ -26,7 +27,7 @@ public class OfficeExpensePresenter {
 
             @Override
             public void failedCall() {
-
+                officeExpUIListener.noResponseOfficeExpUI();
             }
         });
 

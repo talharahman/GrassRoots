@@ -32,7 +32,7 @@ public class PetitionUpdateFirstFragment extends Fragment {
     private String mParam1;
     private EditText petitionDescrptionEditText;
     private EditText petitionHeadlineEditText;
-    private Button saveButton;
+    private TextView saveButton;
     private PetitionViewModel petitionViewModel;
     private PetitionsFeedInterface mListener;
 
@@ -60,7 +60,7 @@ public class PetitionUpdateFirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_petition_update_first, container, false);
+        return inflater.inflate(R.layout.fragment_petition_update_first_v2, container, false);
     }
 
     @Override
