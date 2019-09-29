@@ -2,7 +2,6 @@ package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,7 +21,6 @@ public class VotePositionAdapter extends RecyclerView.Adapter<VotePositionViewHo
 
     public void setVp_category_list(List<Votes> vp_category_list) {
         this.vp_category_list = vp_category_list;
-        Log.d("README", vp_category_list.get(0).getDate());
     }
 
     @NonNull

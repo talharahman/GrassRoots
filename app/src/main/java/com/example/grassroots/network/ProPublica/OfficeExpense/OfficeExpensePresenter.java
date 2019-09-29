@@ -1,6 +1,5 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.grassroots.utils.OfficeExpUIListener;
@@ -22,7 +21,6 @@ public class OfficeExpensePresenter {
             @Override
             public void successfulCall(OfficeExpenseResponse officeExpenseResponse) {
                 officeExpUIListener.updateOfficeExpUI(officeExpenseResponse);
-                Log.d("OFFICEEXPENSEPRESENTER", "successfulCall: " + congressApiKey + " " + member_id);
             }
 
             @Override

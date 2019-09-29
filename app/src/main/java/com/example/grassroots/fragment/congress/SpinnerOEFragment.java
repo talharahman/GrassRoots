@@ -8,7 +8,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -74,7 +73,6 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 year = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
 
             }
 
@@ -87,7 +85,6 @@ public class SpinnerOEFragment extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quarter = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
 
             }
 
@@ -122,7 +119,6 @@ public class SpinnerOEFragment extends Fragment {
         InfoNotAvailableFragment infoNotAvailableFragment = new InfoNotAvailableFragment();
         FragmentTransaction transaction = getChildFragmentManager().beginTransaction();
         transaction.replace(R.id.container_spinner, infoNotAvailableFragment).addToBackStack(null).commit();
-        Log.d("INFONOTAVAILABLEFRAG", "insertInfoNotAvailableFragment: ");
     }
 
    /* private void insertOENestedFragment() {

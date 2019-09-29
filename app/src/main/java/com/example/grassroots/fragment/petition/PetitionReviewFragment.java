@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -162,7 +161,6 @@ public class PetitionReviewFragment extends Fragment {
                             fileReference.getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
                                 @Override
                                 public void onSuccess(Uri uri) {
-                                    Log.d("test today", "onSuccess: uri= "+ uri.toString());
                                 }
                             });
                             petitionViewModel.setmPetitionSignature(1);
@@ -193,7 +191,6 @@ public class PetitionReviewFragment extends Fragment {
                                             @Override
                                             public void onFailure(@NonNull Exception e) {
                                                 Toast.makeText(requireContext(), "Error!", Toast.LENGTH_SHORT).show();
-                                                Log.d("TEst", e.toString());
                                             }
                                         });
 
@@ -242,7 +239,6 @@ public class PetitionReviewFragment extends Fragment {
 
                 MessageDigest md = MessageDigest.getInstance("SHA");
                 md.update(signature.toByteArray());
-                Log.d("KeyHash", Base64.encodeToString(md.digest(), Base64.DEFAULT));
             }
 
         } catch (PackageManager.NameNotFoundException e) {

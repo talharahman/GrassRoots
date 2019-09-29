@@ -3,7 +3,6 @@ package com.example.grassroots.recyclerview;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -30,9 +29,8 @@ public class UserPetitionActivityViewHolder extends RecyclerView.ViewHolder {
     public void onBind(Petition petition, String currentID) {
 
         for (int i = 0; i < petition.getSigners().size(); i++) {
-            Log.d("PETITIONNAMESSS", "onBind: " + petition.getmPetitionName());
-            Log.d("PETITIONNAMESSS", "onBind: " + petition.getSigners().get(i));
-            Log.d("DOESTHISIDWORK", "onBind: " + currentID);
+
+
             FirebaseAuth currentUser = FirebaseAuth.getInstance();
 
             if (petition.getSigners().get(i).equals(currentUser.getUid())){

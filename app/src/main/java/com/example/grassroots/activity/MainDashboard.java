@@ -7,7 +7,6 @@ import android.support.design.widget.BottomNavigationView;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -68,7 +67,6 @@ public class MainDashboard extends AppCompatActivity implements BottomNavigation
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
                         } else {
                             Toast.makeText(getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
                         }

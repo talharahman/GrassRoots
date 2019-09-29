@@ -12,7 +12,6 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -138,7 +137,6 @@ public class OfficeExpFragmentv2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 year = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + year);
                 if (!year.equals("") && !quarter.equals("")) {
                     if (year != null && quarter != null) {
                         yr_ = Integer.parseInt(year);
@@ -157,7 +155,6 @@ public class OfficeExpFragmentv2 extends Fragment {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 quarter = parent.getItemAtPosition(position).toString();
-                Log.d("SPINNEROEFRAG", "onItemSelected: " + quarter);
                 if (!year.equals("") && !quarter.equals("")) {
                     if (year != null && quarter != null) {
                         yr_ = Integer.parseInt(year);

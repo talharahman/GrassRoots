@@ -10,7 +10,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -61,7 +60,6 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
 
         CongressOverviewVM congressOverviewVM = ViewModelProviders.of((FragmentActivity) requireContext()).get(CongressOverviewVM.class);
         String member_id = congressOverviewVM.getCongressMember().getId();
-        Log.d(TAG, "current memberID: " + member_id);
 
         TextView txt_missed_total = view.findViewById(R.id.txt_missed_total);
         txt_missed_total.setText(String.format("%s : %s", congressOverviewVM.getCongressMember().getMissed_votes(), congressOverviewVM.getCongressMember().getTotal_votes()));
@@ -76,7 +74,6 @@ public class VotePositionFragmentv2 extends Fragment implements SearchView.OnQue
             @Override
             public void updateUI(VotePositionResponse votePositionResponse) {
                 votesList = votePositionResponse.getResults().get(0).getVotes();
-                Log.d(TAG, "updateUI: " + votePositionResponse.getResults().get(0).getMember_id());
                 votePositionAdapter.setVp_category_list(votesList);
                 recyclerView.setAdapter(votePositionAdapter);
                 votePositionAdapter.notifyDataSetChanged();

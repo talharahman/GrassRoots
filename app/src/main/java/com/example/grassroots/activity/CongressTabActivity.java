@@ -11,7 +11,6 @@ import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
@@ -44,7 +43,6 @@ public class CongressTabActivity extends AppCompatActivity implements BottomNavi
         CongressOverviewVM congressOverviewVM = ViewModelProviders.of(this).get(CongressOverviewVM.class);
         CongressMember congressMember = (CongressMember) getIntent().getSerializableExtra("CONGRESSMEMBER");
         congressOverviewVM.setCongressMember(congressMember);
-        Log.d("VIEWMODELTROUBLESHOOT", "onCreate: " + congressMember.getShort_title());
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view_tab);
         bottomNavigationView.setOnNavigationItemSelectedListener(this);

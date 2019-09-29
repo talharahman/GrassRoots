@@ -1,6 +1,5 @@
 package com.example.grassroots.network.ProPublica.VotePositions;
 
-import android.util.Log;
 
 import com.example.grassroots.model.ProPublica.VotePositions.VotePositionResponse;
 import com.example.grassroots.network.ProPublica.Members.CongressService;
@@ -36,11 +35,6 @@ class VotePositionRepository {
             @Override
             public void onResponse(Call<VotePositionResponse> call, Response<VotePositionResponse> response) {
                 VotePositionResponse votePositionResponse = response.body();
-                Log.d("HERE", "VP onResponse: " + response.code());
-                Log.d("HERE", "VP onResponse: " + response.errorBody());
-
-                Log.d("HERE", "VP onResponse: " + response.message());
-                Log.d("HERE", "VP onResponse: " + response.raw());
 
                 if (response.body() != null) {
                     votePositionListener.onSuccess(votePositionResponse);
@@ -49,7 +43,6 @@ class VotePositionRepository {
 
             @Override
             public void onFailure(Call<VotePositionResponse> call, Throwable t) {
-                Log.d("ONERROR", "onFailure: " + t.getMessage());
             }
         });
     }

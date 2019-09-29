@@ -2,7 +2,6 @@ package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -28,7 +27,6 @@ public class PetitionUpdatesViewHolder extends RecyclerView.ViewHolder {
 
         petitionUpdateHeadlineTextView.setText(currentPetitionUpdate.getmPetitionHeadLine());
         pettitonUdpatesDescrptionTextView.setText(currentPetitionUpdate.getmPetitionDescription());
-        Log.d("tets", "onBind: "+currentPetitionUpdate.getmPetitionDescription());
         Glide.with(itemView.getContext())
                 .load(currentPetitionUpdate.getmPetitionImageURL())
                 .fitCenter()

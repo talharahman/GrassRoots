@@ -21,7 +21,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -187,7 +186,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
                     @Override
                     public void petitionSignatureFailure(Throwable t) {
-                        Log.d("TAG", "OnFailure: " +  t.getMessage());
                     }
                 });
             }
@@ -227,7 +225,6 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
             @Override
             public void onPetitionUpdatesOnFailure(Throwable t) {
-                Log.d("TAG", "OnFailure: " + t.getMessage());
             }
 
         });

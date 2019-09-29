@@ -2,7 +2,6 @@ package com.example.grassroots.recyclerview;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -26,7 +25,6 @@ public class ExpenseViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(OfficeExpResult officeExpResult) {
-        Log.d("give me stuff", officeExpResult.getCategory());
 
 
         oe_category.setText(officeExpResult.getCategory());

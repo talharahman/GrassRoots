@@ -8,7 +8,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
-import android.util.Log;
 import android.view.MenuItem;
 import android.support.v7.widget.SearchView;
 
@@ -59,13 +58,11 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
     }
 
     private void networkCall() {
-        Log.d("HERE", "updateCongressDirectoryUI: " + "newtork is running");
 
         CongressPresenter congressPresenter = new CongressPresenter(new CongressUIListener() {
             @Override
             public void updateCongressDirectoryUI(CongressResponse congressResponse) {
                 congressMembersList.addAll(congressResponse.getResults().get(0).getMembers());
-                Log.d("HERE", "updateCongressDirectoryUI: " + congressResponse.getResults().get(0).getMembers().get(0).getFirst_name());
                 Collections.sort(congressMembersList);
 
                 congressAdapter.setMembers(congressMembersList);
@@ -89,7 +86,6 @@ public class CongressActivity extends AppCompatActivity implements BottomNavigat
                     congressMember.getLast_name().toLowerCase().contains(newText.toLowerCase())) {
                 newMemberList.add(congressMember);
             }else {
-                Log.d("HERE", "onQueryTextChange: " + "string not found");
             }
         }
         congressAdapter.setData(newMemberList);

@@ -1,6 +1,5 @@
 package com.example.grassroots.network.ProPublica.OfficeExpense;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import com.example.grassroots.model.ProPublica.OfficeExpenses.OfficeExpenseResponse;
@@ -37,11 +36,6 @@ public class ExpenseRepository {
                     public void onResponse(Call<OfficeExpenseResponse> call, Response<OfficeExpenseResponse> response) {
                         OfficeExpenseResponse officeExpenseResponse = response.body();
 
-                        Log.d("findme", "onResponse: " +response.raw());
-                        Log.d("findme", "onResponse: " +response.message());
-                        Log.d("findme", "onResponse: " +response.errorBody());
-                        Log.d("findme", "onResponse: " +response.headers());
-                        Log.d("findme", "onResponse: " +response.isSuccessful());
                         if(officeExpenseResponse != null){
                             officeExpenseListener.successfulCall(officeExpenseResponse);
                         } else {

@@ -10,7 +10,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,7 +68,6 @@ public class UserFeed extends Fragment {
                 Collections.reverse(totalPetitions);
                 petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions,  userActionViewModel.getCurrentUserID(),0);
 
-                Log.d("setPetitionActivity", "onChanged: " + userActionViewModel.getCurrentUserID());
 
 
                 recyclerView.setAdapter(petitionActivityAdapter);

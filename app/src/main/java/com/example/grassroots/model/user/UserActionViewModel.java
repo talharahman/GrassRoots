@@ -2,7 +2,6 @@ package com.example.grassroots.model.user;
 
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
-import android.util.Log;
 
 import com.example.grassroots.model.petition.Petition;
 
@@ -23,14 +22,11 @@ public class UserActionViewModel extends ViewModel {
     }
 
     public String getCurrentUserID() {
-        Log.d("GETUSERID", "getCurrentUserID: " +currentUserID);
         return currentUserID;
     }
 
     public void setCurrentUserID(String currentUserID) {
-        Log.d("SETUSERID", "SETCurrentUserID: " +"setter is null");
 
         this.currentUserID = currentUserID;
-        Log.d("SETUSERID", "SETCurrentUserID: " +currentUserID);
     }
 }
