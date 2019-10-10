@@ -24,10 +24,10 @@ import java.util.Collections;
 import java.util.List;
 
 public class UserFeed extends Fragment {
-    RecyclerView recyclerView;
+
+    RecyclerView recyclerViewUserFeedback;
     PetitionActivityAdapter petitionActivityAdapter;
-    List<Petition>  totalPetitions;
-    String userCurrentID;
+    List<Petition> totalPetitions;
     UserActionViewModel userActionViewModel;
 
     public UserFeed() { }
@@ -45,32 +45,25 @@ public class UserFeed extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        recyclerView= view.findViewById(R.id.user_activity_recycler_view);
+        recyclerViewUserFeedback = view.findViewById(R.id.user_activity_recycler_view);
         final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
-
-        recyclerView.setLayoutManager(layoutManager);
+        recyclerViewUserFeedback.setLayoutManager(layoutManager);
 
         userActionViewModel = ViewModelProviders.of(requireActivity()).get(UserActionViewModel.class);
 
-
-
-
-
-
-        MutableLiveData<List<Petition>> myPetitions = userActionViewModel.getPetitions();
+        MutableLiveData<List<Petition>> myPetitions = userActionViewModel.getPetitionsSignedForUser();
         myPetitions.observe(this, new Observer<List<Petition>>() {
             @Override
             public void onChanged(@Nullable List<Petition> petitions) {
                 // filter petitions that have me as ownerId
+
                 petitionActivityAdapter = new PetitionActivityAdapter();
                 totalPetitions = new ArrayList<>();
-                totalPetitions.addAll(petitions);
-                Collections.reverse(totalPetitions);
-                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions,  userActionViewModel.getCurrentUserID(),0);
+                // totalPetitions.addAll(petitions);
+                // Collections.reverse(totalPetitions);
+                petitionActivityAdapter.setPetitionActivityAdapterList(totalPetitions, userActionViewModel.getCurrentUserID(),0);
 
-
-
-                recyclerView.setAdapter(petitionActivityAdapter);
+                recyclerViewUserFeedback.setAdapter(petitionActivityAdapter);
 
                 petitionActivityAdapter.notifyDataSetChanged();
             }

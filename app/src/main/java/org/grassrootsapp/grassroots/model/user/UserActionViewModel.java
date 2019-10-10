@@ -9,16 +9,29 @@ import java.util.List;
 
 public class UserActionViewModel extends ViewModel {
 
-    private MutableLiveData<List<Petition>> petitions = new MutableLiveData<>();
+    private MutableLiveData<List<Petition>> petitionsSignedByUser = new MutableLiveData<>();
+    private MutableLiveData<List<Petition>> petitionsSignedForUser = new MutableLiveData<>();
     private String currentUserID;
-    // acts as a wrapper around object you want
 
-    public MutableLiveData<List<Petition>> getPetitions() {
-        return petitions;
+    public void setPetitionsSignedByUser(MutableLiveData<List<Petition>> petitionsSignedByUser) {
+        this.petitionsSignedByUser = petitionsSignedByUser;
     }
 
-    public void setPetitions(List<Petition> petitions) {
-        this.petitions.setValue(petitions);
+    public MutableLiveData<List<Petition>> getPetitionsSignedForUser() {
+        return petitionsSignedForUser;
+    }
+
+    public void setPetitionsSignedForUser(MutableLiveData<List<Petition>> petitionsSignedForUser) {
+        this.petitionsSignedForUser = petitionsSignedForUser;
+    }
+
+
+    public MutableLiveData<List<Petition>> getPetitionsSignedByUser() {
+        return petitionsSignedByUser;
+    }
+
+    public void setUserHistoryPetitions(List<Petition> userHistoryPetitions) {
+        this.petitionsSignedByUser.setValue(userHistoryPetitions);
     }
 
     public String getCurrentUserID() {
@@ -26,7 +39,6 @@ public class UserActionViewModel extends ViewModel {
     }
 
     public void setCurrentUserID(String currentUserID) {
-
         this.currentUserID = currentUserID;
     }
 }

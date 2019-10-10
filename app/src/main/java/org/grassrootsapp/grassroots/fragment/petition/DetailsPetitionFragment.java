@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -43,6 +44,7 @@ import org.grassrootsapp.grassroots.network.PetitionDB.PetitionUpdateOnCompleteL
 import org.grassrootsapp.grassroots.recyclerview.PetitionUpdatesAdapter;
 import org.grassrootsapp.grassroots.utils.PetitionsFeedInterface;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import java.util.ArrayList;
@@ -55,31 +57,19 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
 
     private static final String PARAM_PETITION = "param1";
 
-    private TextView petitionNameTextView;
-    private TextView petitionDescrptionTextView;
-    private TextView petitionSupporterTextView;
-    private TextView petitionSignatureTextView;
-    private ImageView petitionImageImageView;
-    private Button petitionSignButton;
     private PetitionUpdatesAdapter petitionUpdatesAdapter;
-    private Petition mParam1=new Petition();
+    private Petition mParam1 = new Petition();
     private PetitionsFeedInterface mListener;
     private PetitionViewModel petitionViewModel;
-    private FirebaseFirestore db=FirebaseFirestore.getInstance();
-  //  private DocumentReference petitionUpdateRef;
-  //  private List<PetitionUpdates>petitionUpdatesList=new ArrayList<>();
     private RecyclerView petitionUpdateRecyclerView;
     private WaveLoadingView waveLoadingView;
-
     private List<String> signersList = new ArrayList<>();
-    private List<PetitionSignatures> petitionSignaturesList = new ArrayList<>();
-
-    private FloatingActionButton socialFab, fabTwitter, fabFacebook;
+    private FloatingActionButton fabTwitter;
+    private FloatingActionButton fabFacebook;
     private Animation fab_open, fab_close;
     private boolean isFabOpen = false;
 
     public DetailsPetitionFragment() { }
-
 
     public static DetailsPetitionFragment newInstance(Petition petition) {
         DetailsPetitionFragment fragment = new DetailsPetitionFragment();
@@ -117,10 +107,10 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         super.onViewCreated(view, savedInstanceState);
         Toolbar toolbar = view.findViewById(R.id.app_bar);
         ((AppCompatActivity)requireActivity()).setSupportActionBar(toolbar);
-        CollapsingToolbarLayout collapsingToolbarLayout=view.findViewById(R.id.collapsing);
+        CollapsingToolbarLayout collapsingToolbarLayout = view.findViewById(R.id.collapsing);
         collapsingToolbarLayout.setTitle(" ");
 
-        socialFab = view.findViewById(R.id.fab_petition_social);
+        FloatingActionButton socialFab = view.findViewById(R.id.fab_petition_social);
         fabTwitter = view.findViewById(R.id.fab_petition_twitter);
         fabFacebook = view.findViewById(R.id.fab_petition_facebook);
         socialFab.setOnClickListener(this);
@@ -129,22 +119,22 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         fab_open = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_open);
         fab_close = AnimationUtils.loadAnimation(requireContext(), R.anim.fab_close);
 
-        waveLoadingView=view.findViewById(R.id.cirele);
-        petitionViewModel= ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
+        waveLoadingView = view.findViewById(R.id.cirele);
+        petitionViewModel = ViewModelProviders.of((FragmentActivity) requireContext()).get(PetitionViewModel.class);
 
         TextView petitionNameTextView = view.findViewById(R.id.petition_name_text_view1);
-        TextView petitionDescrptionTextView = view.findViewById(R.id.petition_description_text_view);
+        TextView petitionDescriptionTextView = view.findViewById(R.id.petition_description_text_view);
         TextView petitionSupporterTextView = view.findViewById(R.id.petition_supporter_text_view);
         ImageView petitionImageImageView = view.findViewById(R.id.petition_image_image_view);
         TextView petitionSignatureTextView = view.findViewById(R.id.signatures_text_view);
-        petitionUpdateRecyclerView=view.findViewById(R.id.updates_recyclerView);
+        petitionUpdateRecyclerView = view.findViewById(R.id.updates_recyclerView);
         Button petitionSignButton = view.findViewById(R.id.bottom_button);
 
         petitionUpdateRecyclerView.setLayoutManager(new LinearLayoutManager(this.requireContext(), LinearLayoutManager.HORIZONTAL,false));
 
         petitionNameTextView.setText(mParam1.getmPetitionName());
-        petitionSupporterTextView.setText("Michelle started this petition to "+mParam1.getmPetitionSupporter());
-        petitionDescrptionTextView.setText(mParam1.getmPetitionDescription());
+        petitionSupporterTextView.setText("To "+mParam1.getmPetitionSupporter());
+        petitionDescriptionTextView.setText(mParam1.getmPetitionDescription());
         petitionViewModel.setPetitionKey(mParam1.getPetitionKey());
 
         petitionSignatureTextView
@@ -156,8 +146,8 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
                 .centerCrop()
                 .into(petitionImageImageView);
 
-        double percentage=(double) (mParam1.getmPetitionSignature()*100)/mParam1.getmPetitionSignatureGoal();
-        int ger=(int)Math.round(percentage);
+        double percentage = (double) (mParam1.getmPetitionSignature()*100)/mParam1.getmPetitionSignatureGoal();
+        int ger = (int) Math.round(percentage);
 
         waveLoadingView.setProgressValue(ger);
 
@@ -166,20 +156,22 @@ public class DetailsPetitionFragment extends Fragment implements View.OnClickLis
         petitionSignButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new FirebaseRepository().updatePetitionSignatures("GvMnoE6YKTeouWXheeHuT1FCc5q2", mParam1, new PetitionSignatureListener() {
-                    @Override
-                    public void petitionSignatureSuccess(int newSignatures, List<String> newSignersList) {
-                        waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
+                new FirebaseRepository()
+                        .updatePetitionSignatures(FirebaseAuth.getInstance()
+                                .getCurrentUser().getUid(), mParam1, new PetitionSignatureListener() {
+                            @Override
+                            public void petitionSignatureSuccess(int newSignatures, List<String> newSignersList) {
+                                waveLoadingView.setProgressValue(mParam1.getmPetitionSignature());
 
-                        petitionViewModel.setSigners(signersList);
+                                petitionViewModel.setSigners(signersList);
 
-                        mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
-                    }
+                                mListener.moveToPetitionAnim(PetitionSignAnim.newInstance(mParam1));
+                            }
 
-                    @Override
-                    public void petitionSignatureFailure(Throwable t) {
-                    }
-                });
+                            @Override
+                            public void petitionSignatureFailure(Throwable t) {
+                            }
+                        });
             }
         });
 

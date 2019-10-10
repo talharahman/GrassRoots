@@ -14,26 +14,17 @@ import java.util.List;
 
 public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
-
     private int viewType;
-    String currentID;
-    final int MY_ACTIVITY_TYPE = 0;
-    final int USER_HISTORY_TYPE = 1;
+    private String currentID;
+    private final int MY_ACTIVITY_TYPE = 0;
+    private final int USER_HISTORY_TYPE = 1;
     private List<Petition> petitionList;
-    private List<Petition> petitionList1;
-    private List<Petition> petitionListWithSignatures;
-//    private List<MyActivity> myActivityList = new ArrayList<>();
-    HistoryFeedViewHolder historyFeedViewHolder;
-    UserPetitionActivityViewHolder userPetitionActivityViewHolder;
-    private List<String> totalSignatures = new ArrayList<>();
-
 
     public PetitionActivityAdapter() {}
 
     public void setPetitionActivityAdapterList(List<Petition> petitionList, String currentID, int viewType) {
         this.petitionList = petitionList;
         this.currentID = currentID;
-
         this.viewType = viewType;
     }
 
@@ -43,20 +34,18 @@ public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.V
         View itemView;
         switch (viewType){
             case MY_ACTIVITY_TYPE:
-                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_activity,viewGroup,false);
+                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_activity, viewGroup,false);
                 return new UserPetitionActivityViewHolder(itemView);
             case USER_HISTORY_TYPE:
-                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_history,viewGroup,false);
+                itemView = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.itemview_user_history, viewGroup,false);
                 return new HistoryFeedViewHolder(itemView);
-                default:
-                    return null;
+            default:
+                return null;
         }
-
     }
 
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder viewHolder, int i) {
-        int item;
         if (getItemViewType(i) == MY_ACTIVITY_TYPE){
             userActivityFeedItemView((UserPetitionActivityViewHolder) viewHolder,currentID, i);
         }
@@ -66,29 +55,15 @@ public class PetitionActivityAdapter extends RecyclerView.Adapter<RecyclerView.V
     }
 
     private void historyFeedItemView(HistoryFeedViewHolder historyViewHolder, String currentID, int position) {
-
-        List<String> totalSignatures = new ArrayList<>();
-
-//        for (int i = 0; i < petitionList1.size(); i++) {
-//            for (int j = 0; j < petitionList1.get(i).getSigners().size(); j++) {
-//                Log.d("PETITIONNAME", "onBind: " + petitionList1.size());
-//                Log.d("PETITIONNAME", "onBind: " + petitionList1.get(i).getmPetitionName());
-//                Log.d("PETITIONNAME", "onBind: " + petitionList1.get(i).getSigners().size());
-//            }
-//        }
-
-
-
-        ((HistoryFeedViewHolder) historyViewHolder).onBind( petitionList.get(position), currentID);
+        (historyViewHolder).onBind(petitionList.get(position), currentID);
 
     }
 
     private void userActivityFeedItemView(UserPetitionActivityViewHolder userPetitionActivityViewHolder, String currentID, int position) {
-//        while (position< petitionListWithSignatures.size()) {
-            ((UserPetitionActivityViewHolder) userPetitionActivityViewHolder).onBind(petitionList.get(position), currentID);
-//        }
+        (userPetitionActivityViewHolder).onBind(petitionList.get(position), currentID);
     }
-        @Override
+
+    @Override
     public int getItemCount() {
         return petitionList.size();
     }

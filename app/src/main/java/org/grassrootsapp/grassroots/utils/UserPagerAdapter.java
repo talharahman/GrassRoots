@@ -10,7 +10,7 @@ import org.grassrootsapp.grassroots.fragment.user.UserFeed;
 
 public class UserPagerAdapter extends FragmentPagerAdapter {
 
-    public UserPagerAdapter(UserActionActivity userActionActivity, FragmentManager fm) {
+    public UserPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 

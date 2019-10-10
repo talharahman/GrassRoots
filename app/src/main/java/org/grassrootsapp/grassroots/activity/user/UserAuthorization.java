@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -15,6 +16,8 @@ import org.grassrootsapp.grassroots.activity.MainDashboard;
 import org.grassrootsapp.grassroots.activity.UserActionActivity;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.time.LocalDate;
 
 public class UserAuthorization extends AppCompatActivity {
 
@@ -52,7 +55,7 @@ public class UserAuthorization extends AppCompatActivity {
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                authenticateAndLogin();
+                UserAuthorization.this.authenticateAndLogin();
             }
         });
 
@@ -60,7 +63,9 @@ public class UserAuthorization extends AppCompatActivity {
 
     private void authenticateAndLogin() {
         String email = emailEditText.getText().toString();
+        Log.d("USERAUTH", "email: " + email);
         String password = passwordEditText.getText().toString();
+        Log.d("USERAUTH", "password: " + password);
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(getApplicationContext(), "Please enter a valid email address.", Toast.LENGTH_SHORT).show();
             return;
@@ -69,6 +74,7 @@ public class UserAuthorization extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Please enter a valid password.", Toast.LENGTH_SHORT).show();
             return;
         }
+
         progressDialog.show();
         firebaseAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(task -> {
             this.user = firebaseAuth.getCurrentUser();

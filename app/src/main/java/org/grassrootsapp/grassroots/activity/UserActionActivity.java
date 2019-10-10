@@ -45,7 +45,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
 
     private FirebaseFirestore db = FirebaseFirestore.getInstance();
     private CollectionReference petitionRef = db.collection("Petitioncol");
-    public static String CURRENT_USER_ID;
+    public static String CURRENT_USER_ID = FirebaseAuth.getInstance().getCurrentUser().getUid();
     UserActionViewModel userActionViewModel;
     CircleImageView userImage;
 
@@ -91,7 +91,7 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
         });
 
         ViewPager viewPager = findViewById(R.id.user_activity_container);
-        viewPager.setAdapter(new UserPagerAdapter(this, getSupportFragmentManager()));
+        viewPager.setAdapter(new UserPagerAdapter(getSupportFragmentManager()));
         TabLayout tabLayout = findViewById(R.id.tabs_user);
 
         viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -130,27 +130,8 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
     private void getFirebaseData() {
 
         userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
-
-//        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-//
-//        currentUser.getUid();
-//
-//        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-//        firebaseAuth
-//                .signInWithEmailAndPassword("talharahman@pursuit.org", "password2")
-//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-//                    @Override
-//                    public void onComplete(@NonNull Task<AuthResult> task) {
-//                        if (task.isSuccessful()) {
-//                            userActionViewModel.setCurrentUserID(firebaseAuth.getUid());
-//                            Log.d("MYCURRENTID", "onComplete: " + firebaseAuth.getUid());
-//                        } else {
-//                            Toast.makeText(UserActionActivity.this.getApplicationContext(), "Invalid user", Toast.LENGTH_SHORT).show();
-//                        }
-//                    }
-//                });
-
-        UserActionViewModel userActionViewModel = ViewModelProviders.of(this).get(UserActionViewModel.class);
+        userActionViewModel.setCurrentUserID(CURRENT_USER_ID);
+        // User ID checks out at this point
 
         petitionRef.get()
                 .addOnSuccessListener(new OnSuccessListener<QuerySnapshot>() {
@@ -159,13 +140,14 @@ public class UserActionActivity extends AppCompatActivity implements BottomNavig
                         List<Petition> petitions = new ArrayList<>();
                         for (QueryDocumentSnapshot documentSnapshot : queryDocumentSnapshots) {
                             Petition petition = documentSnapshot.toObject(Petition.class);
-                            petitions.add(petition);
+                            if (petition.getSigners().contains(CURRENT_USER_ID)) {
+                                petitions.add(petition);
+                            }
                         }
-                        userActionViewModel.setPetitions(petitions);
+                        userActionViewModel.setUserHistoryPetitions(petitions);
+                        // User signed petitions checks out at this point
                     }
                 });
-
-      //  firebaseAuth.signOut();
     }
 
     @Override

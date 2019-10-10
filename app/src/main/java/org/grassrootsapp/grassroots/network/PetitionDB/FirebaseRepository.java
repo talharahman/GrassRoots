@@ -1,5 +1,7 @@
 package org.grassrootsapp.grassroots.network.PetitionDB;
 
+import android.util.Log;
+
 import org.grassrootsapp.grassroots.model.petition.Petition;
 import org.grassrootsapp.grassroots.model.petition.PetitionUpdates;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -66,6 +68,8 @@ public class FirebaseRepository {
         List<String> signersList = new ArrayList<>();
 
         petitionReference = db.collection("Petitioncol").document(petition.getPetitionKey());
+        Log.d("FIREBASE", petition.getPetitionKey());
+
         signersList.add(userID);
         petition.setmPetitionSignature(petition.getmPetitionSignature() + 1);
 

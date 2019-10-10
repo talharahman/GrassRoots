@@ -74,7 +74,7 @@ public class OverviewFragmentv2 extends Fragment {
     private void makeDatabaseCall() {
         new FirebaseRepository().getAllPetitions(myPetitions -> {
             myPetitionsHistory = myPetitions;
-            userActionViewModel.setPetitions(myPetitionsHistory);
+            userActionViewModel.setUserHistoryPetitions(myPetitionsHistory);
         });
     }
 

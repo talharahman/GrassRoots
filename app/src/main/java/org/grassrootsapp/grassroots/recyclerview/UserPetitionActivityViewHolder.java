@@ -26,10 +26,7 @@ public class UserPetitionActivityViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(Petition petition, String currentID) {
-
         for (int i = 0; i < petition.getSigners().size(); i++) {
-
-
             FirebaseAuth currentUser = FirebaseAuth.getInstance();
 
             if (petition.getSigners().get(i).equals(currentUser.getUid())){
@@ -37,7 +34,6 @@ public class UserPetitionActivityViewHolder extends RecyclerView.ViewHolder {
                 Glide.with(itemView.getContext()).load(petition.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(imageview_activity);
             }
         }
-
-//        Log.d("ISTHISWORKING?", "onBind: " + currentID);
     }
+
 }

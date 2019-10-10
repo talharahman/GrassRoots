@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.google.firebase.auth.FirebaseAuth;
+
 import org.grassrootsapp.grassroots.R;
 import org.grassrootsapp.grassroots.model.petition.Petition;
 
@@ -17,7 +19,7 @@ public class HistoryFeedViewHolder extends RecyclerView.ViewHolder {
 
     private TextView textView_history;
     private ImageView imageview_history;
-    private List<Petition> petitionListWithSignatures= new ArrayList<>();
+    private List<Petition> petitionListWithSignatures = new ArrayList<>();
 
     HistoryFeedViewHolder(@NonNull View itemView) {
         super(itemView);
@@ -26,24 +28,19 @@ public class HistoryFeedViewHolder extends RecyclerView.ViewHolder {
     }
 
     public void onBind(Petition petition, String currentID) {
+    if (petition.getSigners().contains(currentID)) {
+        textView_history.setText("You have signed\n" + petition.getmPetitionName());
+        Glide.with(itemView.getContext()).load(petition.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(imageview_history);
+    }
 
-//        petitionListWithSignatures = new ArrayList<>();
-//
-//
-//            if (petition.getPetitionSignatures().size() > 0) {
-//                petitionListWithSignatures.add(petition);
-//            }
-//
-//        for (Petition addedPetition :
-//                petitionListWithSignatures) {
-//            for (int i = 0; i < addedPetition.getPetitionSignatures().size(); i++) {
-//                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
-
-//                if (petition.getPetitionSignatures().get(i).getSignatureID().equals(currentUser.getUid())) {
-                    textView_history.setText("You have signed\n" + petition.getmPetitionName());
-                    Glide.with(itemView.getContext()).load(petition.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(imageview_history);
+/*//                if (petition.getPetitionSignatures().get(i).getSignatureID().equals(currentUser.getUid())) {
+        textView_history.setText("You have signed\n" + petition.getmPetitionName());
+        Glide.with(itemView.getContext()).load(petition.getmPetitionImageURL()).optionalFitCenter().centerCrop().into(imageview_history);
 //                }
-            }
+        if (petition.getPetitionSignatures().size() > 0) {
+            petitionListWithSignatures.add(petition);
+        }*/
 
 
+    }
 }

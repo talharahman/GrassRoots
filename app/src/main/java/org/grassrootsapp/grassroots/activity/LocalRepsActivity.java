@@ -88,7 +88,7 @@ public class LocalRepsActivity extends AppCompatActivity implements BottomNaviga
     private void makeDatabaseCall() {
         new FirebaseRepository().getAllPetitions(myPetitions -> {
             myPetitionsHistory = myPetitions;
-            userActionViewModel.setPetitions(myPetitionsHistory);
+            userActionViewModel.setUserHistoryPetitions(myPetitionsHistory);
         });
 
         civicInfoAdapter.setSendListener(representative -> {

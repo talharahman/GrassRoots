@@ -62,18 +62,16 @@ public class Petition implements Serializable {
         this.mPetitionUpdatesList = mPetitionUpdatesList;
     }
 
-
-
     public Petition() { }
 
-    public Petition( String petitionName, String petitionSupporter, String petitionDescription, String petitionImage,int petitionSignatureGoal,int petitionSignature,List<PetitionUpdates>petitionUpdatesList) {
-        mPetitionName =petitionName;
-        mPetitionSupporter =petitionSupporter;
-        mPetitionDescription =petitionDescription;
-        mPetitionImageURL=petitionImage;
-        mPetitionSignatureGoal=petitionSignatureGoal;
-        mPetitionSignature=petitionSignature;
-        mPetitionUpdatesList=petitionUpdatesList;
+    public Petition(String petitionName, String petitionSupporter, String petitionDescription, String petitionImage, int petitionSignatureGoal, int petitionSignature, List<PetitionUpdates> petitionUpdatesList) {
+        mPetitionName = petitionName;
+        mPetitionSupporter = petitionSupporter;
+        mPetitionDescription = petitionDescription;
+        mPetitionImageURL = petitionImage;
+        mPetitionSignatureGoal = petitionSignatureGoal;
+        mPetitionSignature = petitionSignature;
+        mPetitionUpdatesList = petitionUpdatesList;
     }
 
 
@@ -91,6 +89,7 @@ public class Petition implements Serializable {
     public int getmPetitionSignature(){
         return mPetitionSignature;
     }
+
     public String getmPetitionName() {
         return mPetitionName;
     }
